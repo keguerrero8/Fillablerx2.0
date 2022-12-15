@@ -1,6 +1,7 @@
 from django.contrib import admin
-from api.models import Pharmacist, Pharmacy
+from api.models import Pharmacist, Pharmacy, Request, Medication
 
-# Register your models here.
 admin.site.register(Pharmacist)
 admin.site.register(Pharmacy)
+admin.site.register(Medication)
+admin.site.register(Request)
