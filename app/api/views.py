@@ -1,18 +1,40 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-# Create your views here.
+from .models import Pharmacy, Pharmacist, Medication
+from .serializers import PharmacySerializer, PharmacistSerializer, MedicationSerializer
+
+
 def index(request):
     return HttpResponse("Welcome to home page!")
 
 
-def pharmacies(request):
-    return HttpResponse("Welcome to Pharmacies page!")
+@api_view(["GET"])
+def pharmacy_list(request):
+    if request.method == "GET":
+        pharmacies = Pharmacy.objects.all()
+        serializer = PharmacySerializer(pharmacies, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-def show_pharmacy(request, id):
-    return HttpResponse("This is pharmacy with id: %s." % id)
+@api_view(["GET"])
+def pharmacy_detail(request, id):
+    try:
+        pharmacy = Pharmacy.objects.get(id=id)
+    except Pharmacy.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "GET":
+        serializer = PharmacySerializer(pharmacy)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-def even_or_odd(request, num):
-    return HttpResponse("This is your number in string %s" % num)
+@api_view(["GET"])
+def medication_list(request):
+    if request.method == "GET":
+        medications = Medication.objects.all()
+        serializer = MedicationSerializer(medications, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

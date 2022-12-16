@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 
-# Create your models here.
+
 class Pharmacy(models.Model):
     name = models.CharField(max_length=200, unique=True)
     address = models.CharField(max_length=300)
@@ -29,10 +29,10 @@ class Medication(models.Model):
 
 class Request(models.Model):
     phone_number = PhoneNumberField()
-    medication_name = models.CharField(max_length=200)
-    # TODO strength should only be required if the medname exists and its 
+    med_name = models.CharField(max_length=200)
+    # TODO strength should only be required if the medname exists and its
     # corresponding strength arrays size is greater than 0
-    medication_strength = models.CharField(max_length=200)
+    med_strength = models.CharField(max_length=200)
     quantity = models.CharField(max_length=200)
     # TODO bin, pcn, rxgroup are only needed if insurance is true
     bin = models.CharField(max_length=200)
