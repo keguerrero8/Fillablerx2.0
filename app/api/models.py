@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
-from django.core.exceptions import ValidationError
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -25,21 +24,16 @@ class Medication(models.Model):
 
     name = models.CharField(max_length=200)
     brand_name = models.CharField(max_length=200, blank=True)
-    strength = ArrayField(models.CharField(max_length=100), default=strength_default)
+    strength = ArrayField(
+        models.CharField(max_length=100), default=strength_default, blank=True
+    )
 
 
 class Request(models.Model):
-    def clean(self):
-        if self.isInsurance and self.bin == "":
-            raise ValidationError('Draft entries may not have a publication date.')
-
     phone_number = PhoneNumberField()
-    med_name = models.CharField(max_length=200)
-    # TODO strength should only be required if the medname exists and its
-    # corresponding strength arrays size is greater than 0
-    med_strength = models.CharField(max_length=200)
-    quantity = models.CharField(max_length=200)
-    # TODO bin, pcn, rxgroup are only needed if insurance is true
+    med_name = models.CharField(max_length=200, error_messages={"blank": "Medication name cannot be blank"})
+    med_strength = models.CharField(max_length=200, blank=True, error_messages={"blank": "Medication strength cannot be blank"})
+    quantity = models.CharField(max_length=200, error_messages={"blank": "Quantity cannot be blank"})
     bin = models.CharField(max_length=200, blank=True)
     pcn = models.CharField(max_length=200, blank=True)
     rxgroup = models.CharField(max_length=200, blank=True)

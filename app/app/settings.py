@@ -58,7 +58,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-#TODO modify at some point depending on we interact with frontent
+# TODO modify at some point depending on we interact with frontent
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4000",
 ]
