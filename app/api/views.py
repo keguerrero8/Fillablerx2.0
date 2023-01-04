@@ -1,11 +1,9 @@
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from django.views.decorators.csrf import csrf_protect
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
-import json
 
 from .models import Pharmacy, Pharmacist, Medication, Request
 from .serializers import (
@@ -13,61 +11,7 @@ from .serializers import (
     PharmacistSerializer,
     MedicationSerializer,
     RequestSerializer,
-    UserSerializer
 )
-
-# @api_view(["GET"])
-@csrf_exempt
-def get_user(request):
-    
-    import pdb; pdb.set_trace()
-    if not request.user.is_authenticated:
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
-    return Response(status=status.HTTP_200_OK)
-    try:
-        session_id = request.session["user_id"]
-        user = User.objects.get(id=session_id)
-    except User.DoesNotExist:
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
-    serializer = UserSerializer(user)
-    return Response(serializer.data, status=status.HTTP_200_OK)
-
-@api_view(["DELETE"])
-def logout_user(request):
-    # import pdb; pdb.set_trace()
-    logout(request)
-    return HttpResponse("Successful logout!")
-       
-@api_view(["POST"])
-def login_user(request):
-    # import pdb; pdb.set_trace()
-    body = json.loads(request.body)
-    username = body['username']
-    password = body['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        request.session["user_id"] = user.id
-        serializer = UserSerializer(user)
-        # import pdb; pdb.set_trace()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    else:
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
-
-# @csrf_exempt
-# def login_user(request):
-#     import pdb; pdb.set_trace()
-#     username = request.POST['username']
-#     password = request.POST['password']
-#     user = authenticate(request, username=username, password=password)
-#     if user is not None:
-#         login(request, user)
-#         request.session["user_id"] = user.id
-#         serializer = UserSerializer(user)
-#         import pdb; pdb.set_trace()
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     else:
-#         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 def index(request):
@@ -75,6 +19,7 @@ def index(request):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def pharmacy_list(request):
     """
     Get all pharmacies
@@ -155,6 +100,7 @@ def pharmacist_detail(request, id):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def medication_list(request):
     """
     Get a list of all medications
@@ -166,6 +112,8 @@ def medication_list(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
+# @csrf_protect
 def request_list(request):
     """
     Create a request. Here we will need to also trigger the API call to twilio to send our mass sms
