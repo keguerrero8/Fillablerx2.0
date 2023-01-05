@@ -17,13 +17,13 @@ function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    // fetch("/me")
-    fetch("http://localhost:8000/auth-sessions/authenticated")
+    fetch("http://localhost:8000/auth-sessions/authenticated", { credentials: 'include' })
     .then(r => {
       if (r.ok) {
         r.json().then(res => {
-          // setUser(res)
-          console.log(res)
+            if (res.success) {
+                setUser(res.success)
+            }
         })
       }
     })
@@ -39,7 +39,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
         <Route path="*" element={<HomePage />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}

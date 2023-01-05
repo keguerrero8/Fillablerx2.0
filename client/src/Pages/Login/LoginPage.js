@@ -18,8 +18,8 @@ export default function LoginPage({setUser}) {
 
     function handleSubmit (e) {
         e.preventDefault()
-        // fetch("http://localhost:3000/sessions", {
         fetch("http://localhost:8000/auth-sessions/login", {
+            credentials: "include",
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -29,17 +29,18 @@ export default function LoginPage({setUser}) {
             body: JSON.stringify(formData)
         })
         .then(r => {
-            console.log("resonse ", r)
             if (r.ok) {
                 r.json().then(res => {
-                    console.log("logged in ", res)
-                    // setUser(res)
-                    history("/dashboard")
+                    if (res.success) {
+                        setUser(res.success)
+                        history("/dashboard")
+                    } else {
+                        setErrors([res.error])
+                    }
                 })
             }
             else {
-                // r.json().then(res => setErrors(res.errors))
-                setErrors(["Invalid credentials, please try again"])
+                setErrors(["Something went wrong, please try again or contact the administrator"])
             }
         })
     }

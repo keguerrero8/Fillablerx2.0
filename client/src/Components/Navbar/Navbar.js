@@ -15,6 +15,7 @@ import {
   MenuItem, 
   Divider 
 } from "@mui/material";
+import Cookies from "js-cookie"
 
 export default function Navbar({ setUser, user }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -36,9 +37,14 @@ export default function Navbar({ setUser, user }) {
   };
 
   function handleLogOut () {
-    // fetch(`/sessions/${user.id}`, {
-    fetch(`http://localhost:8000/api/logout`, {
-      method: "DELETE",
+    fetch("http://localhost:8000/auth-sessions/logout", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-CSRFToken": Cookies.get("csrftoken")
+      },
     })
     .then(r => {
       if (r.ok) {

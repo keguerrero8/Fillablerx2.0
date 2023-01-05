@@ -1,11 +1,11 @@
 from django.contrib import auth
-from rest_framework import permissions
+from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
+from .serializers import UserSerializer
 
-# @method_decorator(csrf_protect, name='dispatch')
 class CheckAuthenticatedView(APIView):
     permission_classes = (permissions.AllowAny, )
     def get(self, request, format=None):
@@ -15,7 +15,9 @@ class CheckAuthenticatedView(APIView):
             isAuthenticated = user.is_authenticated
 
             if isAuthenticated:
-                return Response({ 'success': 'User authenticated' })
+                serializer = UserSerializer(user)
+                # return Response(serializer.data)
+                return Response({ 'success': serializer.data})
             else:
                 return Response({ 'error': 'User is not authenticated' })
         except:
@@ -30,7 +32,7 @@ class GetCSRFToken(APIView):
         return Response({ 'success': 'CSRF cookie set' })
     
     
-# @method_decorator(csrf_protect, name='dispatch')
+@method_decorator(csrf_protect, name='dispatch')
 class LoginView(APIView):
     permission_classes = (permissions.AllowAny, )
 
@@ -45,9 +47,10 @@ class LoginView(APIView):
 
             if user is not None:
                 auth.login(request, user)
-                return Response({ 'success': 'User authenticated' })
+                serializer = UserSerializer(user)
+                return Response({ 'success': serializer.data })
             else:
-                return Response({ 'error': 'Error Authenticating' })
+                return Response({ 'error': 'Invalid username or password' })
         except:
             return Response({ 'error': 'Something went wrong when logging in' })
 
