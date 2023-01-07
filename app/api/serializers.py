@@ -1,7 +1,8 @@
 from rest_framework import serializers
 
-from .models import Pharmacy, Pharmacist, Request, Medication        
-        
+from .models import Pharmacy, Pharmacist, Request, Medication
+
+
 class PharmacySerializer(serializers.ModelSerializer):
     class Meta:
         model = Pharmacy

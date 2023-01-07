@@ -31,9 +31,17 @@ class Medication(models.Model):
 
 class Request(models.Model):
     phone_number = PhoneNumberField()
-    med_name = models.CharField(max_length=200, error_messages={"blank": "Medication name cannot be blank"})
-    med_strength = models.CharField(max_length=200, blank=True, error_messages={"blank": "Medication strength cannot be blank"})
-    quantity = models.CharField(max_length=200, error_messages={"blank": "Quantity cannot be blank"})
+    med_name = models.CharField(
+        max_length=200, error_messages={"blank": "Medication name cannot be blank"}
+    )
+    med_strength = models.CharField(
+        max_length=200,
+        blank=True,
+        error_messages={"blank": "Medication strength cannot be blank"},
+    )
+    quantity = models.CharField(
+        max_length=200, error_messages={"blank": "Quantity cannot be blank"}
+    )
     bin = models.CharField(max_length=200, blank=True)
     pcn = models.CharField(max_length=200, blank=True)
     rxgroup = models.CharField(max_length=200, blank=True)

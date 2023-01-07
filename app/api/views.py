@@ -2,7 +2,11 @@ from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from django.views.decorators.csrf import csrf_protect
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
+from rest_framework.permissions import (
+    IsAuthenticatedOrReadOnly,
+    IsAuthenticated,
+    AllowAny,
+)
 from rest_framework.response import Response
 
 from .models import Pharmacy, Pharmacist, Medication, Request
@@ -13,8 +17,10 @@ from .serializers import (
     RequestSerializer,
 )
 
+
 def index(request):
     return HttpResponse("Fillable API")
+
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
@@ -72,13 +78,12 @@ def pharmacist_create(request):
     """
     Create a pharmacist (which will accept a pharmacy field as input).
     """
-    # Changes in the frontend need to happen to make this actually work, should we add 
+    # Changes in the frontend need to happen to make this actually work, should we add
     # clause to check for the pharmacy as well?
     if request.method == "POST":
         serializer = PharmacistSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            # import pdb; pdb.set_trace()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -104,7 +109,7 @@ def pharmacist_detail(request, id):
 
     elif request.method == "DELETE":
         pharmacist.delete()
-        return Response({ 'success': True }, status=status.HTTP_204_NO_CONTENT)
+        return Response({"success": True}, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(["GET"])
@@ -134,5 +139,3 @@ def request_list(request):
         return Response(
             {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
         )
-        
-        

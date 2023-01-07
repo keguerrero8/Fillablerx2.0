@@ -144,7 +144,7 @@ STATIC_URL = "static/"
 #     os.path.join(BASE_DIR, 'build/static')
 # ]
 
-#Do i need this here below?
+# Do i need this here below?
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
@@ -153,10 +153,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ]
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
 }
