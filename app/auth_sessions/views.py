@@ -1,5 +1,5 @@
 from django.contrib import auth
-from rest_framework import permissions, status
+from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
@@ -16,7 +16,6 @@ class CheckAuthenticatedView(APIView):
 
             if isAuthenticated:
                 serializer = UserSerializer(user)
-                # return Response(serializer.data)
                 return Response({ 'success': serializer.data})
             else:
                 return Response({ 'error': 'User is not authenticated' })

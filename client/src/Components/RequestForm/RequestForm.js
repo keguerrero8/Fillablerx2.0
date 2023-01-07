@@ -89,6 +89,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
   function handleSubmit (e) {
     e.preventDefault()
     fetch("http://localhost:8000/api/requests", {
+        credentials: "include",
         method: "POST",
         headers: { 
             "Content-Type": "application/json",

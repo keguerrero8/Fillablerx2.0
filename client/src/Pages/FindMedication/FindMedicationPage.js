@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import RequestForm from '../../Components/RequestForm/RequestForm';
 

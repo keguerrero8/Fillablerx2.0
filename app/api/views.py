@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from django.views.decorators.csrf import csrf_protect
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 from .models import Pharmacy, Pharmacist, Medication, Request
@@ -13,13 +13,12 @@ from .serializers import (
     RequestSerializer,
 )
 
-
 def index(request):
     return HttpResponse("Fillable API")
 
-
 @api_view(["GET"])
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([IsAuthenticated])
+@csrf_protect
 def pharmacy_list(request):
     """
     Get all pharmacies
@@ -31,6 +30,8 @@ def pharmacy_list(request):
 
 
 @api_view(["GET"])
+@csrf_protect
+@permission_classes([IsAuthenticated])
 def pharmacy_detail(request, id):
     """
     Get a single pharmacies details
@@ -47,6 +48,8 @@ def pharmacy_detail(request, id):
 
 # TODO remember to update the frontend to send the pharmacy id via them
 @api_view(["GET"])
+@csrf_protect
+@permission_classes([IsAuthenticated])
 def pharmacist_list(request, id):
     """
     Get all pharmacists based on a particular pharmacy
@@ -63,6 +66,8 @@ def pharmacist_list(request, id):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
+@csrf_protect
 def pharmacist_create(request):
     """
     Create a pharmacist (which will accept a pharmacy field as input).
@@ -73,11 +78,14 @@ def pharmacist_create(request):
         serializer = PharmacistSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            # import pdb; pdb.set_trace()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["PUT", "DELETE"])
+@csrf_protect
+@permission_classes([IsAuthenticated])
 def pharmacist_detail(request, id):
     """
     Update or delete a pharmacist
@@ -96,7 +104,7 @@ def pharmacist_detail(request, id):
 
     elif request.method == "DELETE":
         pharmacist.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({ 'success': True }, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(["GET"])
@@ -113,7 +121,7 @@ def medication_list(request):
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
-# @csrf_protect
+@csrf_protect
 def request_list(request):
     """
     Create a request. Here we will need to also trigger the API call to twilio to send our mass sms

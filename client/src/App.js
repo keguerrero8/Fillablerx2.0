@@ -9,6 +9,7 @@ import LoginPage from './Pages/Login/LoginPage';
 import DashboardPage from './Pages/Dashboard/DashboardPage';
 import Pharmacies from './Pages/Pharmacies/Pharmacies';
 import ContactUs from './Pages/Contact/ContactUs'
+import Page404 from './Pages/404/Page404';
 // import MonitorPage from './Pages/Monitoring/MonitorPage';
 import Navbar from './Components/Navbar/Navbar';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
@@ -41,7 +42,7 @@ function App() {
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<Page404 />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}
       </Routes>
     </>
