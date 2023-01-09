@@ -132,10 +132,17 @@ def request_list(request):
     Create a request. Here we will need to also trigger the API call to twilio to send our mass sms
     """
     if request.method == "POST":
-        serializer = RequestSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(
-            {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
-        )
+        try:
+            serializer = RequestSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(
+                {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
+            )
+        except:
+            return Response(
+                {
+                    "error": "Something went wrong when creating the request, please contact your administrator"
+                }
+            )

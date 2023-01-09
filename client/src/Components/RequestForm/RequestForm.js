@@ -100,8 +100,12 @@ export default function RequestForm({ test = false, isPatient = true}) {
     .then(r => {
         if (r.ok) {
             r.json().then(res => {
-                setRequestStatus(["Request successfully sent!"])
-                setDisabled(false)
+                if (res.error) {
+                    setRequestStatus([res.error])
+                } else {
+                    setRequestStatus(["Request successfully sent!"])
+                    setDisabled(false)
+                }
             })
         }
         else {
