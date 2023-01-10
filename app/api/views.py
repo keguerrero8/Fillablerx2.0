@@ -1,13 +1,15 @@
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
     IsAuthenticated,
     AllowAny,
 )
 from rest_framework.response import Response
+from django_twilio.decorators import twilio_view
+from django_twilio.request import decompose
 
 from .models import Pharmacy, Pharmacist, Medication, Request
 from .serializers import (
@@ -16,6 +18,7 @@ from .serializers import (
     MedicationSerializer,
     RequestSerializer,
 )
+from .sms import TwilioClient
 
 
 def index(request):
@@ -146,3 +149,13 @@ def request_list(request):
                     "error": "Something went wrong when creating the request, please contact your administrator"
                 }
             )
+
+
+@twilio_view
+@csrf_exempt
+def inbound_patient(request):
+    twilio_request = decompose(request)
+    origin_request = Request.objects.get(id=int(twilio_request.body))
+    pharmacy = Pharmacist.objects.get(phone_number=twilio_request.from_).pharmacy
+    TwilioClient().inbound_to_patient(origin_request, pharmacy)
+    return HttpResponse("Inbound message successfully sent!")

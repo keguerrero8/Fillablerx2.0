@@ -27,7 +27,7 @@ class TwilioClient:
         bindings = list(
             map(
                 lambda number: json.dumps(
-                    {"binding_type": "sms", "address": f"{number}22"}
+                    {"binding_type": "sms", "address": f"{number}"}
                 ),
                 numbers,
             )
@@ -76,5 +76,18 @@ class TwilioClient:
                 f"\n"
                 f"If you have any questions or would like to contact us, "
                 f"please email your account manager, Larry (larrychen.fillable@gmail.com)."
+            ),
+        )
+
+    def inbound_to_patient(self, origin_request, pharmacy):
+        self.client.messages.create(
+            to=origin_request.phone_number.as_e164,
+            from_=self.twilio_phone_number,
+            body=(
+                f"FillableRx #{origin_request.id}\n"
+                f"{origin_request.med_name} is IN STOCK\n"
+                f"{pharmacy.name} Pharmacy\n"
+                f"{pharmacy.phone_number}\n"
+                f"{pharmacy.address}, {pharmacy.zipcode}"
             ),
         )

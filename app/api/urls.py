@@ -14,4 +14,5 @@ urlpatterns = [
         "pharmacists/<str:id>", views.pharmacist_detail, name="pharmacist-update-delete"
     ),
     path("requests", views.request_list, name="request-create"),
+    path("inbound", views.inbound_patient, name="inbound-patient"),
 ]
