@@ -15,7 +15,7 @@ class PharmacistService {
                 "Content-Type": "application/json",
                 "X-CSRFToken": Cookies.get("csrftoken")
             },
-            body: JSON.stringify({...obj, pharmacy: pharmacy_id})
+            body: JSON.stringify({...obj, pharmacy: pharmacy_id, phone_number: "+1" + obj["phone_number"]})
           })
           .then(r => r.json())
         return createStatus

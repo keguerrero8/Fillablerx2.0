@@ -95,7 +95,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
             "Content-Type": "application/json",
             "X-CSRFToken": Cookies.get("csrftoken")
         },
-        body: JSON.stringify(requestData)
+        body: JSON.stringify({...requestData, phone_number: "+1" + requestData["phone_number"]})
     })
     .then(r => {
         if (r.ok) {
@@ -207,6 +207,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
                 name="phone_number" 
                 handleChange={handleChange} 
                 isRequired={true}
+                placeholder="Please enter 10 digits"
             />
         </Box>
         <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>
