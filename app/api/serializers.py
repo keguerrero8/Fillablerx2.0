@@ -25,11 +25,18 @@ class RequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = "__all__"
+        
+    def validate_med_name(self, value):
+        if value == "":
+            raise serializers.ValidationError("must be a valid medication from the dropdown options")
+        return value
 
     def validate_bin(self, value):
         isInsurance = self.initial_data.get("isInsurance")
         if isInsurance and value == "":
             raise serializers.ValidationError("Please provide a valid BIN")
+        if len(value) != 6:
+            raise serializers.ValidationError("A valid BIN should be 6 digits")
         return value
 
     def validate_pcn(self, value):
@@ -49,7 +56,7 @@ class RequestSerializer(serializers.ModelSerializer):
         try:
             medication = Medication.objects.get(name=med_name)
         except Medication.DoesNotExist:
-            raise serializers.ValidationError("The medication name is not valid")
+            raise serializers.ValidationError("The medication name must be valid")
 
         if len(medication.strength) and value == "":
             raise serializers.ValidationError("Please provide a medication strength")
