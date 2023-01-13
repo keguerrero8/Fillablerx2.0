@@ -55,7 +55,6 @@ def pharmacy_detail(request, id):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# TODO remember to update the frontend to send the pharmacy id via them
 @api_view(["GET"])
 @csrf_protect
 @permission_classes([IsAuthenticated])
@@ -81,8 +80,11 @@ def pharmacist_create(request):
     """
     Create a pharmacist (which will accept a pharmacy field as input).
     """
-    # Changes in the frontend need to happen to make this actually work, should we add
-    # clause to check for the pharmacy as well?
+    try:
+        Pharmacy.objects.get(id=int(request.data["pharmacy"]))
+    except Pharmacy.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
     if request.method == "POST":
         serializer = PharmacistSerializer(data=request.data)
         if serializer.is_valid():

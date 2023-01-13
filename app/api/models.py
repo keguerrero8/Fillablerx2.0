@@ -45,7 +45,7 @@ class Request(models.Model):
         blank=True,
     )
     quantity = models.CharField(
-        max_length=200, error_messages={"required": "Quantity cannot be blank"}
+        max_length=200
     )
     bin = models.CharField(max_length=200, blank=True)
     pcn = models.CharField(max_length=200, blank=True)

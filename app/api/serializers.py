@@ -26,6 +26,11 @@ class RequestSerializer(serializers.ModelSerializer):
         model = Request
         fields = "__all__"
         
+    def validate_quantity(self, value):
+        if not value.isnumeric():
+            raise serializers.ValidationError("must be a valid number")
+        return value
+        
     def validate_med_name(self, value):
         if value == "":
             raise serializers.ValidationError("must be a valid medication from the dropdown options")
@@ -35,7 +40,7 @@ class RequestSerializer(serializers.ModelSerializer):
         isInsurance = self.initial_data.get("isInsurance")
         if isInsurance and value == "":
             raise serializers.ValidationError("Please provide a valid BIN")
-        if len(value) != 6:
+        elif isInsurance and len(value) != 6:
             raise serializers.ValidationError("A valid BIN should be 6 digits")
         return value
 
