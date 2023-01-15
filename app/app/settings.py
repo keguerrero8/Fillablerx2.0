@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "django_twilio",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [

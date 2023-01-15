@@ -24,6 +24,8 @@ function App() {
         r.json().then(res => {
             if (res.success) {
                 setUser(res.success)
+            } else {
+              setUser({})
             }
         })
       }

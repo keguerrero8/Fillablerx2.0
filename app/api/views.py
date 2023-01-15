@@ -33,7 +33,7 @@ def pharmacy_list(request):
     Get all pharmacies
     """
     if request.method == "GET":
-        pharmacies = Pharmacy.objects.all()
+        pharmacies = Pharmacy.objects.order_by("name")
         serializer = PharmacySerializer(pharmacies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

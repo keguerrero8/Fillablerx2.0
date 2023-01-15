@@ -21,7 +21,7 @@ export default function CollapsibleTable({user}) {
         loadPharmacies()
     }, [])
 
-    if (pharmacies.length === 0 || pharmacies.detail) return <Page404 isAuthFailure={true} />
+    if (!user) return <Page404 isAuthFailure={true} />
 
     const filteredPharmacies = pharmacies.filter(p => 
         p.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()) || p.zipcode.startsWith(search))

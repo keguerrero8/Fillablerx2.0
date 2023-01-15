@@ -6,7 +6,7 @@ from .sms import TwilioClient
 
 
 class Pharmacy(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200)
     address = models.CharField(max_length=300)
     zipcode = models.CharField(max_length=30)
     phone_number = PhoneNumberField()

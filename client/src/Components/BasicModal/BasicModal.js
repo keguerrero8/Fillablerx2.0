@@ -45,7 +45,7 @@ export default function BasicModal({ pharmacyId, pharmacistsUpdate, setPharmacis
         <Box sx={styles.ModalContainer} component="form" noValidate onSubmit={handleSubmit}>
           <Typography variant="h5">Add a Pharmacist</Typography>
           <TextField label="Name" variant="outlined" name="name" onChange={handleChange}/>
-          <TextField label="Phone Number" variant="outlined" name="phone_number" onChange={handleChange}/>
+          <TextField placeholder="Please enter 10 digits" label="Phone Number" variant="outlined" name="phone_number" onChange={handleChange}/>
           {errors.map(e => <Typography sx={{color: "red"}} key={e}>{e}</Typography>)}
           <Button variant="contained" sx={{width: "30%", margin: "auto", color: "white"}} type="submit">Add</Button>
           <Button onClick={handleClose} sx={{position: "absolute", right: "0px", bottom: "0px"}}>CLOSE</Button>

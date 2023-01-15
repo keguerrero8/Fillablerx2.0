@@ -17,7 +17,13 @@ class PharmacistService {
             },
             body: JSON.stringify({...obj, pharmacy: pharmacy_id, phone_number: "+1" + obj["phone_number"]})
           })
-          .then(r => r.json())
+          .then(r => {
+            if (r.ok) {
+                return r.json()
+            } else {
+                return {errors: ["There seemed to be an issue creating a pharmacist"]}
+            }
+          })
         return createStatus
     }
 

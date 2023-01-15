@@ -110,8 +110,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
         }
         else {
             r.json().then(res => {
-                console.log(res)
-                const errors = Object.entries(res.errors).map(e => `${e[0]}: ${e[1]}`)
+                const errors = Object.entries(res.errors).map(e => `${e[0].replace("_", " ")}: ${e[1]}`)
                 if (res.errors) {
                     setRequestStatus(errors)
                 } else {

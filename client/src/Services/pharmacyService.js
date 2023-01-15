@@ -6,7 +6,7 @@ class PharmacyService {
     }
 
     async getPharmacy (id) {
-        const response = await fetch(`http://localhost:8000/api/pharmacies/${id}/`, { credentials: 'include' }).then(r => r.json())
+        const response = await fetch(`http://localhost:8000/api/pharmacies/${id}`, { credentials: 'include' }).then(r => r.json())
         return response
     }
 

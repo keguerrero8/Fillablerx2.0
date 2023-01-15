@@ -21,7 +21,6 @@ export default function PharmacistRow({ pharmacist, pharmacistsUpdate, setPharma
     const deletePharmacist = async (pharmacist_id) => {
         const isDeleted = await pharmacistService.deletePharmacist(pharmacist_id)
         if (isDeleted) setPharmacistsUpdate(!pharmacistsUpdate)
-        else console.log("Failure during delete")
     }
 
     function handleDelete () {
