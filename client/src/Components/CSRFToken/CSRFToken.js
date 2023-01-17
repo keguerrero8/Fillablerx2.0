@@ -21,7 +21,7 @@ const CSRFToken = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await fetch(`http://localhost:8000/auth-sessions/csrf_cookie`, { credentials: 'include' })
+                await fetch(`/auth-sessions/csrf_cookie`, { credentials: 'include' })
             } catch (err) {
 
             }

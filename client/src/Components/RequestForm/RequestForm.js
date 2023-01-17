@@ -41,7 +41,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
   const [medications, setMedications] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/medications")
+    fetch("/api/medications")
     .then(res => res.json())
     .then(r => setMedications(r))
   }, [])
@@ -88,7 +88,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    fetch("http://localhost:8000/api/requests", {
+    fetch("/api/requests", {
         credentials: "include",
         method: "POST",
         headers: { 

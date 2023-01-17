@@ -2,7 +2,7 @@
   "name": "fillablerx",
   "version": "0.1.0",
   "private": true,
-  "proxy": "",
+  "proxy": "http://localhost:8000",
   "engines": {
     "node": "16.x"
   },
