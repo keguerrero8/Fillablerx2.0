@@ -25,7 +25,7 @@ function App() {
             if (res.success) {
                 setUser(res.success)
             } else {
-              setUser({})
+              setUser(null)
             }
         })
       }

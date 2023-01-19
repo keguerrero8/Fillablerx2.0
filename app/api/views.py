@@ -26,8 +26,8 @@ def index(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
 @csrf_protect
+@permission_classes([IsAuthenticated])
 def pharmacy_list(request):
     """
     Get all pharmacies

@@ -9,4 +9,6 @@ urlpatterns = [
     path("auth-sessions/", include("auth_sessions.urls")),
 ]
 
+# this is a catch all, so that any url outside of the ones above are sent to the
+# index.html that lives inside our build folder so react router can take over
 urlpatterns += [re_path(r"^.*", TemplateView.as_view(template_name="index.html"))]

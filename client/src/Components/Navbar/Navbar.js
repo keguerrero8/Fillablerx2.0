@@ -37,7 +37,7 @@ export default function Navbar({ setUser, user }) {
   };
 
   function handleLogOut () {
-    fetch("http://localhost:8000/auth-sessions/logout", {
+    fetch("/auth-sessions/logout", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -52,7 +52,6 @@ export default function Navbar({ setUser, user }) {
       }
     })
   }
-
   return (
     <AppBar color="secondary" sx={{backgroundColor: "transparent", position: "absolute"}}>
     <Container maxWidth="xl" sx={{marginTop: "10px"}}>
