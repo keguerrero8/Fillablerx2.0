@@ -37,16 +37,12 @@ class Medication(models.Model):
 
 class Request(models.Model):
     phone_number = PhoneNumberField()
-    med_name = models.CharField(
-        max_length=200, blank=True
-    )
+    med_name = models.CharField(max_length=200, blank=True)
     med_strength = models.CharField(
         max_length=200,
         blank=True,
     )
-    quantity = models.CharField(
-        max_length=200
-    )
+    quantity = models.CharField(max_length=200)
     bin = models.CharField(max_length=200, blank=True)
     pcn = models.CharField(max_length=200, blank=True)
     rxgroup = models.CharField(max_length=200, blank=True)

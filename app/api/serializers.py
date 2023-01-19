@@ -25,15 +25,17 @@ class RequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = "__all__"
-        
+
     def validate_quantity(self, value):
         if not value.isnumeric():
             raise serializers.ValidationError("must be a valid number")
         return value
-        
+
     def validate_med_name(self, value):
         if value == "":
-            raise serializers.ValidationError("must be a valid medication from the dropdown options")
+            raise serializers.ValidationError(
+                "must be a valid medication from the dropdown options"
+            )
         return value
 
     def validate_bin(self, value):
