@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .sms import TwilioClient
-
 
 class Pharmacy(models.Model):
     name = models.CharField(max_length=200)
@@ -19,9 +17,6 @@ class Pharmacist(models.Model):
     email = models.EmailField(max_length=200, blank=True, null=True)
     isEnrolled = models.BooleanField(default=False)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        TwilioClient().enroll_pharmacist_text(self)
 
 
 class Medication(models.Model):
@@ -50,6 +45,3 @@ class Request(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        TwilioClient().send_mass_text(self, Pharmacist)

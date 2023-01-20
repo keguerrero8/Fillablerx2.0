@@ -88,7 +88,8 @@ def pharmacist_create(request):
     if request.method == "POST":
         serializer = PharmacistSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            pharmacy = serializer.save()
+            TwilioClient.enroll_pharmacist_text(pharmacy)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -140,7 +141,8 @@ def request_list(request):
         try:
             serializer = RequestSerializer(data=request.data)
             if serializer.is_valid():
-                serializer.save()
+                request_sms = serializer.save()
+                TwilioClient().send_mass_text(request_sms, Pharmacist)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(
                 {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST

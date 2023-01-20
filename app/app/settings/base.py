@@ -11,27 +11,29 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
+from decouple import config
+import dj_database_url
 import os
 
 # # Load the values from the .env file into os.getenv
-load_dotenv()
+# load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-SECRET_KEY_FALLBACKS = [
-    os.getenv("OLD_SECRET_KEY"),
-]
+# SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY_FALLBACKS = [
+#     os.getenv("OLD_SECRET_KEY"),
+# ]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "fillablerx.com"]
+# ALLOWED_HOSTS = ["localhost", "fillablerx.com"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -94,14 +96,28 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": os.getenv("DB_NAME"),
+#         "USER": os.getenv("DB_USER"),
+#         "PASSWORD": os.getenv("DB_PASSWORD"),
+#         "HOST": os.getenv("DB_HOST"),
+#         "PORT": os.getenv("DB_PORT"),
+#     }s
+# }
+
+# load_dotenv(find_dotenv())
+# DATABASES = { "default": dj_database_url.config(default="localhost:5433", conn_max_age=600, ssl_require=False) }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        "PORT": config("DB_PORT"),
     }
 }
 
