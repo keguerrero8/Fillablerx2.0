@@ -1,18 +1,14 @@
 from twilio.rest import Client
-from dotenv import load_dotenv
-import os
+from decouple import config
 import json
-
-load_dotenv()
-
 
 class TwilioClient:
     def __init__(self):
-        self.twilio_phone_number = os.getenv("TWILIO_PHONE_NUMBER")
-        self.account_sid = os.getenv("TWILIO_ACCOUNT_SID")
-        self.auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-        self.messaging_service = os.getenv("TWILIO_MESSAGING_SERVICE")
-        self.notify_service = os.getenv("TWILIO_NOTIFY_SERVICE_SID")
+        self.twilio_phone_number = config("TWILIO_PHONE_NUMBER")
+        self.account_sid = config("TWILIO_ACCOUNT_SID")
+        self.auth_token = config("TWILIO_AUTH_TOKEN")
+        self.messaging_service = config("TWILIO_MESSAGING_SERVICE")
+        self.notify_service = config("TWILIO_NOTIFY_SERVICE_SID")
         self.client = Client(self.account_sid, self.auth_token)
 
     def send_mass_text(self, request, pharmacist_class):

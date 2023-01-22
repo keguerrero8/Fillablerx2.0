@@ -13,3 +13,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "fillablerx.com"
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+django_on_heroku.settings(locals(), staticfiles=False)
+# del DATABASES["default"]["OPTIONS"]["sslmode"]
