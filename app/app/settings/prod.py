@@ -11,7 +11,7 @@ SECRET_KEY_FALLBACKS = [
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "fillablerx.com"
+    " kow-meds.herokuapp.com"
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
