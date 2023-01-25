@@ -18,7 +18,7 @@ export default function LoginPage({setUser}) {
 
     function handleSubmit (e) {
         e.preventDefault()
-        fetch("http://localhost:8000/auth-sessions/login", {
+        fetch("/auth-sessions/login", {
             credentials: "include",
             method: "POST",
             headers: {

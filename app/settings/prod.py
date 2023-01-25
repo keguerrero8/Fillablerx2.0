@@ -10,9 +10,7 @@ SECRET_KEY_FALLBACKS = [
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    "kow-meds.herokuapp.com"
-]
+ALLOWED_HOSTS = ["kow-meds.herokuapp.com"]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

@@ -18,7 +18,6 @@ class Pharmacist(models.Model):
     isEnrolled = models.BooleanField(default=False)
 
 
-
 class Medication(models.Model):
     def strength_default():
         return []
@@ -44,4 +43,3 @@ class Request(models.Model):
     isInsurance = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-

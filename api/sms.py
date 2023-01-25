@@ -2,6 +2,7 @@ from twilio.rest import Client
 from decouple import config
 import json
 
+
 class TwilioClient:
     def __init__(self):
         self.twilio_phone_number = config("TWILIO_PHONE_NUMBER")
