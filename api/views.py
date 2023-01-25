@@ -20,6 +20,9 @@ from .serializers import (
 )
 from .sms import TwilioClient
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 def index(request):
     return HttpResponse("Fillable API")
@@ -88,8 +91,11 @@ def pharmacist_create(request):
     if request.method == "POST":
         serializer = PharmacistSerializer(data=request.data)
         if serializer.is_valid():
-            pharmacy = serializer.save()
-            TwilioClient().enroll_pharmacist_text(pharmacy)
+            pharmacist = serializer.save()
+            try:
+                TwilioClient().enroll_pharmacist_text(pharmacist)
+            except:
+                logging.debug(f"something went wrong with enroll pharmacist text")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
