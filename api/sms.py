@@ -1,7 +1,9 @@
 from twilio.rest import Client
 from decouple import config
 import json
+import logging
 
+logger = logging.getLogger(__name__)
 
 class TwilioClient:
     def __init__(self):
@@ -65,6 +67,9 @@ class TwilioClient:
         """
         Sends an sms to a pharmacist when they are created on the platform.
         """
+        logging.debug(f"starting twilio service to send enrollment text to pharmacist")
+        logging.debug(f"the phone number to text is {pharmacist.phone_number.as_e164}")
+        logging.debug(f"the twilio phone number is {self.twilio_phone_number}")
         self.client.messages.create(
             to=pharmacist.phone_number.as_e164,
             from_=self.twilio_phone_number,
@@ -75,6 +80,7 @@ class TwilioClient:
                 f"please email your account manager, Larry (larrychen.fillable@gmail.com)."
             ),
         )
+        logging.debug(f"successfully sent an sms to enrolled pharmacist")
 
     def inbound_to_patient(self, origin_request, pharmacy):
         self.client.messages.create(
