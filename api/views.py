@@ -89,7 +89,7 @@ def pharmacist_create(request):
         serializer = PharmacistSerializer(data=request.data)
         if serializer.is_valid():
             pharmacy = serializer.save()
-            TwilioClient.enroll_pharmacist_text(pharmacy)
+            TwilioClient().enroll_pharmacist_text(pharmacy)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
