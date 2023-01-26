@@ -19,25 +19,25 @@ django_on_heroku.settings(locals(), staticfiles=False)
 # del DATABASES["default"]["OPTIONS"]["sslmode"]
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'simple': {
-            'format': '{levelname} [{asctime}] module:{module} - {message}',
-            'style': '{',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {
+            "format": "{levelname} [{asctime}] module:{module} - {message}",
+            "style": "{",
         },
     },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
-            'stream': sys.stdout,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "stream": sys.stdout,
         },
     },
-    'loggers': {  # I tried replacing this with 'root'
-        '': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+    "loggers": {  # I tried replacing this with 'root'
+        "": {
+            "handlers": ["console"],
+            "level": "DEBUG",
         },
-    }
+    },
 }

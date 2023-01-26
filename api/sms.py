@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class TwilioClient:
     def __init__(self):
         self.twilio_phone_number = config("TWILIO_PHONE_NUMBER")

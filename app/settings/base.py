@@ -16,7 +16,6 @@ from decouple import config
 import dj_database_url
 import os
 
-# # Load the values from the .env file into os.getenv
 load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,14 +51,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# TODO modify at some point depending on how we interact with frontent
-# we may not actually need this since we want to protect our site
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4000",
-]
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:4000",
-]
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "app.urls"
@@ -83,27 +74,11 @@ TEMPLATES = [
 WSGI_APPLICATION = "app.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     "default": dj_database_url.config(
         default=config("DATABASE_URL"), conn_max_age=600, conn_health_checks=True
     )
 }
-
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": config("DB_NAME"),
-#         "USER": config("DB_USER"),
-#         "PASSWORD": config("DB_PASSWORD"),
-#         "HOST": config("DB_HOST"),
-#         "PORT": config("DB_PORT"),
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -135,9 +110,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "build/static")]

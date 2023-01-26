@@ -24,6 +24,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def index(request):
     return HttpResponse("Fillable API")
 
