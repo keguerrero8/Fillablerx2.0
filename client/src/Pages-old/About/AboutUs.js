@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
-import image1 from "../../assets/find_medication.png"
-import image2 from "../../assets/medicine.png"
+// import image1 from "../../assets/find_medication.png"
+// import image2 from "../../assets/medicine.png"
 import { styles } from "./AboutUs-styles"
 
 import { Box, Typography, Button } from '@mui/material';
@@ -24,9 +24,9 @@ export default function AboutUs() {
             <link rel='canonical' href='/about'/>
         </Helmet>
         <Box sx={styles.AboutUs1}>
-            <Box sx={styles.ImageContainer1}>
+            {/* <Box sx={styles.ImageContainer1}>
                 <img style={{maxWidth: "90%", height: "auto"}} src={image2} alt="medication"/>
-            </Box>
+            </Box> */}
             <Box sx={styles.TextContainer}>
                 <Typography variant='subtitle1' sx={styles.SubTitle1}>
                     Some medication can't wait!
@@ -72,9 +72,9 @@ export default function AboutUs() {
                     </Box>
                 </Box>
                 <Box sx={styles.SubContainer2}>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    {/* <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                         <img src={image1} alt="fillable"/>
-                    </Box>
+                    </Box> */}
                 </Box>
             </Box>
         </Box>

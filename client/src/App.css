@@ -1,6 +1,36 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
+  font-family: 'PT Sans', sans-serif;
 }
 
+.home,
+.our-story,
+.find-medication,
+.sign-up {
+  background: url('/src/images/img-pills-2.png') fixed no-repeat center;
+  background-position-x: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.about-us {
+  color: #154161;
+  font-size: 100px;
+}
+
+.find-medication {
+  color: #154161;
+  font-size: 100px;
+}
+
+.sign-up {
+  color: #154161;
+  font-size: 100px;
+}

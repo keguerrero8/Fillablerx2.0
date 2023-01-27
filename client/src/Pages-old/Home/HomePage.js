@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
-import image from "../../assets/find_medication.png"
+// import image from "../../assets/find_medication.png"
 import { styles } from './HomePage-styles';
 
 import { Box, Typography, Button } from '@mui/material';
@@ -35,9 +35,9 @@ export default function HomePage() {
         </Box>
       </Box>
       <Box sx={styles.Container2}>
-        <Box sx={styles.SubContainer2}>
+        {/* <Box sx={styles.SubContainer2}>
           <img src={image} style={{width: "60%", maxheight: "60%"}} alt="FillableRx"/>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
