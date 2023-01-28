@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import Cookies from "js-cookie"
+
 import {Button} from '../Button/Button';
 import './Navbar.css';
 
 
-function Navbar(props) {
+function Navbar({ user, setUser }) {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
@@ -18,6 +20,23 @@ function Navbar(props) {
             setButton(true)
         }
     };
+
+    function handleLogOut () {
+        fetch("/auth-sessions/logout", {
+          credentials: "include",
+          method: "POST",
+          headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "X-CSRFToken": Cookies.get("csrftoken")
+          },
+        })
+        .then(r => {
+          if (r.ok) {
+            setUser(null)
+          }
+        })
+    }
 
     useEffect(() => {showButton();}, []);
 
@@ -59,9 +78,21 @@ function Navbar(props) {
                             Contact Us
                         </Link>
                     </li>
+                    {
+                        user ? 
+                            <li className='nav-item'>
+                                <Link to='/dashboard' className='nav-links' onClick={closeMobileMenu}>
+                                    Dashboard
+                                </Link>
+                            </li>
+                            :
+                            null
+                    }
                 </ul>
-                {/* {button && <Button buttonStyle='.btn--outline'>Sign In
-                    </Button>} */}
+                {button && !user ? <Button buttonStyle='.btn--outline' path='/login'>Sign In
+                    </Button> : null}
+                {user && <Button buttonStyle='.btn--outline' path='/' onClick={handleLogOut}>Sign Out
+                    </Button>}
             </div>
         </nav>
         </>

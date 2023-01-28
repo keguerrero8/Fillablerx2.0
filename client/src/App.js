@@ -2,22 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router';
 
 import './App.css';
-// import HomePage from './Pages-old/Home/HomePage';
-// import AboutUs from './Pages-old/About/AboutUs';
-
 import Home from './Pages/Home';
 import OurStory from './Pages/OurStory';
 import HowItWorks from './Pages/HowItWorks';
 import OurTeam from './Pages/OurTeam';
 import Navbar from './Components/Navbar/Navbar';
-
-import FindMedicationPage from './Pages-old/FindMedication/FindMedicationPage';
-import LoginPage from './Pages-old/Login/LoginPage';
-import DashboardPage from './Pages-old/Dashboard/DashboardPage';
-import Pharmacies from './Pages-old/Pharmacies/Pharmacies';
-import ContactUs from './Pages-old/Contact/ContactUs'
-import Page404 from './Pages-old/404/Page404';
-// import MonitorPage from './Pages/Monitoring/MonitorPage';
+//need to get the metatags in for each of these pages for SEO
+import ContactUs from './Pages/ContactUs'
+import FindMedication from './Pages/FindMedication';
+import Page404 from './Pages/Page404';
+import LoginPage from './Pages/Login/LoginPage';
+import DashboardPage from './Pages/Dashboard/DashboardPage';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
 
 import Footer from './Components/Footer/Footer';
@@ -42,16 +37,14 @@ function App() {
   
   return (
     <>
-      {/* <Navbar user={user} setUser={setUser}/> */}
-      <Navbar/>
+      <Navbar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/our-story' element={<OurStory/>}/>
         <Route path='/how-it-works' element={<HowItWorks/>}/>
         <Route path='/our-team' element={<OurTeam/>}/>
-        <Route path="/find-medication" element={<FindMedicationPage />} />
-        <Route path="/contact" element={<ContactUs />} />
-        {/* <Route path="/pharmacies-network" element={<Pharmacies />} /> */}
+        <Route path="/find-medication" element={<FindMedication />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         {/* <Route path="/about" element={<AboutUs />} /> */}
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />

@@ -1,9 +1,9 @@
 import React from "react";
 
-import Navsubbar from '../Navsubbar';
-import ContactSection from "../ContactSection";
+import Navsubbar from '../Components/Navsubbar/Navsubbar';
+import ContactSection from "../Components/ContactSection/ContactSection";
 
-import '../../App.css';
+import '../App.css';
 
 export default function Products() {
     return (

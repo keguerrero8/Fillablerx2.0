@@ -3,6 +3,7 @@ import React from 'react';
 import './StorySection.css';
 import '../../App.css';
 import '../Button/Button.css';
+import image from "../../images/img-story.png"
 
 import { Button } from '../Button/Button';
 
@@ -11,7 +12,7 @@ function StorySection() {
         <div className='story-container'>
             <h1>Founder's Story</h1>
             <div className='story-body'>
-                <img className='story-pic-wrap' alt='man looking at a board thinking' src='/images/img-story.png'/>
+                <img className='story-pic-wrap' alt='man looking at a board thinking' src={image}/>
                 <div className='story-message'>
                     <h3>During the winter of 2022 into 2023, the United States experienced a "triple-demic" wave of COVID, influenza, and RSV (respiratory syncytial virus) infections sweep across the country. This surge, combined with widespread supply chain challenges, made it difficult for many people to find prescription antivirals, antibiotics, and even over-the-counter remedies. I personally saw the impact of this when my cousin on the other side of the country struggled to find Children's Tylenol for her 1-year-old son. Furthermore, my high school friend is an urgent care provider in New York who reported recurring shortages of critical flu treatments at the pharmacies, like Tamiflu.</h3>
                     <br/>

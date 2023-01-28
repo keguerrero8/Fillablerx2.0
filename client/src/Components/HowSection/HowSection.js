@@ -3,6 +3,7 @@ import React from 'react';
 import './HowSection.css';
 import '../../App.css';
 import '../Button/Button.css';
+import image from "../../images/img-laptop.png"
 
 import { Button } from '../Button/Button';
 
@@ -49,7 +50,7 @@ function HowSection() {
                     </div>
                 </div>
                 <div className='how-body-img'>
-                    <img className='how-img-wrap' src='src/images/img-laptop.png' alt='hands typing on a laptop'/>
+                    <img className='how-img-wrap' src={image} alt='hands typing on a laptop'/>
                     <div className='how-btn'>
                         <Button className='btn' buttonStyle='btn--primary' buttonSize='btn--large' path='/find-medication'>
                             Find Medication

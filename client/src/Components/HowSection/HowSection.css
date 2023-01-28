@@ -50,6 +50,7 @@
 
 .how-list {
     flex-direction: column;
+    line-height: 1.7;
 }
 
 .list-item {

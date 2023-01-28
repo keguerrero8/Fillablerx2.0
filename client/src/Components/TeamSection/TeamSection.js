@@ -3,6 +3,8 @@ import React from 'react';
 import './TeamSection.css';
 import '../../App.css';
 import '../Button/Button.css';
+import image1 from "../../images/img-larry.png"
+import image2 from "../../images/img-kevin.png"
 
 function TeamSection() {
     return (
@@ -15,14 +17,14 @@ function TeamSection() {
             <h2>Founders</h2>
             <div className='team-list'>
                 <div className='card'>
-                    <img className='team-img-wrap' alt='silly larry face' src='/images/img-larry.png'/>
+                    <img className='team-img-wrap' alt='silly larry face' src={image1}/>
                     <div className='team-person-name'>
                         <h3>Larry Chen</h3>
                         <p>Co-founder</p>
                     </div>
                 </div>
                 <div className='card'>
-                    <img className='team-img-wrap' alt='silly kevin face' src='/images/img-kevin.png'/>
+                    <img className='team-img-wrap' alt='silly kevin face' src={image2}/>
                     <div className='team-person-name'>
                         <h3>Kevin Guerrero</h3>
                         <p>Co-founder</p>
