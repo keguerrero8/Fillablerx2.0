@@ -61,7 +61,7 @@
     margin-top: 8px;
     font-size: 18px;
     color: #154161;
-    width: 80%;
+    width: 100%;
 }
 
 .contact-input::placeholder {
@@ -78,7 +78,7 @@
     margin-top: 8px;
     font-size: 18px;
     color: #154161;
-    width: 80%;
+    width: 100%;
 }
 
 .contact-input-comment::placeholder {
