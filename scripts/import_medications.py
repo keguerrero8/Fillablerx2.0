@@ -6,13 +6,13 @@ def run():
     with open("data/medications.csv") as file:
         reader = csv.reader(file)
         next(reader)
-
         Medication.objects.all().delete()
         medications = []
 
         for row in reader:
-            strength = row[1].split(";")
-            medication = Medication(name=row[0], strength=strength)
+            raw_strength = row[1].split(";")
+            filtered_strength = list(filter(lambda s: s != "", raw_strength))
+            medication = Medication(name=row[0], strength=filtered_strength)
             medications.append(medication)
 
         if medications:
