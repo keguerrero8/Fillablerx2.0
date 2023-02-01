@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../Button/Button';
+import { ButtonAction } from '../ButtonAction/ButtonAction';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
@@ -17,13 +17,13 @@ function Footer(props) {
                         name='email' 
                         placeholder='Your Email' 
                         className='footer-input'/>
-                        <Button buttonStyle='btn--outline'>Subscribe</Button>
+                        <ButtonAction buttonStyle='btn--outline'>Subscribe</ButtonAction>
                     </form>
                 </div>
                 <p className='footer-subscription-text'>
-                    You can unsubscribe at any time by clicking <Link className='unsubscribe-link'>here</Link>.
+                    You can unsubscribe at any time by clicking <Link className='unsubscribe-link' to="/">here</Link>.
                 </p>
-                <Link className='cookie-preferences'>Manage Cookie Preferences</Link>
+                <Link className='cookie-preferences' to="/">Manage Cookie Preferences</Link>
             </section>
             <section className='social-media'>
                 <small className='website-rights'>KOW (C) 2023</small>

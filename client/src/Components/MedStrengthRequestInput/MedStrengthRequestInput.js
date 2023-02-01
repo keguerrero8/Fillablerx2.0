@@ -23,7 +23,7 @@ export default function MedStrengthRequestInput({ flex, label, name, handleChang
               {label}{isRequired? <span style={{color: "red"}}> &#42;</span> : null}
               </Typography>
             <TextField 
-              sx={{width: "100%", bgcolor: isRequired? "white" : "#f5f8ff"}} 
+              sx={{width: "100%", bgcolor: isRequired? "white" : "rgba(21, 65, 97, 0.1)"}} 
               value={requestData[name]} 
               name={name} 
               onFocus={handleFocus} 
@@ -35,7 +35,7 @@ export default function MedStrengthRequestInput({ flex, label, name, handleChang
                 {strengths.length > 0? strengths.map((i) => 
                   <ListItem 
                     onClick={(e) => handleSelection(e, i)} 
-                    sx={{cursor: "pointer", '&:hover': {backgroundColor: "#bfc6f5"}}} 
+                    sx={{cursor: "pointer", '&:hover': {backgroundColor: "rgba(21, 65, 97, 0.5)"}}} 
                     key={i}
                   >
                       {i}

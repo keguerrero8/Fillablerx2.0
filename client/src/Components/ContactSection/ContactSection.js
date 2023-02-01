@@ -20,7 +20,6 @@ function ContactSection() {
     })
 
     function handleChange (e) {
-        console.log(messageData)
         setMessageData({
             ...messageData,
             [e.target.name]: e.target.value

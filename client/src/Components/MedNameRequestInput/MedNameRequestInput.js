@@ -42,7 +42,7 @@ export default function MedNameRequestInput({ label, name, handleChange, isRequi
                 {filteredMedications.length > 0? filteredMedications.map((i) => 
                   <ListItem 
                     onClick={(e) => handleSelection(e, i)} 
-                    sx={{cursor: "pointer", '&:hover': {backgroundColor: "#bfc6f5"}}} 
+                    sx={{cursor: "pointer", '&:hover': {backgroundColor: "rgba(21, 65, 97, 0.5)"}}} 
                     key={i.id}
                   >
                     {i.name}

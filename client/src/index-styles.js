@@ -18,5 +18,11 @@ export const theme = createTheme({
         main: '#FFFFFF', 
       },
     },
+    typography: {
+      fontFamily: [
+        'PT Sans',
+        'sans-serif',
+      ].join(',')
+    }
 })
 
