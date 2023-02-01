@@ -12,11 +12,17 @@ export const theme = createTheme({
     },
     palette: {
       primary: {
-        main: '#1225cc', 
+        main: '#154161', 
       },
       secondary: {
         main: '#FFFFFF', 
       },
     },
+    typography: {
+      fontFamily: [
+        'PT Sans',
+        'sans-serif',
+      ].join(',')
+    }
 })
 

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router';
 
 import './App.css';
-import HomePage from './Pages/Home/HomePage';
-import FindMedicationPage from './Pages/FindMedication/FindMedicationPage';
-import AboutUs from './Pages/About/AboutUs';
+import Home from './Pages/Home';
+import OurStory from './Pages/OurStory';
+import HowItWorks from './Pages/HowItWorks';
+import OurTeam from './Pages/OurTeam';
+import Navbar from './Components/Navbar/Navbar';
+import ContactUs from './Pages/ContactUs'
+import FindMedication from './Pages/FindMedication';
+import Page404 from './Pages/Page404';
 import LoginPage from './Pages/Login/LoginPage';
 import DashboardPage from './Pages/Dashboard/DashboardPage';
-import Pharmacies from './Pages/Pharmacies/Pharmacies';
-import ContactUs from './Pages/Contact/ContactUs'
-import Page404 from './Pages/404/Page404';
-// import MonitorPage from './Pages/Monitoring/MonitorPage';
-import Navbar from './Components/Navbar/Navbar';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -36,17 +37,19 @@ function App() {
     <>
       <Navbar user={user} setUser={setUser}/>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/find-medication" element={<FindMedicationPage />} />
-        <Route path="/pharmacies-network" element={<Pharmacies />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/" element={<Home />} />
+        <Route path='/our-story' element={<OurStory/>}/>
+        <Route path='/how-it-works' element={<HowItWorks/>}/>
+        <Route path='/our-team' element={<OurTeam/>}/>
+        <Route path="/find-medication" element={<FindMedication />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
         <Route path="*" element={<Page404 />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}
       </Routes>
+      <Footer/>
     </>
   )
 }

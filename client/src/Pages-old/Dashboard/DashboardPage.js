@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import PharmacyTable from '../../Components/PharmacyTable/PharmacyTable';
 import pharmacyService from '../../Services/pharmacyService';
-import Page404 from '../Page404';
+import Page404 from '../404/Page404';
 
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';

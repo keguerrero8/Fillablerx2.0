@@ -1,200 +1,104 @@
-import React, { useState } from 'react'
-
-import { NavLink } from 'react-router-dom'
-import MenuIcon from '@mui/icons-material/Menu';
-import { 
-  AppBar, 
-  Box, 
-  Toolbar, 
-  Typography, 
-  Menu, 
-  Container, 
-  IconButton, 
-  Avatar, 
-  Tooltip, 
-  MenuItem, 
-  Divider 
-} from "@mui/material";
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import Cookies from "js-cookie"
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
-export default function Navbar({ setUser, user }) {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+import {Button} from '../Button/Button';
+import './Navbar.css';
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+function Navbar({ user, setUser }) {
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    const handleClick =() => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
 
-  function handleLogOut () {
-    fetch("/auth-sessions/logout", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "X-CSRFToken": Cookies.get("csrftoken")
-      },
-    })
-    .then(r => {
-      if (r.ok) {
-        setUser(null)
-      }
-    })
-  }
-  return (
-    <AppBar color="secondary" sx={{backgroundColor: "transparent", position: "absolute"}}>
-    <Container maxWidth="xl" sx={{marginTop: "10px"}}>
-      <Toolbar disableGutters>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ fontSize: "1.7rem", mr: 2, display: { xs: 'none', md: 'flex' } }}
-        >
-          <NavLink style={{color: "black", textDecoration: "none"}} to="/">
-            FillableRx
-          </NavLink>
-        </Typography>
-       <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="primary"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: 'block', md: 'none' },
-            }}
-          >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/find-medication">find medication</NavLink>
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/about">about us</NavLink>
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/pharmacies-network">pharmacies</NavLink>
-                </Typography>
-              </MenuItem>
-              {user ? 
-                  <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">
-                        <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/dashboard">dashboard</NavLink>
-                      </Typography>
-                  </MenuItem>
-              : null }
-              {/* {user ? 
-                  <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center"><NavLink style={{color: "black", textDecoration: "none"}} to="/monitoring">Monitor</NavLink></Typography>
-                  </MenuItem>
-              : null } */}
-          </Menu>
-        </Box>
-        <Typography
-          variant="h6" 
-          noWrap
-          component="div"
-          sx={{ fontSize: "1.7rem", flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-        >
-          <NavLink style={{color: "black", textDecoration: "none"}} to="/">
-          FillableRx
-          </NavLink>
-        </Typography>
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "left", alignItems: "center", gap: "1rem" }}>
-          <Divider color="black" orientation="vertical" flexItem />
-          <Typography onClick={handleCloseNavMenu} >
-            <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/about">about us</NavLink>
-          </Typography>
-          <Divider color="black" orientation="vertical" flexItem />
-          <Typography onClick={handleCloseNavMenu} >
-            <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/find-medication">find medication</NavLink>
-          </Typography>
-          <Divider color="black" orientation="vertical" flexItem />
-          <Typography onClick={handleCloseNavMenu} >
-            <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/pharmacies-network">pharmacies</NavLink>
-          </Typography>
-          <Divider color="black" orientation="vertical" flexItem />
-           {user ? 
-           <>
-            <Typography onClick={handleCloseNavMenu} >
-              <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/dashboard">dashboard</NavLink>
-            </Typography>
-           {/* <Typography onClick={handleCloseNavMenu} ><NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/monitoring">monitoring</NavLink></Typography> */}
-           </>
-           : null}
-        </Box>
+    const showButton = () => {
+        if(window.innerWidth <= 960) {
+            setButton(false)
+        } else {
+            setButton(true)
+        }
+    };
 
-        <Box sx={{ flexGrow: 0 }}>
-           {user ? 
-           <>
-              <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar alt="Remy Sharp" src={user.avatar} sx={{bgcolor: "#1225cc"}}/>
-                  </IconButton>
-              </Tooltip>
-              <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-              >
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">
-                      <NavLink style={{color: "#1225cc", textDecoration: "none"}} to="/" onClick={handleLogOut}>Log out</NavLink>
-                    </Typography>
-                  </MenuItem>
-              </Menu>             
-           </> : 
-           <Typography onClick={handleCloseNavMenu} >
-            <NavLink style={{color: "black", textDecoration: "none"}} to="/login">admin login</NavLink>
-          </Typography>}
-        </Box>
-      </Toolbar>
-    </Container>
-  </AppBar>
-  )
+    function handleLogOut () {
+        fetch("/auth-sessions/logout", {
+          credentials: "include",
+          method: "POST",
+          headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "X-CSRFToken": Cookies.get("csrftoken")
+          },
+        })
+        .then(r => {
+          if (r.ok) {
+            setUser(null)
+          }
+        })
+    }
+
+    useEffect(() => {showButton();}, []);
+
+    window.addEventListener('resize', showButton);
+
+    return (
+        <>
+        <nav className='navbar'>
+            <div className='navbar-container'>
+                <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                    K O W
+                </Link>
+                <div className='menu-icon' onClick={handleClick}>
+                    {click? <CloseIcon /> : <MenuIcon/>}
+                </div>
+                <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                    <li className='nav-item'>
+                        <Link to='/our-story' className='nav-links' onClick={closeMobileMenu}>
+                            About Us
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/how-it-works' className='nav-links' onClick={closeMobileMenu}>
+                            How It Works
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/our-team' className='nav-links' onClick={closeMobileMenu}>
+                            Our Team
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/find-medication' className='nav-links' onClick={closeMobileMenu}>
+                            Find Medication
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/contact-us' className='nav-links' onClick={closeMobileMenu}>
+                            Contact Us
+                        </Link>
+                    </li>
+                    {
+                        user ? 
+                            <li className='nav-item'>
+                                <Link to='/dashboard' className='nav-links' onClick={closeMobileMenu}>
+                                    Dashboard
+                                </Link>
+                            </li>
+                            :
+                            null
+                    }
+                </ul>
+                {button && !user ? <Button buttonStyle='.btn--outline' path='/login'>Sign In
+                    </Button> : null}
+                {user && <Button buttonStyle='.btn--outline' path='/' onClick={handleLogOut}>Sign Out
+                    </Button>}
+            </div>
+        </nav>
+        </>
+    );
 }
+
+export default Navbar;

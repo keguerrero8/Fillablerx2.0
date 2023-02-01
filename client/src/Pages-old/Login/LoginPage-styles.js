@@ -9,7 +9,7 @@ export const styles = {
     Container: {
         border: "solid white", 
         borderRadius: "20px", 
-        width: {xs: "90%", sm: "400px", md: "500px" }, 
+        width: {xs: "90%", sm: "400px", md: "400px" }, 
         height: "450px", 
         backgroundColor: "white", 
         display: "flex", 
@@ -22,10 +22,10 @@ export const styles = {
         fontSize: {xs: "1.7rem", sm: "2rem", md: "2rem"}
     },
     TextFieldName: {
-        width: {xs: "80%", sm: "80%", md: "80%"}, 
+        width: {xs: "80%", sm: "80%", md: "70%"}, 
         color: "whitesmoke"
     },
     TextFieldPassword: {
-        width: {xs: "80%", sm: "80%", md: "80%"}
+        width: {xs: "80%", sm: "80%", md: "70%"}
     },
   }

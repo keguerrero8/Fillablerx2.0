@@ -1,0 +1,94 @@
+
+.hero-container {
+    background: url('/src/images/img-pills-2.png') fixed no-repeat center;
+    background-position-x: right;
+    background-size: contain;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    line-height: 1.5;
+}
+
+.hero-container > h1 {
+    max-width: 80%;
+    text-align: center;
+    color: #154161;
+    font-size: 60px;
+    margin-top: -80px;
+    margin-bottom: 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.hero-container > h2 {
+    color: #154161;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.hero-container > h3 {
+    color: #154161;
+    font-size: 20px;
+}
+
+.hero-btns {
+    margin-top: 32px;
+}
+
+.hero-btns .btn {
+    margin: 8px;
+}
+
+@media screen and (max-width: 960px) {
+    .hero-container > h1 {
+        font-size: 50px;
+        margin-top: -40px;
+        max-width: 80vh;
+    }
+
+    .hero-container > h2 {
+        font-size: 32px;
+        text-align: center;
+        max-width: 80%;
+    }
+
+    .hero-container > h3 {
+        font-size: 20px;
+        text-align: center;
+        max-width: 75%;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-container > h1 {
+        font-size: 48px;
+        margin-top: -8px;
+        text-align: center;
+        max-width: 80vh;
+    }
+
+    .hero-container > h2 {
+        font-size: 32px;
+        text-align: center;
+        max-width: 80%;
+    }
+
+    .hero-container > h3 {
+        font-size: 20px;
+        text-align: center;
+        max-width: 75%;
+    }
+}
