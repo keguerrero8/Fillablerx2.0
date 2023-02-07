@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import {Button} from '../Button/Button';
 import './Navbar.css';
+import image from "../../images/icon-only-black.png"
 
 
 function Navbar({ user, setUser }) {
@@ -16,7 +17,7 @@ function Navbar({ user, setUser }) {
     const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
-        if(window.innerWidth <= 960) {
+        if(window.innerWidth <= 1160) {
             setButton(false)
         } else {
             setButton(true)
@@ -35,6 +36,7 @@ function Navbar({ user, setUser }) {
         })
         .then(r => {
           if (r.ok) {
+            closeMobileMenu()
             setUser(null)
           }
         })
@@ -49,6 +51,7 @@ function Navbar({ user, setUser }) {
         <nav className='navbar'>
             <div className='navbar-container'>
                 <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                    <img className='home-logo' src={image}/>
                     K O W
                 </Link>
                 <div className='menu-icon' onClick={handleClick}>
@@ -90,11 +93,21 @@ function Navbar({ user, setUser }) {
                             :
                             null
                     }
+                {!user ? <li className='nav-item'>
+                        <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
+                            Sign In
+                        </Link>
+                    </li>: null}
+                {user && <li className='nav-item'>
+                        <Link to='/' className='nav-links' onClick={handleLogOut}>
+                            Sign Out
+                        </Link>
+                    </li>}
                 </ul>
                 {button && !user ? <Button buttonStyle='.btn--outline' path='/login'>Sign In
                     </Button> : null}
-                {user && <Button buttonStyle='.btn--outline' path='/' onClick={handleLogOut}>Sign Out
-                    </Button>}
+                {user && button? <Button buttonStyle='.btn--outline' path='/' onClick={handleLogOut}>Sign Out
+                    </Button> : null}
             </div>
         </nav>
         </>

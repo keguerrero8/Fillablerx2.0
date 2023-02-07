@@ -19,10 +19,7 @@ export const theme = createTheme({
       },
     },
     typography: {
-      fontFamily: [
-        'PT Sans',
-        'sans-serif',
-      ].join(',')
+      fontFamily: 'Figtree'
     }
 })
 

@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: flex-start;
     position: static;
-    padding: 8% 10%
+    padding: 8% 10%;
 }
 
 .contact-message {
@@ -21,10 +21,12 @@
     max-width: 580px;
     margin-top: 48px;
     margin-right: 40px;
+    text-align: center;
 }
 
 .contact-message > h1 {
     color: #154161;
+    width: 100%;
     font-size: 40px;
     margin-bottom: 28px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -96,7 +98,7 @@
     .contact-container {
         display: flex;
         flex-direction: column;
-        padding: 15vh;
+        padding: 35px;
         align-items: center;
     }
     
@@ -117,7 +119,7 @@
     }
 
     .contact-form {
-        margin-left: 15vh;
+        margin: auto;
     }
 
     .contact-form > h2 {

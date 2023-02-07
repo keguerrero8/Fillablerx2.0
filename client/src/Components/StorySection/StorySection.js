@@ -27,7 +27,7 @@ function StorySection() {
                 <Button className='btn' buttonStyle='btn--secondary' buttonSize='btn--large' path='/how-it-works'>
                     How It Works
                 </Button>
-                <Button className='btn' buttonStyle='btn--primary' buttonSize='btn--large' path='find-medication'>
+                <Button className='btn' buttonStyle='btn--primary' buttonSize='btn--large' path='/find-medication'>
                     Find Medication
                 </Button>
             </div>

@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search'
 export default function SearchBar({ search, setSearch }) {
 
   return (
-    <Box sx={{width: "90%", margin: "150px auto 20px auto", textAlign: "center"}}>
+    <Box sx={{width: "90%", margin: "100px auto 20px auto", textAlign: "center"}}>
         <TextField
           onChange={(e) => setSearch(e.target.value)}
           value={search}

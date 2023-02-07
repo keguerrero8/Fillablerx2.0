@@ -10,7 +10,7 @@ export default function PharmacyRow({ row }) {
       <>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
           <TableCell align="center">
-            <Link to={`pharmacies/${id}`} style={{color: "#3c8572"}}>
+            <Link to={`pharmacies/${id}`} style={{color: "#154161"}}>
               {name}
             </Link>
           </TableCell>

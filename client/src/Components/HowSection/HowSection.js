@@ -10,7 +10,9 @@ import { Button } from '../Button/Button';
 function HowSection() {
     return (
         <div className='how-container'>
-            <h1>How to Use Our Service</h1>
+            <div className='how-body-header'>
+                <h1>How to Use Our Service</h1>
+            </div>
             <div className='how-body'>
                 <div className='how-body-text'>
                     <h2>First, FIND your medication at a pharmacy.</h2>

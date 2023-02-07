@@ -1,5 +1,4 @@
 import React from 'react';
-import { ButtonAction } from '../ButtonAction/ButtonAction';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
@@ -7,22 +6,14 @@ function Footer(props) {
     return (
         <div className='footer-container'>
             <section className='footer-subscription'>
-                <p className='footer-subscription-heading'>
-                    Subscribe to stay up to date with our service offers.
-                </p>
-                <div className='input-areas'>
-                    <form>
-                        <input 
-                        type='email' 
-                        name='email' 
-                        placeholder='Your Email' 
-                        className='footer-input'/>
-                        <ButtonAction buttonStyle='btn--outline'>Subscribe</ButtonAction>
-                    </form>
+                <div className='footer-terms'>
+                    <p className='footer-terms-text'>
+                        <Link className='unsubscribe-link' to="/">Terms of Service</Link>
+                    </p>
+                    <p className='footer-terms-text'>
+                        <Link className='unsubscribe-link' to="/">Privacy Policy</Link>
+                    </p>
                 </div>
-                <p className='footer-subscription-text'>
-                    You can unsubscribe at any time by clicking <Link className='unsubscribe-link' to="/">here</Link>.
-                </p>
                 <Link className='cookie-preferences' to="/">Manage Cookie Preferences</Link>
             </section>
             <section className='social-media'>

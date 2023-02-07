@@ -11,7 +11,11 @@
     position: static;
 }
 
-.how-container > h1 {
+.how-body-header {
+    text-align: center;
+}
+
+.how-body-header > h1 {
     color: #154161;
     font-size: 60px;
     margin-top: 8%;
@@ -22,7 +26,7 @@
 .how-body {
     display: flex;
     flex-direction: row;
-    max-width: 80%;
+    max-width: 90%;
     justify-content: center;
     margin-bottom: 10vh;
 }
@@ -31,7 +35,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: 20px;
 }
 
@@ -81,7 +85,7 @@
 }
 
 @media screen and (max-width: 960px) {
-    .how-container > h1 {
+    .how-body-header > h1 {
         font-size: 44px;
         margin-top: 10vh;
         max-width: 80vh;
@@ -100,7 +104,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .how-container > h1 {
+    .how-body-header > h1 {
         font-size: 44px;
         max-width: 60vh;
         margin-top: 20vh;
