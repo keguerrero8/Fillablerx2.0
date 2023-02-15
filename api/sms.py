@@ -90,7 +90,7 @@ class TwilioClient:
             body=(
                 f"FillableRx #{origin_request.id}\n"
                 f"{origin_request.med_name} is IN STOCK\n"
-                f"{pharmacy.name} Pharmacy\n"
+                f"{pharmacy.name} {'' if 'Pharmacy' in pharmacy.name else 'Pharmacy'}\n"
                 f"{pharmacy.phone_number}\n"
                 f"{pharmacy.address}, {pharmacy.zipcode}"
             ),
