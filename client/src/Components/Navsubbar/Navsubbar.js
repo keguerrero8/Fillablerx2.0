@@ -5,9 +5,7 @@ import './Navsubbar.css';
 
 function Navbar(props) {
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
 
-    const handleClick =() => setClick(!click);
     const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {

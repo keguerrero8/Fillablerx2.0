@@ -51,7 +51,7 @@ function Navbar({ user, setUser }) {
         <nav className='navbar'>
             <div className='navbar-container'>
                 <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-                    <img className='home-logo' src={image}/>
+                    <img className='home-logo' src={image} alt="KOW logo"/>
                     K O W
                 </Link>
                 <div className='menu-icon' onClick={handleClick}>

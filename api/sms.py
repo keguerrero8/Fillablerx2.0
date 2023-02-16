@@ -75,10 +75,10 @@ class TwilioClient:
             to=pharmacist.phone_number.as_e164,
             from_=self.twilio_phone_number,
             body=(
-                f"Thank you for joining FillableRx!\n"
+                f"Thank you for joining KOW!\n"
                 f"\n"
-                f"If you have any questions or would like to contact us, "
-                f"please email your account manager, Larry (larrychen.fillable@gmail.com)."
+                f"If you have any questions or would like to reach us, "
+                f"please email us at help@kowmeds.com."
             ),
         )
         logging.debug(f"successfully sent an sms to enrolled pharmacist")
@@ -88,10 +88,14 @@ class TwilioClient:
             to=origin_request.phone_number.as_e164,
             from_=self.twilio_phone_number,
             body=(
-                f"FillableRx #{origin_request.id}\n"
-                f"{origin_request.med_name} is IN STOCK\n"
+                f"KOW #{origin_request.id}\n"
+                f"{origin_request.med_name} is IN STOCK today at...\n"
                 f"{pharmacy.name} {'' if 'Pharmacy' in pharmacy.name else 'Pharmacy'}\n"
-                f"{pharmacy.phone_number}\n"
+                f"(p) {pharmacy.phone_number}\n"
                 f"{pharmacy.address}, {pharmacy.zipcode}"
+                f"This pharmacy accepts the insurance provided: "
+                f"BIN: {origin_request.bin}"
+                f"PCN: {origin_request.pcn}"
+                f"RXGRP: {origin_request.rxgroup}"
             ),
         )
