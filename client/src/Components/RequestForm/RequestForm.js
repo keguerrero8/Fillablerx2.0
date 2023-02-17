@@ -72,6 +72,12 @@ export default function RequestForm({ test = false, isPatient = true}) {
                 ...requestData,
                 "med_name": e.target.innerText
             })
+            if (medication.strength && !medication.strength.includes(e.target.innerText)) {
+                setRequestData({
+                    ...requestData,
+                    "med_strength": ""
+                })
+            }
         } else {
             setRequestData({
                 ...requestData,
