@@ -51,7 +51,7 @@ function ContactSection() {
     return (
         <div className='contact-container'>
             <Helmet>
-                <title>Contact Us - FillableRx Support</title>
+                <title>Contact Us - KOW Support</title>
                 <meta 
                     name='description' 
                     content='Email us. Leave us a message. If you have a question or feedback about our 

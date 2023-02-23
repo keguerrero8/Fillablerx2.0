@@ -14,7 +14,7 @@ export default function FindMedicationPage() {
   return (
     <Box sx={{maxWidth: "1200px", margin: "auto", display: "flex", alignItems: "center", flexDirection: "column"}}>
         <Helmet>
-            <title>Medication Request - FillableRx</title>
+            <title>Medication Request - KOW</title>
             <meta 
                 name='description' 
                 content='Search for your prescription medication and find out which nearby pharmacy has it available today!'

@@ -130,7 +130,9 @@ export default function RequestForm({ test = false, isPatient = true}) {
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
         <CSRFToken />
-        <Box sx={styles.InputContainer}>
+        {/* <Box sx={styles.InputContainer}>
+        </Box> */}
+        <Box sx={{...styles.InputContainer, mb: "2rem"}}>
             <MedNameRequestInput 
                 requestData={requestData} 
                 label="Medication Name" 
@@ -143,28 +145,25 @@ export default function RequestForm({ test = false, isPatient = true}) {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
             />
-        </Box>
-        <Box sx={{...styles.InputContainer, mb: "2rem"}}>
-                <MedStrengthRequestInput 
-                    requestData={requestData} 
-                    flex={0.5} 
-                    label="Strength"
-                    name="med_strength"
-                    handleChange={handleChange} 
-                    key="Strength"
-                    isRequired={medication.strength && medication.strength.length > 0? true : false} 
-                    strengths={medication.strength? medication.strength : []} 
-                />
-            {[{flex: 0.3, label: "Quantity", name: "quantity"}].map(i => 
-                <RequestFormInput 
-                    requestData={requestData} 
-                    flex={i.flex} 
-                    label={i.label} 
-                    name={i.name} 
-                    handleChange={handleChange} 
-                    key={i.label} 
-                    isRequired={true}
-                />)}
+            <MedStrengthRequestInput 
+                requestData={requestData} 
+                flex={0.5} 
+                label="Strength"
+                name="med_strength"
+                handleChange={handleChange} 
+                key="Strength"
+                isRequired={medication.strength && medication.strength.length > 0? true : false} 
+                strengths={medication.strength? medication.strength : []} 
+            />
+            <RequestFormInput 
+                requestData={requestData} 
+                flex={0.3} 
+                label="Quantity" 
+                name="quantity"
+                handleChange={handleChange} 
+                key="Quantity" 
+                isRequired={true}
+            />
             <FormControl sx={{margin: "auto", textAlign: "center"}}>
                 <FormLabel>
                     <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
@@ -181,7 +180,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
             </FormControl>
         </Box>
         {value === "insurance"? (
-            <Box sx={{...styles.InputContainer, flexDirection: "column", gap: "2rem"}}>
+            <Box sx={{...styles.InputContainer, gap: "2rem"}}>
                 <Typography sx={styles.PharmacyInsuranceText}>Pharmacy Insurance Card:</Typography>
                 <Box sx={styles.InsuranceFields}>
                     {
@@ -223,15 +222,15 @@ export default function RequestForm({ test = false, isPatient = true}) {
             <FormControlLabel 
                 labelPlacement='top' 
                 control={<Checkbox checked={checked} onChange={handleCheck}/>} 
-                label="I give my consent to receive text messages from fillablerx.com" 
+                label="I AGREE TO KOW'S TERMS OF SERVICE AND PRIVACY POLICY" 
             />
         </Box>
         <Box sx={styles.ButtonsContainer}>
-            <Button variant='contained' sx={{color: "white"}} size="large" onClick={handleClear} >
-                Reset Request
-            </Button>
             <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled || !checked}>
                 Send Request
+            </Button>
+            <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
+                Reset Request
             </Button>
         </Box>
     </Box>   
