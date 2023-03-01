@@ -10,9 +10,10 @@ def run():
         medications = []
 
         for row in reader:
+            med_name = row[0].rstrip()
             raw_strength = row[1].split(";")
             filtered_strength = list(filter(lambda s: s != "", raw_strength))
-            medication = Medication(name=row[0], strength=filtered_strength)
+            medication = Medication(name=med_name, strength=filtered_strength)
             medications.append(medication)
 
         if medications:
