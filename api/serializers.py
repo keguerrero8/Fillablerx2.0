@@ -67,8 +67,10 @@ class RequestSerializer(serializers.ModelSerializer):
 
         if len(medication.strength) and value == "":
             raise serializers.ValidationError("Please provide a medication strength")
-        
-        if value not in medication.strength:
-            raise serializers.ValidationError("Please select a valid medication strength from the dropdown")
-        
+
+        if value not in medication.strength and value != "":
+            raise serializers.ValidationError(
+                "Please select a valid medication strength from the dropdown"
+            )
+
         return value

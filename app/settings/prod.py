@@ -42,7 +42,7 @@ LOGGING = {
     },
 }
 
-#redirects all non-https traffic to https
+# redirects all non-https traffic to https
 SECURE_SSL_REDIRECT = True
 
 SECURE_HSTS_SECONDS = 1800
