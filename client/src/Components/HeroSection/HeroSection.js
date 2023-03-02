@@ -1,10 +1,12 @@
 import React from 'react';
 
 import './HeroSection.css';
-import '../../App.css';
 import '../Button/Button.css';
 
+import HeroSuggestions from '../HeroSuggestions/HeroSuggestions';
+import FrequentRequests from '../FrequentRequests/FrequentRequests';
 import { Button } from '../Button/Button';
+
 
 function HeroSection() {
     return (
@@ -28,6 +30,8 @@ function HeroSection() {
                     Find Medication
                 </Button>
             </div>
+            <HeroSuggestions/>
+            <FrequentRequests/>
         </div>
     );
 }

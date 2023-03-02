@@ -1,8 +1,7 @@
+@import '../../styles.css';
 
 .contact-container {
-    background: url('../../images/img-pills-2.png') fixed no-repeat center;
-    background-position-x: right;
-    background-size: contain;
+    background-color: var(--brand-grey);
     height: 100%;
     width: 100%;
     display: flex;
@@ -21,21 +20,20 @@
     max-width: 580px;
     margin-top: 48px;
     margin-right: 40px;
-    text-align: center;
 }
 
 .contact-message > h1 {
-    color: #154161;
+    color: var(--brand-darkblue);
     width: 100%;
-    font-size: 40px;
+    font-size: var(--font-large);
     margin-bottom: 28px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .contact-message > h3 {
-    color: #154161;
+    color: var(--brand-darkblue);
     width: 100%;
-    font-size: 20px;
+    font-size: var(--font-medium);
+    font-weight: 100;
 }
 
 .contact-form {
@@ -48,8 +46,8 @@
 }
 
 .contact-form > h2 {
-    color: #154161;
-    font-size: 20px;
+    color: var(--brand-darkblue);
+    font-size: var(--font-medium);
     align-self: flex-start;
 }
 
@@ -59,15 +57,15 @@
     margin-right: 20px;
     outline: none;
     border: none;
-    border: 1px solid #154161;
+    border: 1px solid var(--brand-darkgrey);
     margin-top: 8px;
-    font-size: 18px;
-    color: #154161;
+    font-size: var(--font-small);
+    color: var(--brand-darkblue);
     width: 100%;
 }
 
 .contact-input::placeholder {
-    color: #b1b1b1;
+    color: var(--brand-darkergrey);
 }
 
 .contact-input-comment {
@@ -76,22 +74,26 @@
     margin-right: 20px;
     outline: none;
     border: none;
-    border: 1px solid #154161;
+    border: 1px solid var(--brand-darkgrey);
     margin-top: 8px;
-    font-size: 18px;
-    color: #154161;
+    font-size: var(--font-small);
+    color: var(--brand-darkblue);
     width: 100%;
 }
 
 .contact-input-comment::placeholder {
-    color: #b1b1b1;
+    color: var(--brand-darkergrey);
 }
 
-.contact-btn {
-    margin-top: 20px;
+.btn-send {
     align-self: flex-end;
-    margin-right: 20%;
-
+    background-color: var(--brand-darkblue);
+    color: var(--brand-white);
+    border-radius: 0.8rem;
+    font-size: var(--font-small);
+    margin-top: 20px;
+    padding: 8px 20px;
+    text-transform: none;
 }
 
 @media screen and (max-width: 960px) {

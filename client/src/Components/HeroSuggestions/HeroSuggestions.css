@@ -1,0 +1,87 @@
+.section-two {
+    width: 100%;
+    background-color: #fff;
+    height: fit-content;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0 0;
+    overflow: hidden;
+}
+
+.section-two > h2 {
+    color: #009ffb;
+    font-weight: 900;
+    font-size: 28px;
+    margin-bottom: 40px;
+    align-self: center;
+}
+
+.med-groups {
+    width: 100%;
+    display: flex;
+    padding: 0 60px 60px;
+    overflow-x: scroll;
+}
+
+.card-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.med-card {
+    background-color: #fff;
+    border: 2.5px solid #009ffb;
+    width: 200px;
+    height: 250px;
+    margin: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5rem;
+}
+
+.med-card h3 {
+    margin-bottom:12px;
+}
+
+.card-img {
+    width: 90px;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   
+}
+
+@media screen and (max-width: 968px) {
+    .med-groups {
+        padding: 0 30px 60px;
+    }
+
+    .med-card {
+        width: 168px;
+        height: 210px;
+        border-radius: 1rem;
+    }
+
+    .card-img {
+        width: 75px;
+        height: 100px;
+    }
+    
+    .btn {
+        margin-bottom: 10px;
+        width: fit-content;
+        border-radius: 0.5rem;
+    }
+}

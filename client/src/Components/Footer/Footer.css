@@ -1,39 +1,17 @@
 .footer-container {
-    background-color: #154161;
-    padding: 2rem 0 2rem 0;
+    background-color: #050533;
+    padding: 3% 0 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  .footer-subscription {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  
-    margin-bottom: 15px;
-    padding: 15px;
-    color: #fff;
-  }
-  
-  .footer-subscription > p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .footer-subscription-heading {
-    margin-bottom: 15px;
-    font-size: 24px;
   }
 
   .footer-terms {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
   }
   
   .footer-terms-text {
@@ -46,32 +24,52 @@
     text-decoration: none;
   }
 
-  .unsubscribe-link:hover {
-    color: #b1b1b1;
+  .help-link {
+    display: flex;
+    flex-direction: row;
   }
 
-  .cookie-preferences {
+  .help-link > p {
+    font-size: 28px;
+    color: #fff;
+    margin-right: 12px;
+  }
+  
+  .contact-us {
+    color: white;
+    font-size: 28px;
+    font-weight: 900;
+    text-decoration: none;
+    margin-left: 16px;
+    margin-bottom: 40px;
+  }
+
+    .contact-us:hover {
+    color: #009ffb;
+  }
+
+  .link-section {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 48px;
+  }
+
+  .link-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 24px;
+  }
+
+  .nav-link {
     color: #fff;
     text-decoration: none;
-    padding-top: 20px;
+    padding-top: 12px;
   }
-  
-  .footer-input {
-    padding: 8px 20px;
-    border-radius: 2px;
-    margin-right: 20px;
-    outline: none;
-    border: none;
-    font-size: 18px;
-    margin-bottom: 16px;
-    border: 1px solid #fff;
+
+  .nav-link:hover {
+    color: #009ffb;
   }
-  
-  .footer-input::placeholder {
-    color: #b1b1b1;
-  }
-  
-  /* BELOW LINKS */
   
   .website-rights {
     color: #fff;

@@ -3,62 +3,52 @@ import React from 'react';
 import './HowSection.css';
 import '../../App.css';
 import '../Button/Button.css';
-import image from "../../images/img-laptop.png"
 
 import { Button } from '../Button/Button';
+
+import image1 from "../../images/how-img-one.png"
+import image2 from "../../images/how-img-two.png"
+import image3 from "../../images/how-img-three.png"
 
 function HowSection() {
     return (
         <div className='how-container'>
-            <div className='how-body-header'>
-                <h1>How to Use Our Service</h1>
-            </div>
+            <h1>Need Your Prescription Today?</h1>
             <div className='how-body'>
-                <div className='how-body-text'>
-                    <h2>First, FIND your medication at a pharmacy.</h2>
-                    <div className='how-list'>
-                        <div className='list-item'>
-                            <h3>1.</h3>
-                            <h3>KOW Meds connects you with our extensive network of neighborhood pharmacies.</h3>
-                        </div>
-                        <div className='list-item'>
-                            <h3>2.</h3>
-                            <h3>Your medication request alerts pharmacists within the community area you're searching in.</h3>
-                        </div>
-                        <div className='list-item'>
-                            <h3>3.</h3>
-                            <h3>If a pharmacy has the medication you're looking for, you will be notified immediately after the pharmacist checks their inventory.</h3>
-                        </div>
-                        <div className='list-item'>
-                            <h3>4.</h3>
-                            <h3>A text will inform you which pharmacy has the medication that same day - including the pharmacy name, address, and phone number.</h3>
-                        </div>
+                <div className='how-step'>
+                    <div className='img-wrap'>
+                        <img src={image1}/>
                     </div>
-                    <br></br>
-                    <h2>Then, FILL your prescription!</h2>
-                    <div className='how-list'>
-                        <div className='list-item'>
-                            <h3>1.</h3>
-                            <h3>You can transfer a refill you have from your original pharmacy to this new pharmacy. Speak to a pharmacist to do so.</h3>
-                        </div>
-                        <div className='list-item'>
-                            <h3>2.</h3>
-                            <h3>You can give the pharmacy information to your prescribers so that they know where to send your prescription.</h3>
-                        </div>
-                        <div className='list-item'>
-                            <h3>3.</h3>
-                            <h3>You can call your original or the new pharmacy if you have any questions about the process.</h3>
-                        </div>
-                    </div>
+                    <h3 className='step-text'>Select the medication you're looking for.</h3>
+                    <h3 className='step-subtext'>Specify the strength, quantity, and what insurance you have.</h3>
                 </div>
-                <div className='how-body-img'>
-                    <img className='how-img-wrap' src={image} alt='hands typing on a laptop'/>
-                    <div className='how-btn'>
-                        <Button className='btn' buttonStyle='btn--primary' buttonSize='btn--large' path='/find-medication'>
-                            Find Medication
-                        </Button>
+                <div className='how-step'>
+                    <div className='img-wrap'>
+                        <img src={image2}/>
                     </div>
+                    <h3 className='step-text'>Our network of pharmacies is alerted right away.</h3>
+                    <h3 className='step-subtext'>They will check their inventory and reply if they have it.</h3>
                 </div>
+                <div className='how-step'>
+                    <div className='img-wrap'>
+                        <img src={image3}/>
+                    </div>
+                    <h3 className='step-text'>Receive a text if a pharmacy has the medication.</h3>
+                    <h3 className='step-subtext'>Contact the pharmacy to confirm when the prescription will be filled.</h3>
+                </div>
+            </div>
+            <div className='how-buttons'>
+                <Button 
+                buttonSize='btn--large' 
+                buttonStyle='btn--secondary'
+                path='/contact-us'>
+                    Need Help?
+                </Button>
+                <Button 
+                buttonSize='btn--large'
+                path='/find-medication'>
+                    Find Medication
+                </Button>
             </div>
         </div>
     );

@@ -61,9 +61,11 @@ function ContactSection() {
             </Helmet>
             <div className='contact-message'>
                 <h1>Get in touch with us!</h1>
-                <h3>help@kowmeds.com</h3>
+                <h3>Help@kowmeds.com</h3>
                 <br/>
                 <h3>If you have a question, a comment, or need help using our services, leave us a message. We'll get back to you as soon as possible.</h3>
+                <br/>
+                <h3>Are you a pharmacy looking to join our network? Please provide your contact information so that one of our executives can reach you to schedule a meeting.</h3>
             </div>
                 <form className='contact-form' onSubmit={handleSubmit} ref={form}>
                     <h2>Name*</h2>
@@ -111,7 +113,14 @@ function ContactSection() {
                                 </Typography>
                             </Box> : null
                     }
-                    <Button variant='contained' type="submit" disabled={isDisabled} sx={{mt: "20px"}}>SEND MESSAGE</Button>
+                    <Button 
+                        className='btn-send' 
+                        variant='contained' 
+                        type="submit" 
+                        disabled={isDisabled} 
+                        sx={{}}
+                        >Send Message
+                    </Button>
                 </form>
         </div>
     );

@@ -52,25 +52,15 @@ function Navbar({ user, setUser }) {
             <div className='navbar-container'>
                 <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
                     <img className='home-logo' src={image} alt="KOW logo"/>
-                    K O W
+                    KOW
                 </Link>
                 <div className='menu-icon' onClick={handleClick}>
                     {click? <CloseIcon /> : <MenuIcon/>}
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                        <Link to='/our-story' className='nav-links' onClick={closeMobileMenu}>
-                            About Us
-                        </Link>
-                    </li>
-                    <li className='nav-item'>
                         <Link to='/how-it-works' className='nav-links' onClick={closeMobileMenu}>
                             How It Works
-                        </Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link to='/our-team' className='nav-links' onClick={closeMobileMenu}>
-                            Our Team
                         </Link>
                     </li>
                     <li className='nav-item'>
@@ -104,9 +94,9 @@ function Navbar({ user, setUser }) {
                         </Link>
                     </li>}
                 </ul>
-                {button && !user ? <Button buttonStyle='.btn--outline' path='/login'>Sign In
+                {button && !user ? <Button path='/login'>Sign In
                     </Button> : null}
-                {user && button? <Button buttonStyle='.btn--outline' path='/' onClick={handleLogOut}>Sign Out
+                {user && button? <Button path='/' onClick={handleLogOut}>Sign Out
                     </Button> : null}
             </div>
         </nav>
