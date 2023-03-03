@@ -1,9 +1,8 @@
+@import '../../styles.css';
 
 .hero-container {
-    background: url('/src/images/img-pills-2.png') fixed no-repeat center;
-    background-position-x: right;
-    background-size: contain;
-    height: 100vh;
+    background-color: var(--brand-grey);
+    height: fit-content;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,23 +15,23 @@
 .hero-container > h1 {
     max-width: 80%;
     text-align: center;
-    color: #154161;
-    font-size: 60px;
-    padding: 5px;
-    margin-top: -80px;
-    margin-bottom: 32px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--brand-darkblue);
+    font-size: var(--font-xlarge);
+    padding: 0.25rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
 }
 
 .hero-container > h2 {
-    color: #154161;
-    font-size: 36px;
+    color: var(--brand-darkblue);
+    font-size: var(--font-large);
     margin-bottom: 8px;
 }
 
 .hero-container > h3 {
-    color: #154161;
-    font-size: 20px;
+    color: var(--brand-darkblue);
+    font-size: var(--font-medium);
 }
 
 .hero-btns {
@@ -46,7 +45,7 @@
 @media screen and (max-width: 960px) {
     .hero-container {
         height: 100%;
-        margin-top: 20px;
+        padding-top: 20px;
     }
 
     .hero-container > h1 {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router';
 
 import './App.css';
+import Banner from './Components/Banner/Banner'
 import Home from './Pages/Home';
 import OurStory from './Pages/OurStory';
 import HowItWorks from './Pages/HowItWorks';
@@ -35,6 +36,7 @@ function App() {
   
   return (
     <>
+      <Banner/>
       <Navbar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element={<Home />} />

@@ -5,16 +5,37 @@ import { Link } from 'react-router-dom';
 function Footer(props) {
     return (
         <div className='footer-container'>
-            <section className='footer-subscription'>
+            <section className='footer-links'>
                 <div className='footer-terms'>
-                    <p className='footer-terms-text'>
-                        <Link className='unsubscribe-link' to="/">Terms of Service</Link>
-                    </p>
-                    <p className='footer-terms-text'>
-                        <Link className='unsubscribe-link' to="/">Privacy Policy</Link>
-                    </p>
+                    <div className='help-link'>
+                        <p>Have Questions? Need Help?</p>
+                        <Link to='/contact-us' className='contact-us'>Contact Us</Link>
+                    </div>
+                    <div className='link-section'>
+                        <div className='link-column'>
+                            <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/how-it-works">How It Works</Link>
+                            </p>
+                            <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/find-medication">Find Medication</Link>
+                            </p>
+                            <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/contact-us">Contact Us</Link>
+                            </p>
+                            </div>
+                            <div className='link-column'>
+                            <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/">Terms of Service</Link>
+                            </p>
+                            <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/">Privacy Policy</Link>
+                            </p>
+                            <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/">Manage Cookie Preferences</Link>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <Link className='cookie-preferences' to="/">Manage Cookie Preferences</Link>
             </section>
             <section className='social-media'>
                 <small className='website-rights'>KOW (C) 2023</small>

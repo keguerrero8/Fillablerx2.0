@@ -9,10 +9,6 @@
 .our-story,
 .find-medication,
 .sign-up {
-  background: url('/src/images/img-pills-2.png') fixed no-repeat center;
-  background-position-x: right;
-  background-size: contain;
-  background-repeat: no-repeat;
   display: flex;
   height: 90vh;
   align-items: center;
@@ -21,16 +17,16 @@
 }
 
 .about-us {
-  color: #154161;
+  color: #050533;
   font-size: 100px;
 }
 
 .find-medication {
-  color: #154161;
+  color: #050533;
   font-size: 100px;
 }
 
 .sign-up {
-  color: #154161;
+  color: #050533;
   font-size: 100px;
 }
