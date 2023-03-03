@@ -1,6 +1,8 @@
+@import '../../styles.css';
+
 .section-two {
     width: 100%;
-    background-color: #fff;
+    background-color: var(--brand-white);
     height: fit-content;
     margin-top: 80px;
     display: flex;
@@ -12,7 +14,7 @@
 }
 
 .section-two > h2 {
-    color: #009ffb;
+    color: var(--brand-primaryblue);
     font-weight: 900;
     font-size: 28px;
     margin-bottom: 40px;
@@ -34,8 +36,8 @@
 }
 
 .med-card {
-    background-color: #fff;
-    border: 2.5px solid #009ffb;
+    background-color: var(--brand-white);
+    border: 2.5px solid var(--brand-primaryblue);
     width: 200px;
     height: 250px;
     margin: 0 16px;

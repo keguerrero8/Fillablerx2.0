@@ -54,7 +54,7 @@ export default function LoginPage({setUser}) {
   return (
     <Box sx={styles.MainContainer}>
         <Helmet>
-            <title>Log In - FillableRx</title>
+            <title>Log In - KOW</title>
             <meta 
                 name='description' 
                 content='Log in to your account.'
