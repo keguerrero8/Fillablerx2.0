@@ -61,7 +61,6 @@ function ContactSection() {
             </Helmet>
             <div className='contact-message'>
                 <h1>Get in touch with us!</h1>
-                <h3>help@KOWmeds.com</h3>
                 <br/>
                 <h3>If you have a question, a comment, or need help using our services, leave us a message. We'll get back to you as soon as possible.</h3>
                 <br/>
