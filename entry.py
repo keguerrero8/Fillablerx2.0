@@ -1,5 +1,6 @@
 import datetime
 import time
+import pytz
 
 
 if __name__ == "__main__":
@@ -13,11 +14,34 @@ if __name__ == "__main__":
         print("your message will be sent now")
     else:
         print("your message will be scheduled")
+        
+        body = (
+            f"FillableRx #\n"
+            f"Do you have,\n"
+            f"quantity: in stock TODAY?\n"
+            f"**\n"
+            f"For a patient with this insurance:\n"
+            f"If so, reply OK.\n"
+            f"If not, please ignore."
+        )
+        
+        timezone = pytz.timezone("US/Eastern")
+        # time_now = datetime.datetime.now(timezone)
+        current_time = datetime.datetime.now(timezone).strftime("%I:%M:%S %p")
+        if "PM" in current_time:
+            day = "yesterday"
+        else:
+            day = "today"
+        # print("Current Time in 12 Hour Format:", current_time)
+        
+        body = body + f"\n** This request was made {day} at {current_time}."
+        
+        print(f"body:\n{body}")
 
         hour_now = datetime.datetime.now().hour
         minute_now = datetime.datetime.now().minute
         minute_end = datetime.time(0, 59, 0).minute
-        print(f"hour now is {hour_now}")
+        # print(f"hour now is {hour_now}")
         if hour_now < 9:
             target_hours = datetime.time(8, 0, 0).hour - hour_now
             target_minutes = minute_end - minute_now + 1
@@ -28,5 +52,3 @@ if __name__ == "__main__":
         send_when = datetime.datetime.utcnow() + datetime.timedelta(
             hours=target_hours, minutes=target_minutes
         )
-        print(f"time now is {datetime.datetime.utcnow()}")
-        print(f"send_when {send_when}")
