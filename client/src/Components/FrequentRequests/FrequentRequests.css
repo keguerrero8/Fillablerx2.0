@@ -2,7 +2,7 @@
 
 .recent-container {
     width: 100%;
-    background-color: var(--brand-grey);
+    background-color: var(--brand-white);
     height: fit-content;
     display: flex;
     flex-direction: column;
