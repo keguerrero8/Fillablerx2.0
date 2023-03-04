@@ -126,6 +126,7 @@ def pharmacist_detail(request, id):
 
 
 @api_view(["GET"])
+@csrf_protect
 @permission_classes([IsAuthenticatedOrReadOnly])
 def medication_list(request):
     """
