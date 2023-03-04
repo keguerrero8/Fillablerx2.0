@@ -50,7 +50,7 @@ class TwilioClient:
                 f"If so, reply '{request.id}'.\n"
                 f"If not, please ignore."
             )
-            
+
         pharmacists = pharmacist_class.objects.all()
         enrolled_pharmacists = list(filter(lambda x: x.isEnrolled, pharmacists))
         numbers = list(map(lambda x: x.phone_number.as_e164, enrolled_pharmacists))
@@ -88,10 +88,12 @@ class TwilioClient:
                 target_hours = datetime.time(23, 0, 0).hour - hour_now + 9
                 target_minutes = minute_end - minute_now + 1
 
-            # Special logic because there is a 15min minimum to schedule a message. See docs on limitations of 
+            # Special logic because there is a 15min minimum to schedule a message. See docs on limitations of
             # scheduling https://www.twilio.com/docs/sms/api/message-resource#schedule-a-message-resource
             if target_hours == 0 and target_minutes <= 15:
-                print("original message cannot be sent at less than 15mins so will add 15mins")
+                print(
+                    "original message cannot be sent at less than 15mins so will add 15mins"
+                )
                 target_minutes = 16
 
             send_when = datetime.datetime.utcnow() + datetime.timedelta(
@@ -99,11 +101,11 @@ class TwilioClient:
             )
 
             print(f"send_when {send_when}")
-            
+
             current_time = datetime.datetime.now(timezone).strftime("%I:%M:%S %p")
             day = "yesterday" if "PM" in current_time else "today"
             body = body + f"\n** This request was made {day} at {current_time}."
-            
+
             for number in numbers:
                 self.client.messages.create(
                     from_=self.messaging_service,
