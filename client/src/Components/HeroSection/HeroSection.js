@@ -19,7 +19,7 @@ function HeroSection() {
                 className='btn' 
                 buttonStyle='btn--secondary' 
                 buttonSize='btn--large' 
-                path='/our-story'>
+                path='/how-it-works'>
                     Learn More
                 </Button>
                 <Button 

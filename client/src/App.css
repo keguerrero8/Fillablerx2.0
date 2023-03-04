@@ -6,27 +6,11 @@
 }
 
 .home,
-.our-story,
+.how-it-works,
 .find-medication,
-.sign-up {
+.contact-us,
+.login {
   display: flex;
-  height: 90vh;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-}
-
-.about-us {
-  color: #050533;
-  font-size: 100px;
-}
-
-.find-medication {
-  color: #050533;
-  font-size: 100px;
-}
-
-.sign-up {
-  color: #050533;
-  font-size: 100px;
 }

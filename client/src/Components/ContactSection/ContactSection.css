@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: flex-start;
     position: static;
-    padding: 8% 10%;
+    padding: 10vh 10vw;
 }
 
 .contact-message {
@@ -75,7 +75,7 @@
     outline: none;
     border: none;
     border: 1px solid var(--brand-darkgrey);
-    margin-top: 8px;
+    margin: 8px 0;
     font-size: var(--font-small);
     color: var(--brand-darkblue);
     width: 100%;
@@ -91,7 +91,7 @@
     color: var(--brand-white);
     border-radius: 0.8rem;
     font-size: var(--font-small);
-    margin-top: 20px;
+    margin: 12px 0;
     padding: 8px 20px;
     text-transform: none;
 }
@@ -100,23 +100,23 @@
     .contact-container {
         display: flex;
         flex-direction: column;
-        padding: 35px;
+        padding: 3vh;
         align-items: center;
     }
     
     .contact-message {
         align-items: center;
-        margin-bottom: 8vh;
+        margin-bottom: 6vh;
         margin-right: 0;
     }
 
     .contact-message > h1 {
-        font-size: 32px;
+        font-size: var(--font-medium);
     }
 
     .contact-message > h3 {
-        font-size: 18px;
-        text-align: center;
+        font-size: var(--font-small);
+        text-align: flex-start;
         max-width: 70vh;
     }
 
@@ -125,10 +125,11 @@
     }
 
     .contact-form > h2 {
-        font-size: 16px;
+        font-size: var(--font-small);
     }
 
-    .contact-btn {
-        align-self: center;
+    .btn-send {
+        align-self: flex-end;
+        margin-bottom: 3vh;
     }
 }

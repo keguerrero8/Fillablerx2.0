@@ -18,7 +18,7 @@
     color: var(--brand-darkblue);
     font-size: var(--font-xlarge);
     padding: 0.25rem;
-    margin-top: 3rem;
+    margin-top: 6rem;
     margin-bottom: 1rem;
     font-weight: 900;
 }
@@ -39,23 +39,23 @@
 }
 
 .hero-btns .btn {
-    margin: 8px;
+    margin: 8px 8px 2rem;
 }
 
 @media screen and (max-width: 960px) {
     .hero-container {
         height: 100%;
-        padding-top: 20px;
+        padding-top: 8vh;
     }
 
     .hero-container > h1 {
-        font-size: 50px;
+        font-size: var(--mobile-large);
         margin-top: -40px;
-        max-width: 80vh;
+        max-width: 90vw;
     }
 
     .hero-container > h2 {
-        font-size: 32px;
+        font-size: var(--mobile-medium);
         text-align: center;
         max-width: 80%;
     }
@@ -71,29 +71,35 @@
         flex-direction: column;
         align-items: center;
     }
-
-    .btn {
-        width: 200px;
-    }
 }
 
 @media screen and (max-width: 768px) {
     .hero-container > h1 {
-        font-size: 48px;
-        margin-top: -8px;
+        font-size: var(--mobile-large);
+        margin-top: -3vh;
         text-align: center;
-        max-width: 80vh;
+        max-width: 90vw;
+        margin-bottom: 20px;
     }
 
     .hero-container > h2 {
-        font-size: 32px;
+        font-size: var(--mobile-medium);
         text-align: center;
         max-width: 80%;
+        margin-bottom: 16px;
     }
 
     .hero-container > h3 {
-        font-size: 20px;
+        font-size: var(--mobile-small);
         text-align: center;
         max-width: 75%;
+    }
+
+    .hero-btns {
+        margin-bottom: 2vh;
+    }
+
+    .hero-btns .btn {
+        margin: 8px
     }
 }
