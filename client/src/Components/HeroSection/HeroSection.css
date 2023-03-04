@@ -10,6 +10,7 @@
     align-items: center;
     object-fit: contain;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 .hero-container > h1 {
@@ -45,17 +46,17 @@
 @media screen and (max-width: 960px) {
     .hero-container {
         height: 100%;
-        padding-top: 20px;
+        padding-top: 8vh;
     }
 
     .hero-container > h1 {
-        font-size: 50px;
+        font-size: var(--mobile-large);
         margin-top: -40px;
-        max-width: 80vh;
+        max-width: 90vw;
     }
 
     .hero-container > h2 {
-        font-size: 32px;
+        font-size: var(--mobile-medium);
         text-align: center;
         max-width: 80%;
     }
@@ -79,21 +80,31 @@
 
 @media screen and (max-width: 768px) {
     .hero-container > h1 {
-        font-size: 48px;
-        margin-top: -8px;
+        font-size: var(--mobile-large);
+        margin-top: -3vh;
         text-align: center;
-        max-width: 80vh;
+        max-width: 90vw;
+        margin-bottom: 20px;
     }
 
     .hero-container > h2 {
-        font-size: 32px;
+        font-size: var(--mobile-medium);
         text-align: center;
         max-width: 80%;
+        margin-bottom: 16px;
     }
 
     .hero-container > h3 {
-        font-size: 20px;
+        font-size: var(--mobile-small);
         text-align: center;
         max-width: 75%;
+    }
+
+    .hero-btns {
+        margin-bottom: 5vh;
+    }
+
+    .hero-btns .btn {
+        margin: 8px
     }
 }

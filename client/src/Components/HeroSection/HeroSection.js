@@ -30,6 +30,7 @@ function HeroSection() {
                     Find Medication
                 </Button>
             </div>
+            <HeroSuggestions/>
             <FrequentRequests/>
         </div>
     );
