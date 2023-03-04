@@ -13,7 +13,7 @@ export const styles = {
     },
     InputContainer: {
         margin: "auto", 
-        width: {xs: "90%", sm: "90%", md: "60%"}, 
+        width: {xs: "100%", sm: "100%", md: "60%"}, 
         gap: "2rem", 
         display: "flex", 
         justifyContent: "left", 
@@ -21,8 +21,8 @@ export const styles = {
     },
     PharmacyInsuranceText: {
         textAlign: "center", 
-        fontWeight: "500", 
-        fontSize: {xs: "1.1rem", sm: "1.2rem", md: "1.3rem"}
+        fontWeight: "bolder", 
+        fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"}
     },
     InsuranceFields: {
         margin: "auto",
@@ -33,7 +33,8 @@ export const styles = {
         flexDirection: "column"
     },
     PaymentMethodText: {
-        fontSize: {fontSize: {xs: "1rem", sm: "1rem", md: "1.1rem"}}
+        fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"},
+        fontWeight: "bold"
     },
     ButtonsContainer: {
         margin: "auto", 

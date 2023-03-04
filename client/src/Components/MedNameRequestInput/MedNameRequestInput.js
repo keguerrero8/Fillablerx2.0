@@ -35,7 +35,7 @@ export default function MedNameRequestInput({ label, name, handleChange, isRequi
             <Typography color="black" component="h6" sx={styles.Text}>
               {label}{isRequired? <span style={{color: "red"}}> &#42;</span> : null}
             </Typography>
-            <TextField sx={{width: "100%"}} onChange={handleSearch} value={searchValue} name={name} onFocus={handleFocus}/>
+            <TextField sx={{width: "100%"}} onChange={handleSearch} value={searchValue} name={name} onFocus={handleFocus} placeholder="Select a medication from the dropdown"/>
         </Box>
         <Box sx={{...styles.SearchList, display: dropdown? "block" : "none"}}>
             <List >

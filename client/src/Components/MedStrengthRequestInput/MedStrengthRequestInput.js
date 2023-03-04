@@ -28,6 +28,7 @@ export default function MedStrengthRequestInput({ flex, label, name, handleChang
               name={name} 
               onFocus={handleFocus} 
               disabled={!isRequired}
+              placeholder={isRequired? "Select a strength from the dropdown" : ""}
             />
         </Box>
         <Box sx={{...styles.StrengthList, display: dropdown ? "block" : "none"}}>
