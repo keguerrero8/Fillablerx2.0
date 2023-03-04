@@ -16,7 +16,7 @@
 .section-two > h2 {
     color: var(--brand-primaryblue);
     font-weight: 900;
-    font-size: 28px;
+    font-size: var(--font-large);
     margin-bottom: 40px;
     align-self: center;
 }
@@ -66,24 +66,23 @@
 }
 
 @media screen and (max-width: 968px) {
+    .section-two > h2 {
+        width: 75vw;
+    }
+
     .med-groups {
         padding: 0 30px 60px;
     }
 
     .med-card {
-        width: 168px;
-        height: 210px;
-        border-radius: 1rem;
+        width: 120px;
+        height: 180px;
+        border-radius: 1.5rem;
+        padding: 4px;
     }
 
     .card-img {
-        width: 75px;
-        height: 100px;
-    }
-    
-    .btn {
-        margin-bottom: 10px;
-        width: fit-content;
-        border-radius: 0.5rem;
+        width: 60px;
+        height: 90px;
     }
 }
