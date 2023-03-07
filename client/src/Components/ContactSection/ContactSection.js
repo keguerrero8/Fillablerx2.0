@@ -114,7 +114,7 @@ function ContactSection() {
                             </Box> : null
                     }
                     <Button 
-                        className='btn-send' 
+                        className='send-message' 
                         variant='contained' 
                         type="submit" 
                         disabled={isDisabled} 
