@@ -6,7 +6,7 @@ import { Box, Button, Typography } from '@mui/material'
 
 import './ContactSection.css';
 import '../../App.css';
-import '../ButtonAction/ButtonAction.css';
+import '../Button/Button.css';
 
 function ContactSection() {
     const form = useRef();
