@@ -6,7 +6,7 @@ export const styles = {
   },
   Text: {
     mb: "5px", 
-    fontSize: {xs: "0.9rem", sm: "0.9rem", md: "1.1rem"}
+    fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"}
   },
   SearchList: {
     maxHeight: "150px", 

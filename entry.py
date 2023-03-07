@@ -14,7 +14,7 @@ if __name__ == "__main__":
         print("your message will be sent now")
     else:
         print("your message will be scheduled")
-        
+
         body = (
             f"FillableRx #\n"
             f"Do you have,\n"
@@ -24,7 +24,7 @@ if __name__ == "__main__":
             f"If so, reply OK.\n"
             f"If not, please ignore."
         )
-        
+
         timezone = pytz.timezone("US/Eastern")
         # time_now = datetime.datetime.now(timezone)
         current_time = datetime.datetime.now(timezone).strftime("%I:%M:%S %p")
@@ -33,9 +33,9 @@ if __name__ == "__main__":
         else:
             day = "today"
         # print("Current Time in 12 Hour Format:", current_time)
-        
+
         body = body + f"\n** This request was made {day} at {current_time}."
-        
+
         print(f"body:\n{body}")
 
         hour_now = datetime.datetime.now().hour

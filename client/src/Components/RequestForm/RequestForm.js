@@ -130,9 +130,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
         <CSRFToken />
-        {/* <Box sx={styles.InputContainer}>
-        </Box> */}
-        <Box sx={{...styles.InputContainer, mb: "2rem"}}>
+        <Box sx={{...styles.InputContainer, mb: "1rem"}}>
             <MedNameRequestInput 
                 requestData={requestData} 
                 label="Medication Name" 
@@ -165,7 +163,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
                 isRequired={true}
             />
             <FormControl sx={{margin: "auto", textAlign: "center"}}>
-                <FormLabel>
+                <FormLabel sx={{my: "20px"}}>
                     <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
                         Payment Method<span style={{color: "red"}}> &#42;</span>
                     </Typography>
@@ -173,6 +171,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
                 <RadioGroup
                     value={value}
                     onChange={handleRadioChange}
+                    row
                 >
                     <FormControlLabel value="insurance" control={<Radio />} label="Insurance" />
                     <FormControlLabel value="cash" control={<Radio />} label="Cash" />
@@ -203,7 +202,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
                 </Box>
             </Box>
         ) : null}
-        <Box sx={{...styles.InputContainer, mt: "2rem"}}>
+        <Box sx={{...styles.InputContainer, mt: "1rem"}}>
             <RequestFormInput 
                 requestData={requestData} 
                 flex={0.8} 
@@ -218,11 +217,11 @@ export default function RequestForm({ test = false, isPatient = true}) {
             {status.map((e, index) => 
                 <Typography key={index} sx={{color: status[0] === "Request successfully sent!"? "green" : "red"}}>{e}</Typography>)}
         </Box>
-        <Box sx={{textAlign: "center", width: "90%", margin: "auto"}}>
+        <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "column"}}>
             <FormControlLabel 
                 labelPlacement='top' 
                 control={<Checkbox checked={checked} onChange={handleCheck}/>} 
-                label="I AGREE TO KOW'S TERMS OF SERVICE AND PRIVACY POLICY" 
+                label={<Typography variant='p' sx={{fontSize: "1.1rem", fontWeight: 900}}>I AGREE TO KOW'S TERMS OF SERVICE AND PRIVACY POLICY</Typography>} 
             />
         </Box>
         <Box sx={styles.ButtonsContainer}>

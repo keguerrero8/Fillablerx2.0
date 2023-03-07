@@ -12,7 +12,7 @@ import ContactUs from './Pages/ContactUs'
 import FindMedication from './Pages/FindMedication';
 import Page404 from './Pages/Page404';
 import LoginPage from './Pages/Login/LoginPage';
-import DashboardPage from './Pages/Dashboard/DashboardPage';
+import DashboardPage from './Pages/DashboardPage';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
 import Footer from './Components/Footer/Footer';
 

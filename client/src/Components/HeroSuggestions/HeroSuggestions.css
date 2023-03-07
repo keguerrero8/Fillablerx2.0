@@ -24,6 +24,8 @@
 .med-groups {
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0 60px 60px;
     overflow-x: scroll;
 }
