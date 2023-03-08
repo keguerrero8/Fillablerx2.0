@@ -4,13 +4,14 @@ import Cookies from "js-cookie"
 import RequestFormInput from '../RequestFormInput/RequestFormInput'
 import MedNameRequestInput from '../MedNameRequestInput/MedNameRequestInput'
 import MedStrengthRequestInput from '../MedStrengthRequestInput/MedStrengthRequestInput'
+import TermsModal from '../TermsModal/TermsModal'
 import CSRFToken from '../CSRFToken/CSRFToken'
 import { styles } from './RequestForm-styles'
 
 import { 
     Box, 
     Button, 
-    Typography, 
+    Typography,
     Radio, 
     RadioGroup, 
     FormControl, 
@@ -19,7 +20,7 @@ import {
     Checkbox 
 } from '@mui/material'
 
-export default function RequestForm({ test = false, isPatient = true}) {
+export default function RequestForm({ test = false, agreeTerms }) {
   const defaultRequestData = {
     phone_number: "",
     med_name: "",
@@ -129,6 +130,7 @@ export default function RequestForm({ test = false, isPatient = true}) {
 
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
+        <TermsModal agreeTerms={agreeTerms}/>
         <CSRFToken />
         <Box sx={{...styles.InputContainer, mb: "1rem"}}>
             <MedNameRequestInput 
