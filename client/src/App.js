@@ -16,6 +16,8 @@ import DashboardPage from './Pages/DashboardPage';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
 import Footer from './Components/Footer/Footer';
 
+import PharmacySubscription from './Components/Documents/PharmacySubscription/PharmacySubscription';
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -40,15 +42,16 @@ function App() {
       <Navbar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='/our-story' element={<OurStory/>}/>
-        <Route path='/how-it-works' element={<HowItWorks/>}/>
-        <Route path='/our-team' element={<OurTeam/>}/>
+        <Route path='/our-story' element={<OurStory />}/>
+        <Route path='/how-it-works' element={<HowItWorks />}/>
+        <Route path='/our-team' element={<OurTeam />}/>
         <Route path="/find-medication" element={<FindMedication />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
         <Route path="*" element={<Page404 />} />
+        <Route path="/subscription-agreement" element={<PharmacySubscription />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}
       </Routes>
       <Footer/>

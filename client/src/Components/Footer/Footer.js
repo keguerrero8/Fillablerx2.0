@@ -26,7 +26,7 @@ function Footer(props) {
                             </div>
                             <div className='link-column'>
                             <p className='footer-terms-text'>
-                                <Link className='nav-link' to="/">Terms of Service</Link>
+                                <Link className='nav-link' to="/subscription-agreement">Terms of Service</Link>
                             </p>
                             <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/">Privacy Policy</Link>
