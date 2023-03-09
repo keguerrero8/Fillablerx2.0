@@ -6,7 +6,7 @@ import { Box, Button, Typography } from '@mui/material'
 
 import './ContactSection.css';
 import '../../App.css';
-import '../ButtonAction/ButtonAction.css';
+import '../Button/Button.css';
 
 function ContactSection() {
     const form = useRef();
@@ -114,7 +114,7 @@ function ContactSection() {
                             </Box> : null
                     }
                     <Button 
-                        className='btn-send' 
+                        className='send-message' 
                         variant='contained' 
                         type="submit" 
                         disabled={isDisabled} 

@@ -1,6 +1,6 @@
 @import '../../styles.css';
 
-.btn {
+.btn, .btn-default {
     padding: 8px 20px;
     border-radius: 2px;
     outline: none;
@@ -57,4 +57,17 @@
     border-color: var(--brand-primaryblue);
     color: var(--brand-white);
     transition: all 0.3s ease-out;
+}
+
+.btn--how {
+    width: 20vw;
+    min-width: 220px;
+    max-width: 280px;
+    margin: 0 40px;
+}
+
+.btn--home {
+    width: 20vw;
+    min-width: 220px;
+    max-width: 280px;
 }

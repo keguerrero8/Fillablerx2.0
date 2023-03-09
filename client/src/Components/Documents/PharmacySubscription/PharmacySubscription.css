@@ -1,0 +1,205 @@
+
+@import '../../../styles.css';
+
+.document-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 10vh 10vw;
+}
+
+.parties {
+    align-self: center;
+    margin-bottom: 36px;
+    max-width: 720px;
+}
+
+.parties > h3 {
+    font-size: var(--font-small);
+    text-decoration: underline;
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.parties > p {
+    font-size: var(--font-xsmall);
+}
+
+.recitals {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.recitals > h3 {
+    font-size: var(--font-small);
+    font-weight: 900;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.recitals > p {
+    font-size: var(--font-xsmall);
+    text-indent: 3vw;
+    margin-bottom: 12px;
+}
+
+.section-1 {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.section-1 > h3 {
+    font-size: var(--font-small);
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.section-1 > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.exhibit-a {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--brand-black);
+}
+
+.exhibit-a:hover {
+    color: var(--brand-primaryblue);
+}
+
+.subtext-b {
+    margin-bottom: 12px;
+    margin-left: 3vw;
+}
+
+.subtext-h {
+    margin-bottom: 12px;
+}
+
+.subtext-h > h3 {
+    font-size: var(--font-small);
+    font-weight: 100;
+    margin: 8px 0;
+}
+
+.subtext-h > p {
+    font-size: var(--font-xsmall);
+    margin-left: 15vw;
+}
+
+.section-2 {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.section-2 > h3 {
+    font-size: var(--font-small);
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.section-2 > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.section-3 {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.section-3 > h3 {
+    font-size: var(--font-small);
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.section-3 > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.section-4 {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.section-4 > h3 {
+    font-size: var(--font-small);
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.section-4 > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.section-5 {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.section-5 > h3 {
+    font-size: var(--font-small);
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.section-5 > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.signatures {
+    align-self: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+}
+
+.signatures > h3 {
+    font-size: var(--font-Xsmall);
+    font-weight: 100;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.signatures > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.subtext-sig > h2 {
+    font-size: var(--font-small);
+    font-weight: 100;
+    margin: 40px 0 8px;
+}
+
+.subtext-sig > h3 {
+    font-size: var(--font-small);
+    font-weight: 100;
+    margin-left: 25vw;
+}
+
+.subtext-sig > p {
+    font-size: var(--font-xsmall);
+    margin-left: 30vw;
+}

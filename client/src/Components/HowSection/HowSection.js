@@ -41,11 +41,13 @@ function HowSection() {
                 <Button 
                 buttonSize='btn--large' 
                 buttonStyle='btn--secondary'
+                buttonPage='btn--how'
                 path='/contact-us'>
                     Need Help?
                 </Button>
                 <Button 
                 buttonSize='btn--large'
+                buttonPage='btn--how'
                 path='/find-medication'>
                     Find Medication
                 </Button>

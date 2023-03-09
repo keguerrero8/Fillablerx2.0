@@ -8,7 +8,8 @@ function Footer(props) {
             <section className='footer-links'>
                 <div className='footer-terms'>
                     <div className='help-link'>
-                        <p>Have Questions? Need Help?</p>
+                        <p>Have Questions?</p>
+                        <p>Need Help?</p>
                         <Link to='/contact-us' className='contact-us'>Contact Us</Link>
                     </div>
                     <div className='link-section'>
@@ -25,7 +26,7 @@ function Footer(props) {
                             </div>
                             <div className='link-column'>
                             <p className='footer-terms-text'>
-                                <Link className='nav-link' to="/">Terms of Service</Link>
+                                <Link className='nav-link' to="/subscription-agreement">Terms of Service</Link>
                             </p>
                             <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/">Privacy Policy</Link>
