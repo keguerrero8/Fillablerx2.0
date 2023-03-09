@@ -19,6 +19,7 @@ function HeroSection() {
                 className='btn' 
                 buttonStyle='btn--secondary' 
                 buttonSize='btn--large' 
+                buttonPage='btn--home'
                 path='/how-it-works'>
                     Learn More
                 </Button>
@@ -26,6 +27,7 @@ function HeroSection() {
                 className='btn' 
                 buttonStyle='btn--outline' 
                 buttonSize='btn--large' 
+                buttonPage='btn--home'
                 path='/find-medication'>
                     Find Medication
                 </Button>

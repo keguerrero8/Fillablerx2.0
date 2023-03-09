@@ -51,7 +51,7 @@
 }
 
 .med-card h3 {
-    margin-bottom:12px;
+    margin-bottom: 12px;
 }
 
 .card-img {
@@ -69,22 +69,42 @@
 
 @media screen and (max-width: 968px) {
     .section-two > h2 {
-        width: 75vw;
+        font-size: var(--mobile-large);
+        width: 60vw;
     }
 
     .med-groups {
         padding: 0 30px 60px;
+        justify-content: flex-start;
     }
 
     .med-card {
-        width: 120px;
-        height: 180px;
+        width: 160px;
+        height: 210px;
         border-radius: 1.5rem;
-        padding: 4px;
+        padding: 12px 8px 4px;
+    }
+
+    .med-card > h3 {
+        margin-bottom: 4px;
     }
 
     .card-img {
-        width: 60px;
-        height: 90px;
+        width: 70px;
+        height: 105px;
+    }
+
+    .med-card .btn {
+        width: fit-content;
+        min-width: 120px;
+        max-width: 140px;
+        font-size: var(--mobile-xsmall);
+    }
+}
+
+@media screen and (max-width: 1360px) {
+    .med-groups {
+        padding: 0 30px 60px;
+        justify-content: flex-start;
     }
 }

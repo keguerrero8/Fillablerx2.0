@@ -96,6 +96,10 @@
     text-transform: none;
 }
 
+.send-message {
+    align-self: flex-end;
+}
+
 @media screen and (max-width: 960px) {
     .contact-container {
         display: flex;
@@ -108,10 +112,11 @@
         align-items: center;
         margin-bottom: 6vh;
         margin-right: 0;
+        max-width: 75vw;
     }
 
     .contact-message > h1 {
-        font-size: var(--font-medium);
+        font-size: var(--mobile-medium);
     }
 
     .contact-message > h3 {
@@ -122,14 +127,10 @@
 
     .contact-form {
         margin: auto;
+        max-width: 75vw;
     }
 
     .contact-form > h2 {
-        font-size: var(--font-small);
-    }
-
-    .btn-send {
-        align-self: flex-end;
-        margin-bottom: 3vh;
+        font-size: var(--mobile-xsmall);
     }
 }
