@@ -17,6 +17,8 @@ import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
 import Footer from './Components/Footer/Footer';
 
 import PharmacySubscription from './Components/Documents/PharmacySubscription/PharmacySubscription';
+import Privacy from './Components/Documents/PrivacyPolicy/Privacy';
+import Terms from './Components/Documents/TermsOfUse/Terms';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -52,6 +54,8 @@ function App() {
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
         <Route path="*" element={<Page404 />} />
         <Route path="/subscription-agreement" element={<PharmacySubscription />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/terms-of-use" element={<Terms />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}
       </Routes>
       <Footer/>

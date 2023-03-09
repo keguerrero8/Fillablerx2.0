@@ -26,13 +26,13 @@ function Footer(props) {
                             </div>
                             <div className='link-column'>
                             <p className='footer-terms-text'>
-                                <Link className='nav-link' to="/subscription-agreement">Terms of Service</Link>
+                                <Link className='nav-link' to="/terms-of-use">Terms of Use</Link>
                             </p>
                             <p className='footer-terms-text'>
-                                <Link className='nav-link' to="/">Privacy Policy</Link>
+                                <Link className='nav-link' to="/privacy-policy">Privacy Policy</Link>
                             </p>
                             <p className='footer-terms-text'>
-                                <Link className='nav-link' to="/">Manage Cookie Preferences</Link>
+                                <Link className='nav-link' to="/subscription-agreement">Manage Cookie Preferences</Link>
                             </p>
                         </div>
                     </div>
