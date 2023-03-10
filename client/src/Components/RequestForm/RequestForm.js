@@ -20,7 +20,7 @@ import {
     Checkbox 
 } from '@mui/material'
 
-export default function RequestForm({ test = false, agreeTerms }) {
+export default function RequestForm({ test = false }) {
   const defaultRequestData = {
     phone_number: "",
     med_name: "",
@@ -40,6 +40,8 @@ export default function RequestForm({ test = false, agreeTerms }) {
   const [searchValue, setSearchValue] = useState("")
   const [requestData, setRequestData] = useState(defaultRequestData)
   const [medications, setMedications] = useState([])
+  const [isTermsModal, setIsTermsModal] = useState(false)
+  const [step, setStep] = useState(0)
 
   useEffect(() => {
     fetch("/api/medications")
@@ -47,7 +49,14 @@ export default function RequestForm({ test = false, agreeTerms }) {
     .then(r => setMedications(r))
   }, [])
 
-  const handleCheck = (e) => setChecked(e.target.checked)
+  const handleCheck = (e) => {
+      if (e.target.checked) {
+          setIsTermsModal(true)
+      }
+
+    setChecked(e.target.checked)
+  }
+
   function handleClear () {
     setChecked(false)
     setRequestData(defaultRequestData)
@@ -130,7 +139,7 @@ export default function RequestForm({ test = false, agreeTerms }) {
 
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
-        <TermsModal agreeTerms={agreeTerms}/>
+        <TermsModal setIsTermsModal={setIsTermsModal} isTermsModal={isTermsModal} step={step} setStep={setStep}/>
         <CSRFToken />
         <Box sx={{...styles.InputContainer, mb: "1rem"}}>
             <MedNameRequestInput 

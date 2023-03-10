@@ -4,8 +4,13 @@ import { Modal, Typography, Box } from '@mui/material'
 
 import TermsOfService from '../TermsOfService/TermsOfService'
 import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy'
+import ProviderOptIn from '../ProviderOptIn/ProviderOptIn';
+import UserTypeSelection from '../UserTypeSelection/UserTypeSelection';
 
-export default function TermsModal( { agreeTerms }) {
+export default function TermsModal( { setIsTermsModal, isTermsModal, setStep, step }) {
+    const [userType, setUserType] = useState("none")
+    const [isPrivacyButtonDisabled, setisPrivacyButtonDisabled] = useState(true)
+    const [isOptInButtonDisabled, setisOptInButtonDisabled] = useState(true)
 
     const style = {
         position: 'absolute',
@@ -20,24 +25,25 @@ export default function TermsModal( { agreeTerms }) {
         p: 4,
     };
 
-    const [step, setStep] = useState(1)
-    const [open, setOpen] = useState(!agreeTerms);
-//   const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const isPatientFinalStep = step === 2 && userType === "patient" && !isPrivacyButtonDisabled
+    const isHCPFinalStep = step === 3 && userType === "HCP" && !isOptInButtonDisabled
+    const handleClose = () => {
+        if (isPatientFinalStep || isHCPFinalStep) setIsTermsModal(false)
+    }
 
     const termsStep = {
-        1 : <TermsOfService setStep={setStep}/>,
-        2 : <PrivacyPolicy setStep={setStep}/>,
-        3: <h1>You have agreed to all our terms</h1>
+        0: <UserTypeSelection setStep={setStep} userType={userType} setUserType={setUserType}/>,
+        1: <TermsOfService setStep={setStep}/>,
+        2: <PrivacyPolicy setStep={setStep} userType={userType} isDisabled={isPrivacyButtonDisabled} setDisabled={setisPrivacyButtonDisabled}/>,
+        3: <ProviderOptIn isDisabled={isOptInButtonDisabled} setDisabled={setisOptInButtonDisabled} />
     }
     
   return (
     <Modal
-    open={open}
+    open={isTermsModal}
     onClose={handleClose}
     >
         <Box sx={style}>
-            {/* <TermsOfService /> */}
             {termsStep[step]}
         </Box>
     </Modal>

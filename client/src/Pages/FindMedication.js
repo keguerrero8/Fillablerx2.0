@@ -17,7 +17,7 @@ export default function FindMedicationPage() {
             />   
             <link rel='canonical' href='/find-medication'/>
         </Helmet>
-      <RequestForm agreeTerms={false}/> 
+      <RequestForm /> 
     </Box>
   );
 }
