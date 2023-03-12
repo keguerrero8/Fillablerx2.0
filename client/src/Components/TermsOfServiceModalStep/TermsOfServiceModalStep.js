@@ -3,18 +3,18 @@ import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 
 import '../../App.css';
 import '../Button/Button.css';
-import './ProviderOptIn.css';
+import './TermsOfServiceModalStep.css';
 
 import { Button as ButtonMui } from '@mui/material'
 
-function ProviderOptIn({ setDisabled, isDisabled }) {
-    // const [isDisabled, setDisabled] = useState(true)
-    const [isComplete, setIsComplete] = useState(false)
+function TermsOfServiceModalStep({ setStep }) {
+    const [isDisabled, setDisabled] = useState(true)
+    const [acknowledged, setAcknowledged] = useState(false)
     const scrollRef = useBottomScrollListener(() => setDisabled(false))
 
     return (
         <div className='story-container'>
-            <h1>Provider Opt In Agreement</h1>
+            <h1>Terms of Service</h1>
             <div ref={scrollRef} style={{width: "600px", height: "700px", border: "solid black 2px", overflow: "scroll"}}>
                 <h3>During the winter of 2022 into 2023, the United States experienced a "triple-demic" wave of COVID, influenza, and RSV (respiratory syncytial virus) infections sweep across the country. This surge, combined with widespread supply chain challenges, made it difficult for many people to find prescription antivirals, antibiotics, and even over-the-counter remedies. I personally saw the impact of this when my cousin on the other side of the country struggled to find Children's Tylenol for her 1-year-old son. Furthermore, my high school friend is an urgent care provider in New York who reported recurring shortages of critical flu treatments at the pharmacies, like Tamiflu.</h3>
                 <br/>
@@ -33,12 +33,15 @@ function ProviderOptIn({ setDisabled, isDisabled }) {
                 <h3>Our goal at KOW is to champion a new standard of care that highlights patient care values of the previous generation while integrating modern technology to stretch a helping hand beyond our own community. With our help, we hope no one will fear the health risks associated with not having medication when it is needed the most.</h3>
             </div>
             <div className='story-btns'>
-                <ButtonMui variant='contained' disabled={isDisabled} sx={{color: "white"}} size="medium" onClick={() => setIsComplete(true)} >
-                    Exit
+                <ButtonMui variant='contained' disabled={isDisabled} sx={{color: "white"}} size="medium" onClick={() => setAcknowledged(true)} >
+                    Agree
+                </ButtonMui>
+                <ButtonMui variant='contained' disabled={!acknowledged} sx={{color: "white"}} size="medium" onClick={() => setStep((val) => val + 1)} >
+                    Continue
                 </ButtonMui>
             </div>
         </div>
     );
 }
 
-export default ProviderOptIn;
+export default TermsOfServiceModalStep;

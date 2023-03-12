@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import '../../App.css';
 import '../Button/Button.css';
-import './UserTypeSelection.css';
+import './UserTypeModalStep.css';
 
 import { 
     Button as ButtonMui,
@@ -14,7 +14,7 @@ import {
     Typography
 } from '@mui/material'
 
-function UserTypeSelection({ setStep, setUserType, userType }) {
+function UserTypeModalStep({ setStep, setUserType, userType }) {
     const [isDisabled, setDisabled] = useState(true)
 
     function handleRadioChange (e) {
@@ -48,4 +48,4 @@ function UserTypeSelection({ setStep, setUserType, userType }) {
     );
 }
 
-export default UserTypeSelection;
+export default UserTypeModalStep;

@@ -5,7 +5,7 @@ import RequestForm from '../Components/RequestForm/RequestForm';
 import { Box } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 
-export default function FindMedicationPage() {
+export default function FindMedicationPage({ user }) {
 
   return (
     <Box sx={{maxWidth: "1200px", margin: "auto", display: "flex", alignItems: "center", flexDirection: "column"}}>
@@ -17,7 +17,7 @@ export default function FindMedicationPage() {
             />   
             <link rel='canonical' href='/find-medication'/>
         </Helmet>
-      <RequestForm /> 
+      <RequestForm user={user}/> 
     </Box>
   );
 }
