@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-import '../../App.css';
-import '../Button/Button.css';
-import './UserTypeModalStep.css';
+import { styles } from './UserTypeModalStep-styles.js';
 
 import { 
     Button as ButtonMui,
@@ -11,8 +9,10 @@ import {
     FormControlLabel,
     FormControl,
     FormLabel,
-    Typography
+    Typography,
+    Box
 } from '@mui/material'
+
 
 function UserTypeModalStep({ setStep, setUserType, userType }) {
     const [isDisabled, setDisabled] = useState(true)
@@ -23,28 +23,31 @@ function UserTypeModalStep({ setStep, setUserType, userType }) {
       }
 
     return (
-        <div className='story-container'>
+        <Box sx={styles.MainContainer}>
             <FormControl sx={{margin: "auto", textAlign: "center"}}>
                 <FormLabel sx={{my: "20px"}}>
-                    <Typography color="black" component="h6">
-                        Are you an HCP or Patient?<span style={{color: "red"}}> &#42;</span>
+                    <Typography color="black" component="h4" variant='h5'>
+                        Are you a health care provider or patient?<span style={{color: "red"}}> &#42;</span>
                     </Typography>
                 </FormLabel>
                 <RadioGroup
                     value={userType}
                     onChange={handleRadioChange}
                     row
+                    sx={{textAlign: "center"}}
                 >
-                    <FormControlLabel value="patient" control={<Radio />} label="Patient" />
-                    <FormControlLabel value="HCP" control={<Radio />} label="HCP" />
+                    <Box sx={{margin: "auto"}}>                        
+                        <FormControlLabel value="patient" control={<Radio />} label="Patient" />
+                        <FormControlLabel value="HCP" control={<Radio />} label="Health Care Provider" />
+                    </Box>
                 </RadioGroup>
             </FormControl>
-            <div className='story-btns'>
-                <ButtonMui variant='contained' disabled={isDisabled} sx={{color: "white"}} size="medium" onClick={() => setStep((val) => val + 1)} >
+            <Box sx={{textAlign: "center"}}>
+                <ButtonMui variant='contained' disabled={isDisabled} sx={{color: "white"}} size="large" onClick={() => setStep((val) => val + 1)} >
                     Continue
                 </ButtonMui>
-            </div>
-        </div>
+            </Box>
+        </Box>
     );
 }
 
