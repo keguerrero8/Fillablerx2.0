@@ -4,13 +4,14 @@ import Cookies from "js-cookie"
 import RequestFormInput from '../RequestFormInput/RequestFormInput'
 import MedNameRequestInput from '../MedNameRequestInput/MedNameRequestInput'
 import MedStrengthRequestInput from '../MedStrengthRequestInput/MedStrengthRequestInput'
+import AgreementModal from '../AgreementModal/AgreementModal'
 import CSRFToken from '../CSRFToken/CSRFToken'
 import { styles } from './RequestForm-styles'
 
 import { 
     Box, 
     Button, 
-    Typography, 
+    Typography,
     Radio, 
     RadioGroup, 
     FormControl, 
@@ -19,7 +20,7 @@ import {
     Checkbox 
 } from '@mui/material'
 
-export default function RequestForm({ test = false, isPatient = true}) {
+export default function RequestForm({ user, test = false }) {
   const defaultRequestData = {
     phone_number: "",
     med_name: "",
@@ -39,6 +40,11 @@ export default function RequestForm({ test = false, isPatient = true}) {
   const [searchValue, setSearchValue] = useState("")
   const [requestData, setRequestData] = useState(defaultRequestData)
   const [medications, setMedications] = useState([])
+  const [isAgreementModal, setIsAgreementModal] = useState(false)
+  const [step, setStep] = useState(0)
+  const [userType, setUserType] = useState("none")
+  const [isPrivacyAcknowledged, setisPrivacyAcknowledged] = useState(false)
+  const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
 
   useEffect(() => {
     fetch("/api/medications")
@@ -46,7 +52,14 @@ export default function RequestForm({ test = false, isPatient = true}) {
     .then(r => setMedications(r))
   }, [])
 
-  const handleCheck = (e) => setChecked(e.target.checked)
+  const handleCheck = (e) => {
+      if (e.target.checked) {
+          setIsAgreementModal(true)
+      }
+
+    setChecked(e.target.checked)
+  }
+
   function handleClear () {
     setChecked(false)
     setRequestData(defaultRequestData)
@@ -55,6 +68,10 @@ export default function RequestForm({ test = false, isPatient = true}) {
     setRequestStatus([])
     setMedication({})
     setSearchValue("")
+    setStep(0)
+    setisPrivacyAcknowledged(false)
+    setisOptInAcknowledged(false)
+    setUserType("none")
   }
 
   function handleRadioChange (e) {
@@ -129,6 +146,18 @@ export default function RequestForm({ test = false, isPatient = true}) {
 
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
+        <AgreementModal 
+            setIsAgreementModal={setIsAgreementModal} 
+            isAgreementModal={isAgreementModal} 
+            step={step} 
+            setStep={setStep} 
+            userType={userType}
+            setUserType={setUserType}
+            isPrivacyAcknowledged={isPrivacyAcknowledged}
+            setisPrivacyAcknowledged={setisPrivacyAcknowledged}
+            isOptInAcknowledged={isOptInAcknowledged}
+            setisOptInAcknowledged={setisOptInAcknowledged}
+        />
         <CSRFToken />
         <Box sx={{...styles.InputContainer, mb: "1rem"}}>
             <MedNameRequestInput 
@@ -225,9 +254,15 @@ export default function RequestForm({ test = false, isPatient = true}) {
             />
         </Box>
         <Box sx={styles.ButtonsContainer}>
+            {user? (
+                <Button variant='contained' sx={{color: "white"}} size="large" type="submit">
+                    Send Request
+                </Button>
+            ) : (
             <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled || !checked}>
                 Send Request
             </Button>
+            )}
             <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
                 Reset Request
             </Button>

@@ -45,7 +45,7 @@ function App() {
         <Route path='/our-story' element={<OurStory />}/>
         <Route path='/how-it-works' element={<HowItWorks />}/>
         <Route path='/our-team' element={<OurTeam />}/>
-        <Route path="/find-medication" element={<FindMedication />} />
+        <Route path="/find-medication" element={<FindMedication user={user}/>} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
