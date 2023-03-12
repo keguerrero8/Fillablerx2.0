@@ -53,9 +53,9 @@ export default function RequestForm({ user, test = false }) {
   }, [])
 
   const handleCheck = (e) => {
-      if (e.target.checked) {
-          setIsAgreementModal(true)
-      }
+    //   if (e.target.checked) {
+    //       setIsAgreementModal(true)
+    //   }
 
     setChecked(e.target.checked)
   }
