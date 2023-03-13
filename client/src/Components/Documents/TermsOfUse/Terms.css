@@ -13,7 +13,7 @@
     max-width: 720px;
 }
 .body-text > h1 {
-    font-size: var(--font-large);
+    font-size: var(--font-medium);
     text-align: center;
     text-decoration: underline;
     font-weight: 900;
@@ -27,6 +27,23 @@
 .body-text > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+}
+
+.link-privacy {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--brand-black);
+    font-size: var(--font-xsmall);
+}
+.link-privacy:hover {
+    color: var(--brand-primaryblue);
+}
+
+.link-exhibit {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--brand-black);
+    font-size: var(--font-xsmall);
 }
 
 .rights-list {

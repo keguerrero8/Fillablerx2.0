@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
+
+import ExhibitModal from '../ExhibitModal/ExhibitModal'
 
 import './Terms.css'
 
 function Terms(props) {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
     return (
         <div className='document-container'>
             <div className='body-text'>
@@ -57,7 +63,7 @@ function Terms(props) {
                     event of any medical emergency, please cease using the Services and immediately dial 9-1-1 and
                     seek the assistance of a medical professional.</p>
                 <h3>KOW Privacy Policy</h3>
-                <p>Please refer to our Privacy Policy for information on how we collect, use and disclose
+                <p>Please refer to our {<Link className='link-privacy' to="/privacy-policy"> Privacy Policy </Link>} for information on how we collect, use and disclose
                     information from our users. By using our Services and clicking below, You are accepting the
                     Privacy Policy and Terms of Use.</p>
                 <h3>Order Fulfillment by Pharmacy</h3>
@@ -231,7 +237,14 @@ function Terms(props) {
                     other actions that may be taken at law or equity.</p>
                 <h3>Fee Schedule and Pricing Terms</h3>
                 <p>Enrolled Pharmacy. You are charged pursuant to the Fee Schedule, which is annexed hereto as
-                    {<Link to="/"> Exhibit 1 </Link>} and incorporated herein by reference, which Fee Schedule was negotiated and agreed
+                    <ExhibitModal
+                        modalName=" Exhibit 1 "
+                        title="Exhibit 1"
+                        subtitle="Fee Schedule"
+                        amount="10"
+                        frequency="Monthly"
+                    />
+                    and incorporated herein by reference, which Fee Schedule was negotiated and agreed
                     to between the Parties for good and valuable consideration pursuant to the terms of the
                     subscription agreement (“Subscription Agreement”) entered into by and between You and KOW,
                     which is incorporated herein by reference.</p>
@@ -251,8 +264,15 @@ function Terms(props) {
                     this Agreement and the Subscription Agreement (the period of time to respond being the “Opt-
                     Out Noticing Period” and the notice sent being the “Opt-Out Notice”). If You do not properly
                     deliver and KOW does not receive the Opt-Out Notice within the Opt-Out Notice Period, the
-                    Initial Rate will no longer be in effect and the Fee Schedule annexed hereto as {<Link to="/"> Exhibit 1 </Link>} and
-                    additionally annexed to the Subscription Agreement as {<Link to="/"> Exhibit A</Link>}, which are one and the same,
+                    Initial Rate will no longer be in effect and the Fee Schedule annexed hereto as
+                    <ExhibitModal
+                        modalName=" Exhibit 1 "
+                        title="Exhibit 1"
+                        subtitle="Fee Schedule"
+                        amount="10"
+                        frequency="Monthly"
+                    />
+                    and additionally annexed to the Subscription Agreement as {<Link className='link-exhibit' to=''> Exhibit A </Link>}, which are one and the same,
                     (collectively, the “Fee Schedule”), shall immediately become operative. Any subsequent fees
                     that become due and owing, by way of Your subscription, or otherwise, shall be renewed
                     automatically on an annual basis in accordance with the terms in the Fee Schedule, this
@@ -273,11 +293,13 @@ function Terms(props) {
                     Agreement, and the Fee Schedule and to notify KOW via legal@kowmeds.com, of any
                     modification or amendment of billing instructions and/or if you cancel or wish to change the
                     notification method and/or address for our billing purposes.</p>
-                <p>Patient. KOW reserves the exclusive and absolute right to determine and implement a fee
+                <p style={{textDecoration: "underline"}}>Patient.</p> 
+                <p>KOW reserves the exclusive and absolute right to determine and implement a fee
                     schedule and pricing terms which it deems appropriate for Your use of and access to its Services.
                     KOW further reserves the exclusive and absolute right to change, modify, or alter the fee
                     schedule and pricing terms at any time, without notice to You.</p>
-                <p>Provider. KOW reserves the exclusive and absolute right to determine and implement a fee
+                <p style={{textDecoration: "underline"}}>Provider.</p>
+                <p>KOW reserves the exclusive and absolute right to determine and implement a fee
                     schedule and pricing terms which it deems appropriate for Your use of and access to its Services. 
                     KOW further reserves the exclusive and absolute right to change, modify, or alter the fee
                     schedule and pricing terms at any time, without notice to You.</p>
@@ -309,7 +331,8 @@ function Terms(props) {
                     Services. You and KOW hereby agree and covenant that You have no right to use the Site or the
                     Services. You acknowledge that KOW owes You no duty, whatsoever, and need not provide
                     You access to the Site or Services.</p>
-                <p>Enrolled Pharmacy. If you are an Enrolled Pharmacy, you are subject to the termination
+                <p style={{textDecoration: "underline"}}>Enrolled Pharmacy.</p>
+                <p>If you are an Enrolled Pharmacy, you are subject to the termination
                     provisions set forth in the Subscription Agreement, which are incorporated herein by reference
                     and made a part hereof. Either party may terminate this Agreement for failure to comply with its
                     terms, conditions, or obligations upon thirty (30) days’ written notice to the other, non-
@@ -342,7 +365,8 @@ function Terms(props) {
                     related or unrelated to the Services, accrued, contingent or potential, caused by the Enrolled
                     Pharmacy. By using the Services and clicking below, You hereby consent.</p>
                 <h3>Indemnity</h3>
-                <p>Enrolled Pharmacy Indemnity. You, the Enrolled Pharmacy, hereby agree to indemnify, defend
+                <p style={{textDecoration: "underline"}}>Enrolled Pharmacy Indemnity.</p>
+                <p>You, the Enrolled Pharmacy, hereby agree to indemnify, defend
                     and hold harmless KOW and its officers, directors, employees and agents, from and against any
                     claims, disputes, demands, liabilities, damages, losses, and costs and expenses, including,
                     without limitation, reasonable legal and accounting fees, arising out of or in any way connected
@@ -353,7 +377,8 @@ function Terms(props) {
                     You and the Company agree that this indemnification obligation clause shall be interpreted to
                     provide the Company the maximum amount of indemnification permitted under the law of the
                     applicable State.</p>
-                <p>Patient Indemnity. You, the Patient, hereby agree to indemnify, defend and hold harmless KOW
+                <p style={{textDecoration: "underline"}}>Patient Indemnity.</p> 
+                <p>You, the Patient, hereby agree to indemnify, defend and hold harmless KOW
                     and its officers, directors, employees and agents, from and against any claims, disputes,
                     demands, liabilities, damages, losses, and costs and expenses, including, without limitation,
                     reasonable legal and accounting fees, arising out of or in any way connected to this Agreement,
@@ -363,7 +388,8 @@ function Terms(props) {
                     and the Company agree that this indemnification obligation clause shall be interpreted to provide
                     the Company the maximum amount of indemnification permitted under the law of the applicable
                     State.</p>
-                <p>Provider Indemnity. You, the Provider, hereby agree to indemnify, defend and hold harmless
+                <p style={{textDecoration: "underline"}}>Provider Indemnity.</p> 
+                <p>You, the Provider, hereby agree to indemnify, defend and hold harmless
                     KOW and its officers, directors, employees and agents, from and against any claims, disputes,
                     demands, liabilities, damages, losses, and costs and expenses, including, without limitation,
                     reasonable legal and accounting fees, arising out of or in any way connected to this Agreement,

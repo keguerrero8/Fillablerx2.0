@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import './Privacy.css'
 
 function Privacy(props) {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     return (
         <div className='document-container'>
             <div className='intro'>

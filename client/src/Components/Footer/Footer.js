@@ -32,7 +32,7 @@ function Footer(props) {
                                 <Link className='nav-link' to="/privacy-policy">Privacy Policy</Link>
                             </p>
                             <p className='footer-terms-text'>
-                                <Link className='nav-link' to="/subscription-agreement">Manage Cookie Preferences</Link>
+                                <Link className='nav-link' to="/termination-notice">Manage Cookie Preferences</Link>
                             </p>
                         </div>
                     </div>

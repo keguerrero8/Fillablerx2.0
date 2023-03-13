@@ -19,6 +19,9 @@ import Footer from './Components/Footer/Footer';
 import PharmacySubscription from './Components/Documents/PharmacySubscription/PharmacySubscription';
 import Privacy from './Components/Documents/PrivacyPolicy/Privacy';
 import Terms from './Components/Documents/TermsOfUse/Terms';
+import ProviderConsent from './Components/Documents/ProviderOptIn/ProviderConsent';
+import PharmacyConsent from './Components/Documents/PharmacyOptIn/PharmacyConsent';
+import TerminationNotice from './Components/Documents/TerminationFeeNotice/TerminationNotice';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -56,6 +59,9 @@ function App() {
         <Route path="/subscription-agreement" element={<PharmacySubscription />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-of-use" element={<Terms />} />
+        <Route path="/provider-opt-in" element={<ProviderConsent />} />
+        <Route path="/pharmacy-opt-in" element={<PharmacyConsent />} />
+        <Route path="/termination-notice" element={<TerminationNotice />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}
       </Routes>
       <Footer/>
