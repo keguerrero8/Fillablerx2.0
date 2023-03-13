@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Typography } from '@mui/material';
 
@@ -17,7 +17,12 @@ const styles = {
 }
 
 export default function Page404({isAuthFailure = false}) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
+  
   return (
     <Box sx={styles.MainContainer}>
       <Typography sx={{fontSize: 'var(--font-xxlarge)', color: 'var(--brand-primaryblue)', fontWeight: '900'}}>

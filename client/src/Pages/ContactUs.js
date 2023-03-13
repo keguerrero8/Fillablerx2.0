@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Helmet } from 'react-helmet-async';
 
 import ContactSection from "../Components/ContactSection/ContactSection";
@@ -6,6 +6,10 @@ import ContactSection from "../Components/ContactSection/ContactSection";
 import '../App.css';
 
 export default function Products() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
     return (
         <>
             <Helmet>

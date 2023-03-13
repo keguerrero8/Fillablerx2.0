@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import HeroSection from '../Components/HeroSection/HeroSection';
@@ -6,6 +6,10 @@ import HeroSection from '../Components/HeroSection/HeroSection';
 import '../App.css';
 
 function Home() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     return (
         <>
             <Helmet>
