@@ -52,16 +52,8 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
         <Route path="/subscription-agreement" element={<PharmacySubscription />} />
-<<<<<<< HEAD
-        <Route path="/privacy-policy" element={<Privacy />} />
-        <Route path="/terms-of-use" element={<Terms />} />
-        <Route path="/provider-opt-in" element={<ProviderConsent />} />
-        <Route path="/pharmacy-opt-in" element={<PharmacyConsent />} />
-        <Route path="/termination-notice" element={<TerminationNotice />} />
         {/* <Route path="/monitoring" element={<MonitorPage />} /> */}
-=======
         <Route path="*" element={<Page404 />} />
->>>>>>> 3a981f795a4e0d3b0538bb1f58a2a1be1f734a75
       </Routes>
       <Footer/>
     </>
