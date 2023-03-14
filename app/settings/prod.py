@@ -60,9 +60,9 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 # CSP headers
-# CSP_DEFAULT_SRC=("'self'",)
-# CSP_STYLE_SRC=("'self'",)
-# CSP_IMG_SRC=("'self'",)
-# CSP_FONT_SRC=("'self'",)
-# CSP_SCRIPT_SRC=("'self'",)
+CSP_DEFAULT_SRC=("'self'", "kowmeds.com")
+CSP_STYLE_SRC=("'self'", "kowmeds.com", 'fonts.googleapis.com')
+CSP_IMG_SRC=("'self'", "kowmeds.com")
+CSP_FONT_SRC=("'self'", "kowmeds.com", "ka-f.fontawesome.com", "fonts.gstatic.com")
+CSP_SCRIPT_SRC=("'self'", "kowmeds.com", "kit.fontawesome.com")
 

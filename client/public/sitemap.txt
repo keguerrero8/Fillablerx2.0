@@ -1,6 +1,5 @@
-http://fillablerx.com/
-http://fillablerx.com/about
-http://fillablerx.com/find-medication
-http://fillablerx.com/pharmacis-network
-http://fillablerx.com/contact
-http://fillablerx.com/login
+https://kowmeds.com/
+https://kowmeds.com/how-it-works
+https://kowmeds.com/find-medication
+https://kowmeds.com/contact-us
+https://kowmeds.com/login
