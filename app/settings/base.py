@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_twilio",
     "django_extensions",
+    "csp"
 ]
 
 MIDDLEWARE = [
