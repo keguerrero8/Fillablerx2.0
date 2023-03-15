@@ -45,7 +45,7 @@
 }
 
 .subtext-1-0 {
-    margin-left: 6vw;
+    /* margin-left: 6vw; */
 }
 .subtext-1-0 > h3 {
     font-size: var(--font-xsmall);
@@ -56,7 +56,7 @@
 }
 
 .subtext-1b {
-    margin-left: 6vw;
+    /* margin-left: 6vw; */
 }
 .subtext-1b > h3 {
     font-size: var(--font-xsmall);
@@ -67,7 +67,7 @@
 }
 
 .subtext-1c {
-    margin-left: 6vw;
+    /* margin-left: 6vw; */
 }
 .subtext-1c > h3 {
     font-size: var(--font-xsmall);
@@ -97,7 +97,7 @@
 }
 
 .subtext-2 {
-    margin-left: 6vw;
+    /* margin-left: 6vw; */
 }
 .subtext-2 > h3 {
     font-size: var(--font-xsmall);
@@ -127,7 +127,7 @@
 }
 
 .subtext-3 {
-    margin-left: 6vw;
+    /* margin-left: 6vw; */
 }
 .subtext-3 > h3 {
     font-size: var(--font-xsmall);
@@ -157,7 +157,7 @@
 }
 
 .subtext-4b {
-    margin-left: 6vw;
+    /* margin-left: 6vw; */
 }
 .subtext-4b > p {
     font-size: var(--font-xsmall);

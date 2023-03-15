@@ -39,7 +39,7 @@ export default function AgreementModal( {
         if (isPatientFinalStep || isHCPFinalStep) setIsAgreementModal(false)
     }
 
-    const termsStep = {
+    const agreementStep = {
         0: <UserTypeModalStep setStep={setStep} userType={userType} setUserType={setUserType}/>,
         1: <TermsOfUseModalStep setStep={setStep}/>,
         2: <PrivacyPolicyModalStep setStep={setStep} userType={userType} isAcknowledged={isPrivacyAcknowledged} setIsAcknowledged={setisPrivacyAcknowledged} handleClose={handleClose}/>,
@@ -52,7 +52,7 @@ export default function AgreementModal( {
     onClose={handleClose}
     >
         <Box sx={style}>
-            {termsStep[step]}
+            {agreementStep[step]}
         </Box>
     </Modal>
   )

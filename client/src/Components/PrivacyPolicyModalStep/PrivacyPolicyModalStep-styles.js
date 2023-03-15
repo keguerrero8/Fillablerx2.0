@@ -18,6 +18,7 @@ export const styles = {
         width: "90%", 
         border: "solid black 2px", 
         overflow: "scroll", 
-        margin: "auto"
+        margin: "auto",
+        padding: "10px"
     }
   }
