@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
+
+import ExhibitModal from '../ExhibitModal/ExhibitModal'
 
 import './PharmacySubscription.css';
 
 function PharmacySubscription(props) {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     return (
         <div className='document-container'>
             <div className='parties'>
@@ -34,7 +40,13 @@ function PharmacySubscription(props) {
                     Agreement is in full force and effect, part of KOW’s network of pharmacies and may utilize the
                     Services. KOW in no way guarantees Enrolled Pharmacy a profit for use of its Services.</p>
                 <p>b. The Enrolled Pharmacy is charged pursuant to the Fee Schedule, which is annexed hereto as
-                    {<Link className='exhibit-a' to="/exhibit-a"> Exhibit A </Link>}
+                    <ExhibitModal
+                        modalName=" Exhibit A "
+                        title="Exhibit A"
+                        subtitle="Fee Schedule"
+                        amount="10"
+                        frequency="Monthly"
+                    />
                     and incorporated herein by reference, which Fee Schedule was negotiated and agreed
                     to between the Parties for good and valuable consideration. For a specified term beginning on the
                     Effective Date and ending on Your receipt of the Termination and Fee Schedule Notice (as
@@ -53,7 +65,13 @@ function PharmacySubscription(props) {
                     notice sent being the “Opt-Out Notice”). If You do not properly deliver and KOW does not
                     receive the Opt-Out Notice within the Opt-Out Notice Period, the Initial Rate will no longer be
                     in effect and the Fee Schedule annexed hereto as
-                    {<Link className='exhibit-a' to="/exhibit-a"> Exhibit A </Link>}
+                    <ExhibitModal
+                        modalName=" Exhibit A "
+                        title="Exhibit A"
+                        subtitle="Fee Schedule"
+                        amount="10"
+                        frequency="Monthly"
+                    />
                     shall immediately become operative.
                     Any subsequent fees that become due and owing, by way of Your subscription, or otherwise,
                     shall be renewed automatically on an annual basis in accordance with the terms in the Fee
@@ -237,7 +255,7 @@ function PharmacySubscription(props) {
                     to prevent unauthorized third-party access to Your information will prevent every unauthorized
                     attempt to access, use, or disclosure of Your information, including information of others stored
                     and maintained by you, personal, protected health information (“PHI”), or otherwise. The terms
-                    of KOW’s Privacy Policy are incorporated herein by reference and made a part hereof.</p>
+                    of KOW’s {<Link className='link-privacy' to='/privacy-policy'>Privacy Policy</Link>} are incorporated herein by reference and made a part hereof.</p>
             </div>
             <div className='section-5'>
                 <h3>5. GENERAL PROVISIONS</h3>

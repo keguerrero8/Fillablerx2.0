@@ -14,16 +14,14 @@
     margin-bottom: 36px;
     max-width: 720px;
 }
-
 .parties > h3 {
-    font-size: var(--font-small);
+    font-size: var(--font-medium);
     text-decoration: underline;
     font-weight: 900;
     text-transform: capitalize;
-    margin-bottom: 12px;
+    margin-bottom: 40px;
     text-align: center;
 }
-
 .parties > p {
     font-size: var(--font-xsmall);
 }
@@ -33,7 +31,6 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .recitals > h3 {
     font-size: var(--font-small);
     font-weight: 900;
@@ -41,7 +38,6 @@
     text-transform: capitalize;
     margin-bottom: 12px;
 }
-
 .recitals > p {
     font-size: var(--font-xsmall);
     text-indent: 3vw;
@@ -53,27 +49,15 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .section-1 > h3 {
     font-size: var(--font-small);
     font-weight: 900;
     text-transform: capitalize;
     margin-bottom: 12px;
 }
-
 .section-1 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
-}
-
-.exhibit-a {
-    text-decoration: none;
-    font-weight: 900;
-    color: var(--brand-black);
-}
-
-.exhibit-a:hover {
-    color: var(--brand-primaryblue);
 }
 
 .subtext-b {
@@ -84,13 +68,11 @@
 .subtext-h {
     margin-bottom: 12px;
 }
-
 .subtext-h > h3 {
     font-size: var(--font-small);
     font-weight: 100;
     margin: 8px 0;
 }
-
 .subtext-h > p {
     font-size: var(--font-xsmall);
     margin-left: 15vw;
@@ -101,14 +83,12 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .section-2 > h3 {
     font-size: var(--font-small);
     font-weight: 900;
     text-transform: capitalize;
     margin-bottom: 12px;
 }
-
 .section-2 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
@@ -119,14 +99,12 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .section-3 > h3 {
     font-size: var(--font-small);
     font-weight: 900;
     text-transform: capitalize;
     margin-bottom: 12px;
 }
-
 .section-3 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
@@ -137,17 +115,25 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .section-4 > h3 {
     font-size: var(--font-small);
     font-weight: 900;
     text-transform: capitalize;
     margin-bottom: 12px;
 }
-
 .section-4 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+}
+
+.link-privacy {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--brand-black);
+    font-size: var(--font-xsmall);
+}
+.link-privacy:hover {
+    color: var(--brand-primaryblue);
 }
 
 .section-5 {
@@ -155,14 +141,12 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .section-5 > h3 {
     font-size: var(--font-small);
     font-weight: 900;
     text-transform: capitalize;
     margin-bottom: 12px;
 }
-
 .section-5 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
@@ -173,7 +157,6 @@
     max-width: 720px;
     margin-bottom: 24px;
 }
-
 .signatures > h3 {
     font-size: var(--font-Xsmall);
     font-weight: 100;
@@ -181,7 +164,6 @@
     text-align: center;
     margin-bottom: 24px;
 }
-
 .signatures > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
@@ -192,13 +174,11 @@
     font-weight: 100;
     margin: 40px 0 8px;
 }
-
 .subtext-sig > h3 {
     font-size: var(--font-small);
     font-weight: 100;
     margin-left: 25vw;
 }
-
 .subtext-sig > p {
     font-size: var(--font-xsmall);
     margin-left: 30vw;

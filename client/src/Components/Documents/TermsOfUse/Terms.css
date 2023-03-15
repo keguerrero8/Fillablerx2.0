@@ -1,0 +1,55 @@
+@import '../../../styles.css';
+
+.document-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding: 10vh 10vw;
+}
+
+.body-text {
+    align-self: center;
+    max-width: 720px;
+}
+.body-text > h1 {
+    font-size: var(--font-medium);
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+.body-text > h3 {
+    font-size: var(--font-xsmall);
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+.body-text > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
+
+.link-privacy {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--brand-black);
+    font-size: var(--font-xsmall);
+}
+.link-privacy:hover {
+    color: var(--brand-primaryblue);
+}
+
+.link-exhibit {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--brand-black);
+    font-size: var(--font-xsmall);
+}
+
+.rights-list {
+    padding-left: 3vw;
+}
+.rights-list > p {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+}
