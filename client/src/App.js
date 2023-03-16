@@ -51,12 +51,8 @@ function App() {
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
-        <Route path="/subscription-agreement" element={<PharmacySubscription />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-of-use" element={<Terms />} />
-        <Route path="/provider-opt-in" element={<ProviderConsent />} />
-        <Route path="/pharmacy-opt-in" element={<PharmacyConsent />} />
-        <Route path="/termination-notice" element={<TerminationNotice />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer/>
