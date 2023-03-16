@@ -27,7 +27,7 @@ class TwilioClient:
         """
         if request.isInsurance:
             body = (
-                f"FillableRx #{request.id}\n"
+                f"KOW #{request.id}\n"
                 f"Do you have {request.med_name} {request.med_strength},\n"
                 f"quantity: {request.quantity} in stock TODAY?\n"
                 f"**\n"
@@ -41,11 +41,11 @@ class TwilioClient:
             )
         else:
             body = (
-                f"FillableRx #{request.id}\n"
+                f"KOW #{request.id}\n"
                 f"Do you have {request.med_name} {request.med_strength},\n"
                 f"quantity: {request.quantity} in stock TODAY?\n"
                 f"**\n"
-                f"For a Cash-paying patient.\n"
+                f"For a patient without insurance.\n"
                 f"**\n"
                 f"If so, reply '{request.id}'.\n"
                 f"If not, please ignore."
@@ -140,8 +140,9 @@ class TwilioClient:
             from_=self.twilio_phone_number,
             body=(
                 f"KOW #{origin_request.id}\n"
-                f"{origin_request.med_name} is IN STOCK today at...\n"
-                f"{pharmacy.name} {'' if 'Pharmacy' in pharmacy.name else 'Pharmacy'}\n"
+                f"{origin_request.med_name} {origin_request.med_strength}\n" 
+                f"quantity: {origin_request.quantity} is IN STOCK today at...\n"
+                f"{pharmacy.name}\n"
                 f"(p) {pharmacy.phone_number}\n"
                 f"{pharmacy.address}, {pharmacy.zipcode}"
                 f"This pharmacy accepts the insurance provided: "
