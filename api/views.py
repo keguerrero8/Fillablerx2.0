@@ -25,10 +25,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def index(request):
-    return HttpResponse("Fillable API")
-
-
 @api_view(["GET"])
 @csrf_protect
 @permission_classes([IsAuthenticated])
