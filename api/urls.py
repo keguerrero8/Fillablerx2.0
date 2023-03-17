@@ -2,7 +2,6 @@ from django.urls import path
 from api import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
     path("medications", views.medication_list, name="medication-list"),
     path("pharmacies", views.pharmacy_list, name="pharmacy-list"),
     path("pharmacies/<str:id>", views.pharmacy_detail, name="pharmacy-detail"),

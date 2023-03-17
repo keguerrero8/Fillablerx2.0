@@ -65,4 +65,3 @@ SECURE_HSTS_PRELOAD = True
 # CSP_IMG_SRC=("'self'", "kowmeds.com", "kow-meds.herokuapp.com")
 # CSP_FONT_SRC=("'self'", "kowmeds.com", "kow-meds.herokuapp.com", "ka-f.fontawesome.com", "fonts.gstatic.com")
 # CSP_SCRIPT_SRC=("'self'", "kowmeds.com", "kow-meds.herokuapp.com", "kit.fontawesome.com")
-
