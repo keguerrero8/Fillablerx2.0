@@ -172,6 +172,11 @@ export default function RequestForm({ user, test = false }) {
             <Typography color="black" sx={styles.FillableSubtitle}>
                 Medication Search Tool
             </Typography>
+            {showHelp && (
+                <Typography sx={styles.HelpSubtitle}>
+                    For an easier experience, request a printed copy of your prescription to reference.
+                </Typography>
+            )}
             <Link 
                 sx={styles.HelpToggle}
                 underline='hover'
