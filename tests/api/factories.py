@@ -1,6 +1,6 @@
 import factory
 
-from api.models import Request, Pharmacy, Pharmacist, Medication
+from api.models import Request, Pharmacy, Medication, Pharmacist
 
 
 class MedicationFactory(factory.django.DjangoModelFactory):
@@ -12,8 +12,6 @@ class MedicationFactory(factory.django.DjangoModelFactory):
     strength = ("300mg",)
 
 
-# do we need a test that tests if the med name matches with med strength?
-# do we need a test to check that user type can only be hcp or patient?
 class RequestFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Request
@@ -29,15 +27,14 @@ class RequestFactory(factory.django.DjangoModelFactory):
     user_type = "patient"
 
 
-# do we need a test to test if zipcode is a valid zipcode? num length?
 class PharmacyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Pharmacy
 
     name = "name"
-    address = ("address",)
-    zipcode = ("zipcode",)
-    phone_number = ("+15169998888",)
+    address = "address"
+    zipcode = "11111"
+    phone_number = "+15169998888"
 
 
 # TO REVISIT

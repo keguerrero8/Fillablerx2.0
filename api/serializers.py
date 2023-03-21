@@ -8,6 +8,11 @@ class PharmacySerializer(serializers.ModelSerializer):
         model = Pharmacy
         fields = "__all__"
 
+    def validate_zipcode(self, value):
+        if len(value) != 5 or not value.isnumeric():
+            raise serializers.ValidationError("A valid zipcode must be 5 digits")
+        return value
+
 
 class PharmacistSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,7 +47,7 @@ class RequestSerializer(serializers.ModelSerializer):
         isInsurance = self.initial_data.get("isInsurance")
         if isInsurance and value == "":
             raise serializers.ValidationError("Please provide a valid BIN")
-        elif isInsurance and len(value) != 6:
+        elif isInsurance and (len(value) != 6 or not value.isnumeric()):
             raise serializers.ValidationError("A valid BIN should be 6 digits")
         return value
 
@@ -73,4 +78,9 @@ class RequestSerializer(serializers.ModelSerializer):
                 "Please select a valid medication strength from the dropdown"
             )
 
+    def validate_user_type(self, value):
+        if value != "patient" or value != "health_care_provider":
+            raise serializers.ValidationError(
+                "User type must be either patient or health care provider"
+            )
         return value

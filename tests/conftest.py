@@ -4,7 +4,7 @@ from pytest_factoryboy import register
 from tests.api.factories import RequestFactory, PharmacyFactory, MedicationFactory
 
 # register(RequestFactory)
-# register(PharmacyFactory)
+register(PharmacyFactory)
 register(MedicationFactory)
 
 
@@ -12,6 +12,12 @@ register(MedicationFactory)
 def create_medication(db, medication_factory):
     medication = medication_factory.create()
     return medication
+
+
+@pytest.fixture
+def create_pharmacy(db, pharmacy_factory):
+    pharmacy = pharmacy_factory.create()
+    return pharmacy
 
 
 # @pytest.fixture
