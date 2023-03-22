@@ -31,6 +31,7 @@ export default function RequestForm({ user, test = false }) {
     pcn: "",
     rxgroup: "",
     isInsurance: true,
+    userType: "",
     isTest: test
   }
   const [checked, setChecked] = useState(false)
@@ -42,8 +43,8 @@ export default function RequestForm({ user, test = false }) {
   const [requestData, setRequestData] = useState(defaultRequestData)
   const [medications, setMedications] = useState([])
   const [isAgreementModal, setIsAgreementModal] = useState(false)
-  const [step, setStep] = useState(0)
-  const [userType, setUserType] = useState("none")
+  const [step, setStep] = useState(1)
+  const [userType, setUserType] = useState("")
   const [isPrivacyAcknowledged, setisPrivacyAcknowledged] = useState(false)
   const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
@@ -70,19 +71,32 @@ export default function RequestForm({ user, test = false }) {
     setRequestStatus([])
     setMedication({})
     setSearchValue("")
-    setStep(0)
+    setStep(1)
     setisPrivacyAcknowledged(false)
     setisOptInAcknowledged(false)
-    setUserType("none")
+    setUserType("")
   }
 
-  function handleRadioChange (e) {
+  function handlePaymentRadioChange (e) {
     setValue(e.target.value)
     setRequestData({
         ...requestData,
         isInsurance: e.target.value === "insurance"? true : false
     })
   }
+
+  function handleUserTypeRadioChange (e) {
+    setStep(1)
+    setisPrivacyAcknowledged(false)
+    setisOptInAcknowledged(false)
+    setUserType(e.target.value)
+    setChecked(false)
+    setRequestData({
+        ...requestData,
+        user_type: e.target.value
+    })
+  } 
+
 
   function handleChange (e, isAuto = false, name) {
     if (isAuto) {
@@ -244,7 +258,7 @@ export default function RequestForm({ user, test = false }) {
                 </FormLabel>
                 <RadioGroup
                     value={value}
-                    onChange={handleRadioChange}
+                    onChange={handlePaymentRadioChange}
                     row
                 >
                     <FormControlLabel value="insurance" control={<Radio />} label="With Insurance" />
@@ -302,16 +316,34 @@ export default function RequestForm({ user, test = false }) {
                 </Typography>
             )}
         </Box>
-        <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>
-            {status.map((e, index) => 
-                <Typography key={index} sx={{color: status[0] === "Request successfully sent!"? "green" : "red"}}>{e}</Typography>)}
-        </Box>
+        <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
+                <FormLabel >
+                    <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
+                        Are you a health care provider or patient?<span style={{color: "red"}}> &#42;</span>
+                    </Typography>
+                </FormLabel>
+                <RadioGroup
+                    value={userType}
+                    onChange={handleUserTypeRadioChange}
+                    row
+                >
+                    <Box sx={{margin: "auto"}}>                        
+                        <FormControlLabel value="patient" control={<Radio />} label="Patient" />
+                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Health Care Provider" />
+                    </Box>
+                </RadioGroup>
+        </FormControl>
         <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
-            <FormControlLabel 
-                labelPlacement='end' 
+            <FormControlLabel
+                disabled={!(userType === "patient" || userType === "health_care_provider")}
+                labelPlacement='end'
                 control={<Checkbox checked={checked} onChange={handleCheck}/>} 
                 label={<Typography variant='p' sx={{fontSize: "1.1rem", fontWeight: 900}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
             />
+        </Box>
+        <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>
+            {status.map((e, index) => 
+                <Typography key={index} sx={{color: status[0] === "Request successfully sent!"? "green" : "red"}}>{e}</Typography>)}
         </Box>
         <Box sx={styles.ButtonsContainer}>
             {user? (

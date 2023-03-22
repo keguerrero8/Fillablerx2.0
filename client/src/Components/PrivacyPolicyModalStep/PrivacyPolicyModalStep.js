@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 
 import {styles} from './PrivacyPolicyModalStep-styles.js';
 
-import { Button as ButtonMui, Box, Typography } from '@mui/material'
+import { Button, Box, Typography } from '@mui/material'
 import PrivacyText from '../Documents/PrivacyPolicy/PrivacyText.js';
 
-function PrivacyPolicyModalStep({ setStep, userType, setIsAcknowledged, isAcknowledged, handleClose }) {
+function PrivacyPolicyModalStep({ setStep, userType, setIsAcknowledged, setIsAgreementModal }) {
+    const navigate = useNavigate()
     const [disabled, setDisabled] = useState(true)
     const scrollRef = useBottomScrollListener(() => setDisabled(false))
+
+    const handleAgreementContinue = () => {
+        setIsAcknowledged(true)
+        setStep((val) => val + 1)
+    }
+
+    const handleAgreementExit = () => {
+        setIsAcknowledged(true)
+        setIsAgreementModal(false)
+    }  
+
 
     return (
         <Box sx={styles.MainContainer}>
@@ -17,19 +30,18 @@ function PrivacyPolicyModalStep({ setStep, userType, setIsAcknowledged, isAcknow
                 <PrivacyText isModal={true}/>
             </Box>
             <Box sx={styles.buttonsContainer}>
-                <ButtonMui variant='contained' disabled={disabled} sx={{color: "white"}} size="medium" onClick={() => setIsAcknowledged(true)} >
-                    Agree
-                </ButtonMui>
-                {userType === "HCP"? (
-                    <ButtonMui variant='contained' disabled={!isAcknowledged} sx={{color: "white"}} size="medium" onClick={() => setStep((val) => val + 1)} >
-                        Continue
-                    </ButtonMui>
-                ) : (
-                    <ButtonMui variant='contained' disabled={!isAcknowledged} sx={{color: "white"}} size="medium" onClick={handleClose}>
-                    Exit
-                    </ButtonMui>
-                )}
+                {userType === "health_care_provider"? (
+                        <Button variant='contained' disabled={disabled} sx={{color: "white"}} size="medium" onClick={handleAgreementContinue} >
+                            Agree & Continue
+                        </Button>
+                    ) : (
+                        <Button variant='contained' disabled={disabled} sx={{color: "white"}} size="medium" onClick={handleAgreementExit} >
+                            Agree & Exit
+                        </Button>
+                    )
+                }
             </Box>
+            <Button sx={{position: "absolute", left: "5px", bottom: "0px"}} size="large" onClick={() => navigate("/")}>CANCEL</Button>
         </Box>
     );
 }

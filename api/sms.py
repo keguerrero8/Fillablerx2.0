@@ -140,7 +140,7 @@ class TwilioClient:
             from_=self.twilio_phone_number,
             body=(
                 f"KOW #{origin_request.id}\n"
-                f"{origin_request.med_name} {origin_request.med_strength}\n" 
+                f"{origin_request.med_name} {origin_request.med_strength}\n"
                 f"quantity: {origin_request.quantity} is IN STOCK today at...\n"
                 f"{pharmacy.name}\n"
                 f"(p) {pharmacy.phone_number}\n"
