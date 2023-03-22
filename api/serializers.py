@@ -77,6 +77,7 @@ class RequestSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 "Please select a valid medication strength from the dropdown"
             )
+        return value
 
     def validate_user_type(self, value):
         if value != "patient" and value != "health_care_provider":

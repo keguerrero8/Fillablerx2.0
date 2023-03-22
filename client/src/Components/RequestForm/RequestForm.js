@@ -31,7 +31,7 @@ export default function RequestForm({ user, test = false }) {
     pcn: "",
     rxgroup: "",
     isInsurance: true,
-    userType: "",
+    user_type: "",
     isTest: test
   }
   const [checked, setChecked] = useState(false)
@@ -150,10 +150,10 @@ export default function RequestForm({ user, test = false }) {
         else {
             r.json().then(res => {
                 const errors = Object.entries(res.errors).map(e => `${e[0].replace("_", " ")}: ${e[1]}`)
-                if (res.errors) {
+                if (res.errors && r.status === 400) {
                     setRequestStatus(errors)
                 } else {
-                    setRequestStatus(["Internal error occurred"])
+                    setRequestStatus([res.errors])
                 }
             })
         }
