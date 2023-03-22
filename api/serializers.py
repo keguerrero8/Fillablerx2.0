@@ -79,7 +79,7 @@ class RequestSerializer(serializers.ModelSerializer):
             )
 
     def validate_user_type(self, value):
-        if value != "patient" or value != "health_care_provider":
+        if value != "patient" and value != "health_care_provider":
             raise serializers.ValidationError(
                 "User type must be either patient or health care provider"
             )
