@@ -338,7 +338,7 @@ export default function RequestForm({ user, test = false }) {
                 disabled={!(userType === "patient" || userType === "health_care_provider")}
                 labelPlacement='end'
                 control={<Checkbox checked={checked} onChange={handleCheck}/>} 
-                label={<Typography variant='p' sx={{fontSize: "1.1rem", fontWeight: 900}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
+                label={<Typography variant='h5' sx={{fontSize: "1.3rem", fontWeight: "bolder"}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
             />
         </Box>
         <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>
