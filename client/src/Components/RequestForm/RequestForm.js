@@ -17,7 +17,8 @@ import {
     FormControl, 
     FormControlLabel,
     FormLabel, 
-    Checkbox 
+    Checkbox,
+    Link
 } from '@mui/material'
 
 export default function RequestForm({ user, test = false }) {
@@ -46,6 +47,7 @@ export default function RequestForm({ user, test = false }) {
   const [userType, setUserType] = useState("")
   const [isPrivacyAcknowledged, setisPrivacyAcknowledged] = useState(false)
   const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
 
   useEffect(() => {
     fetch("/api/medications")
@@ -158,6 +160,10 @@ export default function RequestForm({ user, test = false }) {
     })
   }
 
+    function handleHelp() {
+        setShowHelp(!showHelp);
+    }
+
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
         <AgreementModal 
@@ -174,6 +180,24 @@ export default function RequestForm({ user, test = false }) {
         />
         <CSRFToken />
         <Box sx={{...styles.InputContainer, mb: "1rem"}}>
+            <Typography color="black" sx={styles.FillableTitle}>
+                FILLABLE
+            </Typography>
+            <Typography color="black" sx={styles.FillableSubtitle}>
+                Medication Search Tool
+            </Typography>
+            {showHelp && (
+                <Typography sx={styles.HelpSubtitle}>
+                    For an easier experience, request a printed copy of your prescription to reference.
+                </Typography>
+            )}
+            <Link 
+                sx={styles.HelpToggle}
+                underline='hover'
+                color='black'
+                href="#" onClick={handleHelp}> 
+                {showHelp ? 'Hide Help' : 'Need Help?'}
+            </Link>
             <MedNameRequestInput 
                 requestData={requestData} 
                 label="Medication Name" 
@@ -186,44 +210,75 @@ export default function RequestForm({ user, test = false }) {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
             />
+            {showHelp && (
+                <Typography sx={styles.MedDetails}>
+                    Type and select the Medication Name on the prescription.
+                </Typography>
+            )}
             <MedStrengthRequestInput 
                 requestData={requestData} 
                 flex={0.5} 
-                label="Strength"
+                label="Medication Dose/Strength"
                 name="med_strength"
                 handleChange={handleChange} 
                 key="Strength"
                 isRequired={medication.strength && medication.strength.length > 0? true : false} 
                 strengths={medication.strength? medication.strength : []} 
             />
+            {showHelp && (
+                <Typography sx={styles.MedDetails}>
+                    If applicable, select the Dose or Strength of the selected medication.
+                </Typography>
+            )}
             <RequestFormInput 
                 requestData={requestData} 
                 flex={0.3} 
-                label="Quantity" 
+                label="Quantity to Dispense" 
                 name="quantity"
                 handleChange={handleChange} 
                 key="Quantity" 
                 isRequired={true}
             />
-            <FormControl sx={{margin: "auto", textAlign: "center"}}>
+            {showHelp && (
+                <Typography sx={styles.MedDetails}>
+                    Type the number of units (e.g., tablets, capsules, packs, milliliters, grams, tubes, boxes, inhalers, pens, etc.) prescribed. 
+                    Number values only.
+                </Typography>
+            )}
+            <FormControl sx={{margin: "auto", textAlign: "center", alignItems: "center"}}>
                 <FormLabel sx={{my: "20px"}}>
                     <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
                         Payment Method<span style={{color: "red"}}> &#42;</span>
                     </Typography>
+                    {showHelp && (
+                        <Typography sx={styles.PayHelp}>
+                            Select how the pharmacy will bill your prescription.
+                        </Typography>
+                    )}
                 </FormLabel>
                 <RadioGroup
                     value={value}
                     onChange={handlePaymentRadioChange}
                     row
                 >
-                    <FormControlLabel value="insurance" control={<Radio />} label="Insurance" />
-                    <FormControlLabel value="cash" control={<Radio />} label="Cash" />
+                    <FormControlLabel value="insurance" control={<Radio />} label="With Insurance" />
+                    <FormControlLabel value="cash" control={<Radio />} label="Without Insurance" />
                 </RadioGroup>
             </FormControl>
         </Box>
         {value === "insurance"? (
             <Box sx={{...styles.InputContainer, gap: "2rem"}}>
                 <Typography sx={styles.PharmacyInsuranceText}>Pharmacy Insurance Card:</Typography>
+                {showHelp && (
+                    <Typography sx={styles.InsuranceHelp}>
+                        Copy the following information from your PHARMACY Insurance Card.
+                    </Typography>
+                )}
+                {showHelp && (
+                    <Typography sx={styles.InsuranceHelp}>
+                        If your card does not have a RxGroup or Group, type "N/A".
+                    </Typography>
+                )}
                 <Box sx={styles.InsuranceFields}>
                     {
                         [
@@ -249,12 +304,17 @@ export default function RequestForm({ user, test = false }) {
             <RequestFormInput 
                 requestData={requestData} 
                 flex={0.8} 
-                label={test? "Phone Number to send test sms" : "Phone Number to Receive Text Notification"} 
+                label={test? "Phone Number to send test sms" : "Mobile Number"} 
                 name="phone_number" 
                 handleChange={handleChange} 
                 isRequired={true}
                 placeholder="Please enter 10 digits"
             />
+            {showHelp && (
+                <Typography sx={styles.MobileNumber}>
+                    Provide your Mobile Number to receive SMS text notifications if a pharmacy has this medication in stock today.
+                </Typography>
+            )}
         </Box>
         <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
                 <FormLabel >
@@ -273,12 +333,12 @@ export default function RequestForm({ user, test = false }) {
                     </Box>
                 </RadioGroup>
         </FormControl>
-        <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "column"}}>
+        <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
             <FormControlLabel
                 disabled={!(userType === "patient" || userType === "health_care_provider")}
-                labelPlacement='top' 
+                labelPlacement='end'
                 control={<Checkbox checked={checked} onChange={handleCheck}/>} 
-                label={<Typography variant='p' sx={{fontSize: "1.1rem", fontWeight: 900}}>I AGREE TO KOW'S TERMS OF SERVICE AND PRIVACY POLICY</Typography>} 
+                label={<Typography variant='p' sx={{fontSize: "1.1rem", fontWeight: 900}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
             />
         </Box>
         <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>

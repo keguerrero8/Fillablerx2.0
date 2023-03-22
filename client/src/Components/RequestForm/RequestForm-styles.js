@@ -44,5 +44,55 @@ export const styles = {
         justifyContent: "center", 
         gap: "2rem", 
         flexDirection: {xs: "column", sm: "column", md: "row"}
+    },
+    FillableTitle: {
+        textAlign: "center",
+        fontWeight: "900",
+        fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem", lg: "3rem"},
+        margin: "-2rem"
+    },
+    FillableSubtitle: {
+        textAlign: "center",
+        fontWeight: "900",
+        fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"},
+        marginBottom: "1rem"
+    },
+    HelpToggle: {
+        alignSelf: "flex-end",
+        marginBottom: "-2rem",
+        marginRight: "1rem",
+        fontWeight: "900",
+        color: "red",
+    },
+    MedDetails: {
+        marginLeft: "2rem",
+        marginRight: "2rem",
+        marginTop: "-1.5rem",
+        color: "#009ffb",
+        fontWeight: "900"
+    },
+    PayHelp: {
+        alignSelf: "center",
+        color: "#009ffb",
+        marginLeft: "2rem",
+        marginRight: "2rem",
+        fontWeight: "900",
+        marginTop: "0.25rem"
+    },
+    InsuranceHelp: {
+        marginLeft: "2rem",
+        marginRight: "2rem",
+        color: "#009ffb",
+        fontWeight: "900",
+        alignSelf: "center",
+        marginTop: "-1.5rem"
+    },
+    MobileNumber: {
+        marginTop: "-1.5rem",
+        marginBottom: "-2rem",
+        marginLeft: "2rem",
+        marginRight: "2rem",
+        color: "#009ffb",
+        fontWeight: "900"
     }
   }
