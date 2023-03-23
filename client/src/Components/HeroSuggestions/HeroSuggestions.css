@@ -40,8 +40,8 @@
 .med-card {
     background-color: var(--brand-white);
     border: 2.5px solid var(--brand-primaryblue);
-    width: 200px;
-    height: 250px;
+    width: 180px;
+    height: 240px;
     margin: 0 16px;
     display: flex;
     flex-direction: column;

@@ -5,12 +5,12 @@ import '../Button/Button.css';
 
 import { Button } from '../Button/Button';
 
-import image1 from "../../images/cold1.png"
-import image2 from "../../images/av1.png"
-import image3 from "../../images/bc1.png"
-import image4 from "../../images/inh1.png"
-import image5 from "../../images/gluc1.png"
-import image6 from "../../images/vacc.png"
+import image1 from "../../images/cold2.png"
+import image2 from "../../images/av2.png"
+import image3 from "../../images/bc3.png"
+import image4 from "../../images/inh2.png"
+import image5 from "../../images/gluc3.png"
+import image6 from "../../images/vacc3.png"
 
 function HeroSuggestions() {
     return (
