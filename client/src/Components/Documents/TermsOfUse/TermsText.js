@@ -172,7 +172,7 @@ function TermsText({ isModal = false }) {
                 rights in or to the Services.</p>
             <p>General Prohibitions</p>
             <p>By using our Services, You agree not to do any of the following:</p>
-            <div className={isModal? '' : 'rights-list'}>
+            <div className={'rights-list'}>
                 <p>1. Use, display, mirror or frame the Services, or any individual element within the Services,
                     KOW’s names, any KOW trademark, logo or other proprietary information, or the layout
                     and design of any page or form contained on a page, without KOW’s express written

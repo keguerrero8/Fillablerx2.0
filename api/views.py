@@ -151,11 +151,15 @@ def request_list(request):
             return Response(
                 {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
             )
-        except:
+        except Exception as ex:
+            logging.debug(
+                f"Failed to create a request. Error is due to the following exception: {ex}"
+            )
             return Response(
                 {
-                    "error": "Something went wrong when creating the request, please contact your administrator"
-                }
+                    "errors": "Something went wrong when creating the request, please contact your administrator"
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
 

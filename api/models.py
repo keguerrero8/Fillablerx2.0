@@ -43,3 +43,4 @@ class Request(models.Model):
     isInsurance = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    user_type = models.CharField(max_length=200)

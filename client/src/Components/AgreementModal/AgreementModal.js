@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Modal, Box } from '@mui/material'
 
-import UserTypeModalStep from '../UserTypeModalStep/UserTypeModalStep';
 import TermsOfUseModalStep from '../TermsOfUseModalStep/TermsOfUseModalStep'
 import PrivacyPolicyModalStep from '../PrivacyPolicyModalStep/PrivacyPolicyModalStep'
 import ProviderOptInModalStep from '../ProviderOptInModalStep/ProviderOptInModalStep';
@@ -13,7 +12,6 @@ export default function AgreementModal( {
     setStep, 
     step, 
     userType, 
-    setUserType, 
     isPrivacyAcknowledged, 
     setisPrivacyAcknowledged, 
     isOptInAcknowledged, 
@@ -34,16 +32,15 @@ export default function AgreementModal( {
     };
 
     const isPatientFinalStep = step === 2 && userType === "patient" && isPrivacyAcknowledged
-    const isHCPFinalStep = step === 3 && userType === "HCP" && isOptInAcknowledged
+    const isHCPFinalStep = step === 3 && userType === "health_care_provider" && isOptInAcknowledged
     const handleClose = () => {
         if (isPatientFinalStep || isHCPFinalStep) setIsAgreementModal(false)
     }
 
     const agreementStep = {
-        0: <UserTypeModalStep setStep={setStep} userType={userType} setUserType={setUserType}/>,
         1: <TermsOfUseModalStep setStep={setStep}/>,
-        2: <PrivacyPolicyModalStep setStep={setStep} userType={userType} isAcknowledged={isPrivacyAcknowledged} setIsAcknowledged={setisPrivacyAcknowledged} handleClose={handleClose}/>,
-        3: <ProviderOptInModalStep isAcknowledged={isOptInAcknowledged} setIsAcknowledged={setisOptInAcknowledged} handleClose={handleClose}/>
+        2: <PrivacyPolicyModalStep setStep={setStep} userType={userType} isAcknowledged={isPrivacyAcknowledged} setIsAcknowledged={setisPrivacyAcknowledged} setIsAgreementModal={setIsAgreementModal}/>,
+        3: <ProviderOptInModalStep isAcknowledged={isOptInAcknowledged} setIsAcknowledged={setisOptInAcknowledged} setIsAgreementModal={setIsAgreementModal}/>
     }
     
   return (
