@@ -140,14 +140,17 @@ class TwilioClient:
             from_=self.twilio_phone_number,
             body=(
                 f"KOW #{origin_request.id}\n"
-                f"{origin_request.med_name} {origin_request.med_strength}\n"
-                f"quantity: {origin_request.quantity} is IN STOCK today at...\n"
+                f"{origin_request.med_name} {origin_request.med_strength},\n"
+                f"quantity: {origin_request.quantity} is IN STOCK today.\n"
+                f"\n"
+                f"Please contact:\n"
                 f"{pharmacy.name}\n"
+                f"{pharmacy.address}, {pharmacy.zipcode}\n"
                 f"(p) {pharmacy.phone_number}\n"
-                f"{pharmacy.address}, {pharmacy.zipcode}"
-                f"This pharmacy accepts the insurance provided: "
-                f"BIN: {origin_request.bin}"
-                f"PCN: {origin_request.pcn}"
-                f"RXGRP: {origin_request.rxgroup}"
+                f"\n"
+                f"This pharmacy accepts the insurance (if provided):\n"
+                f"BIN: {origin_request.bin}\n"
+                f"PCN: {origin_request.pcn}\n"
+                f"RxGRP: {origin_request.rxgroup}"
             ),
         )
