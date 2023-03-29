@@ -186,15 +186,10 @@ export default function RequestForm({ user, test = false }) {
             <Typography color="black" sx={styles.FillableSubtitle}>
                 Medication Search Tool
             </Typography>
-            {showHelp && (
-                <Typography sx={styles.HelpSubtitle}>
-                    For an easier experience, request a printed copy of your prescription to reference.
-                </Typography>
-            )}
             <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
                 <FormLabel >
                     <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
-                        Are you a health care provider or patient?<span style={{color: "red"}}> &#42;</span>
+                        Are you a Healthcare Provider or Patient/Caregiver?<span style={{color: "red"}}> &#42;</span>
                     </Typography>
                 </FormLabel>
                 <RadioGroup
@@ -203,11 +198,16 @@ export default function RequestForm({ user, test = false }) {
                     row
                 >
                     <Box sx={{margin: "auto"}}>                        
-                        <FormControlLabel value="patient" control={<Radio />} label="Patient" />
-                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Health Care Provider" />
+                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Healthcare Provider" />
+                        <FormControlLabel value="patient" control={<Radio />} label="Patient/Caregiver" />
                     </Box>
                 </RadioGroup>
             </FormControl>
+            {showHelp && (
+                <Typography sx={styles.HelpSubtitle}>
+                    For an easier experience, request a printed copy of your prescription to reference.
+                </Typography>
+            )}
             <Link 
                 sx={styles.HelpToggle}
                 underline='hover'
@@ -333,7 +333,7 @@ export default function RequestForm({ user, test = false }) {
                 </Typography>
             )}
         </Box>
-        <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+        <Box sx={{textAlign: "center", width: "90%", marginTop: "3rem", marginBottom: "-1rem", marginLeft: "auto", marginRight: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
             <FormControlLabel
                 disabled={!(userType === "patient" || userType === "health_care_provider")}
                 labelPlacement='end'
