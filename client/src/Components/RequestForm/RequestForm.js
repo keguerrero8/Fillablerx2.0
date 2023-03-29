@@ -191,6 +191,23 @@ export default function RequestForm({ user, test = false }) {
                     For an easier experience, request a printed copy of your prescription to reference.
                 </Typography>
             )}
+            <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
+                <FormLabel >
+                    <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
+                        Are you a health care provider or patient?<span style={{color: "red"}}> &#42;</span>
+                    </Typography>
+                </FormLabel>
+                <RadioGroup
+                    value={userType}
+                    onChange={handleUserTypeRadioChange}
+                    row
+                >
+                    <Box sx={{margin: "auto"}}>                        
+                        <FormControlLabel value="patient" control={<Radio />} label="Patient" />
+                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Health Care Provider" />
+                    </Box>
+                </RadioGroup>
+            </FormControl>
             <Link 
                 sx={styles.HelpToggle}
                 underline='hover'
@@ -316,23 +333,6 @@ export default function RequestForm({ user, test = false }) {
                 </Typography>
             )}
         </Box>
-        <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
-                <FormLabel >
-                    <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
-                        Are you a health care provider or patient?<span style={{color: "red"}}> &#42;</span>
-                    </Typography>
-                </FormLabel>
-                <RadioGroup
-                    value={userType}
-                    onChange={handleUserTypeRadioChange}
-                    row
-                >
-                    <Box sx={{margin: "auto"}}>                        
-                        <FormControlLabel value="patient" control={<Radio />} label="Patient" />
-                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Health Care Provider" />
-                    </Box>
-                </RadioGroup>
-        </FormControl>
         <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
             <FormControlLabel
                 disabled={!(userType === "patient" || userType === "health_care_provider")}
@@ -346,6 +346,9 @@ export default function RequestForm({ user, test = false }) {
                 <Typography key={index} sx={{color: status[0] === "Request successfully sent!"? "green" : "red"}}>{e}</Typography>)}
         </Box>
         <Box sx={styles.ButtonsContainer}>
+            <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
+                Reset Request
+            </Button>
             {user? (
                 <Button variant='contained' sx={{color: "white"}} size="large" type="submit">
                     Send Request
@@ -355,9 +358,6 @@ export default function RequestForm({ user, test = false }) {
                 Send Request
             </Button>
             )}
-            <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
-                Reset Request
-            </Button>
         </Box>
     </Box>   
 

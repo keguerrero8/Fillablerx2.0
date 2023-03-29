@@ -42,7 +42,7 @@ export const styles = {
         textAlign: "center", 
         display: "flex", 
         justifyContent: "center", 
-        gap: "2rem", 
+        gap: "3rem", 
         flexDirection: {xs: "column", sm: "column", md: "row"}
     },
     FillableTitle: {
