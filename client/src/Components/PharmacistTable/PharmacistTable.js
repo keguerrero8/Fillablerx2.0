@@ -6,7 +6,7 @@ import pharmacyService from '../../Services/pharmacyService'
 import pharmacistService from '../../Services/pharmacistService'
 
 import { Box, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Typography } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { styles } from './PharmacistTable-styles'
 
 export default function PharmacistTable() {
@@ -38,6 +38,11 @@ export default function PharmacistTable() {
             <Box sx={{my: "70px"}}>
                 <Typography component="div" variant="h4" sx={{fontWeight: 500, mb: "10px"}}>{pharmacy.name}</Typography>
                 <Typography component="div" variant="h5" sx={{fontWeight: 400}}>{pharmacy.address}, {pharmacy.zipcode}</Typography>
+            </Box>
+            <Box>
+                <Link to={`/dashboard/pharmacies/enrollment/${params.id}`} style={{color: "#154161"}}>
+                SIGN AGREEMENTS
+                </Link>
             </Box>
             <Box sx={styles.PharmacistText}>
                 <Typography variant="h6" gutterBottom component="div">

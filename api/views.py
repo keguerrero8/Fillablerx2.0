@@ -38,7 +38,7 @@ def pharmacy_list(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(["GET"])
+@api_view(["GET", "PUT"])
 @csrf_protect
 @permission_classes([IsAuthenticated])
 def pharmacy_detail(request, id):
@@ -53,6 +53,14 @@ def pharmacy_detail(request, id):
     if request.method == "GET":
         serializer = PharmacySerializer(pharmacy)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == "PUT":
+        # do we need to reconfigure this?
+        # serializer = PharmacistSerializer(pharmacist, data=request.data, partial=True)
+        serializer = PharmacySerializer(pharmacy)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET"])

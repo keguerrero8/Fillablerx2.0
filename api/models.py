@@ -8,6 +8,12 @@ class Pharmacy(models.Model):
     address = models.CharField(max_length=300)
     zipcode = models.CharField(max_length=30)
     phone_number = PhoneNumberField()
+    contact_name = models.CharField(max_length=200, blank=True)
+    contact_title = models.CharField(max_length=200, blank=True)
+    contact_email = models.CharField(max_length=200, blank=True)
+    contact_phone_number = PhoneNumberField(blank=True, null=True)
+    npi = models.CharField(max_length=200, blank=True)
+    signed_agreement_stamp = models.DateTimeField(auto_now=False, auto_now_add=False, blank=True, null=True)
 
 
 class Pharmacist(models.Model):

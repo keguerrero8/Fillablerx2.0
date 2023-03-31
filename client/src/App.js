@@ -12,6 +12,7 @@ import Page404 from './Pages/Page404';
 import LoginPage from './Pages/Login/LoginPage';
 import DashboardPage from './Pages/DashboardPage';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
+import PharmacyEnrollment from './Components/PharmacyEnrollment/PharmacyEnrollment';
 import Footer from './Components/Footer/Footer';
 
 import PharmacySubscription from './Components/Documents/PharmacySubscription/PharmacySubscription';
@@ -51,6 +52,7 @@ function App() {
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
         <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
+        <Route path="/dashboard/pharmacies/enrollment/:id" element={<PharmacyEnrollment />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-of-use" element={<Terms />} />
         <Route path="*" element={<Page404 />} />
