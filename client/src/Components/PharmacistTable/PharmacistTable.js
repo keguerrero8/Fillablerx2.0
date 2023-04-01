@@ -31,7 +31,7 @@ export default function PharmacistTable() {
 
     useEffect(() => {
       loadPharmacist()
-      }, [pharmacistsUpdate])
+    }, [pharmacistsUpdate])
 
     return (
         <Box sx={styles.MainContainer}>

@@ -21,6 +21,7 @@ from .serializers import (
 from .sms import TwilioClient
 
 import logging
+import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +44,7 @@ def pharmacy_list(request):
 @permission_classes([IsAuthenticated])
 def pharmacy_detail(request, id):
     """
-    Get a single pharmacies details
+    Get a single pharmacy's details or update that pharmacys enrollment details
     """
     try:
         pharmacy = Pharmacy.objects.get(id=id)
@@ -54,9 +55,13 @@ def pharmacy_detail(request, id):
         serializer = PharmacySerializer(pharmacy)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
-        # do we need to reconfigure this?
-        # serializer = PharmacistSerializer(pharmacist, data=request.data, partial=True)
-        serializer = PharmacySerializer(pharmacy)
+        if request.data["signature"] == "":
+            return Response({"errors": "A signature must be provided"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        del request.data["signature"]
+        request.data["signed_agreement_stamp"] = datetime.datetime.now()
+        
+        serializer = PharmacySerializer(pharmacy, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

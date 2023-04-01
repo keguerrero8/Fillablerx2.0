@@ -20,11 +20,24 @@ export default function PharmacyEnrollment() {
     const [pharmacy, setPharmacy] = useState({})
     const [enrollmentData, setEnrollmentData] = useState(defaultEnrollmentData)
     const [signature, setSignature] = useState("")
-    const [isDisabled, setIsDisabled] = useState(true)
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [status, setStatus] = useState([])
 
     const loadPharmacy = async () => {
       const loadedPharmacy = await pharmacyService.getPharmacy(params.id)
       setPharmacy(loadedPharmacy)
+    }
+
+    const updatePharmacy = async (obj) => {
+        const response = await pharmacyService.updateEnrolledPharmacy(params.id, {...obj, signature: signature, contact_phone_number: "+1" + enrollmentData["contact_phone_number"]})
+
+        if (!response.errors) {
+            setStatus(["Successfully enrolled the pharmacist!"])
+            setIsDisabled(true)
+          } else {
+            const error_messages = Object.entries(response.errors).map(e => `${e[0].replaceAll("_", " ")}: ${e[1]}`)
+            setStatus(error_messages)
+        }
     }
 
     useEffect(() => {
@@ -43,18 +56,17 @@ export default function PharmacyEnrollment() {
     }
 
     function handleClear () {
-        // setChecked(false)
+        setStatus([])
         setEnrollmentData(defaultEnrollmentData)
-        setIsDisabled(true)
+        setSignature("")
+        setIsDisabled(false)
     }
 
-    
     function handleSubmit (e) {
+        // add logic to redirect user to pharmacy page if submitted correctly otherwise return error status
         e.preventDefault()
-        console.log("submit the pharmacy info!")
+        updatePharmacy(enrollmentData)
     }
-
-    console.log(enrollmentData)
 
     return (
         <Box sx={styles.MainContainer} component="form" onSubmit={handleSubmit}>
@@ -75,6 +87,7 @@ export default function PharmacyEnrollment() {
                         {flex: 1, label: "Contact Name", name: "contact_name"}, 
                         {flex: 1, label: "Contact Title", name: "contact_title"}, 
                         {flex: 1, label: "Contact Email", name: "contact_email"}, 
+                        {flex: 1, label: "Contact Phone Number", name: "contact_phone_number"}, 
                         {flex: 1, label: "NPI", name: "npi"}
                     ]
                     .map(i => 
@@ -94,12 +107,20 @@ export default function PharmacyEnrollment() {
                     </Typography>
                     <TextField sx={{width: "100%"}} onChange={handleSignatureChange} value={signature} name="signature" placeholder="Please type your full name"/>
                 </Box>
+                <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "2rem"}}>
+                    <Typography color="black" component="h6">Title: </Typography>
+                    <TextField sx={{width: "50%"}} value={enrollmentData["contact_title"]} variant="standard"/>
+                </Box>
+            </Box>
+            <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>
+            {status.map((e, index) => 
+                <Typography key={index} sx={{color: status[0] === "Successfully enrolled the pharmacist!"? "green" : "red"}}>{e}</Typography>)}
             </Box>
             <Box sx={styles.ButtonsContainer}>
                 <Button variant='text' sx={{color: "#154161"}} size="large" onClick={handleClear} >
                     Reset Form
                 </Button>
-                <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled}>
+                <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={isDisabled || signature === ""}>
                     Submit
                 </Button>
             </Box>
