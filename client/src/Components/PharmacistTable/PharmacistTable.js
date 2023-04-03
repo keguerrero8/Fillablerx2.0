@@ -28,6 +28,10 @@ export default function PharmacistTable() {
       const loadedPharmacists = await pharmacistService.getPharmacists(params.id)
       setPharmacists(loadedPharmacists)
     }
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
       loadPharmacist()

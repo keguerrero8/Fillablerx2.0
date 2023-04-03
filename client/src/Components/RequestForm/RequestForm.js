@@ -4,7 +4,7 @@ import Cookies from "js-cookie"
 import RequestFormInput from '../RequestFormInput/RequestFormInput'
 import MedNameRequestInput from '../MedNameRequestInput/MedNameRequestInput'
 import MedStrengthRequestInput from '../MedStrengthRequestInput/MedStrengthRequestInput'
-import AgreementModal from '../AgreementModal/AgreementModal'
+import RequestAgreementModal from '../RequestAgreementModal/RequestAgreementModal'
 import CSRFToken from '../CSRFToken/CSRFToken'
 import { styles } from './RequestForm-styles'
 
@@ -166,7 +166,7 @@ export default function RequestForm({ user, test = false }) {
 
   return (
     <Box sx={styles.FormContainer} component="form" onSubmit={handleSubmit}>
-        <AgreementModal 
+        <RequestAgreementModal 
             setIsAgreementModal={setIsAgreementModal} 
             isAgreementModal={isAgreementModal} 
             step={step} 
@@ -351,9 +351,9 @@ export default function RequestForm({ user, test = false }) {
                     Send Request
                 </Button>
             ) : (
-            <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled || !checked}>
-                Send Request
-            </Button>
+                <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled || !checked}>
+                    Send Request
+                </Button>
             )}
             <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
                 Reset Request

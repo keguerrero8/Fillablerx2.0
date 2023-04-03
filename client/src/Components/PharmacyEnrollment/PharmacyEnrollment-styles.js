@@ -10,13 +10,14 @@ export const styles = {
         minHeight: "100vh",
     },
     ButtonsContainer: {
-        margin: "auto", 
+        margin: "0px auto 40px", 
         width: "100%", 
         textAlign: "center", 
         display: "flex", 
         justifyContent: "center", 
+        alignItems: "center",
         gap: "2rem", 
-        flexDirection: {xs: "column", sm: "column", md: "row"}
+        flexDirection: {xs: "column", sm: "column", md: "column"}
     },
     FieldsContainer: {
         width: {xs: "100%", sm: "100%", md: "50%"},
