@@ -39,15 +39,32 @@ export default function PharmacistTable() {
 
     return (
         <Box sx={styles.MainContainer}>
-            <Box sx={{my: "70px"}}>
+            <Box sx={{mt: "70px", mb: "70px"}}>
                 <Typography component="div" variant="h4" sx={{fontWeight: 500, mb: "10px"}}>{pharmacy.name}</Typography>
                 <Typography component="div" variant="h5" sx={{fontWeight: 400}}>{pharmacy.address}, {pharmacy.zipcode}</Typography>
             </Box>
-            <Box>
-                <Link to={`/dashboard/pharmacies/enrollment/${params.id}`} style={{color: "#154161"}}>
-                SIGN AGREEMENTS
-                </Link>
-            </Box>
+            {
+                pharmacy.signed_agreement_stamp? (
+                    <Box sx={{width: "60%", margin: "auto", display: "flex", flexDirection: "column", gap: "1rem"}}>
+                        <Typography component="div" variant="h6" sx={{fontWeight: "bolder", textDecoration: "underline"}}>Signed Pharmacy Data</Typography>
+                        <Typography component="div" variant="subtitle1" color="primary.light" sx={{fontWeight: "bolder"}}>Enrolled  {pharmacy.signed_agreement_stamp}</Typography>
+                        <Typography component="div" variant="subtitle1">Contact Name:  {pharmacy.contact_name}</Typography>
+                        <Typography component="div" variant="subtitle1">Title:  {pharmacy.address}, {pharmacy.contact_title}</Typography> 
+                        <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
+                        <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
+                        <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  
+                    </Box>
+                ) : null
+            }
+            {
+                pharmacy.signed_agreement_stamp? null : (
+                    <Box>
+                        <Link to={`/dashboard/pharmacies/enrollment/${params.id}`} style={{color: "#154161"}}>
+                        SIGN AGREEMENTS
+                        </Link>
+                    </Box>
+                )
+            }
             <Box sx={styles.PharmacistText}>
                 <Typography variant="h6" gutterBottom component="div">
                     Pharmacists registered: {pharmacists.length}

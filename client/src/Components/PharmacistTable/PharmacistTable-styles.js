@@ -1,7 +1,7 @@
 export const styles = {
     MainContainer: {
         width: "90%", 
-        margin: "150px auto", 
+        margin: "50px auto", 
         textAlign: "center", 
         minHeight: "100vh"
     },

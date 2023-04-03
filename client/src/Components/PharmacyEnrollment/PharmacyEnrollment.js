@@ -94,6 +94,10 @@ export default function PharmacyEnrollment() {
         setIsDisabled(false)
         setisPrivacyAcknowledged(false)
         setisOptInAcknowledged(false)
+        setCheckedPrivacy(false)
+        setCheckedOptIn(false)
+        setStepPrivacy(1)
+        setStepOptIn(1)
     }
 
     function handleSubmit (e) {
@@ -152,16 +156,16 @@ export default function PharmacyEnrollment() {
                             isRequired={true}
                         />)
                 }
-                <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                <Box sx={{textAlign: "center", width: "100%", margin: "20px auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
                     <FormControlLabel
-                        labelPlacement='end'
+                        labelPlacement='top'
                         control={<Checkbox checked={checkedPrivacy} onChange={handlePrivacyCheck}/>} 
                         label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder"}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
                     />
                 </Box>
-                <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                <Box sx={{textAlign: "center", width: "100%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
                     <FormControlLabel
-                        labelPlacement='end'
+                        labelPlacement='top'
                         control={<Checkbox checked={checkedOptIn} onChange={handleOptInCheck}/>} 
                         label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder"}}>I AGREE TO KOW'S ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</Typography>} 
                     />
@@ -182,7 +186,7 @@ export default function PharmacyEnrollment() {
                 <Typography key={index} sx={{color: status[0] === "Successfully enrolled the pharmacist!"? "green" : "red"}}>{e}</Typography>)}
             </Box>
             <Box sx={styles.ButtonsContainer}>
-                <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || signature === "" || !isPrivacyAcknowledged || !isOptInAcknowledged}>
+                <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || signature === "" || !isPrivacyAcknowledged || !isOptInAcknowledged || !checkedPrivacy || !checkedOptIn}>
                     Submit
                 </Button>
                 <Button variant='text' sx={{color: "#154161", width: "15%"}} size="large" onClick={handleClear} >
