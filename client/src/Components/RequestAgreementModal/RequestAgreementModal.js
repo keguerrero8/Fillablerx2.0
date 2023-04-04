@@ -6,7 +6,7 @@ import TermsOfUseModalStep from '../TermsOfUseModalStep/TermsOfUseModalStep'
 import PrivacyPolicyModalStep from '../PrivacyPolicyModalStep/PrivacyPolicyModalStep'
 import ProviderOptInModalStep from '../ProviderOptInModalStep/ProviderOptInModalStep';
 
-export default function AgreementModal( { 
+export default function RequestAgreementModal( { 
     setIsAgreementModal, 
     isAgreementModal, 
     setStep, 
