@@ -42,20 +42,29 @@ export const styles = {
         textAlign: "center", 
         display: "flex", 
         justifyContent: "center", 
-        gap: "2rem", 
+        gap: "3rem", 
         flexDirection: {xs: "column", sm: "column", md: "row"}
     },
     FillableTitle: {
         textAlign: "center",
         fontWeight: "900",
         fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem", lg: "3rem"},
-        margin: "-2rem"
+        margin: "-2rem",
+        "@media (max-width: 1200px)": {fontSize: "3rem"}
     },
     FillableSubtitle: {
         textAlign: "center",
         fontWeight: "900",
         fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"},
         marginBottom: "1rem"
+    },
+    HelpSubtitle: {
+        textAlign: "flex-start",
+        alignSelf: "center",
+        color: "#009ffb",
+        fontWeight: "900",
+        width: "85%",
+        marginTop: "-1.5rem"
     },
     HelpToggle: {
         alignSelf: "flex-end",

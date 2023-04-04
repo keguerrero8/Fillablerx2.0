@@ -23,6 +23,7 @@
 .intro > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-1 {
@@ -33,15 +34,18 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-1 > h3 {
     font-size: var(--font-xsmall);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-1 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-1-0 {
@@ -49,10 +53,12 @@
 }
 .subtext-1-0 > h3 {
     font-size: var(--font-xsmall);
+    text-align: start;
 }
 .subtext-1-0 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-1b {
@@ -60,10 +66,12 @@
 }
 .subtext-1b > h3 {
     font-size: var(--font-xsmall);
+    text-align: start;
 }
 .subtext-1b > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-1c {
@@ -71,10 +79,12 @@
 }
 .subtext-1c > h3 {
     font-size: var(--font-xsmall);
+    text-align: start;
 }
 .subtext-1c > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-2 {
@@ -85,15 +95,18 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-2 > h3 {
     font-size: var(--font-xsmall);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-2 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-2 {
@@ -101,10 +114,12 @@
 }
 .subtext-2 > h3 {
     font-size: var(--font-xsmall);
+    text-align: start;
 }
 .subtext-2 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-3 {
@@ -115,15 +130,18 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-3 > h3 {
     font-size: var(--font-xsmall);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-3 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-3 {
@@ -131,10 +149,12 @@
 }
 .subtext-3 > h3 {
     font-size: var(--font-xsmall);
+    text-align: start;
 }
 .subtext-3 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-4 {
@@ -145,15 +165,18 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-4 > h3 {
     font-size: var(--font-xsmall);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-4 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-4b {
@@ -162,6 +185,7 @@
 .subtext-4b > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-5 {
@@ -172,15 +196,18 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-5 > h3 {
     font-size: var(--font-xsmall);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-5 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-6 {
@@ -191,10 +218,12 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-6 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-7 {
@@ -205,10 +234,12 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-7 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-8 {
@@ -219,10 +250,12 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-8 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-9 {
@@ -233,10 +266,12 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-9 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .section-10 {
@@ -248,12 +283,15 @@
     font-size: var(--font-small);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .section-10 > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .subtext-10 {
     font-size: var(--font-xsmall);
+    text-align: start;
 }

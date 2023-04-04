@@ -23,10 +23,12 @@
     font-size: var(--font-xsmall);
     font-weight: 900;
     margin-bottom: 12px;
+    text-align: start;
 }
 .body-text > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
 }
 
 .link-privacy {
@@ -52,4 +54,11 @@
 .rights-list > p {
     font-size: var(--font-xsmall);
     margin-bottom: 12px;
+    text-align: start;
+}
+
+.subtext-fee {
+    font-size: var(--font-xsmall);
+    margin-bottom: 12px;
+    text-align: start;
 }

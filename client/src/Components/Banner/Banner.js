@@ -5,7 +5,7 @@ function Banner(props) {
     return (
         <div className='banner'>
             <div className='text-container'>
-                <h3>Website Downtime scheduled for 2/15/22 7pm-12am</h3>
+                <h3>Website Downtime scheduled for 3/16/23 7pm-12am</h3>
                 <h3>BETA period launching soon!</h3>
                 <h3>Shortage Announcement: Children's Tylenol and Advil</h3>
                 {/*
