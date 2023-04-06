@@ -184,8 +184,25 @@ export default function RequestForm({ user, test = false }) {
                 FILLABLE
             </Typography>
             <Typography color="black" sx={styles.FillableSubtitle}>
-                Medication Search Tool
+                Medication Request Form
             </Typography>
+            <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
+                <FormLabel >
+                    <Typography color="black" component="h6" sx={styles.UserType}>
+                        Are you a healthcare provider or patient/caregiver?<span style={{color: "red"}}> &#42;</span>
+                    </Typography>
+                </FormLabel>
+                <RadioGroup
+                    value={userType}
+                    onChange={handleUserTypeRadioChange}
+                    row
+                >
+                    <Box sx={{margin: "auto"}}>                        
+                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Healthcare Provider" />
+                        <FormControlLabel value="patient" control={<Radio />} label="Patient/Caregiver" />
+                    </Box>
+                </RadioGroup>
+            </FormControl>
             {showHelp && (
                 <Typography sx={styles.HelpSubtitle}>
                     For an easier experience, request a printed copy of your prescription to reference.
@@ -316,24 +333,7 @@ export default function RequestForm({ user, test = false }) {
                 </Typography>
             )}
         </Box>
-        <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
-                <FormLabel >
-                    <Typography color="black" component="h6" sx={styles.PaymentMethodText}>
-                        Are you a health care provider or patient?<span style={{color: "red"}}> &#42;</span>
-                    </Typography>
-                </FormLabel>
-                <RadioGroup
-                    value={userType}
-                    onChange={handleUserTypeRadioChange}
-                    row
-                >
-                    <Box sx={{margin: "auto"}}>                        
-                        <FormControlLabel value="patient" control={<Radio />} label="Patient" />
-                        <FormControlLabel value="health_care_provider" control={<Radio />} label="Health Care Provider" />
-                    </Box>
-                </RadioGroup>
-        </FormControl>
-        <Box sx={{textAlign: "center", width: "90%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+        <Box sx={{textAlign: "center", width: "90%", marginTop: "2rem", marginBottom: "-2rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
             <FormControlLabel
                 disabled={!(userType === "patient" || userType === "health_care_provider")}
                 labelPlacement='end'

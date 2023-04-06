@@ -25,7 +25,7 @@ function PharmacyOptInModalStep({ setIsAcknowledged, setIsAgreementModal }) {
             </Box>
             <Box sx={styles.buttonsContainer}>
                 <Button variant='contained' disabled={disabled} sx={{color: "white"}} size="medium" onClick={handleAgreementExit} >
-                    Agree & Exit
+                    Agree & Close
                 </Button>
             </Box>
             <Button sx={{position: "absolute", left: "5px", bottom: "0px"}} size="large" onClick={() => navigate("/")}>CANCEL</Button>

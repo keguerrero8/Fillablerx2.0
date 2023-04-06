@@ -299,11 +299,11 @@ function PharmacySubscriptionText({ isModal = false }) {
                 Privacy Policy and agree to the terms contained therein.</p>
             <div className='subtext-sig'>
                 <h2>FILLABLE, LLC A/K/A KOW:</h2>
-                <h3>By: {/*e-signature?*/}</h3>
+                <h3>By:</h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
                 <h2>sample pharmacy name{/*pharmacy name*/}</h2>
-                <h3>By: {/*e-signature?*/}</h3>
+                <h3>By:</h3>
                 <p>Name: {/*pharmacy contact name*/}</p>
                 <p>Title: {/*pharmacy contact title*/}</p>
             </div>

@@ -103,5 +103,10 @@ export const styles = {
         marginRight: "2rem",
         color: "#009ffb",
         fontWeight: "900"
-    }
+    },
+    UserType: {
+        fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"},
+        fontWeight: "bold",
+        marginTop: "-2rem"
+    },
   }

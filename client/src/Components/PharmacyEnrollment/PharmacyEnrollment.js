@@ -132,9 +132,9 @@ export default function PharmacyEnrollment() {
             </Box>
             <Box sx={{mb: "10px"}}>
                 <Typography component="div" variant="h4" sx={{fontWeight: "bolder", mb: "10px"}}>{pharmacy.name}</Typography>
-                <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "20px"}}>{pharmacy.address}</Typography>
-                <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "20px"}}>Zipcode: {pharmacy.zipcode}</Typography>
-                <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "20px"}}>{pharmacy.phone_number? pharmacy.phone_number.replace("+", "") : null}</Typography>
+                <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "10px"}}>{pharmacy.address}</Typography>
+                <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "10px"}}>Zipcode: {pharmacy.zipcode}</Typography>
+                <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "10px"}}>{pharmacy.phone_number? pharmacy.phone_number.replace("+", "") : null}</Typography>
             </Box>
             <Box sx={styles.FieldsContainer}>
                 {
@@ -143,7 +143,7 @@ export default function PharmacyEnrollment() {
                         {flex: 1, label: "Contact Title", name: "contact_title"}, 
                         {flex: 1, label: "Contact Email", name: "contact_email"}, 
                         {flex: 1, label: "Contact Phone Number", name: "contact_phone_number"}, 
-                        {flex: 1, label: "NPI", name: "npi"}
+                        {flex: 1, label: "Pharmacy NPI", name: "npi"}
                     ]
                     .map(i => 
                         <RequestFormInput 
@@ -156,21 +156,24 @@ export default function PharmacyEnrollment() {
                             isRequired={true}
                         />)
                 }
-                <Box sx={{textAlign: "center", width: "100%", margin: "20px auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                <Box sx={{textAlign: "center", width: "100%", marginTop: "2rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
-                        labelPlacement='top'
+                        labelPlacement='end'
                         control={<Checkbox checked={checkedPrivacy} onChange={handlePrivacyCheck}/>} 
                         label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder"}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
                     />
                 </Box>
-                <Box sx={{textAlign: "center", width: "100%", margin: "auto", display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                <Box sx={{textAlign: "center", width: "100%", marginTop: "-1rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
-                        labelPlacement='top'
+                        labelPlacement='end'
                         control={<Checkbox checked={checkedOptIn} onChange={handleOptInCheck}/>} 
-                        label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder"}}>I AGREE TO KOW'S ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</Typography>} 
+                        label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder", textAlign: "start"}}>I AGREE TO KOW'S PHARMACY SUBSCRIPTION AND OPT-IN AGREEMENTS</Typography>} 
                     />
                 </Box>
                 <Box sx={{flex: 1, mt: "50px"}}>
+                    <Typography color="black" component="" sx={{mt: "-2rem", mb: "2rem", fontSize: {xs: "0.5rem", sm: "0.8rem", md: "1rem"}}}>
+                    You acknowledge and agree that Your typed name shall be deemed an original signature for purposes of this Agreement. By typing Your name below, You agree to be bound by the terms, conditions, covenants, and obligations of Your subscription, including without limitation those set forth in the Subscription Agreement, Opt-in, Privacy Policy, and Terms of Use. 
+                    </Typography>
                     <Typography color="black" component="h6" sx={{mb: "5px", fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"}}}>
                     FULL NAME<span style={{color: "red"}}> &#42;</span>
                     </Typography>
