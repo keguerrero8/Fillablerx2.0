@@ -115,7 +115,7 @@ export default function PharmacyEnrollment() {
                 setStep={setStepPrivacy} 
                 isPrivacyAcknowledged={isPrivacyAcknowledged}
                 setisPrivacyAcknowledged={setisPrivacyAcknowledged}
-            />
+                />
             <PharmacyEnrollmentOptInModal 
                 setIsAgreementModal={setIsAgreementOptInModal} 
                 isAgreementModal={isAgreementOptInModal} 
@@ -123,6 +123,8 @@ export default function PharmacyEnrollment() {
                 setStep={setStepOptIn} 
                 isOptInAcknowledged={isOptInAcknowledged}
                 setisOptInAcknowledged={setisOptInAcknowledged}
+                pharmacy={pharmacy}
+                enrollmentData={enrollmentData}
             />
             <CSRFToken />
             <Box sx={{my: "40px"}}>

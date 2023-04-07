@@ -12,15 +12,11 @@ import Page404 from './Pages/Page404';
 import LoginPage from './Pages/Login/LoginPage';
 import DashboardPage from './Pages/DashboardPage';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
-import PharmacyEnrollment from './Components/PharmacyEnrollment/PharmacyEnrollment';
+import PharmacyEnrollment from './Components/PharmacyEnrollmentForm/PharmacyEnrollment';
 import Footer from './Components/Footer/Footer';
 
-import PharmacySubscription from './Components/Documents/PharmacySubscription/PharmacySubscription';
 import Privacy from './Components/Documents/PrivacyPolicy/Privacy';
 import Terms from './Components/Documents/TermsOfUse/Terms';
-import ProviderConsent from './Components/Documents/ProviderOptIn/ProviderConsent';
-import PharmacyConsent from './Components/Documents/PharmacyOptIn/PharmacyConsent';
-import TerminationNotice from './Components/Documents/TerminationFeeNotice/TerminationNotice';
 
 function App() {
   const [user, setUser] = useState(null)

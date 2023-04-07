@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 
 import ExhibitModal from '../ExhibitModal/ExhibitModal'
 
-function PharmacySubscriptionText({ isModal = false }) {
+function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData }) {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
   return (
     <>
         <div className='parties'>
             <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>
-            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of
-            {/*date*/}
-            ("the Effective Date") between Fillable, LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
+            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {formattedDate} between Fillable, 
+             LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
         </div>
         <div className='recitals'>
             <h3>RECITALS:</h3>
@@ -150,10 +153,10 @@ function PharmacySubscriptionText({ isModal = false }) {
                     <p>New York, New York 10005</p>
                     <p>Email: Kyriaski@kilegal.com</p>
                     <h3>If to Enrolled Pharmacy:</h3>
-                    <p>{/*pharmacy name*/}</p>
-                    <p>{/*pharmacy contact name*/}</p>
-                    <p>{/*pharmacy address*/}</p>
-                    <p>{/*pharmacy contact email*/}</p>
+                    <p>{pharmacy.name}</p>
+                    <p>{enrollmentData["contact_name"]}</p>
+                    <p>{pharmacy.address}</p>
+                    <p>{enrollmentData["contact_email"]}</p>
                 </div>
         </div>
         <div className='section-2'>
@@ -299,13 +302,13 @@ function PharmacySubscriptionText({ isModal = false }) {
                 Privacy Policy and agree to the terms contained therein.</p>
             <div className='subtext-sig'>
                 <h2>FILLABLE, LLC A/K/A KOW:</h2>
-                <h3>By: {/*e-signature?*/}</h3>
+                <h3>By: </h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
-                <h2>sample pharmacy name{/*pharmacy name*/}</h2>
-                <h3>By: {/*e-signature?*/}</h3>
-                <p>Name: {/*pharmacy contact name*/}</p>
-                <p>Title: {/*pharmacy contact title*/}</p>
+                <h2>Pharmacy: {pharmacy.name}</h2>
+                <h3>By: </h3>
+                <p>Name: {enrollmentData["contact_name"]}</p>
+                <p>Title: {enrollmentData["contact_title"]}</p>
             </div>
         </div> 
     </>
