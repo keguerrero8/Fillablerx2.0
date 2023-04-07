@@ -20,7 +20,7 @@ function HeroSuggestions() {
                     <div className='card-section'>
                         <div className='med-card'>
                             <div className='card-img'>
-                                <img src={image1}/>
+                                <img src={image1} alt="man wrapped in blanket blowing his nose into a tissue"/>
                             </div>
                             <h3>Antibiotics</h3>
                             <Button 
@@ -33,7 +33,7 @@ function HeroSuggestions() {
                         </div>
                         <div className='med-card'>
                             <div className='card-img'>
-                                <img src={image2}/>
+                                <img src={image2} alt="woman with a cold experiencing chills and sitting with a thermometer in her mouth"/>
                             </div>
                             <h3>Antivirals</h3>
                             <Button 
@@ -46,7 +46,7 @@ function HeroSuggestions() {
                         </div>
                         <div className='med-card'>
                             <div className='card-img'>
-                                <img src={image3}/>
+                                <img src={image3} alt="woman remembers to take her scheduled birth control tablet out of her medication package"/>
                             </div>                        
                             <h3>Birth Control</h3>
                             <Button 
@@ -59,7 +59,7 @@ function HeroSuggestions() {
                         </div>
                         <div className='med-card'>
                             <div className='card-img'>
-                                <img src={image4}/>
+                                <img src={image4} alt="woman grasping her throat while inhaling a puff from her inhaler device"/>
                             </div>
                             <h3>Inhalers</h3>
                             <Button 
@@ -72,7 +72,7 @@ function HeroSuggestions() {
                         </div>
                         <div className='med-card'>
                             <div className='card-img'>
-                                <img src={image5}/>
+                                <img src={image5} alt="man pulls up his sleeve to self-inject insulin into his arm"/>
                             </div>                        
                             <h3>Insulin</h3>
                             <Button 
@@ -85,7 +85,7 @@ function HeroSuggestions() {
                         </div>
                         <div className='med-card'>
                             <div className='card-img'>
-                                <img src={image6}/>
+                                <img src={image6} alt="man in a facemask flexes his arm to show the bandaid where he received a vaccine injection"/>
                             </div>                        
                             <h3>Vaccines</h3>
                             <Button 
