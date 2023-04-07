@@ -36,12 +36,12 @@ export default function RequestForm({ user, test = false }) {
   }
   const [checked, setChecked] = useState(false)
   const [medication, setMedication] = useState({})
+  const [medications, setMedications] = useState([])
   const [value, setValue] = useState("insurance")
   const [status, setRequestStatus] = useState([])
   const [isDisabled, setDisabled] = useState(true)
   const [searchValue, setSearchValue] = useState("")
   const [requestData, setRequestData] = useState(defaultRequestData)
-  const [medications, setMedications] = useState([])
   const [isAgreementModal, setIsAgreementModal] = useState(false)
   const [step, setStep] = useState(1)
   const [userType, setUserType] = useState("")
@@ -125,6 +125,8 @@ export default function RequestForm({ user, test = false }) {
     }
   }
 
+  // can always ask chatGPT to refactor this logic but will need to take time to make
+  // sure its correct
   function handleSubmit (e) {
     e.preventDefault()
     fetch("/api/requests", {
