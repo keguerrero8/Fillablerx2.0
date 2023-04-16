@@ -36,12 +36,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 0 32px;
-}
-
-.request-list > h3 {
-    margin-bottom: 8px;
-    color: var(--brand-darkblue);
+    margin: 4px 32px;
+        color: var(--brand-darkblue);
     font-size: var(--font-small);
     font-weight: 300;
 }

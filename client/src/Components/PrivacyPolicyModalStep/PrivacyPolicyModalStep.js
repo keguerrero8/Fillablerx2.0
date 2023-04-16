@@ -36,7 +36,7 @@ function PrivacyPolicyModalStep({ setStep, userType, setIsAcknowledged, setIsAgr
                         </Button>
                     ) : (
                         <Button variant='contained' disabled={disabled} sx={{color: "white"}} size="medium" onClick={handleAgreementExit} >
-                            Agree & Exit
+                            Agree & Close
                         </Button>
                     )
                 }

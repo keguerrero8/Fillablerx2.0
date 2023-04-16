@@ -17,21 +17,21 @@ function HowSection() {
             <div className='how-body'>
                 <div className='how-step'>
                     <div className='img-wrap'>
-                        <img src={image1}/>
+                        <img src={image1} alt="computer monitor with the mouse cursor clicking a button in the middle of the screen"/>
                     </div>
                     <h3 className='step-text'>Select the medication you're looking for.</h3>
                     <h3 className='step-subtext'>Specify the strength, quantity, and what insurance you have.</h3>
                 </div>
                 <div className='how-step'>
                     <div className='img-wrap'>
-                        <img src={image2}/>
+                        <img src={image2} alt="cell phone laying flat, emphasizing a healthcare symbol notification emerging from the phone screen"/>
                     </div>
                     <h3 className='step-text'>Our network of pharmacies is alerted right away.</h3>
                     <h3 className='step-subtext'>They will check their inventory and reply if they have it.</h3>
                 </div>
                 <div className='how-step'>
                     <div className='img-wrap'>
-                        <img src={image3}/>
+                        <img src={image3} alt="cell phone positioned upright, depicting a hand emerging from the screen holding a medical shopping bag as a representation of an order transaction"/>
                     </div>
                     <h3 className='step-text'>Receive a text if a pharmacy has the medication.</h3>
                     <h3 className='step-subtext'>Contact the pharmacy to confirm when the prescription will be filled.</h3>

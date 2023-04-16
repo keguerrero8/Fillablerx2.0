@@ -31,9 +31,9 @@ function Footer(props) {
                             <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/privacy-policy">Privacy Policy</Link>
                             </p>
-                            <p className='footer-terms-text'>
+                            {/*<p className='footer-terms-text'>
                                 <Link className='nav-link' to="/termination-notice">Manage Cookie Preferences</Link>
-                            </p>
+                            </p>*/}
                         </div>
                     </div>
                 </div>

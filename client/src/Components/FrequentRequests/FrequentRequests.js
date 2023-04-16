@@ -4,26 +4,30 @@ import { Link } from 'react-router-dom';
 import './FrequentRequests.css';
 
 function FrequentRequests() {
+    const dataColumn1 = [
+        { req: 1, name: 'Aprepitant 125mg-80mg' },
+        { req: 2, name: 'Oseltamivir 75mg' },
+        { req: 3, name: 'Granisetron 1mg' },
+      ];
+    const dataColumn2 = [
+        { req: 1, name: 'Amoxicillin 400mg/5mL' },
+        { req: 2, name: 'Sucralfate 1mg' },
+        { req: 3, name: 'Albuterol 2.5mg/3mL' },
+      ];
+    const dataColumn3 = [
+        { req: 1, name: 'Megestrol 400mg/10mL' },
+        { req: 2, name: 'Ondansetron ODT 8mg' },
+        { req: 3, name: 'Xofluza 40mg' },
+      ];
+
     return (
             <div className='recent-container'>
                 <h2>Most Frequent Requests:</h2>
-                <h3>Week of 2/19/23</h3>
+                <h3>{"Week of 4/10/23"}</h3>
                 <div className='request-groups'>
-                    <div className='request-list'>
-                        <h3>Aprepitant 125mg-80mg</h3>
-                        <h3>Oseltamivir 75mg</h3>
-                        <h3>Granisetron 1mg</h3>
-                    </div>
-                    <div className='request-list'>
-                        <h3>Amoxicillin 400mg/5mL</h3>
-                        <h3>Sucralfate 1mg</h3>
-                        <h3>Megestrol 40mg</h3>
-                    </div>
-                    <div className='request-list'>
-                        <h3>Oseltamivir 60mg/5mL</h3>
-                        <h3>Ondansetron ODT 8mg</h3>
-                        <h3>Xofluza 40mg</h3>
-                    </div>
+                    <ReqList data={dataColumn1}/>
+                    <ReqList data={dataColumn2}/>
+                    <ReqList data={dataColumn3}/>
                 </div>
                 <div className='pharmacy-reach'>
                     <h3>Are you a pharmacy that has these medications?</h3>
@@ -32,5 +36,15 @@ function FrequentRequests() {
             </div>
     );
 }
+
+function ReqList({ data }) {
+    return (
+      <ul>
+        {data.map(item => (
+          <li className='request-list' key={item.req}>{item.name}</li>
+        ))}
+      </ul>
+    );
+  }
 
 export default FrequentRequests;

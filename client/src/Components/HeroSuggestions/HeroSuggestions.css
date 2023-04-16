@@ -42,8 +42,6 @@
     border: 2.5px solid var(--brand-primaryblue);
     width: 180px;
     height: 240px;
-    width: 200px;
-    height: 250px;
     margin: 0 16px;
     display: flex;
     flex-direction: column;
