@@ -1,17 +1,24 @@
 import pytest
 
 from pytest_factoryboy import register
-from tests.api.factories import RequestFactory, PharmacyFactory, MedicationFactory
+from tests.api.factories import (
+    PharmacyFactory,
+    PharmacistFactory,
+    MedicationFactory,
+    UserFactory,
+)
 
-# register(RequestFactory)
+register(PharmacistFactory)
 register(PharmacyFactory)
 register(MedicationFactory)
+register(UserFactory)
 
 
 @pytest.fixture
 def create_medication(db, medication_factory):
-    medication = medication_factory.create()
-    return medication
+    medication1 = medication_factory.create()
+    medication2 = medication_factory.create(name="Amoxicillin", strength=["500mg"])
+    return medication1, medication2
 
 
 @pytest.fixture
@@ -20,7 +27,13 @@ def create_pharmacy(db, pharmacy_factory):
     return pharmacy
 
 
-# @pytest.fixture
-# def new_request(db, request_factory):
-#     res = request_factory.build()
-#     return res
+@pytest.fixture
+def create_pharmacist(db, pharmacist_factory):
+    pharmacist = pharmacist_factory.create()
+    return pharmacist
+
+
+@pytest.fixture
+def create_user(db, user_factory):
+    user = user_factory.create()
+    return user

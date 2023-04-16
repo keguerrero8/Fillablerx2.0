@@ -11,7 +11,9 @@ export default function PharmacyEnrollmentOptInModal( {
     setStep, 
     step, 
     isOptInAcknowledged, 
-    setisOptInAcknowledged
+    setisOptInAcknowledged,
+    pharmacy,
+    enrollmentData
 }) {
     
     const style = {
@@ -33,7 +35,7 @@ export default function PharmacyEnrollmentOptInModal( {
     }
 
     const agreementStep = {
-        1: <PharmacySubscriptionModalStep setStep={setStep}/>,
+        1: <PharmacySubscriptionModalStep setStep={setStep} pharmacy={pharmacy} enrollmentData={enrollmentData}/>,
         2: <PharmacyOptInModalStep setStep={setStep} isAcknowledged={isOptInAcknowledged} setIsAcknowledged={setisOptInAcknowledged} setIsAgreementModal={setIsAgreementModal}/>
     }
     

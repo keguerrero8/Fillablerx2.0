@@ -8,7 +8,7 @@ import { Button, Box, Typography } from '@mui/material'
 import PharmacySubscriptionText from '../Documents/PharmacySubscription/PharmacySubscriptionText.js';
 import '../Documents/PharmacySubscription/PharmacySubscription.css'
 
-function PharmacySubscriptionModalStep({ setStep }) {
+function PharmacySubscriptionModalStep({ setStep, pharmacy, enrollmentData }) {
     const navigate = useNavigate()
     const [isDisabled, setDisabled] = useState(true)
     const scrollRef = useBottomScrollListener(() => setDisabled(false))
@@ -17,7 +17,7 @@ function PharmacySubscriptionModalStep({ setStep }) {
         <Box sx={styles.MainContainer}>
             <Typography variant='h3' sx={{fontWeight: "bold"}}>Pharmacy Subscription Agreement</Typography>
             <Box ref={scrollRef} sx={styles.scrollContainer}>
-                <PharmacySubscriptionText isModal={true}/>
+                <PharmacySubscriptionText isModal={true} pharmacy={pharmacy} enrollmentData={enrollmentData}/>
             </Box>
             <Box sx={styles.buttonsContainer}>
                 <Button variant='contained' disabled={isDisabled} sx={{color: "white"}} size="large" onClick={() => setStep((val) => val + 1)} >

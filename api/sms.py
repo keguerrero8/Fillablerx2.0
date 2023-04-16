@@ -55,6 +55,9 @@ class TwilioClient:
         enrolled_pharmacists = list(filter(lambda x: x.isEnrolled, pharmacists))
         numbers = list(map(lambda x: x.phone_number.as_e164, enrolled_pharmacists))
 
+        if len(numbers) == 0:
+            raise Exception("There were no phone numbers found in the pharmacist table")
+
         timezone = pytz.timezone("US/Eastern")
         hour_now = datetime.datetime.now(timezone).hour
         hour_start = datetime.time(9, 0, 0).hour

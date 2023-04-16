@@ -7,9 +7,16 @@ class PharmacySerializer(serializers.ModelSerializer):
     class Meta:
         model = Pharmacy
         fields = "__all__"
-        
+
     def is_field_required_enrollment(self):
-        all_fields = ["contact_name", "contact_title", "contact_email", "contact_phone_number", "npi", "signed_agreement_stamp"]
+        all_fields = [
+            "contact_name",
+            "contact_title",
+            "contact_email",
+            "contact_phone_number",
+            "npi",
+            "signed_agreement_stamp",
+        ]
         # FIXME update logic so that it will look to see if all the fields above are found in the data_keys, no more, no less
         # if these conditions are not met, then we should return False
         for key in self.initial_data.keys():
@@ -21,15 +28,15 @@ class PharmacySerializer(serializers.ModelSerializer):
         if len(value) != 5 or not value.isnumeric():
             raise serializers.ValidationError("A valid zipcode must be 5 digits")
         return value
-    
+
     def validate_npi(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A valid npi must be provided")
-        
+
         if not value.isnumeric():
             raise serializers.ValidationError("A valid npi must be numerical")
         return value
-    
+
     def validate_contact_name(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact name must be provided")
@@ -39,17 +46,17 @@ class PharmacySerializer(serializers.ModelSerializer):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact title must be provided")
         return value
-    
+
     def validate_contact_email(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact email must be provided")
-        return value 
-    
+        return value
+
     def validate_contact_phone_number(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact phone number must be provided")
-        return value 
-    
+        return value
+
 
 class PharmacistSerializer(serializers.ModelSerializer):
     class Meta:
