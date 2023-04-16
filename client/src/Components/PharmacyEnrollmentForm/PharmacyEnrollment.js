@@ -47,9 +47,9 @@ export default function PharmacyEnrollment() {
 
         if (!response.errors) {
             //Add logic here to redirect user to splash page
-            setStatus(["Successfully enrolled the pharmacist!", "Redirecting to Pharmacy Portal..."])
+            setStatus(["Successfully enrolled the pharmacist!"])
             setIsDisabled(true)
-            setTimeout(() => navigate(`/dashboard/pharmacies/${params.id}`), 1000)
+            setTimeout(() => navigate("/pharmacy-enrolled"), 1000)
           } else {
             const error_messages = Object.entries(response.errors).map(e => `${e[0].replaceAll("_", " ")}: ${e[1]}`)
             setStatus(error_messages)
