@@ -12,7 +12,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
     <>
         <div className='parties'>
             <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>
-            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {formattedDate} between Fillable, 
+            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {formattedDate} ("the Effective Date") between Fillable, 
              LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
         </div>
         <div className='recitals'>
