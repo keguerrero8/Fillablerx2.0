@@ -41,8 +41,18 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     modalName=" Exhibit A "
                     title="Exhibit A"
                     subtitle="Fee Schedule"
-                    amount="10"
-                    frequency="Monthly"
+                    tier1="Local Community Network"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery Network"
+                    amount2="50"
+                    frequency2="Monthly"
+                    tier3="DME Limited Network"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty Network"
+                    amount4="400"
+                    frequency4="Monthly"
                 />
                 and incorporated herein by reference, which Fee Schedule was negotiated and agreed
                 to between the Parties for good and valuable consideration. For a specified term beginning on the
@@ -66,8 +76,18 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     modalName=" Exhibit A "
                     title="Exhibit A"
                     subtitle="Fee Schedule"
-                    amount="10"
-                    frequency="Monthly"
+                    tier1="Local Community Pharmacy"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery Network"
+                    amount2="50"
+                    frequency2="Monthly"
+                    tier3="DME Limited Network"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty Network"
+                    amount4="400"
+                    frequency4="Monthly"
                 />
                 shall immediately become operative.
                 Any subsequent fees that become due and owing, by way of Your subscription, or otherwise,
