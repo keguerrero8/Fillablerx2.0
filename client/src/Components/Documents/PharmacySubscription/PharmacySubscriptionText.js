@@ -41,16 +41,16 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     modalName=" Exhibit A "
                     title="Exhibit A"
                     subtitle="Fee Schedule"
-                    tier1="Local Community Network"
+                    tier1="Local Community"
                     amount1="30"
                     frequency1="Monthly"
-                    tier2="Expanded Delivery Network"
+                    tier2="Expanded Delivery"
                     amount2="50"
                     frequency2="Monthly"
-                    tier3="DME Limited Network"
+                    tier3="DME Limited"
                     amount3="60"
                     frequency3="Monthly"
-                    tier4="Specialty Network"
+                    tier4="Specialty"
                     amount4="400"
                     frequency4="Monthly"
                 />
@@ -76,16 +76,16 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     modalName=" Exhibit A "
                     title="Exhibit A"
                     subtitle="Fee Schedule"
-                    tier1="Local Community Pharmacy"
+                    tier1="Local Community"
                     amount1="30"
                     frequency1="Monthly"
-                    tier2="Expanded Delivery Network"
+                    tier2="Expanded Delivery"
                     amount2="50"
                     frequency2="Monthly"
-                    tier3="DME Limited Network"
+                    tier3="DME Limited"
                     amount3="60"
                     frequency3="Monthly"
-                    tier4="Specialty Network"
+                    tier4="Specialty"
                     amount4="400"
                     frequency4="Monthly"
                 />
@@ -176,7 +176,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     <p>{pharmacy.name}</p>
                     <p>{enrollmentData["contact_name"]}</p>
                     <p>{pharmacy.address}</p>
-                    <p>{enrollmentData["contact_email"]}</p>
+                <p>{enrollmentData["contact_email"]}</p>
                 </div>
         </div>
         <div className='section-2'>

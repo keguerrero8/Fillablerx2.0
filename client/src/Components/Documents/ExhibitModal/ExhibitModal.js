@@ -26,7 +26,7 @@ function Modal(props) {
             <h3>{props.subtitle}</h3>
             <div className='fee-freq'>
                 <div className='tier'>
-                    <h3>Tier Model</h3>
+                    <h3>Network</h3>
                     <p>{props.tier1}</p>
                     <p>{props.tier2}</p>
                     <p>{props.tier3}</p>
