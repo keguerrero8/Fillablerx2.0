@@ -162,7 +162,7 @@ export default function PharmacyEnrollment() {
                     <FormControlLabel
                         labelPlacement='end'
                         control={<Checkbox checked={checkedPrivacy} onChange={handlePrivacyCheck}/>} 
-                        label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder"}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
+                        label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder", textAlign: "start"}}>I AGREE TO KOW'S TERMS OF USE AND PRIVACY POLICY</Typography>} 
                     />
                 </Box>
                 <Box sx={{textAlign: "center", width: "100%", marginTop: "-1rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
@@ -174,19 +174,19 @@ export default function PharmacyEnrollment() {
                 </Box>
                 <Box sx={{flex: 1, mt: "50px"}}>
                     <Typography color="black" component="" sx={{mt: "-2rem", mb: "2rem", fontSize: {xs: "0.5rem", sm: "0.8rem", md: "1rem"}}}>
-                    You acknowledge and agree that Your typed name shall be deemed an original signature for purposes of this Agreement. By typing Your name below, You agree to be bound by the terms, conditions, covenants, and obligations of Your subscription, including without limitation those set forth in the Subscription Agreement, Opt-in, Privacy Policy, and Terms of Use. 
+                    You acknowledge and agree that the typed name You provided shall be deemed an original signature for purposes of this Agreement. By typing Your name below, You agree to be bound by the terms, conditions, covenants, and obligations of Your subscription, including without limitation those set forth in the Subscription Agreement, Opt-in, Privacy Policy, and Terms of Use. 
                     </Typography>
                     <Typography color="black" component="h6" sx={{mb: "5px", fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"}}}>
                     FULL NAME<span style={{color: "red"}}> &#42;</span>
                     </Typography>
                     <TextField sx={{width: "100%"}} onChange={handleSignatureChange} value={signature} name="signature" placeholder="Please type your full name"/>
                 </Box>
-                <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "2rem"}}>
-                    <Typography color="black" component="h6">Title: </Typography>
+                <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"}}>
+                    <Typography color="black" component="h6">Title:</Typography>
                     <TextField sx={{width: "50%"}} value={enrollmentData["contact_title"]} variant="standard"/>
                 </Box> 
             </Box>
-            <Box sx={{textAlign: "center", width: "90%", margin: "0 auto"}}>
+            <Box sx={{textAlign: "center", width: "80%", margin: "0 auto"}}>
             {status.map((e, index) => 
                 <Typography key={index} sx={{color: status[0] === "Successfully enrolled the pharmacist!"? "green" : "red"}}>{e}</Typography>)}
             </Box>
@@ -194,7 +194,7 @@ export default function PharmacyEnrollment() {
                 <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || signature === "" || !isPrivacyAcknowledged || !isOptInAcknowledged || !checkedPrivacy || !checkedOptIn}>
                     Submit
                 </Button>
-                <Button variant='text' sx={{color: "#154161", width: "15%"}} size="large" onClick={handleClear} >
+                <Button variant='text' sx={{color: "#154161", width: "40%"}} size="large" onClick={handleClear} >
                     Reset Form
                 </Button>
             </Box>

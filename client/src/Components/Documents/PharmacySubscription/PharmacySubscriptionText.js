@@ -325,6 +325,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 <h3>By: </h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
+                <p>Date: {formattedDate}</p>
                 <h2>Pharmacy: {pharmacy.name}</h2>
                 <h3>By: </h3>
                 <p>Name: {enrollmentData["contact_name"]}</p>

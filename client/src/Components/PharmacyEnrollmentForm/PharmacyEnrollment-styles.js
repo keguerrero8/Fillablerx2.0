@@ -25,6 +25,8 @@ export const styles = {
         display: "flex",
         flexDirection: "column",
         textAlign: "left",
-        gap: "2rem"
+        gap: "2rem",
+        "@media (max-width: 1200px)": {width: "75%"}
+
     }
   }

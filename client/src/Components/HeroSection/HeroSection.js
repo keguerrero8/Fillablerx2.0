@@ -7,10 +7,13 @@ import HeroSuggestions from '../HeroSuggestions/HeroSuggestions';
 import FrequentRequests from '../FrequentRequests/FrequentRequests';
 import { Button } from '../Button/Button';
 
+import kindlyobligewith_title_text from '../../images/kindlyobligewith_text_image.png';
+
 
 function HeroSection() {
     return (
         <div className='hero-container'>
+            <img className='hero-title' src={kindlyobligewith_title_text}/>
             <h1>Find and Fill your prescription TODAY.</h1>
             <h2>Don't risk delaying your medication.</h2>
             <h3>If you need your medication today, we'll help you find a pharmacy that has it.</h3>
