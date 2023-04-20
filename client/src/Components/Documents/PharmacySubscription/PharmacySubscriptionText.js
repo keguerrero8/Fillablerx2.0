@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import ExhibitModal from '../ExhibitModal/ExhibitModal'
+import larry_signature from '../../../images/larry_signature.png'
 
 function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData }) {
     const today = new Date();
@@ -12,7 +13,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
     <>
         <div className='parties'>
             <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>
-            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {formattedDate} between Fillable, 
+            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {formattedDate} ("the Effective Date") between Fillable, 
              LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
         </div>
         <div className='recitals'>
@@ -41,8 +42,18 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     modalName=" Exhibit A "
                     title="Exhibit A"
                     subtitle="Fee Schedule"
-                    amount="10"
-                    frequency="Monthly"
+                    tier1="Local Community"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery"
+                    amount2="50"
+                    frequency2="Monthly"
+                    tier3="DME Limited"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty"
+                    amount4="400"
+                    frequency4="Monthly"
                 />
                 and incorporated herein by reference, which Fee Schedule was negotiated and agreed
                 to between the Parties for good and valuable consideration. For a specified term beginning on the
@@ -66,8 +77,18 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     modalName=" Exhibit A "
                     title="Exhibit A"
                     subtitle="Fee Schedule"
-                    amount="10"
-                    frequency="Monthly"
+                    tier1="Local Community"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery"
+                    amount2="60"
+                    frequency2="Monthly"
+                    tier3="DME Limited"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty"
+                    amount4="400"
+                    frequency4="Monthly"
                 />
                 shall immediately become operative.
                 Any subsequent fees that become due and owing, by way of Your subscription, or otherwise,
@@ -302,13 +323,16 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 Privacy Policy and agree to the terms contained therein.</p>
             <div className='subtext-sig'>
                 <h2>FILLABLE, LLC A/K/A KOW:</h2>
-                <h3>By: </h3>
+                <h3>By:
+                    <img className='larry-sig' src={larry_signature}/>
+                </h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
                 <h2>Pharmacy: {pharmacy.name}</h2>
                 <h3>By: </h3>
                 <p>Name: {enrollmentData["contact_name"]}</p>
                 <p>Title: {enrollmentData["contact_title"]}</p>
+                {/*<p>Electronically Signed: {insert time stamp for executed contract}</p>*/}
             </div>
         </div> 
     </>
