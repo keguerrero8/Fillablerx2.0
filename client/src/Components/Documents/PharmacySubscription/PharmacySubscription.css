@@ -193,3 +193,8 @@
     font-size: var(--font-xsmall);
     margin-left: 30vw;
 }
+
+.larry-sig {
+    width: 10rem;
+    margin-left: 2rem;
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import ExhibitModal from '../ExhibitModal/ExhibitModal'
+import larry_signature from '../../../images/larry_signature.png'
 
 function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData }) {
     const today = new Date();
@@ -80,7 +81,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     amount1="30"
                     frequency1="Monthly"
                     tier2="Expanded Delivery"
-                    amount2="50"
+                    amount2="60"
                     frequency2="Monthly"
                     tier3="DME Limited"
                     amount3="60"
@@ -176,7 +177,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     <p>{pharmacy.name}</p>
                     <p>{enrollmentData["contact_name"]}</p>
                     <p>{pharmacy.address}</p>
-                <p>{enrollmentData["contact_email"]}</p>
+                    <p>{enrollmentData["contact_email"]}</p>
                 </div>
         </div>
         <div className='section-2'>
@@ -322,14 +323,16 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 Privacy Policy and agree to the terms contained therein.</p>
             <div className='subtext-sig'>
                 <h2>FILLABLE, LLC A/K/A KOW:</h2>
-                <h3>By: </h3>
+                <h3>By:
+                    <img className='larry-sig' src={larry_signature}/>
+                </h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
-                <p>Date: {formattedDate}</p>
                 <h2>Pharmacy: {pharmacy.name}</h2>
                 <h3>By: </h3>
                 <p>Name: {enrollmentData["contact_name"]}</p>
                 <p>Title: {enrollmentData["contact_title"]}</p>
+                {/*<p>Electronically Signed: {insert time stamp for executed contract}</p>*/}
             </div>
         </div> 
     </>
