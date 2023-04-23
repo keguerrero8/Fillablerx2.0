@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom'
 
 import pharmacyService from '../../Services/pharmacyService'
 import RequestFormInput from '../RequestFormInput/RequestFormInput'
 import CSRFToken from '../CSRFToken/CSRFToken';
 import PharmacyEnrollmentTermsModal from '../PharmacyEnrollmentTermsModal/PharmacyEnrollmentTermsModal';
 import PharmacyEnrollmentOptInModal from '../PharmacyEnrollmentOptInModal/PharmacyEnrollmentOptInModal';
+import Page404 from '../../Pages/Page404';
 
 import { Box, Typography, TextField, Button, FormControlLabel, Checkbox } from '@mui/material'
-import { useParams, Link } from 'react-router-dom'
 import { styles } from './PharmacyEnrollment-styles'
 
-export default function PharmacyEnrollment() {
+export default function PharmacyEnrollment({ user }) {
     const defaultEnrollmentData = {
         contact_name: "",
         contact_title: "",
@@ -59,6 +60,8 @@ export default function PharmacyEnrollment() {
     useEffect(() => {
       loadPharmacy()
     }, [])
+
+    if (!user) return <Page404 isAuthFailure={true} />
 
     function handleChange (e) {
         setEnrollmentData({
