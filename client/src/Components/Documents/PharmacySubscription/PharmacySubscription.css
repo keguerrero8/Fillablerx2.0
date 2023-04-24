@@ -69,6 +69,10 @@
     text-align: start;
 }
 
+.subtext-b > p {
+    font-size: var(--font-xsmall);
+}
+
 .subtext-h {
     margin-bottom: 12px;
     text-align: start;

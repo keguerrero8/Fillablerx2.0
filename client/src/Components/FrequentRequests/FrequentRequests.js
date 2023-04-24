@@ -6,24 +6,24 @@ import './FrequentRequests.css';
 function FrequentRequests() {
     const dataColumn1 = [
         { req: 1, name: 'Aprepitant 125mg-80mg' },
-        { req: 2, name: 'Oseltamivir 75mg' },
+        { req: 2, name: 'Exemestane 25mg' },
         { req: 3, name: 'Granisetron 1mg' },
       ];
     const dataColumn2 = [
-        { req: 1, name: 'Amoxicillin 400mg/5mL' },
+        { req: 1, name: 'Albuterol 2.5mg/3mL' },
         { req: 2, name: 'Sucralfate 1mg' },
-        { req: 3, name: 'Albuterol 2.5mg/3mL' },
+        { req: 3, name: 'Dexamethasone 4mg' },
       ];
     const dataColumn3 = [
         { req: 1, name: 'Megestrol 400mg/10mL' },
         { req: 2, name: 'Ondansetron ODT 8mg' },
-        { req: 3, name: 'Xofluza 40mg' },
+        { req: 3, name: 'Albuterol Sulfate HFA 90mcg' },
       ];
 
     return (
             <div className='recent-container'>
                 <h2>Most Frequent Requests:</h2>
-                <h3>{"Week of 4/10/23"}</h3>
+                <h3>{"Week of 4/17/23"}</h3>
                 <div className='request-groups'>
                     <ReqList data={dataColumn1}/>
                     <ReqList data={dataColumn2}/>
