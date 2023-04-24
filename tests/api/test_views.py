@@ -148,7 +148,7 @@ def test_put_pharmacy_no_signature(create_pharmacy, create_user):
     )
 
     assert response.status_code == 400
-    assert response.data["errors"] == "A signature must be provided"
+    assert response.data["signature"][0] == "A signature must be provided"
 
 
 @pytest.mark.django_db

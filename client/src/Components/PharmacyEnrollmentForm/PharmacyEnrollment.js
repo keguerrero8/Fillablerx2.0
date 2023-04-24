@@ -18,7 +18,8 @@ export default function PharmacyEnrollment({ user }) {
         contact_title: "",
         contact_email: "",
         contact_phone_number: "",
-        npi: ""
+        npi: "",
+        signature: ""
     }
 
     const params = useParams()
@@ -28,7 +29,6 @@ export default function PharmacyEnrollment({ user }) {
     const [checkedOptIn, setCheckedOptIn] = useState(false)
     const [pharmacy, setPharmacy] = useState({})
     const [enrollmentData, setEnrollmentData] = useState(defaultEnrollmentData)
-    const [signature, setSignature] = useState("")
     const [isDisabled, setIsDisabled] = useState(false)
     const [status, setStatus] = useState([])
     const [isAgreementTermsModal, setIsAgreementTermsModal] = useState(false)
@@ -44,10 +44,9 @@ export default function PharmacyEnrollment({ user }) {
     }
 
     const updatePharmacy = async (obj) => {
-        const response = await pharmacyService.updateEnrolledPharmacy(params.id, {...obj, signature: signature, contact_phone_number: "+1" + enrollmentData["contact_phone_number"]})
+        const response = await pharmacyService.updateEnrolledPharmacy(params.id, {...obj, contact_phone_number: "+1" + enrollmentData["contact_phone_number"]})
 
         if (!response.errors) {
-            //Add logic here to redirect user to splash page
             setStatus(["Successfully enrolled the pharmacist!"])
             setIsDisabled(true)
             setTimeout(() => navigate("/pharmacy-enrolled"), 1000)
@@ -70,10 +69,6 @@ export default function PharmacyEnrollment({ user }) {
         })
     }
 
-    function handleSignatureChange (e) {
-        setSignature(e.target.value)
-    }
-
     const handlePrivacyCheck = (e) => {
         if (e.target.checked) {
             setIsAgreementTermsModal(true)
@@ -93,7 +88,6 @@ export default function PharmacyEnrollment({ user }) {
     function handleClear () {
         setStatus([])
         setEnrollmentData(defaultEnrollmentData)
-        setSignature("")
         setIsDisabled(false)
         setisPrivacyAcknowledged(false)
         setisOptInAcknowledged(false)
@@ -104,7 +98,6 @@ export default function PharmacyEnrollment({ user }) {
     }
 
     function handleSubmit (e) {
-        // add logic to redirect user to pharmacy page if submitted correctly otherwise return error status
         e.preventDefault()
         updatePharmacy(enrollmentData)
     }
@@ -182,7 +175,7 @@ export default function PharmacyEnrollment({ user }) {
                     <Typography color="black" component="h6" sx={{mb: "5px", fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"}}}>
                     FULL NAME<span style={{color: "red"}}> &#42;</span>
                     </Typography>
-                    <TextField sx={{width: "100%"}} onChange={handleSignatureChange} value={signature} name="signature" placeholder="Please type your full name"/>
+                    <TextField sx={{width: "100%"}} onChange={handleChange} value={enrollmentData["signature"]} name="signature" placeholder="Please type your full name"/>
                 </Box>
                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"}}>
                     <Typography color="black" component="h6">Title:</Typography>
@@ -194,7 +187,7 @@ export default function PharmacyEnrollment({ user }) {
                 <Typography key={index} sx={{color: status[0] === "Successfully enrolled the pharmacist!"? "green" : "red"}}>{e}</Typography>)}
             </Box>
             <Box sx={styles.ButtonsContainer}>
-                <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || signature === "" || !isPrivacyAcknowledged || !isOptInAcknowledged || !checkedPrivacy || !checkedOptIn}>
+                <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || enrollmentData["signature"] === "" || !isPrivacyAcknowledged || !isOptInAcknowledged || !checkedPrivacy || !checkedOptIn}>
                     Submit
                 </Button>
                 <Button variant='text' sx={{color: "#154161", width: "40%"}} size="large" onClick={handleClear} >

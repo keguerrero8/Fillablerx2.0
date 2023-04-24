@@ -16,9 +16,11 @@ class PharmacySerializer(serializers.ModelSerializer):
             "contact_phone_number",
             "npi",
             "signed_agreement_stamp",
+            "signature",
         ]
         # FIXME update logic so that it will look to see if all the fields above are found in the data_keys, no more, no less
-        # if these conditions are not met, then we should return False
+        # if these conditions are not met, then we should return False. right now, if we add another required field we will need
+        # to add it to all_fields
         for key in self.initial_data.keys():
             if key not in all_fields:
                 return False
@@ -55,6 +57,11 @@ class PharmacySerializer(serializers.ModelSerializer):
     def validate_contact_phone_number(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact phone number must be provided")
+        return value
+
+    def validate_signature(self, value):
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("A signature must be provided")
         return value
 
 
