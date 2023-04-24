@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import './Navsubbar.css';
 
-function Navbar(props) {
+function Navbar() {
     const [click, setClick] = useState(false);
 
     const closeMobileMenu = () => setClick(false);

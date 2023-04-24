@@ -1,7 +1,7 @@
 import './Banner.css';
 import { Link } from 'react-router-dom';
 
-function Banner(props) {
+function Banner() {
 
     const announcementPrimary = "Website Downtime scheduled for 4/18/23 11:00 pm - 7:00 am";
     const announcementSecondary = "BETA period now open in select markets!";

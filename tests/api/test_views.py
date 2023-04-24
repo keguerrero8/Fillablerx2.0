@@ -15,9 +15,18 @@ def test_get_medications(create_medication):
     assert data[1]["name"] == "Amoxicillin"
 
 
+@pytest.mark.django_db
+def test_get_requests():
+    response = client.get("/api/requests")
+    assert response.status_code == 405
+
+
 # create medication to pass validation for med strength, create pharmacist to send out messages
 @pytest.mark.twilio
 @pytest.mark.django_db
+@pytest.mark.skip(
+    reason="running this test will send an actual sms, skipping until we move to test credentials"
+)
 def test_post_request(create_medication, create_pharmacist):
     request_payload = {
         "med_name": "Abacavir",
@@ -60,6 +69,9 @@ def test_post_request_invalid_data(create_medication, create_pharmacist):
 
 
 @pytest.mark.django_db
+@pytest.mark.skip(
+    reason="running this test will send an actual sms, skipping until we move to test credentials"
+)
 def test_post_request_twilio_error(create_medication):
     """Test when there are no phone numbers to send sms to since there are no pharmacists present"""
 
@@ -172,3 +184,16 @@ def test_put_pharmacy_invalid_data(create_pharmacy, create_user):
 
     assert response.status_code == 400
     assert response.data["contact_name"][0] == "A contact name must be provided"
+
+
+@pytest.mark.django_db
+def test_post_medication():
+    pharmacy_payload = {
+        "name": "test",
+        "address": "test address",
+        "zipcode": "11111",
+        "phone_number": "+15167847791",
+    }
+
+    response = client.post("/api/pharmacies", pharmacy_payload)
+    assert response.status_code == 403

@@ -324,7 +324,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
             <div className='subtext-sig'>
                 <h2>FILLABLE, LLC A/K/A KOW:</h2>
                 <h3>By:
-                    <img className='larry-sig' src={larry_signature}/>
+                    <img className='larry-sig' alt='larry chens signature' src={larry_signature}/>
                 </h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
