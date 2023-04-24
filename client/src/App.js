@@ -13,6 +13,7 @@ import LoginPage from './Pages/Login/LoginPage';
 import DashboardPage from './Pages/DashboardPage';
 import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
 import PharmacyEnrollment from './Components/PharmacyEnrollmentForm/PharmacyEnrollment';
+import PharmacySignedAgreement from './Components/PharmacySignedAgreement/PharmacySignedAgreement';
 import SplashPage from './Pages/SplashPage';
 import Footer from './Components/Footer/Footer';
 
@@ -48,8 +49,9 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
-        <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable />} />
-        <Route path="/dashboard/pharmacies/enrollment/:id" element={<PharmacyEnrollment />} />
+        <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable user={user}/>} />
+        <Route path="/dashboard/pharmacies/enrollment/:id" element={<PharmacyEnrollment user={user}/>} />
+        <Route path="/dashboard/pharmacies/view-agreement/:id" element={<PharmacySignedAgreement user={user}/>} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-of-use" element={<Terms />} />
         <Route path="/pharmacy-enrolled" element={<SplashPage />} />

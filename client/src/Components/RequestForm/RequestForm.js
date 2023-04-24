@@ -348,15 +348,9 @@ export default function RequestForm({ user, test = false }) {
                 <Typography key={index} sx={{color: status[0] === "Request successfully sent!"? "green" : "red"}}>{e}</Typography>)}
         </Box>
         <Box sx={styles.ButtonsContainer}>
-            {user? (
-                <Button variant='contained' sx={{color: "white"}} size="large" type="submit">
-                    Send Request
-                </Button>
-            ) : (
-                <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled || !checked}>
-                    Send Request
-                </Button>
-            )}
+            <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={user? false : (!isDisabled || !checked)}>
+                Send Request
+            </Button>
             <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
                 Reset Request
             </Button>

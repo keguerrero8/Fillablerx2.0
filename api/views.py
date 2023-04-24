@@ -55,13 +55,6 @@ def pharmacy_detail(request, id):
         serializer = PharmacySerializer(pharmacy)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
-        if "signature" not in request.data or request.data["signature"] == "":
-            return Response(
-                {"errors": "A signature must be provided"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        del request.data["signature"]
         request.data["signed_agreement_stamp"] = datetime.datetime.now()
 
         serializer = PharmacySerializer(pharmacy, data=request.data, partial=True)
