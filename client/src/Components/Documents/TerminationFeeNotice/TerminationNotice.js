@@ -23,7 +23,8 @@ function TerminationNotice(props) {
                     You that the Initial Testing Period has now closed and the Initial Rate is no longer in effect.
                     Accordingly, the Fee Schedule in the Agreements, which Fee Schedule was negotiated and
                     agreed to between You and KOW for good and valuable consideration the sufficiency of which is
-                    acknowledged, will be going into full force and effect.</p>
+                    acknowledged, will be going into full force and effect.  You will be charged at full rate 
+                    of the network selection You made at the time of enrollment.</p>
                 <p>You will have ten (10) days from receipt of this Notice to provide KOW written notice to
                     legal@KOWmeds.com that You will be opting-out of and terminating the Subscription
                     Agreement and Your relationship with KOW altogether, which will end your ability to access the
@@ -32,11 +33,21 @@ function TerminationNotice(props) {
                     Notice within the Opt-Out Noticing Period, the Initial Rate will no longer be in effect and the
                     Fee Schedule annexed hereto as
                     <ExhibitModal
-                        modalName=" Exhibit 1 "
-                        title="Exhibit 1"
-                        subtitle="Fee Schedule"
-                        amount="10"
-                        frequency="Monthly"
+                    modalName=" Exhibit A "
+                    title="Exhibit A"
+                    subtitle="Fee Schedule"
+                    tier1="Local Community"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery"
+                    amount2="50"
+                    frequency2="Monthly"
+                    tier3="DME Limited"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty"
+                    amount4="400"
+                    frequency4="Monthly"
                     />
                     and additionally annexed to the Subscription
                     Agreement as {<Link className='link-exhibit' to=''> Exhibit A </Link>}, which are one and the same, (collectively, the “Fee Schedule”), shall
