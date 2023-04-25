@@ -22,13 +22,11 @@ class TwilioClient:
             self.client = Client(self.test_account_sid, self.test_auth_token)
         else:
             self.client = Client(self.account_sid, self.auth_token)
-            
+
     def send_test_sms(self):
         self.client.messages.create(
-                              body='this is a test',
-                              from_='+15005550006',
-                              to='+15167847791'
-                          )
+            body="this is a test", from_="+15005550006", to="+15167847791"
+        )
 
     def send_mass_text(self, request, pharmacist_class):
         """

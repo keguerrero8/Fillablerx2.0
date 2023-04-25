@@ -35,7 +35,7 @@ def test_post_request(create_medication, create_pharmacist):
         "isinsurance": False,
         "user_type": "patient",
         "phone_number": "+15167847791",
-        "is_test": True
+        "is_test": True,
     }
 
     response = client.post("/api/requests", request_payload)
