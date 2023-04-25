@@ -155,7 +155,10 @@ def request_list(request):
             serializer = RequestSerializer(data=request.data)
             if serializer.is_valid():
                 request_sms = serializer.save()
-                TwilioClient().send_mass_text(request_sms, Pharmacist)
+                if "is_test" in request.data and request.data["is_test"]:
+                    TwilioClient(True).send_test_sms()
+                else:
+                    TwilioClient().send_mass_text(request_sms, Pharmacist)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(
                 {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST

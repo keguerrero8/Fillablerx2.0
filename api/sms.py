@@ -10,13 +10,25 @@ logger = logging.getLogger(__name__)
 
 
 class TwilioClient:
-    def __init__(self):
+    def __init__(self, is_test=False):
         self.twilio_phone_number = config("TWILIO_PHONE_NUMBER")
         self.account_sid = config("TWILIO_ACCOUNT_SID")
         self.auth_token = config("TWILIO_AUTH_TOKEN")
+        self.test_account_sid = config("TWILIO_TEST_ACCOUNT_SID")
+        self.test_auth_token = config("TWILIO_TEST_AUTH_TOKEN")
         self.messaging_service = config("TWILIO_MESSAGING_SERVICE")
         self.notify_service = config("TWILIO_NOTIFY_SERVICE_SID")
-        self.client = Client(self.account_sid, self.auth_token)
+        if is_test:
+            self.client = Client(self.test_account_sid, self.test_auth_token)
+        else:
+            self.client = Client(self.account_sid, self.auth_token)
+            
+    def send_test_sms(self):
+        self.client.messages.create(
+                              body='this is a test',
+                              from_='+15005550006',
+                              to='+15167847791'
+                          )
 
     def send_mass_text(self, request, pharmacist_class):
         """

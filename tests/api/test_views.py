@@ -24,9 +24,6 @@ def test_get_requests():
 # create medication to pass validation for med strength, create pharmacist to send out messages
 @pytest.mark.twilio
 @pytest.mark.django_db
-@pytest.mark.skip(
-    reason="running this test will send an actual sms, skipping until we move to test credentials"
-)
 def test_post_request(create_medication, create_pharmacist):
     request_payload = {
         "med_name": "Abacavir",
@@ -38,6 +35,7 @@ def test_post_request(create_medication, create_pharmacist):
         "isinsurance": False,
         "user_type": "patient",
         "phone_number": "+15167847791",
+        "is_test": True
     }
 
     response = client.post("/api/requests", request_payload)
@@ -69,9 +67,6 @@ def test_post_request_invalid_data(create_medication, create_pharmacist):
 
 
 @pytest.mark.django_db
-@pytest.mark.skip(
-    reason="running this test will send an actual sms, skipping until we move to test credentials"
-)
 def test_post_request_twilio_error(create_medication):
     """Test when there are no phone numbers to send sms to since there are no pharmacists present"""
 
