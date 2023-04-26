@@ -159,6 +159,8 @@ def request_list(request):
                     TwilioClient(True).send_test_sms()
                 else:
                     TwilioClient().send_mass_text(request_sms, Pharmacist)
+                request_sms.delivery_status = "success"
+                request_sms.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(
                 {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
@@ -167,6 +169,8 @@ def request_list(request):
             logging.debug(
                 f"Failed to create a request. Error is due to the following exception: {ex}"
             )
+            request_sms.delivery_status = "fail"
+            request_sms.save()
             return Response(
                 {
                     "errors": "Something went wrong when creating the request, please contact your administrator"

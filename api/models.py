@@ -53,3 +53,4 @@ class Request(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     user_type = models.CharField(max_length=200)
+    delivery_status = models.CharField(max_length=200, default="")

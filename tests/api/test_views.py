@@ -1,5 +1,6 @@
 import pytest
 from django.test import Client
+from api.models import Request
 
 client = Client()
 
@@ -25,6 +26,7 @@ def test_get_requests():
 @pytest.mark.twilio
 @pytest.mark.django_db
 def test_post_request(create_medication, create_pharmacist):
+    """Verify that a request was created successfully and a twilio was successfully delivered"""
     request_payload = {
         "med_name": "Abacavir",
         "med_strength": ["300mg"],
@@ -41,11 +43,13 @@ def test_post_request(create_medication, create_pharmacist):
     response = client.post("/api/requests", request_payload)
 
     assert response.status_code == 201
+    assert response.data["delivery_status"] == "success"
     assert response.data["med_name"] == "Abacavir"
 
 
 @pytest.mark.django_db
 def test_post_request_invalid_data(create_medication, create_pharmacist):
+    """Verify that a request failed validation and was never saved to the database"""
     request_payload = {
         "med_name": "Abacavi",
         "med_strength": ["300mg"],
@@ -59,7 +63,10 @@ def test_post_request_invalid_data(create_medication, create_pharmacist):
     }
 
     response = client.post("/api/requests", request_payload)
+    requests = Request.objects.all()
+
     assert response.status_code == 400
+    assert len(requests) == 0
     assert (
         response.data["errors"]["med_strength"][0]
         == "The medication name must be valid"
@@ -68,7 +75,9 @@ def test_post_request_invalid_data(create_medication, create_pharmacist):
 
 @pytest.mark.django_db
 def test_post_request_twilio_error(create_medication):
-    """Test when there are no phone numbers to send sms to since there are no pharmacists present"""
+    """There are no phone numbers to send sms to since there are no pharmacists present.
+    Verify that the request was saved to the database but the delivery status for twilio sms failed
+    """
 
     request_payload = {
         "med_name": "Abacavir",
@@ -83,7 +92,10 @@ def test_post_request_twilio_error(create_medication):
     }
 
     response = client.post("/api/requests", request_payload)
+    request = Request.objects.all()[0]
+
     assert response.status_code == 500
+    assert request.delivery_status == "fail"
     assert (
         response.data["errors"]
         == "Something went wrong when creating the request, please contact your administrator"
