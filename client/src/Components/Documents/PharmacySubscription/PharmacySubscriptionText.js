@@ -59,20 +59,24 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 to between the Parties for good and valuable consideration. For a specified term beginning on the
                 Effective Date and ending on Your receipt of the Termination and Fee Schedule Notice (as
                 hereinafter defined) (the “Initial Testing Period”), KOW will permit access to and enrollment in
-                its Services for no cost, which shall be the Initial Rate. The duration of the Initial Testing Period
-                shall be fixed by KOW in its sole and absolute discretion. Upon termination of the Initial Testing
-                Period, KOW shall serve You with a notice advising You of the following:</p>
+                its Services at the agreed upon monthly rate of ($insert from enrollmentData) which shall be the Initial Rate. 
+                The Initial Rate represents a promotional rate based on the Enrolled Pharmacy's network 
+                selection at the time of enrollmenta nd offered by KOW during KOW's Initial Testing Period. 
+                The duration of the Initial Testing Period shall be fixed by KOW in its sole and absolute 
+                discretion. Upon termination of the Initial Testing Period, KOW shall serve You with a notice 
+                advising You of the following:</p>
                 <div className='subtext-b'>
                     <p>(i) the Initial Testing Period has ended; and</p>
                     <p>(ii) the Fee Schedule in the Agreement, will now be going into full force and effect (the
                         “Termination and Fee Schedule Notice”).</p>
                 </div>
             <p>You will have ten (10) days from receipt of the Termination and Fee Schedule Notice to provide
-                KOW written notice to legal@KOWmeds,com, that You will be opting-out of and terminating
+                KOW written notice to legal@KOWmeds.com, that You will be opting-out of and terminating
                 this Agreement (the period of time to respond being the “Opt-Out Noticing Period” and the
                 notice sent being the “Opt-Out Notice”). If You do not properly deliver and KOW does not
                 receive the Opt-Out Notice within the Opt-Out Notice Period, the Initial Rate will no longer be
-                in effect and the Fee Schedule annexed hereto as
+                in effect and Your network selection at the time of Your enrollment pursuant to the Fee Schedule 
+                annexed hereto as
                 <ExhibitModal
                     modalName=" Exhibit A "
                     title="Exhibit A"
@@ -81,7 +85,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     amount1="30"
                     frequency1="Monthly"
                     tier2="Expanded Delivery"
-                    amount2="60"
+                    amount2="50"
                     frequency2="Monthly"
                     tier3="DME Limited"
                     amount3="60"

@@ -232,22 +232,35 @@ function TermsText({ isModal = false }) {
             <h3>Fee Schedule and Pricing Terms</h3>
             <p>Enrolled Pharmacy. You are charged pursuant to the Fee Schedule, which is annexed hereto as
                 <ExhibitModal
-                    modalName=" Exhibit 1 "
-                    title="Exhibit 1"
+                    modalName=" Exhibit A "
+                    title="Exhibit A"
                     subtitle="Fee Schedule"
-                    amount="10"
-                    frequency="Monthly"
+                    tier1="Local Community"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery"
+                    amount2="50"
+                    frequency2="Monthly"
+                    tier3="DME Limited"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty"
+                    amount4="400"
+                    frequency4="Monthly"
                 />
                 and incorporated herein by reference, which Fee Schedule was negotiated and agreed
                 to between the Parties for good and valuable consideration pursuant to the terms of the
                 subscription agreement (“Subscription Agreement”) entered into by and between You and KOW,
                 which is incorporated herein by reference.</p>
-            <p>Pursuant to the Subscription Agreement, for a specified term beginning on the Effective Date of
-                the Subscription Agreement and ending on Your receipt of the Termination and Fee Schedule
-                Notice (as therein defined) (the “Initial Testing Period”), KOW will permit access to and
-                enrollment in its Services at no cost, which shall be the Initial Rate. The duration of the Initial
-                Testing Period shall be fixed by KOW in its sole and absolute discretion. Upon termination of 
-                the Initial Testing Period, KOW shall serve You with a notice advising You of the following:</p>
+            <p>Pursuant to the Subscription Agreement, for a specified term beginning on the Effective Date of 
+                the Subscription Agreement and ending on Your receipt of the Termination and Fee Schedule 
+                Notice (as therein defined) (the “Initial Testing Period”), KOW will permit access to and 
+                enrollment in its Services at the agreed upon monthly rate of ($______) which shall be the 
+                Initial Rate. The Initial Rate represents a promotional rate based on the Enrolled Pharmacy's 
+                network selection at the time of enrollment and offered by KOW during KOW's Initial Testing 
+                Period. The duration of the Initial Testing Period shall be fixed by KOW in its sole and absolute 
+                discretion. Upon termination of the Initial Testing Period, KOW shall serve You with a notice 
+                advising You of the following:</p>
             <div className='subtext-fee'>
                 <p>(i) the Initial Testing Period has ended; and</p>
                 <p>(ii) the Fee Schedule in the Agreement, will now be going into full force and effect (the
@@ -260,11 +273,21 @@ function TermsText({ isModal = false }) {
                 deliver and KOW does not receive the Opt-Out Notice within the Opt-Out Notice Period, the
                 Initial Rate will no longer be in effect and the Fee Schedule annexed hereto as
                 <ExhibitModal
-                    modalName=" Exhibit 1 "
-                    title="Exhibit 1"
+                    modalName=" Exhibit A "
+                    title="Exhibit A"
                     subtitle="Fee Schedule"
-                    amount="10"
-                    frequency="Monthly"
+                    tier1="Local Community"
+                    amount1="30"
+                    frequency1="Monthly"
+                    tier2="Expanded Delivery"
+                    amount2="50"
+                    frequency2="Monthly"
+                    tier3="DME Limited"
+                    amount3="60"
+                    frequency3="Monthly"
+                    tier4="Specialty"
+                    amount4="400"
+                    frequency4="Monthly"
                 />
                 and additionally annexed to the Subscription Agreement as {<Link className='link-exhibit' to=''> Exhibit A </Link>}, which are one and the same,
                 (collectively, the “Fee Schedule”), shall immediately become operative. Any subsequent fees
