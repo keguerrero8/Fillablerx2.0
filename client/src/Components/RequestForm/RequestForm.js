@@ -135,7 +135,7 @@ export default function RequestForm({ user }) {
         phone_number: "+1" + requestData["phone_number"], 
         isAdmin: user? true : false
     }
-    console.log(payload)
+
     fetch("/api/requests", {
         credentials: "include",
         method: "POST",
