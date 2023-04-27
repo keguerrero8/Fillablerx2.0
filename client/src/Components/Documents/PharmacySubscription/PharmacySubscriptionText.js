@@ -6,14 +6,16 @@ import larry_signature from '../../../images/larry_signature.png'
 
 function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData }) {
     const today = new Date();
+    const pharmacySignedDate = new Date(pharmacy.signed_agreement_stamp)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = today.toLocaleDateString('en-US', options);
+    const formattedDateToday = today.toLocaleDateString('en-US', options);
+    const formattedDatePharmacySigned = pharmacySignedDate.toLocaleDateString('en-US', options);
 
   return (
     <>
         <div className='parties'>
             <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>
-            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of April 24th, 2023 ("the Effective Date") between Fillable, 
+            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {isModal? formattedDateToday: formattedDatePharmacySigned} ("the Effective Date") between Fillable, 
              LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
         </div>
         <div className='recitals'>

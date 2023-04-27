@@ -60,7 +60,7 @@ export default function PharmacistTable({user}) {
                             <Typography component="div" variant="h6" sx={{fontWeight: "bolder", textDecoration: "underline"}}>Signed Pharmacy Data</Typography>
                             <Typography component="div" variant="subtitle1" color="primary.light" sx={{fontWeight: "bolder"}}>Enrolled: {pharmacy.signed_agreement_stamp}</Typography>
                             <Typography component="div" variant="subtitle1">Contact Name:  {pharmacy.contact_name}</Typography>
-                            <Typography component="div" variant="subtitle1">Title:  {pharmacy.address}, {pharmacy.contact_title}</Typography> 
+                            <Typography component="div" variant="subtitle1">Title:  {pharmacy.contact_title}</Typography> 
                             <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
                             <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
                             <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  

@@ -21,7 +21,7 @@ import {
     Link
 } from '@mui/material'
 
-export default function RequestForm({ user, test = false }) {
+export default function RequestForm({ user }) {
   const defaultRequestData = {
     phone_number: "",
     med_name: "",
@@ -32,7 +32,7 @@ export default function RequestForm({ user, test = false }) {
     rxgroup: "",
     isInsurance: true,
     user_type: "",
-    isTest: test
+    isAdmin: false
   }
   const [checked, setChecked] = useState(false)
   const [medication, setMedication] = useState({})
@@ -129,6 +129,13 @@ export default function RequestForm({ user, test = false }) {
   // sure its correct
   function handleSubmit (e) {
     e.preventDefault()
+
+    const payload = {
+        ...requestData, 
+        phone_number: "+1" + requestData["phone_number"], 
+        isAdmin: user? true : false
+    }
+    console.log(payload)
     fetch("/api/requests", {
         credentials: "include",
         method: "POST",
@@ -136,7 +143,7 @@ export default function RequestForm({ user, test = false }) {
             "Content-Type": "application/json",
             "X-CSRFToken": Cookies.get("csrftoken")
         },
-        body: JSON.stringify({...requestData, phone_number: "+1" + requestData["phone_number"]})
+        body: JSON.stringify(payload)
     })
     .then(r => {
         if (r.ok) {
@@ -323,7 +330,7 @@ export default function RequestForm({ user, test = false }) {
             <RequestFormInput 
                 requestData={requestData} 
                 flex={0.8} 
-                label={test? "Phone Number to send test sms" : "Mobile Number"} 
+                label="Mobile Number"
                 name="phone_number" 
                 handleChange={handleChange} 
                 isRequired={true}
