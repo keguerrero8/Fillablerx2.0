@@ -28,7 +28,7 @@ class TwilioClient:
             body="this is a test", from_="+15005550006", to="+15167847791"
         )
 
-    def send_mass_text(self, request, pharmacist_class, isAdmin = False):
+    def send_mass_text(self, request, pharmacist_class, isAdmin=False):
         """
         Sends a mass sms to all pharcists enrolled in platform. The Twilio Notify service will be used to send multiple
         sms with a single API call. Note: On October 2023, the Notify service will be deprecated and we will need a new
@@ -60,11 +60,13 @@ class TwilioClient:
                 f"If so, reply '{request.id}'.\n"
                 f"If not, please ignore."
             )
-            
+
         if isAdmin:
             for number in ["+15167847791", "+15166686056"]:
                 self.client.messages.create(
-                    body=body + "\n**this is a test", from_=self.twilio_phone_number, to=number
+                    body=body + "\n**this is a test",
+                    from_=self.twilio_phone_number,
+                    to=number,
                 )
             return
 

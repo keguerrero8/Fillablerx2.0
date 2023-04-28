@@ -17,6 +17,7 @@ class PharmacySerializer(serializers.ModelSerializer):
             "npi",
             "signed_agreement_stamp",
             "signature",
+            "signed_agreement_admin",
         ]
         # FIXME update logic so that it will look to see if all the fields above are found in the data_keys, no more, no less
         # if these conditions are not met, then we should return False. right now, if we add another required field we will need
@@ -62,6 +63,11 @@ class PharmacySerializer(serializers.ModelSerializer):
     def validate_signature(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A signature must be provided")
+        return value
+
+    def validate_signed_agreement_admin(self, value):
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("A signed admin must be provided")
         return value
 
 

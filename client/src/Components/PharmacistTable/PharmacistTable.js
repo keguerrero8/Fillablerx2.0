@@ -47,6 +47,9 @@ export default function PharmacistTable({user}) {
         navigate(`/dashboard/pharmacies/view-agreement/${params.id}`)
     }
 
+    const pharmacySignedDate = new Date(pharmacy.signed_agreement_stamp)
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
     return (
         <Box sx={styles.MainContainer}>
             <Box sx={{mt: "70px", mb: "70px"}}>
@@ -58,12 +61,13 @@ export default function PharmacistTable({user}) {
                     <Box>
                         <Box sx={{width: "60%", margin: "auto", display: "flex", flexDirection: "column", gap: "1rem"}}>
                             <Typography component="div" variant="h6" sx={{fontWeight: "bolder", textDecoration: "underline"}}>Signed Pharmacy Data</Typography>
-                            <Typography component="div" variant="subtitle1" color="primary.light" sx={{fontWeight: "bolder"}}>Enrolled: {pharmacy.signed_agreement_stamp}</Typography>
+                            <Typography component="div" variant="subtitle1" color="primary.light" sx={{fontWeight: "bolder"}}>Enrolled: {pharmacySignedDate.toLocaleDateString('en-US', options)}</Typography>
                             <Typography component="div" variant="subtitle1">Contact Name:  {pharmacy.contact_name}</Typography>
                             <Typography component="div" variant="subtitle1">Title:  {pharmacy.contact_title}</Typography> 
                             <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
                             <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
                             <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  
+                            <Typography component="div" variant="subtitle1">KOW Admin:  {pharmacy.signed_agreement_admin}</Typography>  
                         </Box>
                         <Button variant='contained' sx={{my: "50px"}} onClick={handleViewAgreement}>View Signed Agreement</Button>
                     </Box>

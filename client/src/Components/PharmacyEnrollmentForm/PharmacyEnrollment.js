@@ -44,7 +44,12 @@ export default function PharmacyEnrollment({ user }) {
     }
 
     const updatePharmacy = async (obj) => {
-        const response = await pharmacyService.updateEnrolledPharmacy(params.id, {...obj, contact_phone_number: "+1" + enrollmentData["contact_phone_number"]})
+        const finalEnrollmentData = {
+            ...obj, 
+            signed_agreement_admin: `${user.first_name} ${user.last_name}`, 
+            contact_phone_number: "+1" + enrollmentData["contact_phone_number"]
+        }
+        const response = await pharmacyService.updateEnrolledPharmacy(params.id, finalEnrollmentData)
 
         if (!response.errors) {
             setStatus(["Successfully enrolled the pharmacist!"])

@@ -338,7 +338,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 <h3>By: </h3>
                 <p>Name: {enrollmentData["contact_name"]}</p>
                 <p>Title: {enrollmentData["contact_title"]}</p>
-                {isModal? null : <p className='sig-timestamp'>Electronically Signed: {pharmacy.signed_agreement_stamp}</p>}
+                {isModal? null : <p className='sig-timestamp'>Electronically Signed: {formattedDatePharmacySigned}</p>}
             </div>
         </div> 
     </>
