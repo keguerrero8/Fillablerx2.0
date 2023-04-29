@@ -11,7 +11,7 @@ import FindMedication from './Pages/FindMedication';
 import Page404 from './Pages/Page404';
 import LoginPage from './Pages/Login/LoginPage';
 import DashboardPage from './Pages/DashboardPage';
-import PharmacistTable from './Components/PharmacistTable/PharmacistTable';
+import PharmacyPage from './Components/PharmacyPage/PharmacyPage';
 import PharmacyEnrollment from './Components/PharmacyEnrollmentForm/PharmacyEnrollment';
 import PharmacySignedAgreement from './Components/PharmacySignedAgreement/PharmacySignedAgreement';
 import SplashPage from './Pages/SplashPage';
@@ -49,7 +49,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/login" element={<LoginPage setUser={setUser}/>} />
         <Route path="/dashboard" element={<DashboardPage user={user}/>} />
-        <Route path="/dashboard/pharmacies/:id" element={<PharmacistTable user={user}/>} />
+        <Route path="/dashboard/pharmacies/:id" element={<PharmacyPage user={user}/>} />
         <Route path="/dashboard/pharmacies/enrollment/:id" element={<PharmacyEnrollment user={user}/>} />
         <Route path="/dashboard/pharmacies/view-agreement/:id" element={<PharmacySignedAgreement user={user}/>} />
         <Route path="/privacy-policy" element={<Privacy />} />

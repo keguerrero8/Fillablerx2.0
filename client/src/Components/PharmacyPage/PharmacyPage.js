@@ -9,9 +9,9 @@ import pharmacistService from '../../Services/pharmacistService'
 
 import { Box, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Typography, Button } from '@mui/material'
 import { useParams, Link } from 'react-router-dom'
-import { styles } from './PharmacistTable-styles'
+import { styles } from './PharmacyPage-styles'
 
-export default function PharmacistTable({user}) {
+export default function PharmacyPage({user}) {
     const params = useParams()
     const [pharmacists, setPharmacists] = useState([])
     const [pharmacy, setPharmacy] = useState({})
@@ -67,7 +67,8 @@ export default function PharmacistTable({user}) {
                             <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
                             <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
                             <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  
-                            <Typography component="div" variant="subtitle1">KOW Admin:  {pharmacy.signed_agreement_admin}</Typography>  
+                            <Typography component="div" variant="subtitle1">Network:  {pharmacy.network}</Typography>  
+                            <Typography component="div" variant="subtitle1">KOW Member:  {pharmacy.signed_agreement_admin}</Typography>  
                         </Box>
                         <Button variant='contained' sx={{my: "50px"}} onClick={handleViewAgreement}>View Signed Agreement</Button>
                     </Box>

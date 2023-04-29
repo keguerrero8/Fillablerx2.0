@@ -134,6 +134,7 @@ def test_put_pharmacy_no_pharmacy(create_user):
         "contact_email": "test_email",
         "contact_phone_number": "+15169998888",
         "npi": "123",
+        "network": "DME Limited",
         "signature": "test_signature",
     }
 
@@ -156,6 +157,7 @@ def test_put_pharmacy_no_signature(create_pharmacy, create_user):
         "contact_email": "test_email",
         "contact_phone_number": "+15169998888",
         "npi": "123",
+        "network": "DME Limited",
         "signature": "",
     }
     pharmacy = create_pharmacy
@@ -179,6 +181,7 @@ def test_put_pharmacy_invalid_data(create_pharmacy, create_user):
         "contact_email": "test_email",
         "contact_phone_number": "+15169998888",
         "npi": "123",
+        "network": "DME Limited",
         "signature": "Test",
     }
     pharmacy = create_pharmacy

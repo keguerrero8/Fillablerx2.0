@@ -13,6 +13,7 @@ class Pharmacy(models.Model):
     contact_email = models.CharField(max_length=200, blank=True)
     contact_phone_number = PhoneNumberField(blank=True, null=True)
     npi = models.CharField(max_length=200, blank=True)
+    network = models.CharField(max_length=200, blank=True)
     signature = models.CharField(max_length=300, blank=True)
     signed_agreement_admin = models.CharField(max_length=300, blank=True)
     signed_agreement_stamp = models.DateTimeField(

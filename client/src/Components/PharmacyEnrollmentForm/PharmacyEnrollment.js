@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 
 import pharmacyService from '../../Services/pharmacyService'
 import RequestFormInput from '../RequestFormInput/RequestFormInput'
+import FormGenericDropDown from '../FormGenericDropDown/FormGenericDropDown';
 import CSRFToken from '../CSRFToken/CSRFToken';
 import PharmacyEnrollmentTermsModal from '../PharmacyEnrollmentTermsModal/PharmacyEnrollmentTermsModal';
 import PharmacyEnrollmentOptInModal from '../PharmacyEnrollmentOptInModal/PharmacyEnrollmentOptInModal';
@@ -19,7 +20,8 @@ export default function PharmacyEnrollment({ user }) {
         contact_email: "",
         contact_phone_number: "",
         npi: "",
-        signature: ""
+        signature: "",
+        network: ""
     }
 
     const params = useParams()
@@ -37,6 +39,7 @@ export default function PharmacyEnrollment({ user }) {
     const [stepOptIn, setStepOptIn] = useState(1)
     const [isPrivacyAcknowledged, setisPrivacyAcknowledged] = useState(false)
     const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
+    const [searchValue, setSearchValue] = useState("")
 
     const loadPharmacy = async () => {
       const loadedPharmacy = await pharmacyService.getPharmacy(params.id)
@@ -67,11 +70,19 @@ export default function PharmacyEnrollment({ user }) {
 
     if (!user) return <Page404 isAuthFailure={true} />
 
-    function handleChange (e) {
-        setEnrollmentData({
-            ...enrollmentData,
-            [e.target.name]: e.target.value
-        })
+    function handleChange (e, dropDownKey = null) {
+        if (dropDownKey) {
+            setEnrollmentData({
+                ...enrollmentData,
+                [dropDownKey]: e.target.innerText
+            })
+        }
+        else {
+            setEnrollmentData({
+                ...enrollmentData,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     const handlePrivacyCheck = (e) => {
@@ -100,6 +111,7 @@ export default function PharmacyEnrollment({ user }) {
         setCheckedOptIn(false)
         setStepPrivacy(1)
         setStepOptIn(1)
+        setSearchValue("")
     }
 
     function handleSubmit (e) {
@@ -142,11 +154,11 @@ export default function PharmacyEnrollment({ user }) {
             <Box sx={styles.FieldsContainer}>
                 {
                     [
-                        {flex: 1, label: "Contact Name", name: "contact_name"}, 
-                        {flex: 1, label: "Contact Title", name: "contact_title"}, 
-                        {flex: 1, label: "Contact Email", name: "contact_email"}, 
-                        {flex: 1, label: "Contact Phone Number", name: "contact_phone_number"}, 
-                        {flex: 1, label: "Pharmacy NPI", name: "npi"}
+                        {flex: 1, label: "Contact Name", name: "contact_name", placeholder: "Please provide your contact name"}, 
+                        {flex: 1, label: "Contact Title", name: "contact_title", placeholder: "Please provide your title"}, 
+                        {flex: 1, label: "Contact Email", name: "contact_email", placeholder: "Please provide your email"}, 
+                        {flex: 1, label: "Contact Phone Number", name: "contact_phone_number", placeholder: "Please enter 10 digits"}, 
+                        {flex: 1, label: "Pharmacy NPI", name: "npi", placeholder: "Please provide your Pharmacy NPI"}
                     ]
                     .map(i => 
                         <RequestFormInput 
@@ -157,8 +169,19 @@ export default function PharmacyEnrollment({ user }) {
                             handleChange={handleChange} 
                             key={i.label} 
                             isRequired={true}
+                            placeholder={i.placeholder}
                         />)
                 }
+                <FormGenericDropDown
+                    label="Network"
+                    name="network"
+                    handleChange={handleChange}
+                    isRequired={true}
+                    options={["Local Community ($30 Monthly)", "Expanded Delivery ($50 Monthly)", "DME Limited (N/A)", "Specialty (N/A)"]}
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                    placeholder="Select a Pharmacy Network"
+                />
                 <Box sx={{textAlign: "center", width: "100%", marginTop: "2rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
                         labelPlacement='end'
