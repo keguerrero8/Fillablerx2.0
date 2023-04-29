@@ -21,7 +21,8 @@ export default function PharmacyEnrollment({ user }) {
         contact_phone_number: "",
         npi: "",
         signature: "",
-        network: ""
+        network: "",
+        initial_rate: ""
     }
 
     const params = useParams()
@@ -118,7 +119,7 @@ export default function PharmacyEnrollment({ user }) {
         e.preventDefault()
         updatePharmacy(enrollmentData)
     }
-
+    console.log(enrollmentData)
     return (
         <Box sx={styles.MainContainer} component="form" onSubmit={handleSubmit}>
             <PharmacyEnrollmentTermsModal 
@@ -152,6 +153,21 @@ export default function PharmacyEnrollment({ user }) {
                 <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "10px"}}>{pharmacy.phone_number? pharmacy.phone_number.replace("+", "") : null}</Typography>
             </Box>
             <Box sx={styles.FieldsContainer}>
+                <Box>
+                    <RequestFormInput 
+                        requestData={enrollmentData} 
+                        flex={1} 
+                        label="Initial Rate" 
+                        name="initial_rate" 
+                        handleChange={handleChange} 
+                        key="Initial Rate"
+                        isRequired={true}
+                    />
+                    <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem", mt: "10px"}}>
+                        <Typography color="black" component="h6">KOW member:</Typography>
+                        <TextField sx={{width: "40%"}} value={`${user.first_name} ${user.last_name}`} variant="standard"/>
+                    </Box> 
+                </Box>
                 {
                     [
                         {flex: 1, label: "Contact Name", name: "contact_name", placeholder: "Please provide your contact name"}, 
@@ -191,6 +207,7 @@ export default function PharmacyEnrollment({ user }) {
                 </Box>
                 <Box sx={{textAlign: "center", width: "100%", marginTop: "-1rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
+                        disabled={enrollmentData["contact_name"] === "" || enrollmentData["contact_title"] === ""}
                         labelPlacement='end'
                         control={<Checkbox checked={checkedOptIn} onChange={handleOptInCheck}/>} 
                         label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder", textAlign: "start"}}>I AGREE TO KOW'S PHARMACY SUBSCRIPTION AND OPT-IN AGREEMENTS</Typography>} 
@@ -207,7 +224,7 @@ export default function PharmacyEnrollment({ user }) {
                 </Box>
                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"}}>
                     <Typography color="black" component="h6">Title:</Typography>
-                    <TextField sx={{width: "50%"}} value={enrollmentData["contact_title"]} variant="standard"/>
+                    <TextField sx={{width: "40%"}} value={enrollmentData["contact_title"]} variant="standard"/>
                 </Box> 
             </Box>
             <Box sx={{textAlign: "center", width: "80%", margin: "0 auto"}}>

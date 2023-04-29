@@ -16,6 +16,7 @@ class PharmacySerializer(serializers.ModelSerializer):
             "contact_phone_number",
             "npi",
             "network",
+            "initial_rate",
             "signed_agreement_stamp",
             "signature",
             "signed_agreement_admin",
@@ -60,10 +61,18 @@ class PharmacySerializer(serializers.ModelSerializer):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact phone number must be provided")
         return value
-    
-    def validate_contact_network(self, value):
+
+    def validate_network(self, value):
         if value == "" and self.is_field_required_enrollment():
-            raise serializers.ValidationError("A contact email must be provided")
+            raise serializers.ValidationError("A Network must be provided")
+        return value
+
+    def validate_initial_rate(self, value):
+        if not value.isnumeric():
+            raise serializers.ValidationError("must be a number")
+
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("An initial rate must be provided")
         return value
 
     def validate_signature(self, value):

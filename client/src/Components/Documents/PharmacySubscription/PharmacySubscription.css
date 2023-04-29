@@ -191,11 +191,11 @@
 .subtext-sig > h3 {
     font-size: var(--font-small);
     font-weight: 100;
-    margin-left: 25vw;
+    margin-left: 50px;
 }
 .subtext-sig > p {
     font-size: var(--font-xsmall);
-    margin-left: 30vw;
+    margin-left: 50px;
 }
 
 .sig-timestamp {

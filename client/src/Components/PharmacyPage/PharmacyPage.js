@@ -7,7 +7,7 @@ import Page404 from '../../Pages/Page404';
 import pharmacyService from '../../Services/pharmacyService'
 import pharmacistService from '../../Services/pharmacistService'
 
-import { Box, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Typography, Button } from '@mui/material'
+import { Box, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Typography, Button, Card, CardContent } from '@mui/material'
 import { useParams, Link } from 'react-router-dom'
 import { styles } from './PharmacyPage-styles'
 
@@ -59,17 +59,20 @@ export default function PharmacyPage({user}) {
             {
                 pharmacy.signed_agreement_stamp? (
                     <Box>
-                        <Box sx={{width: "60%", margin: "auto", display: "flex", flexDirection: "column", gap: "1rem"}}>
-                            <Typography component="div" variant="h6" sx={{fontWeight: "bolder", textDecoration: "underline"}}>Signed Pharmacy Data</Typography>
-                            <Typography component="div" variant="subtitle1" color="primary.light" sx={{fontWeight: "bolder"}}>Enrolled: {pharmacySignedDate.toLocaleDateString('en-US', options)}</Typography>
-                            <Typography component="div" variant="subtitle1">Contact Name:  {pharmacy.contact_name}</Typography>
-                            <Typography component="div" variant="subtitle1">Title:  {pharmacy.contact_title}</Typography> 
-                            <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
-                            <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
-                            <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  
-                            <Typography component="div" variant="subtitle1">Network:  {pharmacy.network}</Typography>  
-                            <Typography component="div" variant="subtitle1">KOW Member:  {pharmacy.signed_agreement_admin}</Typography>  
-                        </Box>
+                        <Card sx={{maxWidth: "500px", margin: "auto"}}>
+                            <CardContent sx={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+                                <Typography component="div" variant="h6" sx={{fontWeight: "bolder", textDecoration: "underline"}}>Signed Pharmacy Data</Typography>
+                                <Typography component="div" variant="subtitle1" color="primary.light" sx={{fontWeight: "bolder"}}>Enrolled: {pharmacySignedDate.toLocaleDateString('en-US', options)}</Typography>
+                                <Typography component="div" variant="subtitle1">Contact Name:  {pharmacy.contact_name}</Typography>
+                                <Typography component="div" variant="subtitle1">Title:  {pharmacy.contact_title}</Typography> 
+                                <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
+                                <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
+                                <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  
+                                <Typography component="div" variant="subtitle1">Network:  {pharmacy.network === ""? "N/A": `$${pharmacy.network}`}</Typography>  
+                                <Typography component="div" variant="subtitle1">Initial Rate:  {pharmacy.initial_rate === ""? "N/A": `$${pharmacy.initial_rate}`}</Typography>  
+                                <Typography component="div" variant="subtitle1">KOW Member:  {pharmacy.signed_agreement_admin}</Typography>  
+                            </CardContent>
+                        </Card>
                         <Button variant='contained' sx={{my: "50px"}} onClick={handleViewAgreement}>View Signed Agreement</Button>
                     </Box>
                 ) : (
