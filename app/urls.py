@@ -12,3 +12,5 @@ urlpatterns = [
 # this is a catch all, so that any url outside of the ones above are sent to the
 # index.html that lives inside our build folder so react router can take over
 urlpatterns += [re_path(r"^.*", TemplateView.as_view(template_name="index.html"))]
+
+# "build": "rm -rf ../build && react-scripts --openssl-legacy-provider build && cp mkdir -p build/static/favicons && cp -r build/favicons/. build/static/favicons/ && cp -r build ../build",

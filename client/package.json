@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "PORT=4000 react-scripts start",
-    "build": "rm -rf ../build && react-scripts --openssl-legacy-provider build && cp build/favicon.ico build/static/favicon.ico && cp -r build ../build",
+    "build": "rm -rf ../build && react-scripts --openssl-legacy-provider build && cp -p build/favicons/* build/static/ && cp -r build ../build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
