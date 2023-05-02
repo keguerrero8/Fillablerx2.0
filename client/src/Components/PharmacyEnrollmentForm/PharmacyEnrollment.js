@@ -1,23 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom'
 
 import pharmacyService from '../../Services/pharmacyService'
 import RequestFormInput from '../RequestFormInput/RequestFormInput'
+import FormGenericDropDown from '../FormGenericDropDown/FormGenericDropDown';
 import CSRFToken from '../CSRFToken/CSRFToken';
 import PharmacyEnrollmentTermsModal from '../PharmacyEnrollmentTermsModal/PharmacyEnrollmentTermsModal';
 import PharmacyEnrollmentOptInModal from '../PharmacyEnrollmentOptInModal/PharmacyEnrollmentOptInModal';
+import Page404 from '../../Pages/Page404';
 
 import { Box, Typography, TextField, Button, FormControlLabel, Checkbox } from '@mui/material'
-import { useParams, Link } from 'react-router-dom'
 import { styles } from './PharmacyEnrollment-styles'
 
-export default function PharmacyEnrollment() {
+export default function PharmacyEnrollment({ user }) {
     const defaultEnrollmentData = {
         contact_name: "",
         contact_title: "",
         contact_email: "",
         contact_phone_number: "",
-        npi: ""
+        npi: "",
+        signature: "",
+        network: "",
+        initial_rate: ""
     }
 
     const params = useParams()
@@ -27,7 +32,6 @@ export default function PharmacyEnrollment() {
     const [checkedOptIn, setCheckedOptIn] = useState(false)
     const [pharmacy, setPharmacy] = useState({})
     const [enrollmentData, setEnrollmentData] = useState(defaultEnrollmentData)
-    const [signature, setSignature] = useState("")
     const [isDisabled, setIsDisabled] = useState(false)
     const [status, setStatus] = useState([])
     const [isAgreementTermsModal, setIsAgreementTermsModal] = useState(false)
@@ -36,6 +40,7 @@ export default function PharmacyEnrollment() {
     const [stepOptIn, setStepOptIn] = useState(1)
     const [isPrivacyAcknowledged, setisPrivacyAcknowledged] = useState(false)
     const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
+    const [searchValue, setSearchValue] = useState("")
 
     const loadPharmacy = async () => {
       const loadedPharmacy = await pharmacyService.getPharmacy(params.id)
@@ -43,10 +48,14 @@ export default function PharmacyEnrollment() {
     }
 
     const updatePharmacy = async (obj) => {
-        const response = await pharmacyService.updateEnrolledPharmacy(params.id, {...obj, signature: signature, contact_phone_number: "+1" + enrollmentData["contact_phone_number"]})
+        const finalEnrollmentData = {
+            ...obj, 
+            signed_agreement_admin: `${user.first_name} ${user.last_name}`, 
+            contact_phone_number: "+1" + enrollmentData["contact_phone_number"]
+        }
+        const response = await pharmacyService.updateEnrolledPharmacy(params.id, finalEnrollmentData)
 
         if (!response.errors) {
-            //Add logic here to redirect user to splash page
             setStatus(["Successfully enrolled the pharmacist!"])
             setIsDisabled(true)
             setTimeout(() => navigate("/pharmacy-enrolled"), 1000)
@@ -60,15 +69,21 @@ export default function PharmacyEnrollment() {
       loadPharmacy()
     }, [])
 
-    function handleChange (e) {
-        setEnrollmentData({
-            ...enrollmentData,
-            [e.target.name]: e.target.value
-        })
-    }
+    if (!user) return <Page404 isAuthFailure={true} />
 
-    function handleSignatureChange (e) {
-        setSignature(e.target.value)
+    function handleChange (e, dropDownKey = null) {
+        if (dropDownKey) {
+            setEnrollmentData({
+                ...enrollmentData,
+                [dropDownKey]: e.target.innerText
+            })
+        }
+        else {
+            setEnrollmentData({
+                ...enrollmentData,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     const handlePrivacyCheck = (e) => {
@@ -90,7 +105,6 @@ export default function PharmacyEnrollment() {
     function handleClear () {
         setStatus([])
         setEnrollmentData(defaultEnrollmentData)
-        setSignature("")
         setIsDisabled(false)
         setisPrivacyAcknowledged(false)
         setisOptInAcknowledged(false)
@@ -98,14 +112,14 @@ export default function PharmacyEnrollment() {
         setCheckedOptIn(false)
         setStepPrivacy(1)
         setStepOptIn(1)
+        setSearchValue("")
     }
 
     function handleSubmit (e) {
-        // add logic to redirect user to pharmacy page if submitted correctly otherwise return error status
         e.preventDefault()
         updatePharmacy(enrollmentData)
     }
-
+    console.log(enrollmentData)
     return (
         <Box sx={styles.MainContainer} component="form" onSubmit={handleSubmit}>
             <PharmacyEnrollmentTermsModal 
@@ -139,13 +153,28 @@ export default function PharmacyEnrollment() {
                 <Typography component="div" variant="h6" sx={{fontWeight: 400, my: "10px"}}>{pharmacy.phone_number? pharmacy.phone_number.replace("+", "") : null}</Typography>
             </Box>
             <Box sx={styles.FieldsContainer}>
+                <Box>
+                    <RequestFormInput 
+                        requestData={enrollmentData} 
+                        flex={1} 
+                        label="Initial Rate" 
+                        name="initial_rate" 
+                        handleChange={handleChange} 
+                        key="Initial Rate"
+                        isRequired={true}
+                    />
+                    <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem", mt: "10px"}}>
+                        <Typography color="black" component="h6">KOW member:</Typography>
+                        <TextField sx={{width: "40%"}} value={`${user.first_name} ${user.last_name}`} variant="standard"/>
+                    </Box> 
+                </Box>
                 {
                     [
-                        {flex: 1, label: "Contact Name", name: "contact_name"}, 
-                        {flex: 1, label: "Contact Title", name: "contact_title"}, 
-                        {flex: 1, label: "Contact Email", name: "contact_email"}, 
-                        {flex: 1, label: "Contact Phone Number", name: "contact_phone_number"}, 
-                        {flex: 1, label: "Pharmacy NPI", name: "npi"}
+                        {flex: 1, label: "Contact Name", name: "contact_name", placeholder: "Please provide your contact name"}, 
+                        {flex: 1, label: "Contact Title", name: "contact_title", placeholder: "Please provide your title"}, 
+                        {flex: 1, label: "Contact Email", name: "contact_email", placeholder: "Please provide your email"}, 
+                        {flex: 1, label: "Contact Phone Number", name: "contact_phone_number", placeholder: "Please enter 10 digits"}, 
+                        {flex: 1, label: "Pharmacy NPI", name: "npi", placeholder: "Please provide your Pharmacy NPI"}
                     ]
                     .map(i => 
                         <RequestFormInput 
@@ -156,8 +185,19 @@ export default function PharmacyEnrollment() {
                             handleChange={handleChange} 
                             key={i.label} 
                             isRequired={true}
+                            placeholder={i.placeholder}
                         />)
                 }
+                <FormGenericDropDown
+                    label="Network"
+                    name="network"
+                    handleChange={handleChange}
+                    isRequired={true}
+                    options={["Local Community ($30 Monthly)", "Expanded Delivery ($50 Monthly)", "DME Limited (N/A)", "Specialty (N/A)"]}
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                    placeholder="Select a Pharmacy Network"
+                />
                 <Box sx={{textAlign: "center", width: "100%", marginTop: "2rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
                         labelPlacement='end'
@@ -167,6 +207,7 @@ export default function PharmacyEnrollment() {
                 </Box>
                 <Box sx={{textAlign: "center", width: "100%", marginTop: "-1rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
+                        disabled={enrollmentData["contact_name"] === "" || enrollmentData["contact_title"] === ""}
                         labelPlacement='end'
                         control={<Checkbox checked={checkedOptIn} onChange={handleOptInCheck}/>} 
                         label={<Typography variant='h5' sx={{fontSize: "1.1rem", fontWeight: "bolder", textAlign: "start"}}>I AGREE TO KOW'S PHARMACY SUBSCRIPTION AND OPT-IN AGREEMENTS</Typography>} 
@@ -179,11 +220,11 @@ export default function PharmacyEnrollment() {
                     <Typography color="black" component="h6" sx={{mb: "5px", fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"}}}>
                     FULL NAME<span style={{color: "red"}}> &#42;</span>
                     </Typography>
-                    <TextField sx={{width: "100%"}} onChange={handleSignatureChange} value={signature} name="signature" placeholder="Please type your full name"/>
+                    <TextField sx={{width: "100%"}} onChange={handleChange} value={enrollmentData["signature"]} name="signature" placeholder="Please type your full name"/>
                 </Box>
                 <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem"}}>
                     <Typography color="black" component="h6">Title:</Typography>
-                    <TextField sx={{width: "50%"}} value={enrollmentData["contact_title"]} variant="standard"/>
+                    <TextField sx={{width: "40%"}} value={enrollmentData["contact_title"]} variant="standard"/>
                 </Box> 
             </Box>
             <Box sx={{textAlign: "center", width: "80%", margin: "0 auto"}}>
@@ -191,7 +232,7 @@ export default function PharmacyEnrollment() {
                 <Typography key={index} sx={{color: status[0] === "Successfully enrolled the pharmacist!"? "green" : "red"}}>{e}</Typography>)}
             </Box>
             <Box sx={styles.ButtonsContainer}>
-                <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || signature === "" || !isPrivacyAcknowledged || !isOptInAcknowledged || !checkedPrivacy || !checkedOptIn}>
+                <Button variant='contained' sx={{color: "white", width: "30%"}} size="large" type="submit" disabled={isDisabled || enrollmentData["signature"] === "" || !isPrivacyAcknowledged || !isOptInAcknowledged || !checkedPrivacy || !checkedOptIn}>
                     Submit
                 </Button>
                 <Button variant='text' sx={{color: "#154161", width: "40%"}} size="large" onClick={handleClear} >

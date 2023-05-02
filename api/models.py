@@ -13,6 +13,10 @@ class Pharmacy(models.Model):
     contact_email = models.CharField(max_length=200, blank=True)
     contact_phone_number = PhoneNumberField(blank=True, null=True)
     npi = models.CharField(max_length=200, blank=True)
+    network = models.CharField(max_length=200, blank=True)
+    initial_rate = models.CharField(max_length=200, blank=True)
+    signature = models.CharField(max_length=300, blank=True)
+    signed_agreement_admin = models.CharField(max_length=300, blank=True)
     signed_agreement_stamp = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True
     )
@@ -52,3 +56,4 @@ class Request(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     user_type = models.CharField(max_length=200)
+    delivery_status = models.CharField(max_length=200, default="")

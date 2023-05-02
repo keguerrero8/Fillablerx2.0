@@ -21,7 +21,7 @@ import {
     Link
 } from '@mui/material'
 
-export default function RequestForm({ user, test = false }) {
+export default function RequestForm({ user }) {
   const defaultRequestData = {
     phone_number: "",
     med_name: "",
@@ -32,7 +32,7 @@ export default function RequestForm({ user, test = false }) {
     rxgroup: "",
     isInsurance: true,
     user_type: "",
-    isTest: test
+    isAdmin: false
   }
   const [checked, setChecked] = useState(false)
   const [medication, setMedication] = useState({})
@@ -129,6 +129,13 @@ export default function RequestForm({ user, test = false }) {
   // sure its correct
   function handleSubmit (e) {
     e.preventDefault()
+
+    const payload = {
+        ...requestData, 
+        phone_number: "+1" + requestData["phone_number"], 
+        isAdmin: user? true : false
+    }
+
     fetch("/api/requests", {
         credentials: "include",
         method: "POST",
@@ -136,7 +143,7 @@ export default function RequestForm({ user, test = false }) {
             "Content-Type": "application/json",
             "X-CSRFToken": Cookies.get("csrftoken")
         },
-        body: JSON.stringify({...requestData, phone_number: "+1" + requestData["phone_number"]})
+        body: JSON.stringify(payload)
     })
     .then(r => {
         if (r.ok) {
@@ -323,7 +330,7 @@ export default function RequestForm({ user, test = false }) {
             <RequestFormInput 
                 requestData={requestData} 
                 flex={0.8} 
-                label={test? "Phone Number to send test sms" : "Mobile Number"} 
+                label="Mobile Number"
                 name="phone_number" 
                 handleChange={handleChange} 
                 isRequired={true}
@@ -348,15 +355,9 @@ export default function RequestForm({ user, test = false }) {
                 <Typography key={index} sx={{color: status[0] === "Request successfully sent!"? "green" : "red"}}>{e}</Typography>)}
         </Box>
         <Box sx={styles.ButtonsContainer}>
-            {user? (
-                <Button variant='contained' sx={{color: "white"}} size="large" type="submit">
-                    Send Request
-                </Button>
-            ) : (
-                <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={!isDisabled || !checked}>
-                    Send Request
-                </Button>
-            )}
+            <Button variant='contained' sx={{color: "white"}} size="large" type="submit" disabled={user? false : (!isDisabled || !checked)}>
+                Send Request
+            </Button>
             <Button variant='text' sx={{color: "#154161"}} size="medium" onClick={handleClear} >
                 Reset Request
             </Button>

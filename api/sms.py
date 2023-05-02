@@ -10,15 +10,25 @@ logger = logging.getLogger(__name__)
 
 
 class TwilioClient:
-    def __init__(self):
+    def __init__(self, is_test=False):
         self.twilio_phone_number = config("TWILIO_PHONE_NUMBER")
         self.account_sid = config("TWILIO_ACCOUNT_SID")
         self.auth_token = config("TWILIO_AUTH_TOKEN")
+        self.test_account_sid = config("TWILIO_TEST_ACCOUNT_SID")
+        self.test_auth_token = config("TWILIO_TEST_AUTH_TOKEN")
         self.messaging_service = config("TWILIO_MESSAGING_SERVICE")
         self.notify_service = config("TWILIO_NOTIFY_SERVICE_SID")
-        self.client = Client(self.account_sid, self.auth_token)
+        if is_test:
+            self.client = Client(self.test_account_sid, self.test_auth_token)
+        else:
+            self.client = Client(self.account_sid, self.auth_token)
 
-    def send_mass_text(self, request, pharmacist_class):
+    def send_test_sms(self):
+        self.client.messages.create(
+            body="this is a test", from_="+15005550006", to="+15167847791"
+        )
+
+    def send_mass_text(self, request, pharmacist_class, isAdmin=False):
         """
         Sends a mass sms to all pharcists enrolled in platform. The Twilio Notify service will be used to send multiple
         sms with a single API call. Note: On October 2023, the Notify service will be deprecated and we will need a new
@@ -50,6 +60,15 @@ class TwilioClient:
                 f"If so, reply '{request.id}'.\n"
                 f"If not, please ignore."
             )
+
+        if isAdmin:
+            for number in ["+15167847791", "+15166686056"]:
+                self.client.messages.create(
+                    body=body + "\n**this is a test",
+                    from_=self.twilio_phone_number,
+                    to=number,
+                )
+            return
 
         pharmacists = pharmacist_class.objects.all()
         enrolled_pharmacists = list(filter(lambda x: x.isEnrolled, pharmacists))

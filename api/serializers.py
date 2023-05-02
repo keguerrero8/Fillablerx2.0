@@ -15,10 +15,15 @@ class PharmacySerializer(serializers.ModelSerializer):
             "contact_email",
             "contact_phone_number",
             "npi",
+            "network",
+            "initial_rate",
             "signed_agreement_stamp",
+            "signature",
+            "signed_agreement_admin",
         ]
         # FIXME update logic so that it will look to see if all the fields above are found in the data_keys, no more, no less
-        # if these conditions are not met, then we should return False
+        # if these conditions are not met, then we should return False. right now, if we add another required field we will need
+        # to add it to all_fields
         for key in self.initial_data.keys():
             if key not in all_fields:
                 return False
@@ -55,6 +60,29 @@ class PharmacySerializer(serializers.ModelSerializer):
     def validate_contact_phone_number(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact phone number must be provided")
+        return value
+
+    def validate_network(self, value):
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("A Network must be provided")
+        return value
+
+    def validate_initial_rate(self, value):
+        if not value.isnumeric():
+            raise serializers.ValidationError("must be a number")
+
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("An initial rate must be provided")
+        return value
+
+    def validate_signature(self, value):
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("A signature must be provided")
+        return value
+
+    def validate_signed_agreement_admin(self, value):
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("A signed admin must be provided")
         return value
 
 

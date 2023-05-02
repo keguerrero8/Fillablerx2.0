@@ -6,7 +6,7 @@ export const styles = {
         minHeight: "100vh"
     },
     PharmacistText: {
-        margin: "30px", 
+        margin: {xs: "50px", sm: "50px", md: "30px"}, 
         display: "flex", 
         alignItems: "center", 
         justifyContent: "space-between", 

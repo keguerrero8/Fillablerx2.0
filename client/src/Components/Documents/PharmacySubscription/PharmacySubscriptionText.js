@@ -6,14 +6,16 @@ import larry_signature from '../../../images/larry_signature.png'
 
 function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData }) {
     const today = new Date();
+    const pharmacySignedDate = new Date(pharmacy.signed_agreement_stamp)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = today.toLocaleDateString('en-US', options);
+    const formattedDateToday = today.toLocaleDateString('en-US', options);
+    const formattedDatePharmacySigned = pharmacySignedDate.toLocaleDateString('en-US', options);
 
   return (
     <>
         <div className='parties'>
             <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>
-            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {formattedDate} ("the Effective Date") between Fillable, 
+            <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {isModal? formattedDateToday: formattedDatePharmacySigned} ("the Effective Date") between Fillable, 
              LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
         </div>
         <div className='recitals'>
@@ -59,20 +61,24 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 to between the Parties for good and valuable consideration. For a specified term beginning on the
                 Effective Date and ending on Your receipt of the Termination and Fee Schedule Notice (as
                 hereinafter defined) (the “Initial Testing Period”), KOW will permit access to and enrollment in
-                its Services for no cost, which shall be the Initial Rate. The duration of the Initial Testing Period
-                shall be fixed by KOW in its sole and absolute discretion. Upon termination of the Initial Testing
-                Period, KOW shall serve You with a notice advising You of the following:</p>
+                its Services at the agreed upon monthly rate of $25 which shall be the Initial Rate. 
+                The Initial Rate represents a promotional rate based on the Enrolled Pharmacy's network 
+                selection at the time of enrollment and offered by KOW during KOW's Initial Testing Period. 
+                The duration of the Initial Testing Period shall be fixed by KOW in its sole and absolute 
+                discretion. Upon termination of the Initial Testing Period, KOW shall serve You with a notice 
+                advising You of the following:</p>
                 <div className='subtext-b'>
                     <p>(i) the Initial Testing Period has ended; and</p>
                     <p>(ii) the Fee Schedule in the Agreement, will now be going into full force and effect (the
                         “Termination and Fee Schedule Notice”).</p>
                 </div>
             <p>You will have ten (10) days from receipt of the Termination and Fee Schedule Notice to provide
-                KOW written notice to legal@KOWmeds,com, that You will be opting-out of and terminating
+                KOW written notice to legal@KOWmeds.com, that You will be opting-out of and terminating
                 this Agreement (the period of time to respond being the “Opt-Out Noticing Period” and the
                 notice sent being the “Opt-Out Notice”). If You do not properly deliver and KOW does not
                 receive the Opt-Out Notice within the Opt-Out Notice Period, the Initial Rate will no longer be
-                in effect and the Fee Schedule annexed hereto as
+                in effect and Your network selection at the time of Your enrollment pursuant to the Fee Schedule 
+                annexed hereto as
                 <ExhibitModal
                     modalName=" Exhibit A "
                     title="Exhibit A"
@@ -81,7 +87,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                     amount1="30"
                     frequency1="Monthly"
                     tier2="Expanded Delivery"
-                    amount2="60"
+                    amount2="50"
                     frequency2="Monthly"
                     tier3="DME Limited"
                     amount3="60"
@@ -324,7 +330,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
             <div className='subtext-sig'>
                 <h2>FILLABLE, LLC A/K/A KOW:</h2>
                 <h3>By:
-                    <img className='larry-sig' src={larry_signature}/>
+                    <img className='larry-sig' alt='larry chens signature' src={larry_signature}/>
                 </h3>
                 <p>Name: Larry Chen</p>
                 <p>Title: Managing Member</p>
@@ -332,7 +338,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 <h3>By: </h3>
                 <p>Name: {enrollmentData["contact_name"]}</p>
                 <p>Title: {enrollmentData["contact_title"]}</p>
-                {/*<p>Electronically Signed: {insert time stamp for executed contract}</p>*/}
+                {isModal? null : <p className='sig-timestamp'>Electronically Signed: {formattedDatePharmacySigned}</p>}
             </div>
         </div> 
     </>

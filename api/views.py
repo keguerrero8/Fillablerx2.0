@@ -55,13 +55,6 @@ def pharmacy_detail(request, id):
         serializer = PharmacySerializer(pharmacy)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == "PUT":
-        if "signature" not in request.data or request.data["signature"] == "":
-            return Response(
-                {"errors": "A signature must be provided"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        del request.data["signature"]
         request.data["signed_agreement_stamp"] = datetime.datetime.now()
 
         serializer = PharmacySerializer(pharmacy, data=request.data, partial=True)
@@ -162,7 +155,14 @@ def request_list(request):
             serializer = RequestSerializer(data=request.data)
             if serializer.is_valid():
                 request_sms = serializer.save()
-                TwilioClient().send_mass_text(request_sms, Pharmacist)
+                if "is_test" in request.data and request.data["is_test"]:
+                    TwilioClient(True).send_test_sms()
+                else:
+                    TwilioClient().send_mass_text(
+                        request_sms, Pharmacist, request.data["isAdmin"]
+                    )
+                request_sms.delivery_status = "success"
+                request_sms.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(
                 {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
@@ -171,6 +171,8 @@ def request_list(request):
             logging.debug(
                 f"Failed to create a request. Error is due to the following exception: {ex}"
             )
+            request_sms.delivery_status = "fail"
+            request_sms.save()
             return Response(
                 {
                     "errors": "Something went wrong when creating the request, please contact your administrator"
