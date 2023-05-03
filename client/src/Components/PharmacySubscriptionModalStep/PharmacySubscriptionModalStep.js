@@ -15,7 +15,7 @@ function PharmacySubscriptionModalStep({ setStep, pharmacy, enrollmentData }) {
 
     return (
         <Box sx={styles.MainContainer}>
-            <Typography variant='h3' sx={{fontWeight: "bold"}}>Pharmacy Subscription Agreement</Typography>
+            <Typography variant='h3' sx={{fontWeight: "bold", fontSize: {xs: "2rem", sm: "2.5rem", md:"3rem"}}}>Pharmacy Subscription Agreement</Typography>
             <Box ref={scrollRef} sx={styles.scrollContainer}>
                 <PharmacySubscriptionText isModal={true} pharmacy={pharmacy} enrollmentData={enrollmentData}/>
             </Box>

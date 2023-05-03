@@ -19,7 +19,7 @@ function ProviderOptInModalStep({ setIsAcknowledged, setIsAgreementModal }) {
 
     return (
         <Box sx={styles.MainContainer}>
-            <Typography variant='h3' sx={{fontWeight: "bold"}}>Provider Opt In Agreement</Typography>
+            <Typography variant='h3' sx={{fontWeight: "bold", fontSize: {xs: "2rem", sm: "2.5rem", md:"3rem"}}}>Provider Opt In Agreement</Typography>
             <Box ref={scrollRef} sx={styles.scrollContainer}>
                 <ProviderOptInText isModal={true}/>
             </Box>

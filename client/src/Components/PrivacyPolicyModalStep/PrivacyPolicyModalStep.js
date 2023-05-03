@@ -25,7 +25,7 @@ function PrivacyPolicyModalStep({ setStep, userType, setIsAcknowledged, setIsAgr
 
     return (
         <Box sx={styles.MainContainer}>
-            <Typography variant='h3' sx={{fontWeight: "bold"}}>Privacy Policy</Typography>
+            <Typography variant='h3' sx={{fontWeight: "bold", fontSize: {xs: "2rem", sm: "2.5rem", md:"3rem"}}}>Privacy Policy</Typography>
             <Box ref={scrollRef} sx={styles.scrollContainer}>
                 <PrivacyText isModal={true}/>
             </Box>

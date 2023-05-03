@@ -15,7 +15,7 @@ function TermsOfServiceModalStep({ setStep }) {
 
     return (
         <Box sx={styles.MainContainer}>
-            <Typography variant='h3' sx={{fontWeight: "bold"}}>Terms of Use</Typography>
+            <Typography variant='h3' sx={{fontWeight: "bold", fontSize: {xs: "2rem", sm: "2.5rem", md:"3rem"}}}>Terms of Use</Typography>
             <Box ref={scrollRef} sx={styles.scrollContainer}>
                 <TermsText isModal={true}/>
             </Box>

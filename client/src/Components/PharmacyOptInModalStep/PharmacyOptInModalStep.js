@@ -19,7 +19,7 @@ function PharmacyOptInModalStep({ setIsAcknowledged, setIsAgreementModal }) {
 
     return (
         <Box sx={styles.MainContainer}>
-            <Typography variant='h3' sx={{fontWeight: "bold"}}>Pharmacy Opt In Agreement</Typography>
+            <Typography variant='h3' sx={{fontWeight: "bold", fontSize: {xs: "2rem", sm: "2.5rem", md:"3rem"}}}>Pharmacy Opt In Agreement</Typography>
             <Box ref={scrollRef} sx={styles.scrollContainer}>
                 <PharmacyConsentText isModal={true}/>
             </Box>
