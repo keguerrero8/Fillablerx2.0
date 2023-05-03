@@ -264,6 +264,7 @@ export default function RequestForm({ user }) {
                 handleChange={handleChange} 
                 key="Quantity" 
                 isRequired={true}
+                placeholder="Number values only"
             />
             {showHelp && (
                 <Typography sx={styles.MedDetails}>
