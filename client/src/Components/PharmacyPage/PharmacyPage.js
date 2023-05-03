@@ -68,7 +68,7 @@ export default function PharmacyPage({user}) {
                                 <Typography component="div" variant="subtitle1">Email:  {pharmacy.contact_email}</Typography>
                                 <Typography component="div" variant="subtitle1">Phone:  {pharmacy.contact_phone_number}</Typography> 
                                 <Typography component="div" variant="subtitle1">Pharmacy NPI:  {pharmacy.npi}</Typography>  
-                                <Typography component="div" variant="subtitle1">Network:  {pharmacy.network === ""? "N/A": `$${pharmacy.network}`}</Typography>  
+                                <Typography component="div" variant="subtitle1">Network:  {pharmacy.network === ""? "N/A": `${pharmacy.network}`}</Typography>  
                                 <Typography component="div" variant="subtitle1">Initial Rate:  {pharmacy.initial_rate === ""? "N/A": `$${pharmacy.initial_rate}`}</Typography>  
                                 <Typography component="div" variant="subtitle1">KOW Member:  {pharmacy.signed_agreement_admin}</Typography>  
                             </CardContent>
