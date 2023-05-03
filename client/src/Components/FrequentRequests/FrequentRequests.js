@@ -6,18 +6,18 @@ import './FrequentRequests.css';
 function FrequentRequests() {
     const dataColumn1 = [
         { req: 1, name: 'Aprepitant 125mg-80mg' },
-        { req: 2, name: 'Exemestane 25mg' },
-        { req: 3, name: 'Granisetron 1mg' },
+        { req: 2, name: 'Linzess 290mg' },
+        { req: 3, name: 'Albuterol 2.5mg/3mL' },
       ];
     const dataColumn2 = [
-        { req: 1, name: 'Albuterol 2.5mg/3mL' },
+        { req: 1, name: 'Granisetron 1mg' },
         { req: 2, name: 'Sucralfate 1mg' },
-        { req: 3, name: 'Dexamethasone 4mg' },
+        { req: 3, name: 'Megestrol 400mg/10mL' },
       ];
     const dataColumn3 = [
-        { req: 1, name: 'Megestrol 400mg/10mL' },
+        { req: 1, name: 'Imatinib 400mg' },
         { req: 2, name: 'Ondansetron ODT 8mg' },
-        { req: 3, name: 'Albuterol Sulfate HFA 90mcg' },
+        { req: 3, name: 'Abiraterone 500mg' },
       ];
 
     return (

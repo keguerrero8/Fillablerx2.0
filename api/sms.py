@@ -174,5 +174,10 @@ class TwilioClient:
                 f"BIN: {origin_request.bin}\n"
                 f"PCN: {origin_request.pcn}\n"
                 f"RxGRP: {origin_request.rxgroup}"
+                f"\n"
+                f"What's next?\n"
+                f"Either:\n"
+                f"1) Ask the pharmacist to transfer a refill to this new pharmacy, or\n"
+                f"2) Ask the provider to send the prescription to this new pharmacy."
             ),
         )
