@@ -64,7 +64,7 @@ class TwilioClient:
         if isAdmin:
             for number in ["+15167847791", "+15166686056"]:
                 self.client.messages.create(
-                    body=body + "\n**this is a test",
+                    body=body + "\n**admin test",
                     from_=self.twilio_phone_number,
                     to=number,
                 )

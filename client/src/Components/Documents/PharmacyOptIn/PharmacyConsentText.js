@@ -4,7 +4,7 @@ function PharmacyConsentText({ isModal = false }) {
   return (
     <>
         <div className='intro'> 
-            <h2>Enrolled Pharmacy User Opt-In Agreement</h2>
+            {/* <h2>Enrolled Pharmacy User Opt-In Agreement</h2> */}
             <p>Effective Date: January 1, 2023</p>
             <p>Welcome to KOW, an online referral service and prescription management company (the
                 “Services”) made available by Fillable, LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW)

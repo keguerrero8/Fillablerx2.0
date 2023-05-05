@@ -1,6 +1,8 @@
 import pytest
 import factory
+import csv
 
+from api.models import Medication
 from api.serializers import RequestSerializer, PharmacySerializer, PharmacistSerializer
 
 
@@ -12,7 +14,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "123456",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -30,7 +32,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "123456",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -38,7 +40,7 @@ request_validations = [
                 "user_type": "patient",
             }
         ],
-        "Please provide a medication strength",
+        "Please provide a medication strength from the dropdown",
         id="medication_strength_empty",
     ),
     pytest.param(
@@ -48,7 +50,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavi",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "123456",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -56,7 +58,7 @@ request_validations = [
                 "user_type": "patient",
             }
         ],
-        "The medication name must be valid",
+        "The medication name must be a valid option from dropdown",
         id="medication_strength_with_name_invalid",
     ),
     pytest.param(
@@ -66,7 +68,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "30mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "123456",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -102,7 +104,7 @@ request_validations = [
                 "phone_number": "+15999998888",
                 "med_name": "Abacavir",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "123456",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -120,7 +122,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -138,7 +140,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "1234p",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",
@@ -156,7 +158,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "12334p",
                 "pcn": "",
                 "rxgroup": "rxgroup",
@@ -174,7 +176,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "12334p",
                 "pcn": "CVS",
                 "rxgroup": "",
@@ -192,7 +194,7 @@ request_validations = [
                 "phone_number": "+15169998888",
                 "med_name": "Abacavir",
                 "med_strength": "300mg",
-                "quantity": 1,
+                "quantity": "1",
                 "bin": "12334p",
                 "pcn": "CVS",
                 "rxgroup": "rxgroup",

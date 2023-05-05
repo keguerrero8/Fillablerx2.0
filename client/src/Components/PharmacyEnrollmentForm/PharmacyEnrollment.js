@@ -42,6 +42,13 @@ export default function PharmacyEnrollment({ user }) {
     const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
     const [searchValue, setSearchValue] = useState("")
 
+    const networkMap = {
+        "Local Community ($30 Monthly)": "Local Community",
+        "Expanded Delivery ($50 Monthly)": "Expanded Delivery",
+        "DME Limited (N/A)": "DME Limited",
+        "Specialy (N/A)": "Specialty"
+    }
+
     const loadPharmacy = async () => {
       const loadedPharmacy = await pharmacyService.getPharmacy(params.id)
       setPharmacy(loadedPharmacy)
@@ -75,7 +82,7 @@ export default function PharmacyEnrollment({ user }) {
         if (dropDownKey) {
             setEnrollmentData({
                 ...enrollmentData,
-                [dropDownKey]: e.target.innerText
+                [dropDownKey]: networkMap[e.target.innerText]
             })
         }
         else {
@@ -119,7 +126,7 @@ export default function PharmacyEnrollment({ user }) {
         e.preventDefault()
         updatePharmacy(enrollmentData)
     }
-    console.log(enrollmentData)
+
     return (
         <Box sx={styles.MainContainer} component="form" onSubmit={handleSubmit}>
             <PharmacyEnrollmentTermsModal 
@@ -193,7 +200,7 @@ export default function PharmacyEnrollment({ user }) {
                     name="network"
                     handleChange={handleChange}
                     isRequired={true}
-                    options={["Local Community ($30 Monthly)", "Expanded Delivery ($50 Monthly)", "DME Limited (N/A)", "Specialty (N/A)"]}
+                    options={Object.keys(networkMap)}
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                     placeholder="Select a Pharmacy Network"

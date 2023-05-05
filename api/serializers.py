@@ -140,10 +140,10 @@ class RequestSerializer(serializers.ModelSerializer):
         try:
             medication = Medication.objects.get(name=med_name)
         except Medication.DoesNotExist:
-            raise serializers.ValidationError("The medication name must be valid")
+            raise serializers.ValidationError("The medication name must be a valid option from dropdown")
 
         if len(medication.strength) and value == "":
-            raise serializers.ValidationError("Please provide a medication strength")
+            raise serializers.ValidationError("Please provide a medication strength from the dropdown")
 
         if value not in medication.strength and value != "":
             raise serializers.ValidationError(

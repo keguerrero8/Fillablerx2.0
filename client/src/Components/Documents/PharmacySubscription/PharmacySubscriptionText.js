@@ -14,7 +14,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
   return (
     <>
         <div className='parties'>
-            <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>
+            {isModal? null : <h3>ENROLLED PHARMACY SUBSCRIPTION AGREEMENT</h3>}
             <p>THIS SUBSCRIPTION AGREEMENT (this "Agreement") is made as of {isModal? formattedDateToday: formattedDatePharmacySigned} ("the Effective Date") between Fillable, 
              LLC, d/b/a FillableRx, a/k/a Kindly Oblige With (KOW) (hereinafter referred to as "KOW") on the one hand, and you, an enrolled pharmacy (hereinafter referred to as "You", "Your", or "Enrolled Pharmacy", together with KOW, the "Parties", each being a "Party"), on the other.</p>
         </div>
@@ -61,7 +61,7 @@ function PharmacySubscriptionText({ isModal = false, pharmacy, enrollmentData })
                 to between the Parties for good and valuable consideration. For a specified term beginning on the
                 Effective Date and ending on Your receipt of the Termination and Fee Schedule Notice (as
                 hereinafter defined) (the “Initial Testing Period”), KOW will permit access to and enrollment in
-                its Services at the agreed upon monthly rate of $25 which shall be the Initial Rate. 
+                its Services at the agreed upon monthly rate of ${isModal? enrollmentData["initial_rate"] : pharmacy.initial_rate} which shall be the Initial Rate. 
                 The Initial Rate represents a promotional rate based on the Enrolled Pharmacy's network 
                 selection at the time of enrollment and offered by KOW during KOW's Initial Testing Period. 
                 The duration of the Initial Testing Period shall be fixed by KOW in its sole and absolute 
