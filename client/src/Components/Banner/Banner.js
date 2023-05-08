@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Banner() {
 
-    const announcementPrimary = "Website Downtime scheduled for 5/3/23 11:00 pm - 7:00 am";
-    const announcementSecondary = "BETA period now open in select markets!";
+    const announcementPrimary = "Website Downtime scheduled for 5/9/23 11:00 pm - 7:00 am";
+    const announcementSecondary = "BETA promotional rates now available in select areas!";
     const announcementTertiary = "Shortage Announcement: 5/1 Gabapentin Oral Solution, 5/1 Fentanyl Patch, 5/3 Sterile Water for Irrigation";
     const announcementLink = "For a list of current Drug Shortages, click";
 
