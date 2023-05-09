@@ -18,12 +18,12 @@ def run():
                     if strength not in medication.strength:
                         raise Exception
                 except:
-                    print(f"failure: med name of {med_name} and med strength of {strength} dont match")
+                    print(
+                        f"failure: med name of {med_name} and med strength of {strength} dont match"
+                    )
                     failures += 1
-                    
+
         if failures > 0:
             print(f"Uh oh, there were {failures} failures")
         else:
             print("all tests passed!")
-
-        

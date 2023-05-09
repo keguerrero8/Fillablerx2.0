@@ -1,4 +1,6 @@
 import pytest
+import datetime
+
 from django.test import Client
 from api.models import Request
 
@@ -69,7 +71,7 @@ def test_post_request_invalid_data(create_medication, create_pharmacist):
     assert len(requests) == 0
     assert (
         response.data["errors"]["med_strength"][0]
-        == "The medication name must be valid"
+        == "The medication name must be a valid option from dropdown"
     )
 
 
@@ -163,6 +165,8 @@ def test_put_pharmacy_no_signature(create_pharmacy, create_user):
         "network": "DME Limited (N/A)",
         "initial_rate": "50",
         "signature": "",
+        "signed_agreement_admin": "Kevin",
+        "signed_agreement_stamp": datetime.datetime.now(),
     }
     pharmacy = create_pharmacy
     client.force_login(create_user)
@@ -186,7 +190,10 @@ def test_put_pharmacy_invalid_data(create_pharmacy, create_user):
         "contact_phone_number": "+15169998888",
         "npi": "123",
         "network": "DME Limited",
+        "initial_rate": "50",
         "signature": "Test",
+        "signed_agreement_admin": "Kevin",
+        "signed_agreement_stamp": datetime.datetime.now(),
     }
     pharmacy = create_pharmacy
     client.force_login(create_user)

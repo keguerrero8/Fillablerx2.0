@@ -1,6 +1,7 @@
 import pytest
 import factory
 import csv
+import datetime
 
 from api.models import Medication
 from api.serializers import RequestSerializer, PharmacySerializer, PharmacistSerializer
@@ -318,7 +319,6 @@ pharmacy_validations = [
 @pytest.mark.parametrize(
     "invalid_param, data, expected_error_message", pharmacy_validations
 )
-@pytest.mark.django_db
 def test_pharmacy_serializer_validations(invalid_param, data, expected_error_message):
     pharmacy_data = {
         "phone_number": data[0]["phone_number"],
@@ -331,6 +331,264 @@ def test_pharmacy_serializer_validations(invalid_param, data, expected_error_mes
 
     assert serializer.is_valid() == False
     assert serializer.errors[invalid_param][0] == expected_error_message
+
+
+pharmacy_enrollment_validations = [
+    pytest.param(
+        "npi",
+        [
+            {
+                "npi": "",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A valid npi must be provided",
+        id="npi_empty",
+    ),
+    pytest.param(
+        "npi",
+        [
+            {
+                "npi": "test",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A valid npi must be numerical",
+        id="npi_not_number",
+    ),
+    pytest.param(
+        "contact_name",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A contact name must be provided",
+        id="contact_name_empty",
+    ),
+    pytest.param(
+        "contact_title",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A contact title must be provided",
+        id="contact_title_empty",
+    ),
+    pytest.param(
+        "contact_email",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A contact email must be provided",
+        id="contact_email_empty",
+    ),
+    pytest.param(
+        "contact_phone_number",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+1777777777",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "The phone number entered is not valid.",
+        id="contact_phone_number_invalid",
+    ),
+    pytest.param(
+        "network",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A Network must be provided",
+        id="network_empty",
+    ),
+    pytest.param(
+        "initial_rate",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "An initial rate must be provided",
+        id="initial_rate_empty",
+    ),
+    pytest.param(
+        "initial_rate",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "five",
+                "signature": "John Doe",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "must be a number",
+        id="initial_rate_not_number",
+    ),
+    pytest.param(
+        "signature",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "",
+                "signed_agreement_admin": "Kevin",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A signature must be provided",
+        id="signature_empty",
+    ),
+    pytest.param(
+        "signed_agreement_admin",
+        [
+            {
+                "npi": "123456",
+                "contact_name": "John",
+                "contact_title": "Pharmacist",
+                "contact_email": "johndoe@gmail.com",
+                "contact_phone_number": "+15161234567",
+                "network": "Local Community",
+                "initial_rate": "30",
+                "signature": "John Doe",
+                "signed_agreement_admin": "",
+                "signed_agreement_stamp": datetime.datetime.now(),
+            }
+        ],
+        "A signed admin must be provided",
+        id="signed_agreement_admin_empty",
+    ),
+]
+
+
+@pytest.mark.parametrize(
+    "invalid_param, data, expected_error_message", pharmacy_enrollment_validations
+)
+def test_pharmacy_enrollment_serializer_validations(
+    invalid_param, data, expected_error_message
+):
+    pharmacy_enrollment_data = {
+        "npi": data[0]["npi"],
+        "contact_name": data[0]["contact_name"],
+        "contact_title": data[0]["contact_title"],
+        "contact_email": data[0]["contact_email"],
+        "contact_phone_number": data[0]["contact_phone_number"],
+        "network": data[0]["network"],
+        "initial_rate": data[0]["initial_rate"],
+        "signature": data[0]["signature"],
+        "signed_agreement_admin": data[0]["signed_agreement_admin"],
+        "signed_agreement_stamp": data[0]["signed_agreement_stamp"],
+    }
+
+    serializer = PharmacySerializer(data=pharmacy_enrollment_data, partial=True)
+
+    assert serializer.is_valid() == False
+    assert serializer.errors[invalid_param][0] == expected_error_message
+
+
+def test_is_field_required_enrollment():
+    pharmacy_enrollment_data = {
+        "npi": "123",
+        "contact_name": "John",
+        "contact_title": "Pharmacy",
+        "contact_email": "johndoe@gmail.com",
+        "contact_phone_number": "+15167771234",
+        "network": "Local Community",
+        "initial_rate": "30",
+        "signature": "John Doe",
+        "signed_agreement_admin": "Kevin",
+        "signed_agreement_stamp": datetime.datetime.now(),
+    }
+
+    serializer = PharmacySerializer(data=pharmacy_enrollment_data, partial=True)
+
+    assert serializer.is_valid() == True
+    assert serializer.is_field_required_enrollment() == True
 
 
 pharmacist_validations = [
