@@ -24,6 +24,9 @@ class PharmacySerializer(serializers.ModelSerializer):
         # FIXME update logic so that it will look to see if all the fields above are found in the data_keys, no more, no less
         # if these conditions are not met, then we should return False. right now, if we add another required field we will need
         # to add it to all_fields
+        if len(self.initial_data.keys()) != len(all_fields):
+            return False
+
         for key in self.initial_data.keys():
             if key not in all_fields:
                 return False
@@ -68,11 +71,12 @@ class PharmacySerializer(serializers.ModelSerializer):
         return value
 
     def validate_initial_rate(self, value):
+        if value == "" and self.is_field_required_enrollment():
+            raise serializers.ValidationError("An initial rate must be provided")
+
         if not value.isnumeric():
             raise serializers.ValidationError("must be a number")
 
-        if value == "" and self.is_field_required_enrollment():
-            raise serializers.ValidationError("An initial rate must be provided")
         return value
 
     def validate_signature(self, value):
@@ -140,10 +144,14 @@ class RequestSerializer(serializers.ModelSerializer):
         try:
             medication = Medication.objects.get(name=med_name)
         except Medication.DoesNotExist:
-            raise serializers.ValidationError("The medication name must be a valid option from dropdown")
+            raise serializers.ValidationError(
+                "The medication name must be a valid option from dropdown"
+            )
 
         if len(medication.strength) and value == "":
-            raise serializers.ValidationError("Please provide a medication strength from the dropdown")
+            raise serializers.ValidationError(
+                "Please provide a medication strength from the dropdown"
+            )
 
         if value not in medication.strength and value != "":
             raise serializers.ValidationError(
