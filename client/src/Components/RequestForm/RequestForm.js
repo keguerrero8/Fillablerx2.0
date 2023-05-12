@@ -195,6 +195,12 @@ export default function RequestForm({ user }) {
             <Typography color="black" sx={styles.FillableSubtitle}>
                 Medication Request Form
             </Typography>
+            <Typography sx={styles.FillableHours}>
+                Service Hours: 9:00 am (EST) to 6:00 pm (EST)
+            </Typography>
+            <Typography sx={styles.FillableHoursNote}>
+                Any requests outside of service hours will be sent at 9:00 am (EST).
+            </Typography>
             <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
                 <FormLabel >
                     <Typography color="black" component="h6" sx={styles.UserType}>

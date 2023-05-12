@@ -56,7 +56,23 @@ export const styles = {
         textAlign: "center",
         fontWeight: "900",
         fontSize: {xs: "1rem", sm: "1rem", md: "1.4rem"},
-        marginBottom: "1rem"
+        marginBottom: "-1rem"
+    },
+    FillableHours: {
+        textAlign: "center",
+        fontWeight: "900",
+        fontSize: {xs: "0.8rem", sm: "0.8rem", md: "1.1rem"},
+        marginBottom: "-1.5rem",
+        color: "#009ffb",
+    },
+    FillableHoursNote: {
+        textAlign: "center",
+        fontWeight: "900",
+        fontSize: {xs: "0.7rem", sm: "0.7rem", md: "0.9rem"},
+        marginBottom: "1rem",
+        color: "#009ffb",
+        width: "65vw",
+        alignSelf: "center"
     },
     HelpSubtitle: {
         textAlign: "flex-start",
