@@ -39,6 +39,7 @@ class Medication(models.Model):
     strength = ArrayField(
         models.CharField(max_length=100), default=strength_default, blank=True
     )
+    isSpecialty = models.BooleanField(default=False)
 
 
 class Request(models.Model):
