@@ -10,11 +10,12 @@ import PharmacyEnrollmentTermsModal from '../PharmacyEnrollmentTermsModal/Pharma
 import PharmacyEnrollmentOptInModal from '../PharmacyEnrollmentOptInModal/PharmacyEnrollmentOptInModal';
 import Page404 from '../../Pages/Page404';
 
-import { Box, Typography, TextField, Button, FormControlLabel, Checkbox } from '@mui/material'
+import { Box, Typography, TextField, Button, FormControlLabel, FormControl, FormLabel, RadioGroup, Radio, Checkbox } from '@mui/material'
 import { styles } from './PharmacyEnrollment-styles'
 
 export default function PharmacyEnrollment({ user }) {
     const defaultEnrollmentData = {
+        additional_language: "none",
         contact_name: "",
         contact_title: "",
         contact_email: "",
@@ -22,7 +23,8 @@ export default function PharmacyEnrollment({ user }) {
         npi: "",
         signature: "",
         network: "",
-        initial_rate: ""
+        initial_rate: "",
+        isDelivery: false
     }
 
     const params = useParams()
@@ -40,13 +42,26 @@ export default function PharmacyEnrollment({ user }) {
     const [stepOptIn, setStepOptIn] = useState(1)
     const [isPrivacyAcknowledged, setisPrivacyAcknowledged] = useState(false)
     const [isOptInAcknowledged, setisOptInAcknowledged] = useState(false)
-    const [searchValue, setSearchValue] = useState("")
+    const [networkSearchValue, setNetworkSearchValue] = useState("")
+    const [languageSearchValue, setLanguageSearchValue] = useState("")
 
     const networkMap = {
         "Local Community ($30 Monthly)": "Local Community",
         "Expanded Delivery ($50 Monthly)": "Expanded Delivery",
         "DME Limited (N/A)": "DME Limited",
-        "Specialy (N/A)": "Specialty"
+        "Specialty (N/A)": "Specialty"
+    }
+
+    const additionalLanguageMap = {
+        "Spanish": "spanish",
+        "Chinese": "chinese",
+        "Russian": "russian",
+        "Korean": "korean"
+    }
+
+    const dropDownMaps = {
+        "network": networkMap,
+        "additional_language": additionalLanguageMap
     }
 
     const loadPharmacy = async () => {
@@ -58,7 +73,8 @@ export default function PharmacyEnrollment({ user }) {
         const finalEnrollmentData = {
             ...obj, 
             signed_agreement_admin: `${user.first_name} ${user.last_name}`, 
-            contact_phone_number: "+1" + enrollmentData["contact_phone_number"]
+            contact_phone_number: "+1" + enrollmentData["contact_phone_number"],
+            additional_language: languageSearchValue === "" ? "none" : enrollmentData["additional_language"]
         }
         const response = await pharmacyService.updateEnrolledPharmacy(params.id, finalEnrollmentData)
 
@@ -82,7 +98,7 @@ export default function PharmacyEnrollment({ user }) {
         if (dropDownKey) {
             setEnrollmentData({
                 ...enrollmentData,
-                [dropDownKey]: networkMap[e.target.innerText]
+                [dropDownKey]: dropDownMaps[dropDownKey][e.target.innerText]
             })
         }
         else {
@@ -119,12 +135,20 @@ export default function PharmacyEnrollment({ user }) {
         setCheckedOptIn(false)
         setStepPrivacy(1)
         setStepOptIn(1)
-        setSearchValue("")
+        setNetworkSearchValue("")
+        setLanguageSearchValue("")
     }
 
     function handleSubmit (e) {
         e.preventDefault()
         updatePharmacy(enrollmentData)
+    }
+
+    function handleDeliveryRadio (e) {
+        setEnrollmentData({
+            ...enrollmentData,
+            isDelivery: e.target.value === "yes"
+        })
     }
 
     return (
@@ -201,10 +225,37 @@ export default function PharmacyEnrollment({ user }) {
                     handleChange={handleChange}
                     isRequired={true}
                     options={Object.keys(networkMap)}
-                    searchValue={searchValue}
-                    setSearchValue={setSearchValue}
+                    searchValue={networkSearchValue}
+                    setSearchValue={setNetworkSearchValue}
                     placeholder="Select a Pharmacy Network"
                 />
+                <FormGenericDropDown
+                    label="Additional Language"
+                    name="additional_language"
+                    handleChange={handleChange}
+                    isRequired={false}
+                    options={Object.keys(additionalLanguageMap)}
+                    searchValue={languageSearchValue}
+                    setSearchValue={setLanguageSearchValue}
+                    placeholder="Select an additional language if applicable"
+                />
+                <FormControl sx={{margin: "10px auto", textAlign: "center"}}>
+                    <FormLabel sx={{mb: "5px"}}>
+                        <Typography color="black" variant="h6" sx={styles.UserType}>
+                            Does this pharmacy provide delivery options?<span style={{color: "red"}}> &#42;</span>
+                        </Typography>
+                    </FormLabel>
+                    <RadioGroup
+                        onChange={handleDeliveryRadio}
+                        row
+                        defaultValue="no"
+                    >
+                        <Box sx={{margin: "auto"}}>                        
+                            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                            <FormControlLabel value="no" control={<Radio />} label="No" />
+                        </Box>
+                    </RadioGroup>
+                </FormControl>
                 <Box sx={{textAlign: "center", width: "100%", marginTop: "2rem", marginX: "auto", display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <FormControlLabel
                         labelPlacement='end'

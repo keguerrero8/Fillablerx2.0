@@ -1,6 +1,14 @@
 from rest_framework import serializers
+from enum import Enum
 
 from .models import Pharmacy, Pharmacist, Request, Medication
+
+class Languages(Enum):
+    SPANISH = "spanish"
+    CHINESE = "chinese"
+    RUSSIAN = "russian"
+    KOREAN = "korean"
+    NONE = "none"
 
 
 class PharmacySerializer(serializers.ModelSerializer):
@@ -10,10 +18,12 @@ class PharmacySerializer(serializers.ModelSerializer):
 
     def is_field_required_enrollment(self):
         all_fields = [
+            "additional_language",
             "contact_name",
             "contact_title",
             "contact_email",
             "contact_phone_number",
+            "isDelivery",
             "npi",
             "network",
             "initial_rate",
@@ -58,6 +68,17 @@ class PharmacySerializer(serializers.ModelSerializer):
     def validate_contact_email(self, value):
         if value == "" and self.is_field_required_enrollment():
             raise serializers.ValidationError("A contact email must be provided")
+        return value
+    
+    # note: this field will only be validated against an enum to ensure a corect value is saved during http update.
+    # not setting a requirement with is_field_required_enrollment() since there may be other ways in future to
+    # set the language.
+    def validate_additional_language(self, value):
+        langauge_values = [member.value for member in Languages]
+        if value not in langauge_values:
+            raise serializers.ValidationError("The language provided is not an acceptable language")
+        # if value == "" and self.is_field_required_enrollment():
+        #     raise serializers.ValidationError("A language must be provided")
         return value
 
     def validate_contact_phone_number(self, value):

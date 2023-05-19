@@ -12,6 +12,8 @@ class Pharmacy(models.Model):
     contact_title = models.CharField(max_length=200, blank=True)
     contact_email = models.CharField(max_length=200, blank=True)
     contact_phone_number = PhoneNumberField(blank=True, null=True)
+    isDelivery = models.BooleanField(default=False) #no validations for this since it will default to False, its only used for validating other fields as part of the enrollment form
+    additional_language = models.CharField(max_length=200, blank=True)
     npi = models.CharField(max_length=200, blank=True)
     network = models.CharField(max_length=200, blank=True)
     initial_rate = models.CharField(max_length=200, blank=True)
