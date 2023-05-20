@@ -199,7 +199,7 @@ export default function RequestForm({ user }) {
                 Service Hours: 9:00 am (EST) to 6:00 pm (EST)
             </Typography>
             <Typography sx={styles.FillableHoursNote}>
-                Any requests outside of service hours will be sent at 9:00 am (EST).
+                Any requests outside of service hours will be sent at 9:00 am (EST) the following day.
             </Typography>
             <FormControl sx={{margin: "40px auto", textAlign: "center"}}>
                 <FormLabel >
