@@ -157,6 +157,7 @@ def test_put_pharmacy_no_pharmacy(create_user):
 def test_put_pharmacy_no_signature(create_pharmacy, create_user):
 
     pharmacy_update_payload = {
+        "additional_language": "chinese",
         "contact_name": "test_name",
         "contact_title": "test_title",
         "contact_email": "test_email",
@@ -164,6 +165,7 @@ def test_put_pharmacy_no_signature(create_pharmacy, create_user):
         "npi": "123",
         "network": "DME Limited (N/A)",
         "initial_rate": "50",
+        "isDelivery": False,
         "signature": "",
         "signed_agreement_admin": "Kevin",
         "signed_agreement_stamp": datetime.datetime.now(),
@@ -184,6 +186,7 @@ def test_put_pharmacy_no_signature(create_pharmacy, create_user):
 def test_put_pharmacy_invalid_data(create_pharmacy, create_user):
 
     pharmacy_update_payload = {
+        "additional_language": "chinese",
         "contact_name": "",
         "contact_title": "test_title",
         "contact_email": "test_email",
@@ -191,6 +194,7 @@ def test_put_pharmacy_invalid_data(create_pharmacy, create_user):
         "npi": "123",
         "network": "DME Limited",
         "initial_rate": "50",
+        "isDelivery": False,
         "signature": "Test",
         "signed_agreement_admin": "Kevin",
         "signed_agreement_stamp": datetime.datetime.now(),
