@@ -6,18 +6,18 @@ import './FrequentRequests.css';
 function FrequentRequests() {
     const dataColumn1 = [
         { req: 1, name: 'Aprepitant 125mg-80mg' },
-        { req: 2, name: 'Albuterol 2.5mg/3mL' },
-        { req: 3, name: 'Eliquis Starter Pack' },
+        { req: 2, name: 'Megestrol 40mg/mL' },
+        { req: 3, name: 'Zarxio 300mcg/0.5mL' },
       ];
     const dataColumn2 = [
-        { req: 1, name: 'Neulasta' },
-        { req: 2, name: 'Xarelto Starter Pack' },
+        { req: 1, name: 'Cyclobenzaprine 10mg' },
+        { req: 2, name: 'Ondansetron ODT 8mg' },
         { req: 3, name: 'Xarelto 15mg' },
       ];
     const dataColumn3 = [
-        { req: 1, name: 'Eliquis 5mg' },
-        { req: 2, name: 'Entecavir 0.5mg' },
-        { req: 3, name: 'Megestrol 40mg/mL' },
+        { req: 1, name: 'Eliquis Starter Pack' },
+        { req: 2, name: 'Xarelto Starter Pack' },
+        { req: 3, name: 'Entecavir 0.5mg' },
       ];
 
     return (
