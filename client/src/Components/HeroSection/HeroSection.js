@@ -5,15 +5,23 @@ import '../Button/Button.css';
 
 import HeroSuggestions from '../HeroSuggestions/HeroSuggestions';
 import FrequentRequests from '../FrequentRequests/FrequentRequests';
+import HomePageCards from '../Blog/HomePageCards';
 import { Button } from '../Button/Button';
 
 import kindlyobligewith_title_text from '../../images/kindlyobligewith_text_image.png';
 
+import welcome from "../../videos/welcome.mp4"
 
 function HeroSection() {
     return (
         <div className='hero-container'>
             <img className='hero-title' alt='kindle oblige with' src={kindlyobligewith_title_text}/>
+            <div className="video-container">
+                <video controls style={{ maxWidth:'100%' }}>
+                    <source src={welcome} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>          
             <h1>Find and Fill your prescription TODAY.</h1>
             <h2>Don't risk delaying your medication.</h2>
             <h3>If you need your medication today, we'll help you find a pharmacy that has it.</h3>
@@ -37,6 +45,7 @@ function HeroSection() {
             </div>
             <HeroSuggestions/>
             <FrequentRequests/>
+            <HomePageCards/>
         </div>
     );
 }
