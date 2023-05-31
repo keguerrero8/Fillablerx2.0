@@ -55,17 +55,3 @@
     object-fit: cover;
     border-radius: 5px;
   }
-
-  @media screen and (max-width: 820px) {
-    .blog-card-container {
-    }
-    .blog-card {
-        width: 50vw;
-    }
-  }
-
-  @media screen and (max-width: 560px) {
-    .blog-card {
-        width: 80vw;
-    }
-  }
