@@ -10,6 +10,8 @@ import image1 from "../../images/how-img-one.png"
 import image2 from "../../images/how-img-two.png"
 import image3 from "../../images/how-img-three.png"
 
+import tutorial from "../../videos/tutorial.mp4"
+
 function HowSection() {
     return (
         <div className='how-container'>
@@ -51,6 +53,15 @@ function HowSection() {
                 path='/find-medication'>
                     Find Medication
                 </Button>
+            </div>
+            <div className="video-container">
+                <div className='video-title'>
+                    <h2>Here's a Tutorial:</h2>
+                </div>
+                <video controls style={{ maxWidth:'100%' }}>
+                    <source src={tutorial} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     );

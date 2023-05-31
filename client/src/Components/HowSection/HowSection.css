@@ -66,6 +66,17 @@
     justify-content: center;
 }
 
+.video-title {
+    font-size: var(--font-medium);
+    color: var(--brand-darkblue);
+    text-align: center;
+    margin: 4rem 0 2rem;
+}
+.video-container {
+    width: 70vw;
+    max-width: 1080px;
+}
+
 @media screen and (max-width: 960px) {
     .how-container > h1 {
         text-align: center;
@@ -101,5 +112,10 @@
         margin: 8px 0;
         width: 60vw;
         max-width: 320px;
+    }
+
+    .video-title {
+        font-size: var(--font-small);
+        margin: 2rem 0;
     }
 }

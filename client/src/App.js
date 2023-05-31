@@ -19,6 +19,8 @@ import Footer from './Components/Footer/Footer';
 
 import Privacy from './Components/Documents/PrivacyPolicy/Privacy';
 import Terms from './Components/Documents/TermsOfUse/Terms';
+import ViewPost from './Components/Blog/ViewPost';
+import BlogGrid from './Components/Blog/BlogGrid';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -54,6 +56,8 @@ function App() {
         <Route path="/dashboard/pharmacies/view-agreement/:id" element={<PharmacySignedAgreement user={user}/>} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/terms-of-use" element={<Terms />} />
+        <Route path="/blog" element={<BlogGrid />} />
+        <Route path="/blog/:postId" element={<ViewPost />} />
         <Route path="/pharmacy-enrolled" element={<SplashPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>

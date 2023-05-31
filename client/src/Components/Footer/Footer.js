@@ -15,6 +15,9 @@ function Footer() {
                     <div className='link-section'>
                         <div className='link-column'>
                             <p className='footer-terms-text'>
+                                <Link className='nav-link' to="/blog">Blog</Link>
+                            </p>
+                            <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/how-it-works">How It Works</Link>
                             </p>
                             <p className='footer-terms-text'>
@@ -23,8 +26,9 @@ function Footer() {
                             <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/contact-us">Contact Us</Link>
                             </p>
-                            </div>
-                            <div className='link-column'>
+                        </div>
+                        
+                        <div className='link-column'>
                             <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/terms-of-use">Terms of Use</Link>
                             </p>
@@ -32,7 +36,7 @@ function Footer() {
                                 <Link className='nav-link' to="/privacy-policy">Privacy Policy</Link>
                             </p>
                             {/*<p className='footer-terms-text'>
-                                <Link className='nav-link' to="/termination-notice">Manage Cookie Preferences</Link>
+                                <Link className='nav-link' to="/">Manage Cookie Preferences</Link>
                             </p>*/}
                         </div>
                     </div>
