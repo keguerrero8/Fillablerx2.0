@@ -8,6 +8,7 @@ class Languages(Enum):
     CHINESE = "chinese"
     RUSSIAN = "russian"
     KOREAN = "korean"
+    BENGALI = "bengali"
     NONE = "none"
 
 
