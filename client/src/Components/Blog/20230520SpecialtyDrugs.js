@@ -75,28 +75,33 @@ function SpecialtyDrugsArticle(props) {
                 following Specialty Pharmacies:</p>
             <div className='subsection'>
                 <h3>Accredo Specialty Pharmacy:</h3>
-                <p>CALL: phone</p>
-                <p>address to prescribe to</p>
+                <p>1640 Century Center Parkway, Memphis, TN 38134</p>                
+                <p>Phone: 844.516.3319</p>
+                <p>Fax: 888.302.1028</p>
             </div>
             <div className='subsection'>
                 <h3>AllianceRx Walgreens Specialty Pharmacy:</h3>
-                <p>CALL: phone</p>
-                <p>address to prescribe to</p>
+                <p>130 Enterprise Drive, Pittsburgh, PA 15275</p>
+                <p>Phone: 888.347.3416</p>
+                <p>Fax: 877.231.8302</p>
             </div>
             <div className='subsection'>
                 <h3>Centerwell Humana Specialty Pharmacy:</h3>
-                <p>CALL: phone</p>
-                <p>address to prescribe to</p>
+                <p>9843 Windisch Road, West Chester, OH 45069</p>
+                <p>Phone: 800.486.2668</p>
+                <p>Fax: 877.405.7940</p>
             </div>
             <div className='subsection'>
                 <h3>CVS Specialty Pharmacy:</h3>
-                <p>CALL: phone</p>
-                <p>address to prescribe to</p>
+                <p>800 Biermann Court, Mount Prospect, IL 60056</p>
+                <p>Phone: 877.408.9742</p>
+                <p>Fax: 877.408.9743</p>
             </div>
             <div className='subsection'>
                 <h3>Optum Specialty Pharmacy:</h3>
-                <p>CALL: phone</p>
-                <p>address to prescribe to</p>
+                <p>1050 Patrol Road, Jeffersonville, IN 47130</p>
+                <p>Phone: 855.427.4682</p>
+                <p>Fax: 877.342.4596</p>
             </div>
             <div className='footnote'>
                 <p>There may also be a specialty pharmacy in your local area.</p>
