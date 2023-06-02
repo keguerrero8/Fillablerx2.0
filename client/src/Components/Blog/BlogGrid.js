@@ -46,6 +46,7 @@ const BlogGrid = () => {
 
   return (
     <div className='blog-container'>
+        <h2>Blog Articles</h2>
         <div className="blog-grid">
         {sortedArticles.map((article, index) => (
             <BlogCard 
