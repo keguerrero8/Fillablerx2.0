@@ -6,6 +6,7 @@ import SpecialtyDrugsArticle from './20230520SpecialtyDrugs';
 import DrugShortagesArticle from './20230513DrugShortages';
 import UrgentCareArticle from './20230506UrgentCareCost';
 import AdherenceArticle from './20230527Adherence';
+import OzempicArticle from './20230603Ozempic';
 
 import './BlogGrid.css'
 
@@ -35,6 +36,12 @@ const BlogGrid = () => {
         subtitle: AdherenceArticle.subtitle,
         image: AdherenceArticle.image,
         postId: AdherenceArticle.postId,
+    },
+    {
+        title: OzempicArticle.title,
+        subtitle: OzempicArticle.subtitle,
+        image: OzempicArticle.image,
+        postId: OzempicArticle.postId,
     },
   ];
 
