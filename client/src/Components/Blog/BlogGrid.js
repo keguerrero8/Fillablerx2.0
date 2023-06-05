@@ -6,6 +6,7 @@ import SpecialtyDrugsArticle from './20230520SpecialtyDrugs';
 import DrugShortagesArticle from './20230513DrugShortages';
 import UrgentCareArticle from './20230506UrgentCareCost';
 import AdherenceArticle from './20230527Adherence';
+import OzempicArticle from './20230603Ozempic';
 
 import './BlogGrid.css'
 
@@ -36,6 +37,12 @@ const BlogGrid = () => {
         image: AdherenceArticle.image,
         postId: AdherenceArticle.postId,
     },
+    {
+        title: OzempicArticle.title,
+        subtitle: OzempicArticle.subtitle,
+        image: OzempicArticle.image,
+        postId: OzempicArticle.postId,
+    },
   ];
 
   const sortedArticles = blogArticles.sort((a, b) => b.postId - a.postId);
@@ -46,6 +53,7 @@ const BlogGrid = () => {
 
   return (
     <div className='blog-container'>
+        <h2>Blog Articles</h2>
         <div className="blog-grid">
         {sortedArticles.map((article, index) => (
             <BlogCard 

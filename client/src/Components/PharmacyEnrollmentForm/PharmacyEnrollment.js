@@ -53,10 +53,11 @@ export default function PharmacyEnrollment({ user }) {
     }
 
     const additionalLanguageMap = {
-        "Spanish": "spanish",
+        "Bengali": "bengali",
         "Chinese": "chinese",
+        "Korean": "korean",
         "Russian": "russian",
-        "Korean": "korean"
+        "Spanish": "spanish",
     }
 
     const dropDownMaps = {

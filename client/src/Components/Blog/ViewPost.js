@@ -7,6 +7,7 @@ import SpecialtyDrugs from './20230520SpecialtyDrugs';
 import DrugShortages from './20230513DrugShortages';
 import UrgentCares from './20230506UrgentCareCost';
 import AdherenceArticle from './20230527Adherence';
+import OzempicArticle from './20230603Ozempic'
 
 
 const ViewPost = () => {
@@ -22,6 +23,7 @@ const ViewPost = () => {
             {postId === '20230513' && <DrugShortages />}
             {postId === '20230506' && <UrgentCares />}
             {postId === '20230527' && <AdherenceArticle />}
+            {postId === '20230603' && <OzempicArticle />}
         </div>
     );
 }
