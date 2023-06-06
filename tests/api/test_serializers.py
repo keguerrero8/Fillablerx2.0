@@ -104,7 +104,7 @@ def test_request_serializer_validations(
         "pcn": "CVS",
         "rxgroup": "rxgroup",
         "isInsurance": True,
-        "user_type": "patient]",
+        "user_type": "patient",
     }
     request_data[invalid_param]= invalid_value
     serializer = RequestSerializer(data=request_data)

@@ -157,10 +157,7 @@ class TwilioClient:
         logging.debug(f"successfully sent an sms to enrolled pharmacist")
 
     def inbound_to_patient(self, origin_request, pharmacy):
-        self.client.messages.create(
-            to=origin_request.phone_number.as_e164,
-            from_=self.twilio_phone_number,
-            body=(
+        pharmacy_intro = (
                 f"KOW #{origin_request.id}\n"
                 f"{origin_request.med_name} {origin_request.med_strength},\n"
                 f"quantity: {origin_request.quantity} is IN STOCK today.\n"
@@ -169,6 +166,10 @@ class TwilioClient:
                 f"{pharmacy.name}\n"
                 f"{pharmacy.address}, {pharmacy.zipcode}\n"
                 f"(p) {pharmacy.phone_number}\n"
+        )
+        pharmacy_delivery = f"\nOffers Free Delivery!\n" if pharmacy.isDelivery else "\n"
+        pharmacy_language = f"Also speaks {pharmacy.additional_language}!\n" if pharmacy.additional_language and pharmacy.additional_language != "none" else ""
+        pharmacy_outro = (
                 f"\n"
                 f"This pharmacy accepts the insurance (if provided):\n"
                 f"BIN: {origin_request.bin}\n"
@@ -179,5 +180,9 @@ class TwilioClient:
                 f"Either:\n"
                 f"1) Ask the pharmacist to transfer a refill to this new pharmacy, or\n"
                 f"2) Ask the provider to send the prescription to this new pharmacy."
-            ),
+        )
+        self.client.messages.create(
+            to=origin_request.phone_number.as_e164,
+            from_=self.twilio_phone_number,
+            body=pharmacy_intro+pharmacy_delivery+pharmacy_language+pharmacy_outro
         )
