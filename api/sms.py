@@ -169,8 +169,6 @@ class TwilioClient:
                 f"{pharmacy.name}\n"
                 f"{pharmacy.address}, {pharmacy.zipcode}\n"
                 f"(p) {pharmacy.phone_number}\n"
-                f"Offers Free Delivery!\n" if pharmacy.isDelivery else ""
-                f"Also speaks {pharmacy.additional_language}!\n" if pharmacy.additional_language else ""
                 f"\n"
                 f"This pharmacy accepts the insurance (if provided):\n"
                 f"BIN: {origin_request.bin}\n"
