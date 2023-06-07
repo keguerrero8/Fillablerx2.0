@@ -34,7 +34,9 @@ request_validations = [
             }
         ],
         "The medication name must be a valid option from dropdown",
-        marks=pytest.mark.skip(reason="FIXME - hard to test since we use the key name to find the error but in this case issue is med_name"),
+        marks=pytest.mark.skip(
+            reason="FIXME - hard to test since we use the key name to find the error but in this case issue is med_name"
+        ),
         id="medication_strength_with_name_invalid",
     ),
     pytest.param(
@@ -106,7 +108,7 @@ def test_request_serializer_validations(
         "isInsurance": True,
         "user_type": "patient",
     }
-    request_data[invalid_param]= invalid_value
+    request_data[invalid_param] = invalid_value
     serializer = RequestSerializer(data=request_data)
 
     assert serializer.is_valid() == False
@@ -156,7 +158,9 @@ pharmacy_validations = [
 @pytest.mark.parametrize(
     "invalid_param, invalid_value, expected_error_message", pharmacy_validations
 )
-def test_pharmacy_serializer_validations(invalid_param, invalid_value, expected_error_message):
+def test_pharmacy_serializer_validations(
+    invalid_param, invalid_value, expected_error_message
+):
     pharmacy_data = {
         "phone_number": "+15169998888",
         "name": "CVS",
@@ -241,7 +245,8 @@ pharmacy_enrollment_validations = [
 
 
 @pytest.mark.parametrize(
-    "invalid_param, invalid_value, expected_error_message", pharmacy_enrollment_validations
+    "invalid_param, invalid_value, expected_error_message",
+    pharmacy_enrollment_validations,
 )
 def test_pharmacy_enrollment_serializer_validations(
     invalid_param, invalid_value, expected_error_message
@@ -265,8 +270,8 @@ def test_pharmacy_enrollment_serializer_validations(
 
     assert serializer.is_valid() == False
     assert serializer.errors[invalid_param][0] == expected_error_message
-    
-    
+
+
 def test_pharmacy_additional_language():
     pharmacy_enrollment_data = {
         "additional_language": "english",
@@ -280,13 +285,16 @@ def test_pharmacy_additional_language():
         "isDelivery": False,
         "signature": "John Doe",
         "signed_agreement_admin": "Kevin",
-        "signed_agreement_stamp": datetime.datetime.now()
+        "signed_agreement_stamp": datetime.datetime.now(),
     }
 
     serializer = PharmacySerializer(data=pharmacy_enrollment_data, partial=True)
 
     assert serializer.is_valid() == False
-    assert serializer.errors["additional_language"][0] == "The language provided is not an acceptable language"
+    assert (
+        serializer.errors["additional_language"][0]
+        == "The language provided is not an acceptable language"
+    )
 
 
 def test_is_field_required_enrollment():
@@ -302,7 +310,7 @@ def test_is_field_required_enrollment():
         "isDelivery": False,
         "signature": "John Doe",
         "signed_agreement_admin": "Kevin",
-        "signed_agreement_stamp": datetime.datetime.now()
+        "signed_agreement_stamp": datetime.datetime.now(),
     }
 
     serializer = PharmacySerializer(data=pharmacy_enrollment_data, partial=True)

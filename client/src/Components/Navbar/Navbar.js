@@ -93,19 +93,19 @@ function Navbar({ user, setUser }) {
                             :
                             null
                     }
-                {!user && !button? <li className='nav-item'>
+                {/* {!user && !button? <li className='nav-item'>
                         <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
                             Sign In
                         </Link>
-                    </li>: null}
+                    </li>: null} */}
                 {user && !button && <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick={handleLogOut}>
                             Sign Out
                         </Link>
                     </li>}
                 </ul>
-                {button && !user ? <Button path='/login'>Sign In
-                    </Button> : null}
+                {/* {button && !user ? <Button path='/login'>Sign In
+                    </Button> : null} */}
                 {user && button? <Button path='/' onClick={handleLogOut}>Sign Out
                     </Button> : null}
             </div>
