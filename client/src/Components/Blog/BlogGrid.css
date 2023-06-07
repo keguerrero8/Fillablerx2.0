@@ -47,8 +47,15 @@
       display: flex;
       flex-direction: column;
     }
+
+    .hero-card-container { 
+      flex-direction: column;
+    }
     
     .blog-card {
         width: 80vw;
+    }
+    .blog-card img {
+      height: 100px;
     }
   }

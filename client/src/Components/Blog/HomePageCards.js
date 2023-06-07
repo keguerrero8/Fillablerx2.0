@@ -52,7 +52,7 @@ const HomePage = () => {
   return (
     <div className="blog-section">
       <h2>{<Link className='section-link' to="/blog">Latest Articles</Link>}</h2>
-      <div className="blog-card-container">
+      <div className="hero-card-container">
         {recentArticles.map((article, index) => (
             <BlogCard 
             key={index} 

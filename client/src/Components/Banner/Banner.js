@@ -13,11 +13,12 @@ function Banner() {
     return (
         <div className='banner'>
             <div className='text-container'>
-                <h3>{announcementPrimary}</h3>
+                {/*
+                    <h3>{announcementPrimary}</h3>
+                */}
                 <h3>{announcementSecondary}</h3>
                 <h3>{announcementTertiary}</h3>
                 {/*
-
                 <h3>{announcementLink}
                     <Link to='/drug-shortages' className='banner-link'>here</Link>.
                 </h3>
