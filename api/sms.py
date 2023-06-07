@@ -62,7 +62,7 @@ class TwilioClient:
             )
 
         if isAdmin:
-            for number in ["+15167847791", "+15166686056"]:
+            for number in ["+15167847791"]:
                 self.client.messages.create(
                     body=body + "\n**admin test",
                     from_=self.twilio_phone_number,
@@ -82,8 +82,10 @@ class TwilioClient:
         hour_start = datetime.time(9, 0, 0).hour
         hour_end = datetime.time(18, 0, 0).hour
 
-        # if time to send message is within 9am to 6pm EST, send message now
-        if hour_now >= hour_start and hour_now < hour_end:
+        # if time to send message is within 9am to 6pm EST, send message now (unless we have env variable set for local)
+        if config("ENVIRONMENT", default="") == "local" or (
+            hour_now >= hour_start and hour_now < hour_end
+        ):
             print("your message will be sent now")
             bindings = list(
                 map(
