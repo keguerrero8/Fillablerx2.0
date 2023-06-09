@@ -78,7 +78,7 @@ function OzempicArticle(props) {
 }
 
 OzempicArticle.title = "Breaking Down the Buzz";
-OzempicArticle.subtitle = "Ozempic, Wegovy, and the Hype Surrounding These Weight Loss drugs";
+OzempicArticle.subtitle = "Ozempic, Wegovy, and the Hype Surrounding These Weight Loss Drugs";
 OzempicArticle.image = weightloss;
 OzempicArticle.postId = "20230603";
 
