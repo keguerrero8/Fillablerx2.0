@@ -61,7 +61,7 @@ function App() {
         <Route path="/pharmacy-enrolled" element={<SplashPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      <Footer/>
+      <Footer user={user}/>
     </>
   )
 }

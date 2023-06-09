@@ -2,7 +2,7 @@ import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
-function Footer() {
+function Footer({ user }) {
     return (
         <div className='footer-container'>
             <section className='footer-links'>
@@ -35,6 +35,11 @@ function Footer() {
                             <p className='footer-terms-text'>
                                 <Link className='nav-link' to="/privacy-policy">Privacy Policy</Link>
                             </p>
+                            {!user? (
+                                <p className='footer-terms-text'>
+                                    <Link className='nav-link' to="/login">For Admins</Link>
+                                </p>
+                            ) : null}
                             {/*<p className='footer-terms-text'>
                                 <Link className='nav-link' to="/">Manage Cookie Preferences</Link>
                             </p>*/}

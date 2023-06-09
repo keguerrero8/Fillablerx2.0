@@ -62,7 +62,7 @@ class TwilioClient:
             )
 
         if isAdmin:
-            for number in ["+15167847791", "+15166686056"]:
+            for number in ["+15167847791"]:
                 self.client.messages.create(
                     body=body + "\n**admin test",
                     from_=self.twilio_phone_number,
@@ -82,8 +82,10 @@ class TwilioClient:
         hour_start = datetime.time(9, 0, 0).hour
         hour_end = datetime.time(18, 0, 0).hour
 
-        # if time to send message is within 9am to 6pm EST, send message now
-        if hour_now >= hour_start and hour_now < hour_end:
+        # if time to send message is within 9am to 6pm EST, send message now (unless we have env variable set for local)
+        if config("ENVIRONMENT", default="") == "local" or (
+            hour_now >= hour_start and hour_now < hour_end
+        ):
             print("your message will be sent now")
             bindings = list(
                 map(
@@ -157,29 +159,41 @@ class TwilioClient:
         logging.debug(f"successfully sent an sms to enrolled pharmacist")
 
     def inbound_to_patient(self, origin_request, pharmacy):
+        pharmacy_intro = (
+            f"KOW #{origin_request.id}\n"
+            f"{origin_request.med_name} {origin_request.med_strength},\n"
+            f"quantity: {origin_request.quantity} is IN STOCK today.\n"
+            f"\n"
+            f"Please contact:\n"
+            f"{pharmacy.name}\n"
+            f"{pharmacy.address}, {pharmacy.zipcode}\n"
+            f"(p) {pharmacy.phone_number}\n"
+        )
+        pharmacy_delivery = (
+            f"\nOffers Free Delivery!\n" if pharmacy.isDelivery else "\n"
+        )
+        pharmacy_language = (
+            f"Also speaks {pharmacy.additional_language}!\n"
+            if pharmacy.additional_language and pharmacy.additional_language != "none"
+            else ""
+        )
+        pharmacy_outro = (
+            f"\n"
+            f"This pharmacy accepts the insurance (if provided):\n"
+            f"BIN: {origin_request.bin}\n"
+            f"PCN: {origin_request.pcn}\n"
+            f"RxGRP: {origin_request.rxgroup}"
+            f"\n"
+            f"What's next?\n"
+            f"Either:\n"
+            f"1) Ask the pharmacist to transfer a refill to this new pharmacy, or\n"
+            f"2) Ask the provider to send the prescription to this new pharmacy."
+        )
         self.client.messages.create(
             to=origin_request.phone_number.as_e164,
             from_=self.twilio_phone_number,
-            body=(
-                f"KOW #{origin_request.id}\n"
-                f"{origin_request.med_name} {origin_request.med_strength},\n"
-                f"quantity: {origin_request.quantity} is IN STOCK today.\n"
-                f"\n"
-                f"Please contact:\n"
-                f"{pharmacy.name}\n"
-                f"{pharmacy.address}, {pharmacy.zipcode}\n"
-                f"(p) {pharmacy.phone_number}\n"
-                f"Offers Free Delivery!\n" if pharmacy.isDelivery else ""
-                f"Also speaks {pharmacy.additional_language}!\n" if pharmacy.additional_language else ""
-                f"\n"
-                f"This pharmacy accepts the insurance (if provided):\n"
-                f"BIN: {origin_request.bin}\n"
-                f"PCN: {origin_request.pcn}\n"
-                f"RxGRP: {origin_request.rxgroup}"
-                f"\n"
-                f"What's next?\n"
-                f"Either:\n"
-                f"1) Ask the pharmacist to transfer a refill to this new pharmacy, or\n"
-                f"2) Ask the provider to send the prescription to this new pharmacy."
-            ),
+            body=pharmacy_intro
+            + pharmacy_delivery
+            + pharmacy_language
+            + pharmacy_outro,
         )
