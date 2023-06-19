@@ -8,6 +8,7 @@ import UrgentCareArticle from './20230506UrgentCareCost';
 import AdherenceArticle from './20230527Adherence';
 import OzempicArticle from './20230603Ozempic';
 import AqiArticle from './20230610AQI';
+import RsvArticle from './20230617RSV';
 
 import './BlogGrid.css'
 
@@ -49,6 +50,12 @@ const BlogGrid = () => {
         subtitle: AqiArticle.subtitle,
         image: AqiArticle.image,
         postId: AqiArticle.postId,
+    },
+    {
+        title: RsvArticle.title,
+        subtitle: RsvArticle.subtitle,
+        image: RsvArticle.image,
+        postId: RsvArticle.postId,
     },
   ];
 
