@@ -9,6 +9,7 @@ import AdherenceArticle from './20230527Adherence';
 import OzempicArticle from './20230603Ozempic';
 import AqiArticle from './20230610AQI';
 import RsvArticle from './20230617RSV';
+import NurseStrikeArticle from './20230624NurseStrike';
 
 import './BlogGrid.css'
 
@@ -56,6 +57,12 @@ const BlogGrid = () => {
         subtitle: RsvArticle.subtitle,
         image: RsvArticle.image,
         postId: RsvArticle.postId,
+    },
+    {
+        title: NurseStrikeArticle.title,
+        subtitle: NurseStrikeArticle.subtitle,
+        image: NurseStrikeArticle.image,
+        postId: NurseStrikeArticle.postId,
     },
   ];
 

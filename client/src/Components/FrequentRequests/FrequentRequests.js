@@ -23,7 +23,7 @@ function FrequentRequests() {
     return (
             <div className='recent-container'>
                 <h2>Most Frequent Requests:</h2>
-                <h3>{"Week of 6/12/23"}</h3>
+                <h3>{"Week of 6/19/23"}</h3>
                 <div className='request-groups'>
                     <ReqList data={dataColumn1}/>
                     <ReqList data={dataColumn2}/>
