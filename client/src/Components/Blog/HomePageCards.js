@@ -13,6 +13,7 @@ import OzempicArticle from './20230603Ozempic';
 import AqiArticle from './20230610AQI';
 import RsvArticle from './20230617RSV';
 import NurseStrikeArticle from './20230624NurseStrike';
+import EndCovidArticle from './20230701EndCovid';
 
 const HomePage = () => {
   const blogArticles = [
@@ -63,6 +64,12 @@ const HomePage = () => {
       subtitle: NurseStrikeArticle.subtitle,
       image: NurseStrikeArticle.image,
       postId: NurseStrikeArticle.postId,
+    },
+    {
+      title: EndCovidArticle.title,
+      subtitle: EndCovidArticle.subtitle,
+      image: EndCovidArticle.image,
+      postId: EndCovidArticle.postId,
     },
   ];
 
