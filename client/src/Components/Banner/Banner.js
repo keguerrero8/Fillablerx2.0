@@ -5,7 +5,7 @@ function Banner() {
 
     const announcementPrimary = "Website Downtime scheduled for 5/30/23 11:00 pm - 7:00 am";
     const announcementSecondary = "BETA pharmacies now serving patients in select parts of Queens and Long Island, NY!";
-    const announcementTertiary = "Shortage Announcement: 5/19 Isoniazid Injection, 5/30 Budesonide Inhalation Suspension, 5/31 Protamine Injection, 6/14 Enalaprilat Injection";
+    const announcementTertiary = "Shortage Announcement: 5/30 Budesonide Inhalation Suspension, 5/31 Protamine Injection, 6/14 Enalaprilat Injection, 6/19 Lisdexamfetamine Capsules, 6/29 Testosterone 2% Gel, 6/29 Cefdinir Capsules & Suspension";
     const announcementLink = "For a list of current Drug Shortages, click";
 
 

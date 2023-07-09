@@ -9,6 +9,9 @@ import AdherenceArticle from './20230527Adherence';
 import OzempicArticle from './20230603Ozempic';
 import AqiArticle from './20230610AQI';
 import RsvArticle from './20230617RSV';
+import NurseStrikeArticle from './20230624NurseStrike';
+import EndCovidArticle from './20230701EndCovid';
+import HeatWaveArticle from './20230708HeatWave';
 
 import './BlogGrid.css'
 
@@ -56,6 +59,24 @@ const BlogGrid = () => {
         subtitle: RsvArticle.subtitle,
         image: RsvArticle.image,
         postId: RsvArticle.postId,
+    },
+    {
+        title: NurseStrikeArticle.title,
+        subtitle: NurseStrikeArticle.subtitle,
+        image: NurseStrikeArticle.image,
+        postId: NurseStrikeArticle.postId,
+    },
+    {
+        title: EndCovidArticle.title,
+        subtitle: EndCovidArticle.subtitle,
+        image: EndCovidArticle.image,
+        postId: EndCovidArticle.postId,
+    },
+    {
+        title: HeatWaveArticle.title,
+        subtitle: HeatWaveArticle.subtitle,
+        image: HeatWaveArticle.image,
+        postId: HeatWaveArticle.postId,
     },
   ];
 
