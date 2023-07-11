@@ -20,7 +20,7 @@ function AqiArticle(props) {
         </div>
         <div className='section'>
             <h2>What is AQI?</h2>
-            <p>AQI, or Air Quality Index, is a measurement tool used to assess the quality of outdoor air. It provides an indication of the level of pollutants present in the air and helps individuals gauge the potential health risks associated with exposure. AQI values typically range from 0 to 500, with higher values indicating poorer air quality and increased health hazards.  Most recently, the AQI in New York City spiked from a 21 on June 4, 2023 to 195 and 183 on June 6th and June 7th.</p>
+            <p>AQI, or Air Quality Index, is a measurement tool used to assess the quality of outdoor air. It provides an indication of the level of pollutants present in the air and helps individuals gauge the potential health risks associated with exposure. AQI values typically range from 0 to 500, with higher values indicating poorer air quality and increased health hazards.  Most recently, the AQI in New York City spiked from a 21 on June 4, 2023 to 195 and 218 on June 6th and June 7th.  Based on the EPA’s classification guide, an AQI value of 151-200 is Unhealthy, meaning a portion of the general public and especially sensitive groups of people may experience moderate to serious health effects; and a value of 201-300 is Very Unhealthy to indicate everyone will have a greater risk of experiencing health effects.</p>
         </div>
         <div className='section'>
             <h2>The Impact of Air Quality on Health</h2>
