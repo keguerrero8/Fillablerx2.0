@@ -6,7 +6,7 @@ function OzempicArticle(props) {
     return (
     <>  
         <div className='title'>
-            <h1>Breaking Dwon the Buzz</h1>
+            <h1>Breaking Down the Buzz</h1>
             <h2>Ozempic, Wegovy, and the Hype Surrounding These Weight Loss Drugs</h2>
             <p>Date: June 3, 2023</p>
             <div className='banner-img'>
