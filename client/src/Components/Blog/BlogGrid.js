@@ -12,6 +12,8 @@ import RsvArticle from './20230617RSV';
 import NurseStrikeArticle from './20230624NurseStrike';
 import EndCovidArticle from './20230701EndCovid';
 import HeatWaveArticle from './20230708HeatWave';
+import OtcBirthControlArticle from './20230715OtcBirthControl';
+import LeqembiArticle from './20230722Leqembi';
 
 import './BlogGrid.css'
 
@@ -77,6 +79,18 @@ const BlogGrid = () => {
         subtitle: HeatWaveArticle.subtitle,
         image: HeatWaveArticle.image,
         postId: HeatWaveArticle.postId,
+    },
+    {
+        title: OtcBirthControlArticle.title,
+        subtitle: OtcBirthControlArticle.subtitle,
+        image: OtcBirthControlArticle.image,
+        postId: OtcBirthControlArticle.postId,
+    },
+    {
+        title: LeqembiArticle.title,
+        subtitle: LeqembiArticle.subtitle,
+        image: LeqembiArticle.image,
+        postId: LeqembiArticle.postId,
     },
   ];
 
