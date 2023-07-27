@@ -13,6 +13,8 @@ import RsvArticle from './20230617RSV';
 import NurseStrikeArticle from './20230624NurseStrike';
 import EndCovidArticle from './20230701EndCovid';
 import HeatWaveArticle from './20230708HeatWave';
+import OtcBirthControlArticle from './20230715OtcBirthControl';
+import LeqembiArticle from './20230722Leqembi';
 
 const ViewPost = () => {
     const { postId } = useParams();
@@ -33,6 +35,8 @@ const ViewPost = () => {
             {postId === '20230624' && <NurseStrikeArticle />}
             {postId === '20230701' && <EndCovidArticle />}
             {postId === '20230708' && <HeatWaveArticle />}
+            {postId === '20230715' && <OtcBirthControlArticle />}
+            {postId === '20230722' && <LeqembiArticle />}
         </div>
     );
 }
