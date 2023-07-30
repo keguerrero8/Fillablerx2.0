@@ -24,10 +24,14 @@ function FrequentRequests() {
             <div className='recent-container'>
                 <h2>Most Frequent Requests:</h2>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <h3>{"Week of 7/17/23"}</h3>
 =======
                 <h3>{"Week of 7/10/23"}</h3>
 >>>>>>> b2be4960db4f13f159a9ef26c90c3f0a11d81bac
+=======
+                <h3>{"Week of 7/17/23"}</h3>
+>>>>>>> deb7011ce35d7667d972836d113c60ca05440b02
                 <div className='request-groups'>
                     <ReqList data={dataColumn1}/>
                     <ReqList data={dataColumn2}/>
