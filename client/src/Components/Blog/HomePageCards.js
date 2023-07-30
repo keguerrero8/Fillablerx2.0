@@ -17,6 +17,7 @@ import EndCovidArticle from './20230701EndCovid';
 import HeatWaveArticle from './20230708HeatWave';
 import OtcBirthControlArticle from './20230715OtcBirthControl';
 import LeqembiArticle from './20230722Leqembi';
+import SunVitaminArticle from './20230729SunVitamin';
 
 const HomePage = () => {
   const blogArticles = [
@@ -92,6 +93,12 @@ const HomePage = () => {
       image: LeqembiArticle.image,
       postId: LeqembiArticle.postId,
     },
+    {
+      title: SunVitaminArticle.title,
+      subtitle: SunVitaminArticle.subtitle,
+      image: SunVitaminArticle.image,
+      postId: SunVitaminArticle.postId,
+     },
   ];
 
   const sortedArticles = blogArticles.sort((a, b) => b.postId - a.postId);

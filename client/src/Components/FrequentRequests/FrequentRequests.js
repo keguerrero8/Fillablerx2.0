@@ -6,32 +6,24 @@ import './FrequentRequests.css';
 function FrequentRequests() {
     const dataColumn1 = [
         { req: 1, name: 'Aprepitant 125mg-80mg' },
-        { req: 2, name: 'Megestrol 40mg/mL' },
-        { req: 3, name: 'Tamoxifen 20mg' },
+        { req: 2, name: 'Lidocaine-Prilocaine 2.5%-2.5%' },
+        { req: 3, name: 'Granisetron 1mg' },
       ];
     const dataColumn2 = [
-        { req: 1, name: 'Anastrozole 1mg' },
-        { req: 2, name: 'Cefdinir 300mg' },
-        { req: 3, name: 'Lidocaine Viscous Solution 2%' },
+        { req: 1, name: 'Megestrol 40mg/mL' },
+        { req: 2, name: 'Tamoxifen 20mg' },
+        { req: 3, name: 'Anastrozole 1mg' },
       ];
     const dataColumn3 = [
-        { req: 1, name: 'Exemestane 25mg' },
-        { req: 2, name: 'Eliquis 5mg' },
-        { req: 3, name: 'Deferasirox 360mg' },
+        { req: 1, name: 'Cefdinir 300mg' },
+        { req: 2, name: 'Lidocaine Viscous Solution 2%' },
+        { req: 3, name: 'Exemestane 25mg' },
       ];
 
     return (
             <div className='recent-container'>
                 <h2>Most Frequent Requests:</h2>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <h3>{"Week of 7/17/23"}</h3>
-=======
-                <h3>{"Week of 7/10/23"}</h3>
->>>>>>> b2be4960db4f13f159a9ef26c90c3f0a11d81bac
-=======
-                <h3>{"Week of 7/17/23"}</h3>
->>>>>>> deb7011ce35d7667d972836d113c60ca05440b02
+                <h3>{"Week of 7/24/23"}</h3>
                 <div className='request-groups'>
                     <ReqList data={dataColumn1}/>
                     <ReqList data={dataColumn2}/>
