@@ -27,8 +27,9 @@ logger = logging.getLogger(__name__)
 
 
 @api_view(["GET"])
-@csrf_protect
-@permission_classes([IsAuthenticated])
+# @csrf_protect
+# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def pharmacy_list(request):
     """
     Get all pharmacies
@@ -40,8 +41,10 @@ def pharmacy_list(request):
 
 
 @api_view(["GET", "PUT"])
-@csrf_protect
-@permission_classes([IsAuthenticated])
+# @csrf_protect
+# @permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([AllowAny])
 def pharmacy_detail(request, id):
     """
     Get a single pharmacy's details or update that pharmacys enrollment details
@@ -65,8 +68,9 @@ def pharmacy_detail(request, id):
 
 
 @api_view(["GET"])
-@csrf_protect
-@permission_classes([IsAuthenticated])
+# @csrf_protect
+# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def pharmacist_list(request, id):
     """
     Get all pharmacists based on a particular pharmacy
@@ -83,8 +87,9 @@ def pharmacist_list(request, id):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
-@csrf_protect
+# @permission_classes([IsAuthenticated])
+# @csrf_protect
+@permission_classes([AllowAny])
 def pharmacist_create(request):
     """
     Create a pharmacist (which will accept a pharmacy field as input).
@@ -107,8 +112,9 @@ def pharmacist_create(request):
 
 
 @api_view(["PUT", "DELETE"])
-@csrf_protect
-@permission_classes([IsAuthenticated])
+# @csrf_protect
+# @permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def pharmacist_detail(request, id):
     """
     Update or delete a pharmacist
@@ -131,7 +137,7 @@ def pharmacist_detail(request, id):
 
 
 @api_view(["GET"])
-@csrf_protect
+# @csrf_protect
 @permission_classes([IsAuthenticatedOrReadOnly])
 def medication_list(request):
     """
@@ -145,7 +151,7 @@ def medication_list(request):
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
-@csrf_protect
+# @csrf_protect
 def request_list(request):
     """
     Create a request. Here we will need to also trigger the API call to twilio to send our mass sms
