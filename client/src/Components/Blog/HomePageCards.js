@@ -18,6 +18,7 @@ import HeatWaveArticle from './20230708HeatWave';
 import OtcBirthControlArticle from './20230715OtcBirthControl';
 import LeqembiArticle from './20230722Leqembi';
 import SunVitaminArticle from './20230729SunVitamin';
+import MentalAppsArticle from './20230805MentalHealthApps';
 
 const HomePage = () => {
   const blogArticles = [
@@ -98,6 +99,12 @@ const HomePage = () => {
       subtitle: SunVitaminArticle.subtitle,
       image: SunVitaminArticle.image,
       postId: SunVitaminArticle.postId,
+     },
+     {
+      title: MentalAppsArticle.title,
+      subtitle: MentalAppsArticle.subtitle,
+      image: MentalAppsArticle.image,
+      postId: MentalAppsArticle.postId,
      },
   ];
 

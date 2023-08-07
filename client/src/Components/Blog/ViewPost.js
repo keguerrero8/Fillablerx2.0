@@ -16,6 +16,7 @@ import HeatWaveArticle from './20230708HeatWave';
 import OtcBirthControlArticle from './20230715OtcBirthControl';
 import LeqembiArticle from './20230722Leqembi';
 import SunVitaminArticle from './20230729SunVitamin';
+import MentalAppsArticle from './20230805MentalHealthApps';
 
 const ViewPost = () => {
     const { postId } = useParams();
@@ -39,6 +40,7 @@ const ViewPost = () => {
             {postId === '20230715' && <OtcBirthControlArticle />}
             {postId === '20230722' && <LeqembiArticle />}
             {postId === '20230729' && <SunVitaminArticle />}
+            {postId === '20230805' && <MentalAppsArticle />}
         </div>
     );
 }
