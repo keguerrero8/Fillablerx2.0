@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_twilio",
     "django_extensions",
+    "rest_framework_simplejwt.token_blacklist",
 ]
 
 MIDDLEWARE = [
@@ -115,16 +116,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #  If this is set to True, the cookies will be marked as “secure”, which means 
 #  browsers may ensure that the cookie is only sent with an HTTPS connection.
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': True, #in the video this is false but in the repo its true?
-    # 'BLACKLIST_AFTER_ROTATION': True,
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer', ),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken', ),
 }

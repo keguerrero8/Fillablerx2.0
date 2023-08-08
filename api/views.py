@@ -68,9 +68,7 @@ def pharmacy_detail(request, id):
 
 
 @api_view(["GET"])
-# @csrf_protect
-# @permission_classes([IsAuthenticated])
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([IsAuthenticated])
 def pharmacist_list(request, id):
     """
     Get all pharmacists based on a particular pharmacy
@@ -87,8 +85,7 @@ def pharmacist_list(request, id):
 
 
 @api_view(["POST"])
-# @permission_classes([IsAuthenticated])
-# @csrf_protect
+@permission_classes([IsAuthenticated])
 @permission_classes([AllowAny])
 def pharmacist_create(request):
     """
@@ -137,7 +134,6 @@ def pharmacist_detail(request, id):
 
 
 @api_view(["GET"])
-# @csrf_protect
 @permission_classes([IsAuthenticatedOrReadOnly])
 def medication_list(request):
     """
@@ -151,7 +147,6 @@ def medication_list(request):
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
-# @csrf_protect
 def request_list(request):
     """
     Create a request. Here we will need to also trigger the API call to twilio to send our mass sms
