@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
     IsAuthenticated,
@@ -27,9 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 @api_view(["GET"])
-# @csrf_protect
-# @permission_classes([IsAuthenticated])
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([IsAuthenticated])
 def pharmacy_list(request):
     """
     Get all pharmacies
@@ -41,10 +39,7 @@ def pharmacy_list(request):
 
 
 @api_view(["GET", "PUT"])
-# @csrf_protect
-# @permission_classes([IsAuthenticated])
-# @permission_classes([IsAuthenticatedOrReadOnly])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def pharmacy_detail(request, id):
     """
     Get a single pharmacy's details or update that pharmacys enrollment details
@@ -86,7 +81,6 @@ def pharmacist_list(request, id):
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
-@permission_classes([AllowAny])
 def pharmacist_create(request):
     """
     Create a pharmacist (which will accept a pharmacy field as input).
@@ -109,9 +103,7 @@ def pharmacist_create(request):
 
 
 @api_view(["PUT", "DELETE"])
-# @csrf_protect
-# @permission_classes([IsAuthenticated])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def pharmacist_detail(request, id):
     """
     Update or delete a pharmacist
