@@ -33,10 +33,20 @@ def pharmacy_list(request):
     Get all pharmacies
     """
     if request.method == "GET":
-        pharmacies = Pharmacy.objects.order_by("name")
-        serializer = PharmacySerializer(pharmacies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
+        try:
+            pharmacies = Pharmacy.objects.order_by("name")
+            serializer = PharmacySerializer(pharmacies, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as ex:
+            logging.debug(
+                f"Failed to fetch all pharmacies. Error is due to the following exception: {ex}"
+            )
+            return Response(
+                {
+                    "errors": "Something went wrong when fetching all the pharmacies"
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
 
 @api_view(["GET", "PUT"])
 @permission_classes([IsAuthenticated])
