@@ -42,10 +42,6 @@ MIDDLEWARE = [
     "csp.middleware.CSPMiddleware",
 ]
 
-# sets the Access-Control-Allow-Credentials in response to client request. Need to set credential mode to "include" in js request for 
-# backend and frontend to be on the same page to allow request-response to work for CORS
-# is this needed now that we are using JWT tokens?
-# CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "app.urls"
 
