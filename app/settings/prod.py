@@ -61,7 +61,7 @@ SECURE_HSTS_PRELOAD = True
 
 #add domain of prod next js app,
 CORS_ALLOWED_ORIGINS = [
-    'https://kow-ui.vercel.app/'
+    'https://kow-ui.vercel.app'
 ]
 
 # CSP headers
