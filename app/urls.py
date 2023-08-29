@@ -17,4 +17,4 @@ urlpatterns = [
 # index.html that lives inside our build folder so react router can take over.
 # when migrating fully to next js with frontend, can we remove this catch-all or 
 # can we utilize to redirect to some place?
-urlpatterns += [re_path(r"^.*", TemplateView.as_view(template_name="index.html"))]
+# urlpatterns += [re_path(r"^.*", TemplateView.as_view(template_name="index.html"))]
