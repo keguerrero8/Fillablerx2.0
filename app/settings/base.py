@@ -102,18 +102,13 @@ USE_TZ = True
 
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "build/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-#  If this is set to True, the cookies will be marked as “secure”, which means 
-#  browsers may ensure that the cookie is only sent with an HTTPS connection.
-# SESSION_COOKIE_SECURE = True
-
 
 
 SIMPLE_JWT = {

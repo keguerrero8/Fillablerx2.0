@@ -16,7 +16,6 @@ ALLOWED_HOSTS = ["kow-meds.herokuapp.com", "kowmeds.com"]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 django_on_heroku.settings(locals(), staticfiles=False)
-# del DATABASES["default"]["OPTIONS"]["sslmode"]
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
