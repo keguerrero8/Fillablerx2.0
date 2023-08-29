@@ -60,10 +60,9 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 #add domain of prod next js app,
-# CORS_ALLOWED_ORIGINS = []
-
-#add domain of prod next js app
-# CSRF_TRUSTED_ORIGINS = []
+CORS_ALLOWED_ORIGINS = [
+    'https://kow-ui.vercel.app/'
+]
 
 # CSP headers
 CSP_DEFAULT_SRC = ("'self'", "https://ka-f.fontawesome.com")
