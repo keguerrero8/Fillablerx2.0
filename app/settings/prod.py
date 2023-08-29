@@ -23,7 +23,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
 }
@@ -58,6 +58,11 @@ SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+
+#add domain of prod next js app,
+CORS_ALLOWED_ORIGINS = [
+    'https://kow-ui.vercel.app/'
+]
 
 # CSP headers
 CSP_DEFAULT_SRC = ("'self'", "https://ka-f.fontawesome.com")

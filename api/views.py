@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
     IsAuthenticated,
@@ -27,20 +27,28 @@ logger = logging.getLogger(__name__)
 
 
 @api_view(["GET"])
-@csrf_protect
 @permission_classes([IsAuthenticated])
 def pharmacy_list(request):
     """
     Get all pharmacies
     """
     if request.method == "GET":
-        pharmacies = Pharmacy.objects.order_by("name")
-        serializer = PharmacySerializer(pharmacies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
+        try:
+            pharmacies = Pharmacy.objects.order_by("name")
+            serializer = PharmacySerializer(pharmacies, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as ex:
+            logging.debug(
+                f"Failed to fetch all pharmacies. Error is due to the following exception: {ex}"
+            )
+            return Response(
+                {
+                    "errors": "Something went wrong when fetching all the pharmacies"
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
 
 @api_view(["GET", "PUT"])
-@csrf_protect
 @permission_classes([IsAuthenticated])
 def pharmacy_detail(request, id):
     """
@@ -65,7 +73,6 @@ def pharmacy_detail(request, id):
 
 
 @api_view(["GET"])
-@csrf_protect
 @permission_classes([IsAuthenticated])
 def pharmacist_list(request, id):
     """
@@ -84,7 +91,6 @@ def pharmacist_list(request, id):
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
-@csrf_protect
 def pharmacist_create(request):
     """
     Create a pharmacist (which will accept a pharmacy field as input).
@@ -107,7 +113,6 @@ def pharmacist_create(request):
 
 
 @api_view(["PUT", "DELETE"])
-@csrf_protect
 @permission_classes([IsAuthenticated])
 def pharmacist_detail(request, id):
     """
@@ -131,7 +136,6 @@ def pharmacist_detail(request, id):
 
 
 @api_view(["GET"])
-@csrf_protect
 @permission_classes([IsAuthenticatedOrReadOnly])
 def medication_list(request):
     """
@@ -145,7 +149,6 @@ def medication_list(request):
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
-@csrf_protect
 def request_list(request):
     """
     Create a request. Here we will need to also trigger the API call to twilio to send our mass sms
