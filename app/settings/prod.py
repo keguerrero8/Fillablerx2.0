@@ -11,7 +11,7 @@ SECRET_KEY_FALLBACKS = [
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["kow-meds.herokuapp.com", "kowmeds.com", "api.kowmeds.com"]
+ALLOWED_HOSTS = ["kow-meds.herokuapp.com", "api.kowmeds.com"]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -60,6 +60,7 @@ SECURE_HSTS_PRELOAD = True
 
 #add domain of prod next js app,
 CORS_ALLOWED_ORIGINS = [
-    'https://kow-ui.vercel.app'
+    'https://kow-ui.vercel.app', 
+    'https://kowmeds.com'
 ]
 
