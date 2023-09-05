@@ -42,11 +42,10 @@ def pharmacy_list(request):
                 f"Failed to fetch all pharmacies. Error is due to the following exception: {ex}"
             )
             return Response(
-                {
-                    "errors": "Something went wrong when fetching all the pharmacies"
-                },
+                {"errors": "Something went wrong when fetching all the pharmacies"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
+
 
 @api_view(["GET", "PUT"])
 @permission_classes([IsAuthenticated])
@@ -167,9 +166,7 @@ def request_list(request):
                 request_sms.delivery_status = "success"
                 request_sms.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(
-                {"errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST
-            )
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as ex:
             logging.debug(
                 f"Failed to create a request. Error is due to the following exception: {ex}"
@@ -178,7 +175,7 @@ def request_list(request):
             request_sms.save()
             return Response(
                 {
-                    "errors": "Something went wrong when creating the request, please contact your administrator"
+                    "error": "Something went wrong when creating the request, please contact your administrator"
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
