@@ -59,5 +59,4 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
-# add domain of prod next js app,
 CORS_ALLOWED_ORIGINS = ["https://kow-ui.vercel.app", "https://kowmeds.com"]

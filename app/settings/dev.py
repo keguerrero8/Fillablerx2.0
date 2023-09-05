@@ -4,7 +4,6 @@ SECRET_KEY = "abc"
 
 DEBUG = True
 
-# what are the hosts that can serve your app, this will actually not change, in prod the name of api domain will be needed
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 REST_FRAMEWORK = {
