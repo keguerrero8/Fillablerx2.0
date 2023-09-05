@@ -4,16 +4,6 @@ from rest_framework.response import Response
 from .serializers import UserSerializer
 
 
-# Because we handle logging out with next js api, we dont need this logout view
-# but will keep just in case we want to implement it in the future
-# class LogoutView(APIView):
-#     def post(self, request, format=None):
-#         try:
-#             auth.logout(request)
-#             return Response({"success": "Logged Out"})
-#         except:
-#             return Response({"error": "Something went wrong when logging out"})
-
 class LoadUserView(APIView):
     permission_classes = (permissions.AllowAny,)
     
